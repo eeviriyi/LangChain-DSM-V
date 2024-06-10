@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>类风湿性关节炎诊断标准（美国风湿疾病协会 1987 年修订）</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Rheumatology, PMR, Geriatrics, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+RheumatoidArthritis_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+RheumatoidArthritis_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function RheumatoidArthritis_fx() {
+with(document.RheumatoidArthritis_form){
+
+Score = 0.0;
+doCalc = true;
+
+if (cc1.checked){
+Score = Score + 1;
+}
+if (cc2.checked){
+Score = Score + 1;
+}
+if (cc3.checked){
+Score = Score + 1;
+}
+if (cc4.checked){
+Score = Score + 1;
+}
+if (cc5.checked){
+Score = Score + 1;
+}
+if (cc6.checked){
+Score = Score + 1;
+}
+if (cc7.checked){
+Score = Score + 1;
+}
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.RheumatoidArthritis_form.cctotal.value = '';
+}
+
+
+
+}
+}
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="RheumatoidArthritis_form" id="RheumatoidArthritis_form" action="" onsubmit="return false;">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+类风湿性关节炎诊断标准（美国风湿疾病协会 1987 年修订）
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">晨僵</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel1" name="cc1" onclick="RheumatoidArthritis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel1');" >关节内和关节周围晨僵，在取得最大改善前持续至少 1 小时。 症状持续出现 至少 6 周。 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">3 处或以上关节处有关节炎</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel2" name="cc2" onclick="RheumatoidArthritis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel2');" >医生发现至少 3 处关节同时出现软组织肿胀或积液（不单是骨质增生）；14 处可能关节包括右侧或左侧近端指（趾）间关节 、掌指关节、腕、肘、膝、踝以及跖趾关节。  症状持续出现最少 6 周。 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">手关节关节炎</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel3" name="cc3" onclick="RheumatoidArthritis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel3');" >腕关节、指（趾）间关节或掌指关节至少一处出现肿胀（按以上定义）。 症状持续出现至少 6 周。 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">对称性关节炎</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel4" name="cc4" onclick="RheumatoidArthritis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel4');" >身体两侧的相同关节（见以上 2）同时出现症状（两侧指（趾）间关节、掌指关节或跖趾关节均出现症状也算，无需绝对对称）。 症状持续出现至少 6 周。 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">类风湿性结节</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel5" name="cc5" onclick="RheumatoidArthritis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel5');" >医生发现在骨突处、伸肌表面或近关节处出现皮下结节。 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">血清类风湿因子阳性</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel6" name="cc6" onclick="RheumatoidArthritis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel6');" >在任何测验方法（其中 &lt; 5% 的正常对照组受试者结果为阳性）中测出血清类风湿因子水平异常。 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">X 线影像变化</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel7" name="cc7" onclick="RheumatoidArthritis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel7');" >手和手腕后前位 X 线影像呈典型的类风湿性关节炎 X 线影像变化，其中必须包括受影响关节局部出现侵蚀或明确的骨脱钙，或在该处邻近部位最为明显（仅骨关节炎变化不算）。 (1 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+
+</div>
+</div>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>类风湿性关节炎评分为 4-7 分可确诊患有类风湿性关节炎。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Arnett FC, Edworthy SM, Bloch DA, et al. The American Rheumatism Association 1987 revised criteria for the classification of  rheumatoid arthritis. <i>Arthritis Rheum</i>. 1988 Mar;31(3):315-24. PubMed ID: 3358796 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/3358796"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471518 //-->

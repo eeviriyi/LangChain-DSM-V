@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>不稳定型心绞痛或非 ST 段升高型心肌梗塞的心肌梗塞溶栓（TIMI）评分</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="cardiology, critical care, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+TIMI_UA_NSTEMI_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+TIMI_UA_NSTEMI_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function TIMI_UA_NSTEMI_fx() {
+with(document.TIMI_UA_NSTEMI_form){
+
+Score = 0.0;
+doCalc = true;
+
+if (cc1.checked){
+Score = Score + 1;
+}
+if (cc2.checked){
+Score = Score + 1;
+}
+if (cc3.checked){
+Score = Score + 1;
+}
+if (cc4.checked){
+Score = Score + 1;
+}
+if (cc5.checked){
+Score = Score + 1;
+}
+if (cc6.checked){
+Score = Score + 1;
+}
+if (cc7.checked){
+Score = Score + 1;
+}
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.TIMI_UA_NSTEMI_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 1)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 2) && (Score <= 2)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 3) && (Score <= 3)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 4) && (Score <= 4)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+if ((Score >= 5) && (Score <= 5)){ document.getElementById('rr1_5').bgColor = '#8ab2be';
+}
+if ((Score >= 6) && (Score <= 7)){ document.getElementById('rr1_6').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+document.getElementById('rr1_5').bgColor = '';
+document.getElementById('rr1_6').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="TIMI_UA_NSTEMI_form" id="TIMI_UA_NSTEMI_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+不稳定型心绞痛或非 ST 段升高型心肌梗塞的心肌梗塞溶栓（TIMI）评分
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel1" name="cc1" onclick="TIMI_UA_NSTEMI_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel1');" >年龄 ≥65 周岁 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel2" name="cc2" onclick="TIMI_UA_NSTEMI_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel2');" >3 个及以上冠状动脉疾病（CAD ）风险因素 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel3" name="cc3" onclick="TIMI_UA_NSTEMI_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel3');" >已知 CAD 并有大于 50% 狭窄 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel4" name="cc4" onclick="TIMI_UA_NSTEMI_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel4');" >过去 7 日使用阿司匹林 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel5" name="cc5" onclick="TIMI_UA_NSTEMI_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel5');" >过去 24 小时严重心绞痛 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel6" name="cc6" onclick="TIMI_UA_NSTEMI_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel6');" >心脏标记物升高 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel7" name="cc7" onclick="TIMI_UA_NSTEMI_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel7');" >ST 偏离大于 0.5mm (1 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+TIMI 评分及 2 周死亡/MI 风险**死亡/MI/急性 Revasc 风险解释
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 1 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">3% ** 5%</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">2 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">3% ** 8%</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">3 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">5% ** 13%</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">4 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">7% ** 20%</span></td></tr>
+<tr id="rr1_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">5 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">12% ** 26%</span></td></tr>
+<tr id="rr1_6"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">6 - 7 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">19% ** 41%</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Antman EM, Cohen M, Bernink PJ, et al. The TIMI risk score for unstable angina/non-ST elevation MI: A method for prognostication and therapeutic decision making. <i>JAMA</i>. 2000 Aug 16;284(7):835-42. PubMed ID: 10938172 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10938172"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471527 //-->

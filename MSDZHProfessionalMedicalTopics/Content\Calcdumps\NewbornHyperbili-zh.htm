@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>新生儿高胆红素血症评估</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Nurse, pediatrics, critical care, gyne, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+NewbornHyperbili_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+NewbornHyperbili_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function NewbornHyperbili_fx() {
+
+with(document.NewbornHyperbili_form){
+
+
+doCalc = true;
+param_value = parseFloat(Infant_Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Infant_Age_unit.options[Infant_Age_unit.selectedIndex].value.split('|');
+Infant_Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Total_Bilirubin_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Total_Bilirubin_unit.options[Total_Bilirubin_unit.selectedIndex].value.split('|');
+Total_Bilirubin = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+rbchk = false;
+if (Clinical_Risk_Group_radio[0].checked){ rbchk = true; Clinical_Risk_Group = 1;  }
+if (Clinical_Risk_Group_radio[1].checked){ rbchk = true; Clinical_Risk_Group = 2;  }
+if (Clinical_Risk_Group_radio[2].checked){ rbchk = true; Clinical_Risk_Group = 2;  }
+if (Clinical_Risk_Group_radio[3].checked){ rbchk = true; Clinical_Risk_Group = 3;  }
+if (!rbchk) doCalc = false;
+dp = 1;
+p40th =  interpN1(n1_40th, Infant_Age);
+
+p75th =  interpN1(n1_75th, Infant_Age);
+
+p95th =  interpN1(n1_95th, Infant_Age);
+
+plow =  interpN2(n2_low, Infant_Age);
+
+pmed =  interpN2(n2_med, Infant_Age);
+
+phigh =  interpN2(n2_high, Infant_Age);
+
+tlow =  interpN3(n3_low, Infant_Age);
+
+tmed =  interpN3(n3_med, Infant_Age);
+
+thigh =  interpN3(n3_high, Infant_Age);
+
+document.getElementById('ttxt').innerHTML = '';
+if(doCalc){
+if(Total_Bilirubin < p40th){ p40th = fixDP(p40th,2); document.getElementById('ttxt').innerHTML = "受试者的胆红素低于此年龄段胆红素的40百分位\(" + p40th + " mg/dL）<br />&nbsp;<br />未来胆红素级别上升至95百分位的危险低";};
+if((Total_Bilirubin >= p40th) && (Total_Bilirubin < p75th)){ p40th = fixDP(p40th,2); p75th = fixDP(p75th,2); document.getElementById('ttxt').innerHTML = "受试者的胆红素高于此年龄段胆红素的40百分位（" + p40th + " mg/dL）但低于百分之 75 \（" + p75th + " mg/dL）<br />&nbsp;<br />未来胆红素级别上升至95百分位的危险为低到中等";};
+if((Total_Bilirubin >= p75th) && (Total_Bilirubin < p95th)){ p75th = fixDP(p75th,2); p95th = fixDP(p95th,2); document.getElementById('ttxt').innerHTML = "受试者的胆红素高于或等于此年龄段胆红素的75百分位（" + p75th + " mg/dL）但低于百分之 95 \（" + p95th + " mg/dL）<br />&nbsp;<br />未来胆红素级别上升至95百分位的危险为中等到高";};
+if(Total_Bilirubin >= p95th){ p95th = fixDP(p95th,2); document.getElementById('ttxt').innerHTML = "受试者的胆红素高于或等于此年龄段胆红素的95百分位\（" + p95th + " mg/dL）<br />&nbsp;<br />未来胆红素级别保持在95百分位的危险高";};
+if((Clinical_Risk_Group == 1) && (Total_Bilirubin >= plow)){ plow = fixDP(plow,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />虽然临床危险因素低（危险组 1），本组特定小时光线疗法阀值\大约为 " +  plow + " mg/dL，因此考虑光线疗法。";};
+if((Clinical_Risk_Group == 2) && (Total_Bilirubin >= pmed)){ pmed = fixDP(pmed,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />临床危险因素中等（危险组 2），本组特定小时光线疗法阀值\大约为 " +  pmed + " mg/dL，因此考虑光线疗法。";};
+if((Clinical_Risk_Group == 3) && (Total_Bilirubin >= phigh)){ phigh = fixDP(phigh,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />临床危险因素高（危险组 3），本组特定小时光线疗法阀值\大约为 " +  phigh + " mg/dL，因此考虑光线疗法。";}; 
+if((Clinical_Risk_Group == 1) && (Total_Bilirubin < plow)){ plow = fixDP(plow,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />临床危险因素低（危险组 1），本组特定小时光线疗法阀值\大约为 " +  plow + " mg/dL，因此可能不需要光线疗法。";}
+if((Clinical_Risk_Group == 2) && (Total_Bilirubin < pmed)){ pmed = fixDP(pmed,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />虽然临床危险因素中等（危险组 2），本组特定小时光线疗法阀值\大约为 " +  pmed + " mg/dL，因此可能不需要光线疗法。";} 
+if((Clinical_Risk_Group == 3) && (Total_Bilirubin < phigh)){ phigh = fixDP(phigh,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />虽然临床危险因素高（危险组 3），本组特定小时光线疗法阀值\大约为 " +  phigh + " mg/dL，因此可能不需要光线疗法。";} 
+if((Clinical_Risk_Group == 1) && (Total_Bilirubin >= tlow)){ tlow = fixDP(tlow,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />本组特定小时光线疗法阀值\大约为 " +  tlow + " mg/dL，因此考虑换血。";};
+if((Clinical_Risk_Group == 2) && (Total_Bilirubin >= tmed)){ tmed = fixDP(tmed,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />本组特定小时光线疗法阀值\大约为 " +  tmed + " mg/dL，因此考虑换血。";};
+if((Clinical_Risk_Group == 3) && (Total_Bilirubin >= thigh)){ thigh = fixDP(thigh,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />本组特定小时光线疗法阀值\大约为 " +  thigh + " mg/dL，因此考虑换血。";}; 
+if((Clinical_Risk_Group == 1) && (Total_Bilirubin < tlow)){ tlow = fixDP(tlow,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />本组特定小时光线疗法阀值\大约为 " +  tlow + " mg/dL，因此可能不需要换血。";}
+if((Clinical_Risk_Group == 2) && (Total_Bilirubin < tmed)){ tmed = fixDP(tmed,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />本组特定小时光线疗法阀值\大约为 " +  tmed + " mg/dL，因此可能不需要换血。";} 
+if((Clinical_Risk_Group == 3) && (Total_Bilirubin < thigh)){ thigh = fixDP(thigh,2); document.getElementById('ttxt').innerHTML = document.getElementById('ttxt').innerHTML + "<br />&nbsp;<br />本组特定小时光线疗法阀值\大约为 " +  thigh + " mg/dL，因此可能不需要换血。";} 
+if (htmtxt) htmtxt = htmtxt + '<br />&nbsp;<br />' + document.getElementById('ttxt').innerHTML;
+if (calctxt) calctxt = calctxt + '\n\n' + document.getElementById('ttxt').innerHTML;
+if (xmltxt) xmltxt = xmltxt + '\\n\\n\\n' + document.getElementById('ttxt').innerHTML + '\\n<\\/Result_Interpretation>\\n';
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.NewbornHyperbili_form){
+
+if (Infant_Age_param.value && isNaN(Infant_Age_param.value)){ clrValue(Infant_Age_param); alertNaN('婴儿年龄'); }
+if (Infant_Age_param.value && (Infant_Age < (12 - 0.00001))) {
+Infant_Age = 0;
+clrValue(Infant_Age_param);
+clrResults();
+doCalc = false;
+ alert("最小值 婴儿年龄 是 12 Hours.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Infant_Age_param.value && Infant_Age > 147.99) {
+clrValue(Infant_Age_param);
+clrResults();
+Infant_Age = 0;
+doCalc = false;
+ alert("最大值 婴儿年龄 是 147.99 Hours.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Total_Bilirubin_param.value && isNaN(Total_Bilirubin_param.value)){ clrValue(Total_Bilirubin_param); alertNaN('血总胆红素'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.NewbornHyperbili_form){
+
+document.getElementById('ttxt').innerHTML = '';
+
+
+}
+
+}
+
+var Infant_Age = null,
+Total_Bilirubin = null,
+Clinical_Risk_Group = null,
+p40th = null,
+p75th = null,
+p95th = null,
+plow = null,
+pmed = null,
+phigh = null,
+tlow = null,
+tmed = null,
+thigh = null,
+param_value = null;
+
+
+n1_40th = new Array();
+n1_75th = new Array();
+n1_95th = new Array();
+
+n1_40th[0] = 4.0; n1_75th[0] = 5.0; n1_95th[0] = 7.0; 
+n1_40th[1] = 4.4; n1_75th[1] = 5.5; n1_95th[1] = 7.2; 
+n1_40th[2] = 4.7; n1_75th[2] = 5.9; n1_95th[2] = 7.4; 
+n1_40th[3] = 4.9; n1_75th[3] = 6.1; n1_95th[3] = 7.8; 
+n1_40th[4] = 5.5; n1_75th[4] = 7.0; n1_95th[4] = 8.9; 
+n1_40th[5] = 6.3; n1_75th[5] = 8.0; n1_95th[5] = 10.0; 
+n1_40th[6] = 7.0; n1_75th[6] = 8.9; n1_95th[6] = 11.1; 
+n1_40th[7] = 7.7; n1_75th[7] = 9.9; n1_95th[7] = 12.2; 
+n1_40th[8] = 8.2; n1_75th[8] = 10.3; n1_95th[8] = 12.5; 
+n1_40th[9] = 8.6; n1_75th[9] = 10.8; n1_95th[9] = 13.2; 
+n1_40th[10] = 9.0; n1_75th[10] = 11.3; n1_95th[10] = 13.8; 
+n1_40th[11] = 9.3; n1_75th[11] = 12.0; n1_95th[11] = 14.4; 
+n1_40th[12] = 9.6; n1_75th[12] = 12.6; n1_95th[12] = 15.2; 
+n1_40th[13] = 10.2; n1_75th[13] = 12.9; n1_95th[13] = 15.4; 
+n1_40th[14] = 10.7; n1_75th[14] = 13.1; n1_95th[14] = 15.6; 
+n1_40th[15] = 11.2; n1_75th[15] = 13.4; n1_95th[15] = 15.9; 
+n1_40th[16] = 11.3; n1_75th[16] = 13.8; n1_95th[16] = 16.2; 
+n1_40th[17] = 11.4; n1_75th[17] = 14.3; n1_95th[17] = 16.4; 
+n1_40th[18] = 11.6; n1_75th[18] = 14.7; n1_95th[18] = 16.7; 
+n1_40th[19] = 11.8; n1_75th[19] = 14.7; n1_95th[19] = 17.0; 
+n1_40th[20] = 12.2; n1_75th[20] = 15.0; n1_95th[20] = 17.2; 
+n1_40th[21] = 12.3; n1_75th[21] = 15.2; n1_95th[21] = 17.4; 
+n1_40th[22] = 12.5; n1_75th[22] = 15.3; n1_95th[22] = 17.4; 
+n1_40th[23] = 12.7; n1_75th[23] = 15.4; n1_95th[23] = 17.5; 
+n1_40th[24] = 12.8; n1_75th[24] = 15.5; n1_95th[24] = 17.5; 
+n1_40th[25] = 13.0; n1_75th[25] = 15.6; n1_95th[25] = 17.5; 
+n1_40th[26] = 13.1; n1_75th[26] = 15.7; n1_95th[26] = 17.6; 
+n1_40th[27] = 13.2; n1_75th[27] = 15.8; n1_95th[27] = 17.7; 
+n1_40th[28] = 13.2; n1_75th[28] = 15.7; n1_95th[28] = 17.6; 
+n1_40th[29] = 13.2; n1_75th[29] = 15.6; n1_95th[29] = 17.5; 
+n1_40th[30] = 13.2; n1_75th[30] = 15.5; n1_95th[30] = 17.4; 
+n1_40th[31] = 13.2; n1_75th[31] = 15.4; n1_95th[31] = 17.4; 
+n1_40th[32] = 13.2; n1_75th[32] = 15.3; n1_95th[32] = 17.3; 
+n1_40th[33] = 13.2; n1_75th[33] = 15.2; n1_95th[33] = 17.3; 
+n1_40th[34] = 13.2; n1_75th[34] = 15.3; n1_95th[34] = 17.4; 
+
+function interpN1(thisp, thisx){
+var xconv = (thisx - 12) / 4;
+x1 = Math.floor(xconv);  
+x2 = x1 + 1;
+xfrac = xconv - x1;
+return xfrac * (thisp[x2] - thisp[x1]) + thisp[x1];
+}
+
+n2_high = new Array();
+n2_med = new Array();
+n2_low = new Array();
+
+n2_high[0] = 5.8; n2_med[0] = 7.6; n2_low[0] = 9.0; 
+n2_high[1] = 6.5; n2_med[1] = 8.2; n2_low[1] = 9.8; 
+n2_high[2] = 7.1; n2_med[2] = 9.0; n2_low[2] = 10.7; 
+n2_high[3] = 7.8; n2_med[3] = 9.8; n2_low[3] = 11.6; 
+n2_high[4] = 8.3; n2_med[4] = 10.2; n2_low[4] = 12.2; 
+n2_high[5] = 8.9; n2_med[5] = 11.0; n2_low[5] = 12.9; 
+n2_high[6] = 9.4; n2_med[6] = 11.7; n2_low[6] = 13.5; 
+n2_high[7] = 10.0; n2_med[7] = 12.0; n2_low[7] = 14.1; 
+n2_high[8] = 10.7; n2_med[8] = 12.5; n2_low[8] = 14.8; 
+n2_high[9] = 11.2; n2_med[9] = 13.0; n2_low[9] = 15.1; 
+n2_high[10] = 11.7; n2_med[10] = 13.5; n2_low[10] = 15.8; 
+n2_high[11] = 12.0; n2_med[11] = 14.1; n2_low[11] = 16.0; 
+n2_high[12] = 12.4; n2_med[12] = 14.6; n2_low[12] = 16.5; 
+n2_high[13] = 12.8; n2_med[13] = 14.9; n2_low[13] = 16.9; 
+n2_high[14] = 13.1; n2_med[14] = 15.0; n2_low[14] = 17.2; 
+n2_high[15] = 13.4; n2_med[15] = 15.3; n2_low[15] = 17.7; 
+n2_high[16] = 13.7; n2_med[16] = 15.9; n2_low[16] = 18.0; 
+n2_high[17] = 13.9; n2_med[17] = 16.1; n2_low[17] = 18.3; 
+n2_high[18] = 14.0; n2_med[18] = 16.4; n2_low[18] = 18.8; 
+n2_high[19] = 14.1; n2_med[19] = 16.8; n2_low[19] = 19.0; 
+n2_high[20] = 14.3; n2_med[20] = 17.0; n2_low[20] = 19.5; 
+n2_high[21] = 14.5; n2_med[21] = 17.2; n2_low[21] = 19.8; 
+n2_high[22] = 14.7; n2_med[22] = 17.5; n2_low[22] = 20.0; 
+n2_high[23] = 14.8; n2_med[23] = 17.8; n2_low[23] = 20.1; 
+n2_high[24] = 14.9; n2_med[24] = 18.0; n2_low[24] = 20.4; 
+n2_high[25] = 15.0; n2_med[25] = 18.0; n2_low[25] = 20.7; 
+n2_high[26] = 15.0; n2_med[26] = 18.1; n2_low[26] = 20.9; 
+n2_high[27] = 15.0; n2_med[27] = 18.1; n2_low[27] = 21.0; 
+n2_high[28] = 15.0; n2_med[28] = 18.1; n2_low[28] = 21.0; 
+n2_high[29] = 15.0; n2_med[29] = 18.1; n2_low[29] = 21.0; 
+n2_high[30] = 15.0; n2_med[30] = 18.1; n2_low[30] = 21.0; 
+n2_high[31] = 15.0; n2_med[31] = 18.1; n2_low[31] = 21.0; 
+n2_high[32] = 15.0; n2_med[32] = 18.1; n2_low[32] = 21.0; 
+n2_high[33] = 15.0; n2_med[33] = 18.1; n2_low[33] = 21.0; 
+n2_high[34] = 15.0; n2_med[34] = 18.1; n2_low[34] = 21.0; 
+
+function interpN2(thisp, thisx){
+var xconv = (thisx - 12) / 4;
+x1 = Math.floor(xconv);  
+x2 = x1 + 1;
+xfrac = xconv - x1;
+return xfrac * (thisp[x2] - thisp[x1]) + thisp[x1];
+}
+
+n3_high = new Array();
+n3_med = new Array();
+n3_low = new Array();
+
+n3_high[0] = 13.4; n3_med[0] = 15.1; n3_low[0] = 17.7; 
+n3_high[1] = 14.0; n3_med[1] = 15.6; n3_low[1] = 18.0; 
+n3_high[2] = 14.5; n3_med[2] = 16.1; n3_low[2] = 18.5; 
+n3_high[3] = 15.0; n3_med[3] = 16.6; n3_low[3] = 19.0; 
+n3_high[4] = 15.3; n3_med[4] = 17.0; n3_low[4] = 19.6; 
+n3_high[5] = 15.7; n3_med[5] = 17.4; n3_low[5] = 20.1; 
+n3_high[6] = 16.0; n3_med[6] = 18.0; n3_low[6] = 20.9; 
+n3_high[7] = 16.3; n3_med[7] = 18.3; n3_low[7] = 21.2; 
+n3_high[8] = 16.8; n3_med[8] = 18.8; n3_low[8] = 21.8; 
+n3_high[9] = 17.1; n3_med[9] = 19.0; n3_low[9] = 22.1; 
+n3_high[10] = 17.4; n3_med[10] = 19.5; n3_low[10] = 22.4; 
+n3_high[11] = 17.7; n3_med[11] = 19.9; n3_low[11] = 22.8; 
+n3_high[12] = 18.0; n3_med[12] = 20.1; n3_low[12] = 23.0; 
+n3_high[13] = 18.2; n3_med[13] = 20.5; n3_low[13] = 23.3; 
+n3_high[14] = 18.4; n3_med[14] = 21.0; n3_low[14] = 23.7; 
+n3_high[15] = 18.6; n3_med[15] = 21.2; n3_low[15] = 24.0; 
+n3_high[16] = 18.7; n3_med[16] = 21.7; n3_low[16] = 24.1; 
+n3_high[17] = 18.8; n3_med[17] = 21.9; n3_low[17] = 24.3; 
+n3_high[18] = 18.9; n3_med[18] = 22.0; n3_low[18] = 24.4; 
+n3_high[19] = 18.9; n3_med[19] = 22.1; n3_low[19] = 24.5; 
+n3_high[20] = 19.0; n3_med[20] = 22.3; n3_low[20] = 24.8; 
+n3_high[21] = 19.0; n3_med[21] = 22.4; n3_low[21] = 25.0; 
+n3_high[22] = 19.0; n3_med[22] = 22.4; n3_low[22] = 25.0; 
+n3_high[23] = 19.0; n3_med[23] = 22.4; n3_low[23] = 25.0; 
+n3_high[24] = 19.0; n3_med[24] = 22.4; n3_low[24] = 25.0; 
+n3_high[25] = 19.0; n3_med[25] = 22.4; n3_low[25] = 25.0; 
+n3_high[26] = 19.0; n3_med[26] = 22.4; n3_low[26] = 25.0; 
+n3_high[27] = 19.0; n3_med[27] = 22.4; n3_low[27] = 25.0; 
+n3_high[28] = 19.0; n3_med[28] = 22.4; n3_low[28] = 25.0; 
+n3_high[29] = 19.0; n3_med[29] = 22.4; n3_low[29] = 25.0; 
+n3_high[30] = 19.0; n3_med[30] = 22.4; n3_low[30] = 25.0; 
+n3_high[31] = 19.0; n3_med[31] = 22.4; n3_low[31] = 25.0; 
+n3_high[32] = 19.0; n3_med[32] = 22.4; n3_low[32] = 25.0; 
+n3_high[33] = 19.0; n3_med[33] = 22.4; n3_low[33] = 25.0; 
+n3_high[34] = 19.0; n3_med[34] = 22.4; n3_low[34] = 25.0; 
+
+function interpN3(thisp, thisx){
+var xconv = (thisx - 12) / 4;
+x1 = Math.floor(xconv);  
+x2 = x1 + 1;
+xfrac = xconv - x1;
+return xfrac * (thisp[x2] - thisp[x1]) + thisp[x1];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="NewbornHyperbili_form" id="NewbornHyperbili_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="NewbornHyperbili_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+新生儿高胆红素血症评估
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">婴儿年龄</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Infant_Age_param" size="6" value="" onblur="NewbornHyperbili_fx(); minMaxCheck();" onchange="NewbornHyperbili_fx();" /></td>
+<td align="left" valign="top"> <select name="Infant_Age_unit" onchange="NewbornHyperbili_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="24|0|Days">Days</option>
+<option value="1|0|Hours" selected="selected">Hours</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">血总胆红素</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Total_Bilirubin_param" size="6" value="" onblur="NewbornHyperbili_fx(); minMaxCheck();" onchange="NewbornHyperbili_fx();" /></td>
+<td align="left" valign="top"> <select name="Total_Bilirubin_unit" onchange="NewbornHyperbili_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0584795321637427|0|mcmol/L_Bili">mcmol/L</option>
+<option value="1|0|mg%_Bili">mg%</option>
+<option value="1|0|mg/dL_Bili" selected="selected">mg/dL</option>
+</select></td></tr>
+
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">临床危险分组</span></td>
+<td colspan="2" align="left"><input type="radio" name="Clinical_Risk_Group_radio" id="togel1" value="孕期 &gt;= 38 周且健康状况良好|1" onclick="NewbornHyperbili_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel1');"> 孕期 >= 38 周且健康状况良好 (1)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Clinical_Risk_Group_radio" id="togel2" value="孕期 &gt;= 38 周但有临床危险因素|2" onclick="NewbornHyperbili_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel2');"> 孕期 >= 38 周但有临床危险因素 (2)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Clinical_Risk_Group_radio" id="togel3" value=" 孕期 35-37.9 周且健康状况良好|2" onclick="NewbornHyperbili_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel3');">  孕期 35-37.9 周且健康状况良好 (2)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Clinical_Risk_Group_radio" id="togel4" value="孕期 35-37.9 周并有临床危险因素|3" onclick="NewbornHyperbili_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel4');"> 孕期 35-37.9 周并有临床危险因素 (3)</span></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="2">
+&nbsp;<br />
+<table border="1" cellpadding="4" summary="tt" width="285"><tr>
+<td bgcolor="#ffffff" valign="top" align="left" height="250"><div id="ttxt" class="medCalcFontOneBold"></div></td>
+</tr></table>
+</td></tr>
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>此列线图派生计算器只能用于孕期为 35 周或更长的婴儿。</li>
+<li>从 Bhutani 研究中提取的数据包括出生体重超过 2000 克的 36 周婴儿和超过 2500 克的 35 周婴儿</li>
+<li>这些列线图不应用作预测高胆红素血症的自然历程。</li>
+<li class="parentNote">临床危险因素包括：
+<ul class="childNoteList">
+<li class="childNote"> 同族免疫性溶血性疾病或磷酸脱氢酶 (G6PD) 缺乏症</li>
+<li class="childNote"> 昏厥或嗜睡</li>
+<li class="childNote"> 体温不稳定、败血症或酸中毒</li>
+<li class="childNote"> 低白蛋白血症（小于 3 gm/L，考虑使用光线疗法（而非输血）时作为危险因素）</li>
+</ul></li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">p40th = interpN1(n140th, 婴儿年龄)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">p75th = interpN1(n175th, 婴儿年龄)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">p95th = interpN1(n195th, 婴儿年龄)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">plow = interpN2(n2low, 婴儿年龄)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">pmed = interpN2(n2med, 婴儿年龄)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">phigh = interpN2(n2high, 婴儿年龄)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">tlow = interpN3(n3low, 婴儿年龄)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">tmed = interpN3(n3med, 婴儿年龄)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">thigh = interpN3(n3high, 婴儿年龄)</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+<br />&nbsp;<br />
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">计算详情和变量</span>
+<ul class="medCalcFontOne">
+<li>等式参数，例如 <b>临床危险分组</b>, 有两个或更多可能用于计算的离散值。括号中的数字，例如  (1), 代表将要使用的数值.</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Bhutani VK, Johnson L, Sivieri EM. Predictive ability of a predischarge hour-specific serum bilirubin  for subsequent significant hyperbilirubinemia in healthy term and near-term newborns. <i>Pediatrics</i>. 1999 Jan;103(1):6-14. PubMed ID: 9917432 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9917432"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">American Academy of Pediatrics Subcommittee on Hyperbilirubinemia. Management of hyperbilirubinemia  in the newborn infant 35 or more weeks of gestation. <i>Pediatrics</i>. 2004 Jul;114(1):297-316. PubMed ID: 15231951 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15231951"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471507 //-->

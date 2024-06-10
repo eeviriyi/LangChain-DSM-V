@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>阴离子间隙 Delta Delta 比率 Multicalc</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Renal, Fluid, Electrolytes, Metabolism, Emergency, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+AnionGapDeltaRatio_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+AnionGapDeltaRatio_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function AnionGapDeltaRatio_fx() {
+
+with(document.AnionGapDeltaRatio_form){
+
+
+doCalc = true;
+param_value = parseFloat(Na_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Na_unit.options[Na_unit.selectedIndex].value.split('|');
+Na = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Cl_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Cl_unit.options[Cl_unit.selectedIndex].value.split('|');
+Cl = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(HCO3_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = HCO3_unit.options[HCO3_unit.selectedIndex].value.split('|');
+HCO3 = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Baseline_Gap_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Baseline_Gap_unit.options[Baseline_Gap_unit.selectedIndex].value.split('|');
+Baseline_Gap = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = decpts.options[decpts.selectedIndex].text;
+Anion_Gap =  Na - (Cl + HCO3);
+
+unit_parts = Anion_Gap_unit.options[Anion_Gap_unit.selectedIndex].value.split('|');
+if (doCalc) Anion_Gap_param.value = fixDP((Anion_Gap - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+Delta_Gap =  Anion_Gap - Baseline_Gap;
+
+unit_parts = Delta_Gap_unit.options[Delta_Gap_unit.selectedIndex].value.split('|');
+if (doCalc) Delta_Gap_param.value = fixDP((Delta_Gap - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+Delta_HCO3 =  25 - HCO3;
+
+unit_parts = Delta_HCO3_unit.options[Delta_HCO3_unit.selectedIndex].value.split('|');
+if (doCalc) Delta_HCO3_param.value = fixDP((Delta_HCO3 - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+Delta_Delta_Ratio =  Delta_Gap / Delta_HCO3;
+
+unit_parts = Delta_Delta_Ratio_unit.options[Delta_Delta_Ratio_unit.selectedIndex].value.split('|');
+if (doCalc) Delta_Delta_Ratio_param.value = fixDP((Delta_Delta_Ratio - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.AnionGapDeltaRatio_form){
+
+if (Na_param.value && isNaN(Na_param.value)){ clrValue(Na_param); alertNaN('Na'); }
+if (Na_param.value && (Na < (80 - 0.00001))) {
+Na = 0;
+clrValue(Na_param);
+clrResults();
+doCalc = false;
+ alert("最小值 Na 是 80 mEq/L.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Na_param.value && Na > 200) {
+clrValue(Na_param);
+clrResults();
+Na = 0;
+doCalc = false;
+ alert("最大值 Na 是 200 mEq/L.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Cl_param.value && isNaN(Cl_param.value)){ clrValue(Cl_param); alertNaN('Cl'); }
+if (Cl_param.value && (Cl < (60 - 0.00001))) {
+Cl = 0;
+clrValue(Cl_param);
+clrResults();
+doCalc = false;
+ alert("最小值 Cl 是 60 mEq/L.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Cl_param.value && Cl > 180) {
+clrValue(Cl_param);
+clrResults();
+Cl = 0;
+doCalc = false;
+ alert("最大值 Cl 是 180 mEq/L.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (HCO3_param.value && isNaN(HCO3_param.value)){ clrValue(HCO3_param); alertNaN('HCO3'); }
+if (HCO3_param.value && (HCO3 < (0 - 0.00001))) {
+HCO3 = 0;
+clrValue(HCO3_param);
+clrResults();
+doCalc = false;
+ alert("最小值 HCO3 是 0 mEq/L.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (HCO3_param.value && HCO3 > 30) {
+clrValue(HCO3_param);
+clrResults();
+HCO3 = 0;
+doCalc = false;
+ alert("最大值 HCO3 是 30 mEq/L.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Baseline_Gap_param.value && isNaN(Baseline_Gap_param.value)){ clrValue(Baseline_Gap_param); alertNaN('基准阴离子间隙'); }
+if (Baseline_Gap_param.value && (Baseline_Gap < (0 - 0.00001))) {
+Baseline_Gap = 0;
+clrValue(Baseline_Gap_param);
+clrResults();
+doCalc = false;
+ alert("最小值 基准阴离子间隙 是 0 mEq/L.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Baseline_Gap_param.value && Baseline_Gap > 50) {
+clrValue(Baseline_Gap_param);
+clrResults();
+Baseline_Gap = 0;
+doCalc = false;
+ alert("最大值 基准阴离子间隙 是 50 mEq/L.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.AnionGapDeltaRatio_form){
+
+Anion_Gap_param.value = '';
+Delta_Gap_param.value = '';
+Delta_HCO3_param.value = '';
+Delta_Delta_Ratio_param.value = '';
+
+
+}
+
+}
+
+var Na = null,
+Cl = null,
+HCO3 = null,
+Baseline_Gap = null,
+Anion_Gap = null,
+Delta_Gap = null,
+Delta_HCO3 = null,
+Delta_Delta_Ratio = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="AnionGapDeltaRatio_form" id="AnionGapDeltaRatio_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="AnionGapDeltaRatio_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+阴离子间隙 Delta Delta 比率 Multicalc<sup>&#174;</sup>
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Na</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Na_param" size="6" value="" onblur="AnionGapDeltaRatio_fx(); minMaxCheck();" onchange="AnionGapDeltaRatio_fx();" /></td>
+<td align="left" valign="top"> <select name="Na_unit" onchange="AnionGapDeltaRatio_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mEq/L" selected="selected">mEq/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Cl</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Cl_param" size="6" value="" onblur="AnionGapDeltaRatio_fx(); minMaxCheck();" onchange="AnionGapDeltaRatio_fx();" /></td>
+<td align="left" valign="top"> <select name="Cl_unit" onchange="AnionGapDeltaRatio_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mEq/L" selected="selected">mEq/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">HCO3</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="HCO3_param" size="6" value="" onblur="AnionGapDeltaRatio_fx(); minMaxCheck();" onchange="AnionGapDeltaRatio_fx();" /></td>
+<td align="left" valign="top"> <select name="HCO3_unit" onchange="AnionGapDeltaRatio_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mEq/L" selected="selected">mEq/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">基准阴离子间隙</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Baseline_Gap_param" size="6" value="" onblur="AnionGapDeltaRatio_fx(); minMaxCheck();" onchange="AnionGapDeltaRatio_fx();" /></td>
+<td align="left" valign="top"> <select name="Baseline_Gap_unit" onchange="AnionGapDeltaRatio_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mEq/L" selected="selected">mEq/L</option>
+</select></td></tr>
+
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">阴离子间隙</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Anion_Gap_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Anion_Gap_unit" onchange="AnionGapDeltaRatio_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mEq/L" selected="selected">mEq/L</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">Delta间隙</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Delta_Gap_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Delta_Gap_unit" onchange="AnionGapDeltaRatio_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mEq/L" selected="selected">mEq/L</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">Delta HCO3</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Delta_HCO3_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Delta_HCO3_unit" onchange="AnionGapDeltaRatio_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mEq/L" selected="selected">mEq/L</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">Delta Delta 比率</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Delta_Delta_Ratio_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Delta_Delta_Ratio_unit" onchange="AnionGapDeltaRatio_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.01|0|%">%</option>
+<option value="1|0|fraction">fraction</option>
+<option value="1|0|ratio" selected="selected">ratio</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontResultParam">小数点精确度 &nbsp;</span>
+<select name="decpts" onchange="AnionGapDeltaRatio_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>了解受试者的基准数值，或者发病前的<b>阴离子间隙</b>非常重要，这样才能准确理解 <b>Delta Delta 比率</b>所表明的酸碱失衡。</li>
+<li><b> Delta Delta 比率介于 1-2 之间，这</b>通常表示：</li>
+<li>非复杂型高<b>阴离子间隙</b>代谢性酸中毒。</li>
+<li>糖尿病酮症酸中毒比率通常接近 1。</li>
+<li>乳酸性酸中毒由于细胞内氢离子缓冲，通常比率约为 1.6。</li>
+<li><b>Delta Delta 比率</b>大于 2 通常表示：</li>
+<li>相对于<b>阴离子间隙</b>的增大，<b>HCO3</b> 比预期更高。</li>
+<li>并发的代谢性碱中毒，比如呕吐时。</li>
+<li><b>Delta Delta 比率</b>小于 1 时可能表示：</li>
+<li>酮酸中毒的病情通过尿酮体流失得到好转。</li>
+<li>高阴离子间隙和正常<b>阴离子间隙</b>结合代谢性酸中毒。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">阴离子间隙 = Na - (Cl + HCO3)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">Delta间隙 = 阴离子间隙 - 基准阴离子间隙</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">DeltaHCO3 = 25 - HCO3</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">DeltaDelta比率 = Delta间隙 / DeltaHCO3</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Wrenn K. The delta (delta) gap: an approach to mixed acid-base disorders. <i>Ann Emerg Med</i>. 1990 Nov;19(11):1310-3. PubMed ID: 2240729 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/2240729"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Breyer JA. Acid base course material. <i>6th National Critical Care Medicine Review Course</i>.</span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471462 //-->

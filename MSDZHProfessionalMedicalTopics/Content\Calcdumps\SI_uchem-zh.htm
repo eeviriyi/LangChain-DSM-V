@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>国际单位换算： 尿液生化检查</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="SIfriendly, Renal, electrolytes, fac_all, fac_uc, fac_lab, internat, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+
+codes = new Array();
+codeparts = new Array();
+var dp = 1;
+var tovalue;
+var to_selected = 0;
+
+function showToValue(){
+with (document.SI_uchem_form){
+to_param.value = fixDP(tovalue, dp);
+}}
+
+function setDecPts(){
+with (document.SI_uchem_form){
+dp = decpts.options[decpts.selectedIndex].text;
+unitConvert();
+}}
+
+function unitLoad(){
+with (document.SI_uchem_form){
+
+to_selected = 0;
+
+for (i = 0; i < from_unit.options.length; i++) { codes[i] = from_unit.options[i].value; }
+
+codeparts = from_unit.options[from_unit.selectedIndex].value.split('|');
+findunit = codeparts[0];
+findtype = codeparts[1];
+to_unit.options.length = 0;
+
+for (i = 0; i < codes.length; i++){
+codeparts = codes[i].split('|');
+if (codeparts[1]  == findtype) {
+	to_unit.options[to_unit.options.length] = new Option(codeparts[0],codes[i]);
+	if ((to_selected == 0) && (codeparts[0] != findunit)) { to_unit.options[to_unit.options.length - 1].selected = true; to_selected = 1; }
+	}
+}
+to_param.value = "";
+unitConvert();
+}}
+
+function unitConvert(){
+with (document.SI_uchem_form){
+
+if (to_unit.selectedIndex + from_unit.selectedIndex == 0) return;
+
+if (from_param.value > ''){
+unitcode = from_unit.options[from_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+fromtype = codeparts[1];
+frommult = parseFloat(codeparts[2]);
+fromadd = parseFloat(codeparts[3]);
+
+unitcode = to_unit.options[to_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+totype = codeparts[1];
+tomult = parseFloat(codeparts[2]);
+toadd = parseFloat(codeparts[3]);
+
+fromvalue = parseFloat(from_param.value);
+tovalue = ((fromvalue * frommult + fromadd) - toadd) / tomult;
+showToValue();
+}}}
+
+function clrResults(){
+with (document.SI_uchem_form){
+from_param.value = '';
+fromvalue = 0;
+to_param.value = '';
+tovalue = 0;
+}}
+
+/* ]]> */
+</script>
+
+
+
+<form name="SI_uchem_form" id="SI_uchem_form" action="" onsubmit="return false;" onkeydown="to_param.value='';" onkeyup="unitConvert();">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+国际单位换算： 尿液生化检查
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<center>
+<div id="calc_main">
+<div id="calc_input">
+<table border="0" cellpadding="6" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right"><span class="medCalcFontOneBold">从</span></td>
+<td align="left"><input type="text" name="from_param" style="width:50px;" onchange="unitConvert();" /></td>
+<td>
+<select name="from_unit" onchange="unitLoad();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="17-Hydroxycorticosteroids (17-OHCS) mg/g of creatinine|1|113.1|0|">17-Hydroxycorticosteroids (17-OHCS) mg/g of creatinine</option>
+<option value="17-Hydroxycorticosteroids (17-OHCS) mg/mol of creatine|1|1|0|">17-Hydroxycorticosteroids (17-OHCS) mg/mol of creatine</option>
+<option value="17-Hydroxyketosteroids (17-OHKS cortisol) mcg/24 h|3|2.76|0|">17-Hydroxyketosteroids (17-OHKS cortisol) mcg/24 h</option>
+<option value="17-Hydroxyketosteroids (17-OHKS cortisol) mcmol/d|2|1|0|">17-Hydroxyketosteroids (17-OHKS cortisol) mcmol/d</option>
+<option value="17-Hydroxyketosteroids (17-OHKS cortisol) mg/24 h|2|2.76|0|">17-Hydroxyketosteroids (17-OHKS cortisol) mg/24 h</option>
+<option value="17-Hydroxyketosteroids (17-OHKS cortisol) nmol/d|3|1|0|">17-Hydroxyketosteroids (17-OHKS cortisol) nmol/d</option>
+<option value="17-Ketosteroids (as DHEA) mcmol/d|4|1|0|">17-Ketosteroids (as DHEA) mcmol/d</option>
+<option value="17-Ketosteroids (as DHEA) mg/24 h|4|3.47|0|">17-Ketosteroids (as DHEA) mg/24 h</option>
+<option value="5-Hydroxyindoleacetic acid (5-HIAA) mcmol/d|5|1|0|">5-Hydroxyindoleacetic acid (5-HIAA) mcmol/d</option>
+<option value="5-Hydroxyindoleacetic acid (5-HIAA) mg/24 h|5|5.2|0|">5-Hydroxyindoleacetic acid (5-HIAA) mg/24 h</option>
+<option value="Albumin g/d|6|1|0|">Albumin g/d</option>
+<option value="Albumin mg/24 h|6|0.001|0|">Albumin mg/24 h</option>
+<option value="Aldosterone mcg/24 h|8|2.77|0|">Aldosterone mcg/24 h</option>
+<option value="Aldosterone mEq/24 h|7|1|0|">Aldosterone mEq/24 h</option>
+<option value="Aldosterone mmol/d|7|1|0|">Aldosterone mmol/d</option>
+<option value="Aldosterone nmol/d|8|1|0|">Aldosterone nmol/d</option>
+<option value="Aminolevulinic acid mcmol/d|9|1|0|">Aminolevulinic acid mcmol/d</option>
+<option value="Aminolevulinic acid mg/24 h|9|7.63|0|">Aminolevulinic acid mg/24 h</option>
+<option value="Amylase Somogyi units/h|10|0.185|0|">Amylase Somogyi units/h</option>
+<option value="Amylase U/h|10|1|0|">Amylase U/h</option>
+<option value="Ascorbic acid mcmol/L|11|1|0|">Ascorbic acid mcmol/L</option>
+<option value="Ascorbic acid mg/dL|11|5.678|0|">Ascorbic acid mg/dL</option>
+<option value="Calcium mg/24 h|12|0.025|0|">Calcium mg/24 h</option>
+<option value="Calcium mmol/d|12|1|0|">Calcium mmol/d</option>
+<option value="Catecholamines : Dopamine mcg/24 h|13|6.53|0|">Catecholamines : Dopamine mcg/24 h</option>
+<option value="Catecholamines : Dopamine mcg/mg creatinine|14|738|0|">Catecholamines : Dopamine mcg/mg creatinine</option>
+<option value="Catecholamines : Dopamine mcmol/mol creatinine|14|1|0|">Catecholamines : Dopamine mcmol/mol creatinine</option>
+<option value="Catecholamines : Dopamine ng/mL|16|6.53|0|">Catecholamines : Dopamine ng/mL</option>
+<option value="Catecholamines : Dopamine nmol/d|13|1|0|">Catecholamines : Dopamine nmol/d</option>
+<option value="Catecholamines : Dopamine nmol/L|16|1|0|">Catecholamines : Dopamine nmol/L</option>
+<option value="Catecholamines : Dopamine pg/mL|15|6.53|0|">Catecholamines : Dopamine pg/mL</option>
+<option value="Catecholamines : Dopamine pmol/L|15|1|0|">Catecholamines : Dopamine pmol/L</option>
+<option value="Catecholamines : Epinephrine mcg/24 h|17|5.46|0|">Catecholamines : Epinephrine mcg/24 h</option>
+<option value="Catecholamines : Epinephrine mcg/mg creatinine|18|617|0|">Catecholamines : Epinephrine mcg/mg creatinine</option>
+<option value="Catecholamines : Epinephrine mcmol/d|20|1|0|">Catecholamines : Epinephrine mcmol/d</option>
+<option value="Catecholamines : Epinephrine mcmol/mol creatinine|18|1|0|">Catecholamines : Epinephrine mcmol/mol creatinine</option>
+<option value="Catecholamines : Epinephrine ng/mL|20|5.46|0|">Catecholamines : Epinephrine ng/mL</option>
+<option value="Catecholamines : Epinephrine nmol/d|17|1|0|">Catecholamines : Epinephrine nmol/d</option>
+<option value="Catecholamines : Epinephrine pg/mL|19|5.46|0|">Catecholamines : Epinephrine pg/mL</option>
+<option value="Catecholamines : Epinephrine pmol/L|19|1|0|">Catecholamines : Epinephrine pmol/L</option>
+<option value="Catecholamines : Norepinephrine mcg/24 h|21|5.91|0|">Catecholamines : Norepinephrine mcg/24 h</option>
+<option value="Catecholamines : Norepinephrine mcg/mg creatinine|22|669|0|">Catecholamines : Norepinephrine mcg/mg creatinine</option>
+<option value="Catecholamines : Norepinephrine mcmol/mol creatinine|22|1|0|">Catecholamines : Norepinephrine mcmol/mol creatinine</option>
+<option value="Catecholamines : Norepinephrine ng/mL|24|5.91|0|">Catecholamines : Norepinephrine ng/mL</option>
+<option value="Catecholamines : Norepinephrine nmol/d|21|1|0|">Catecholamines : Norepinephrine nmol/d</option>
+<option value="Catecholamines : Norepinephrine nmol/L|24|1|0|">Catecholamines : Norepinephrine nmol/L</option>
+<option value="Catecholamines : Norepinephrine pg/mL|23|5.91|0|">Catecholamines : Norepinephrine pg/mL</option>
+<option value="Catecholamines : Norepinephrine pmol/L|23|1|0|">Catecholamines : Norepinephrine pmol/L</option>
+<option value="Chloride mEq/24 h|25|1|0|">Chloride mEq/24 h</option>
+<option value="Chloride mmol/d|25|1|0|">Chloride mmol/d</option>
+<option value="Copper mcg/24 h|26|0.0157|0|">Copper mcg/24 h</option>
+<option value="Copper mcmol/d|26|1|0|">Copper mcmol/d</option>
+<option value="Coproporphyrin mcg/dL|27|15.27|0|">Coproporphyrin mcg/dL</option>
+<option value="Coproporphyrin nmol/L|27|1|0|">Coproporphyrin nmol/L</option>
+<option value="Coproporphyrins mcg/24 h|28|1.527|0|">Coproporphyrins mcg/24 h</option>
+<option value="Coproporphyrins nmol/d|28|1|0|">Coproporphyrins nmol/d</option>
+<option value="Creatinine mcmol/kg/24 h|31|1|0|">Creatinine mcmol/kg/24 h</option>
+<option value="Creatinine mg/24 h|30|0.0088|0|">Creatinine mg/24 h</option>
+<option value="Creatinine mg/kg/24 h|31|8.84|0|">Creatinine mg/kg/24 h</option>
+<option value="Creatinine mmol/d|30|1|0|">Creatinine mmol/d</option>
+<option value="Cyclic adenosine monophosphate (c-AMP) mcmol/d|32|1|0|">Cyclic adenosine monophosphate (c-AMP) mcmol/d</option>
+<option value="Cyclic adenosine monophosphate (c-AMP) mcmol/mol creatinine|33|1|0|">Cyclic adenosine monophosphate (c-AMP) mcmol/mol creatinine</option>
+<option value="Cyclic adenosine monophosphate (c-AMP) mg/24 h|32|3.04|0|">Cyclic adenosine monophosphate (c-AMP) mg/24 h</option>
+<option value="Cyclic adenosine monophosphate (c-AMP) mg/g creatinine|33|344|0|">Cyclic adenosine monophosphate (c-AMP) mg/g creatinine</option>
+<option value="Estrogens total mcg/24 h|34|3.47|0|">Estrogens total mcg/24 h</option>
+<option value="Estrogens total nmol/d|34|1|0|">Estrogens total nmol/d</option>
+<option value="Glucose mg/d|35|0.0056|0|">Glucose mg/d</option>
+<option value="Glucose mmol/d|35|1|0|">Glucose mmol/d</option>
+<option value="Homovanillic Acid (HVA) mcg/24 h|37|0.0055|0|">Homovanillic Acid (HVA) mcg/24 h</option>
+<option value="Homovanillic Acid (HVA) mcg/mg of creatinine|38|0.621|0|">Homovanillic Acid (HVA) mcg/mg of creatinine</option>
+<option value="Homovanillic Acid (HVA) mcmol/d|36|1|0|">Homovanillic Acid (HVA) mcmol/d</option>
+<option value="Homovanillic Acid (HVA) mcmol/d|37|1|0|">Homovanillic Acid (HVA) mcmol/d</option>
+<option value="Homovanillic Acid (HVA) mg/24 h|36|5.49|0|">Homovanillic Acid (HVA) mg/24 h</option>
+<option value="Homovanillic Acid (HVA) mmol/mol of creatinine|38|1|0|">Homovanillic Acid (HVA) mmol/mol of creatinine</option>
+<option value="Lead mcg/24 h|39|0.0048|0|">Lead mcg/24 h</option>
+<option value="Lead mcmol/d|39|1|0|">Lead mcmol/d</option>
+<option value="Magnesium mg/24 h|40|0.411|0|">Magnesium mg/24 h</option>
+<option value="Magnesium mmol/d|40|1|0|">Magnesium mmol/d</option>
+<option value="Metanephrines fractionated - metanephrine mcmol/d|42|1|0|">Metanephrines fractionated - metanephrine mcmol/d</option>
+<option value="Metanephrines fractionated - metanephrine mcmol/mol creatinine|43|1|0|">Metanephrines fractionated - metanephrine mcmol/mol creatinine</option>
+<option value="Metanephrines fractionated - metanephrine mg/24 h|42|5.07|0|">Metanephrines fractionated - metanephrine mg/24 h</option>
+<option value="Metanephrines fractionated - metanephrine mg/g creatinine|43|0.5736|0|">Metanephrines fractionated - metanephrine mg/g creatinine</option>
+<option value="Metanephrines fractionated - normetanephrine mg/ g creatinine|45|0.617|0|">Metanephrines fractionated - normetanephrine mg/ g creatinine</option>
+<option value="Metanephrines fractionated - normetanephrine mmol/ mol creatinine|45|1|0|">Metanephrines fractionated - normetanephrine mmol/ mol creatinine</option>
+<option value="Metanephrines fractionated - normetanephrine ng/mL|44|5.46|0|">Metanephrines fractionated - normetanephrine ng/mL</option>
+<option value="Metanephrines fractionated - normetanephrine nmol/L|44|1|0|">Metanephrines fractionated - normetanephrine nmol/L</option>
+<option value="Muramidase (lysozyme) mg/24 h|46|1|0|">Muramidase (lysozyme) mg/24 h</option>
+<option value="Muramidase (lysozyme) mg/d|46|1|0|">Muramidase (lysozyme) mg/d</option>
+<option value="Phosphate (inorganic phosphorus) g/24 h|48|32.29|0|">Phosphate (inorganic phosphorus) g/24 h</option>
+<option value="Phosphate (inorganic phosphorus) mmol/d|48|1|0|">Phosphate (inorganic phosphorus) mmol/d</option>
+<option value="Porphobilinogen mcmol/d|49|1|0|">Porphobilinogen mcmol/d</option>
+<option value="Porphobilinogen mg/24 h|49|4.42|0|">Porphobilinogen mg/24 h</option>
+<option value="Potassium mg/24 h|51|0.0256|0|">Potassium mg/24 h</option>
+<option value="Potassium mmol/d|51|1|0|">Potassium mmol/d</option>
+<option value="Pregnanediol mcmol/d|52|1|0|">Pregnanediol mcmol/d</option>
+<option value="Pregnanediol mg/d|52|3.12|0|">Pregnanediol mg/d</option>
+<option value="Protein total g/d|53|1|0|">Protein total g/d</option>
+<option value="Protein total mg/24 h|53|0.001|0|">Protein total mg/24 h</option>
+<option value="Sodium mg/24 h|56|0.0435|0|">Sodium mg/24 h</option>
+<option value="Sodium mmol/d|56|1|0|">Sodium mmol/d</option>
+<option value="Urea nitrogen g/24 h|57|0.0357|0|">Urea nitrogen g/24 h</option>
+<option value="Urea nitrogen mol/d urea|57|1|0|">Urea nitrogen mol/d urea</option>
+<option value="Uric acid mg/24 h|58|0.0059|0|">Uric acid mg/24 h</option>
+<option value="Uric acid mmol/d|58|1|0|">Uric acid mmol/d</option>
+<option value="Uroporphyrin mcg/24 h|59|1.204|0|">Uroporphyrin mcg/24 h</option>
+<option value="Uroporphyrin mcg/gm creatinine|60|1.1362|0|">Uroporphyrin mcg/gm creatinine</option>
+<option value="Uroporphyrin nmol/ mmol creatinine|60|1|0|">Uroporphyrin nmol/ mmol creatinine</option>
+<option value="Uroporphyrin nmol/d|59|1|0|">Uroporphyrin nmol/d</option>
+<option value="Vanillylmandelic acid (VMA) mcg / mg creatinine|62|0.571|0|">Vanillylmandelic acid (VMA) mcg / mg creatinine</option>
+<option value="Vanillylmandelic acid (VMA) mcmol/d|61|1|0|">Vanillylmandelic acid (VMA) mcmol/d</option>
+<option value="Vanillylmandelic acid (VMA) mg/24 h|61|5.046|0|">Vanillylmandelic acid (VMA) mg/24 h</option>
+<option value="Vanillylmandelic acid (VMA) mmol / mol of creatinine|62|1|0|">Vanillylmandelic acid (VMA) mmol / mol of creatinine</option>
+<option value="Xylose g/5 h|64|6.66|0|">Xylose g/5 h</option>
+<option value="Xylose mg/dL|63|0.0666|0|">Xylose mg/dL</option>
+<option value="Xylose mmol/5 h|64|1|0|">Xylose mmol/5 h</option>
+<option value="Xylose mmol/L|63|1|0|">Xylose mmol/L</option>
+<option value="Zinc mcmol/d|65|1|0|">Zinc mcmol/d</option>
+<option value="Zinc mg/d|65|15.3|0|">Zinc mg/d</option>
+<option value="0|0|1|0"></option>
+</select></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">至</span></td>
+<td align="left"><input type="text" name="to_param" style="width:50px;" onfocus="blur();" /></td>
+<td align="left">
+<select name="to_unit" onchange="unitConvert();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="17-Hydroxycorticosteroids (17-OHCS) mg/g of creatinine|1|113.1|0|">17-Hydroxycorticosteroids (17-OHCS) mg/g of creatinine</option>
+<option value="17-Hydroxycorticosteroids (17-OHCS) mg/mol of creatine|1|1|0|">17-Hydroxycorticosteroids (17-OHCS) mg/mol of creatine</option>
+<option value="17-Hydroxyketosteroids (17-OHKS cortisol) mcg/24 h|3|2.76|0|">17-Hydroxyketosteroids (17-OHKS cortisol) mcg/24 h</option>
+<option value="17-Hydroxyketosteroids (17-OHKS cortisol) mcmol/d|2|1|0|">17-Hydroxyketosteroids (17-OHKS cortisol) mcmol/d</option>
+<option value="17-Hydroxyketosteroids (17-OHKS cortisol) mg/24 h|2|2.76|0|">17-Hydroxyketosteroids (17-OHKS cortisol) mg/24 h</option>
+<option value="17-Hydroxyketosteroids (17-OHKS cortisol) nmol/d|3|1|0|">17-Hydroxyketosteroids (17-OHKS cortisol) nmol/d</option>
+<option value="17-Ketosteroids (as DHEA) mcmol/d|4|1|0|">17-Ketosteroids (as DHEA) mcmol/d</option>
+<option value="17-Ketosteroids (as DHEA) mg/24 h|4|3.47|0|">17-Ketosteroids (as DHEA) mg/24 h</option>
+<option value="5-Hydroxyindoleacetic acid (5-HIAA) mcmol/d|5|1|0|">5-Hydroxyindoleacetic acid (5-HIAA) mcmol/d</option>
+<option value="5-Hydroxyindoleacetic acid (5-HIAA) mg/24 h|5|5.2|0|">5-Hydroxyindoleacetic acid (5-HIAA) mg/24 h</option>
+<option value="Albumin g/d|6|1|0|">Albumin g/d</option>
+<option value="Albumin mg/24 h|6|0.001|0|">Albumin mg/24 h</option>
+<option value="Aldosterone mcg/24 h|8|2.77|0|">Aldosterone mcg/24 h</option>
+<option value="Aldosterone mEq/24 h|7|1|0|">Aldosterone mEq/24 h</option>
+<option value="Aldosterone mmol/d|7|1|0|">Aldosterone mmol/d</option>
+<option value="Aldosterone nmol/d|8|1|0|">Aldosterone nmol/d</option>
+<option value="Aminolevulinic acid mcmol/d|9|1|0|">Aminolevulinic acid mcmol/d</option>
+<option value="Aminolevulinic acid mg/24 h|9|7.63|0|">Aminolevulinic acid mg/24 h</option>
+<option value="Amylase Somogyi units/h|10|0.185|0|">Amylase Somogyi units/h</option>
+<option value="Amylase U/h|10|1|0|">Amylase U/h</option>
+<option value="Ascorbic acid mcmol/L|11|1|0|">Ascorbic acid mcmol/L</option>
+<option value="Ascorbic acid mg/dL|11|5.678|0|">Ascorbic acid mg/dL</option>
+<option value="Calcium mg/24 h|12|0.025|0|">Calcium mg/24 h</option>
+<option value="Calcium mmol/d|12|1|0|">Calcium mmol/d</option>
+<option value="Catecholamines : Dopamine mcg/24 h|13|6.53|0|">Catecholamines : Dopamine mcg/24 h</option>
+<option value="Catecholamines : Dopamine mcg/mg creatinine|14|738|0|">Catecholamines : Dopamine mcg/mg creatinine</option>
+<option value="Catecholamines : Dopamine mcmol/mol creatinine|14|1|0|">Catecholamines : Dopamine mcmol/mol creatinine</option>
+<option value="Catecholamines : Dopamine ng/mL|16|6.53|0|">Catecholamines : Dopamine ng/mL</option>
+<option value="Catecholamines : Dopamine nmol/d|13|1|0|">Catecholamines : Dopamine nmol/d</option>
+<option value="Catecholamines : Dopamine nmol/L|16|1|0|">Catecholamines : Dopamine nmol/L</option>
+<option value="Catecholamines : Dopamine pg/mL|15|6.53|0|">Catecholamines : Dopamine pg/mL</option>
+<option value="Catecholamines : Dopamine pmol/L|15|1|0|">Catecholamines : Dopamine pmol/L</option>
+<option value="Catecholamines : Epinephrine mcg/24 h|17|5.46|0|">Catecholamines : Epinephrine mcg/24 h</option>
+<option value="Catecholamines : Epinephrine mcg/mg creatinine|18|617|0|">Catecholamines : Epinephrine mcg/mg creatinine</option>
+<option value="Catecholamines : Epinephrine mcmol/d|20|1|0|">Catecholamines : Epinephrine mcmol/d</option>
+<option value="Catecholamines : Epinephrine mcmol/mol creatinine|18|1|0|">Catecholamines : Epinephrine mcmol/mol creatinine</option>
+<option value="Catecholamines : Epinephrine ng/mL|20|5.46|0|">Catecholamines : Epinephrine ng/mL</option>
+<option value="Catecholamines : Epinephrine nmol/d|17|1|0|">Catecholamines : Epinephrine nmol/d</option>
+<option value="Catecholamines : Epinephrine pg/mL|19|5.46|0|">Catecholamines : Epinephrine pg/mL</option>
+<option value="Catecholamines : Epinephrine pmol/L|19|1|0|">Catecholamines : Epinephrine pmol/L</option>
+<option value="Catecholamines : Norepinephrine mcg/24 h|21|5.91|0|">Catecholamines : Norepinephrine mcg/24 h</option>
+<option value="Catecholamines : Norepinephrine mcg/mg creatinine|22|669|0|">Catecholamines : Norepinephrine mcg/mg creatinine</option>
+<option value="Catecholamines : Norepinephrine mcmol/mol creatinine|22|1|0|">Catecholamines : Norepinephrine mcmol/mol creatinine</option>
+<option value="Catecholamines : Norepinephrine ng/mL|24|5.91|0|">Catecholamines : Norepinephrine ng/mL</option>
+<option value="Catecholamines : Norepinephrine nmol/d|21|1|0|">Catecholamines : Norepinephrine nmol/d</option>
+<option value="Catecholamines : Norepinephrine nmol/L|24|1|0|">Catecholamines : Norepinephrine nmol/L</option>
+<option value="Catecholamines : Norepinephrine pg/mL|23|5.91|0|">Catecholamines : Norepinephrine pg/mL</option>
+<option value="Catecholamines : Norepinephrine pmol/L|23|1|0|">Catecholamines : Norepinephrine pmol/L</option>
+<option value="Chloride mEq/24 h|25|1|0|">Chloride mEq/24 h</option>
+<option value="Chloride mmol/d|25|1|0|">Chloride mmol/d</option>
+<option value="Copper mcg/24 h|26|0.0157|0|">Copper mcg/24 h</option>
+<option value="Copper mcmol/d|26|1|0|">Copper mcmol/d</option>
+<option value="Coproporphyrin mcg/dL|27|15.27|0|">Coproporphyrin mcg/dL</option>
+<option value="Coproporphyrin nmol/L|27|1|0|">Coproporphyrin nmol/L</option>
+<option value="Coproporphyrins mcg/24 h|28|1.527|0|">Coproporphyrins mcg/24 h</option>
+<option value="Coproporphyrins nmol/d|28|1|0|">Coproporphyrins nmol/d</option>
+<option value="Creatinine mcmol/kg/24 h|31|1|0|">Creatinine mcmol/kg/24 h</option>
+<option value="Creatinine mg/24 h|30|0.0088|0|">Creatinine mg/24 h</option>
+<option value="Creatinine mg/kg/24 h|31|8.84|0|">Creatinine mg/kg/24 h</option>
+<option value="Creatinine mmol/d|30|1|0|">Creatinine mmol/d</option>
+<option value="Cyclic adenosine monophosphate (c-AMP) mcmol/d|32|1|0|">Cyclic adenosine monophosphate (c-AMP) mcmol/d</option>
+<option value="Cyclic adenosine monophosphate (c-AMP) mcmol/mol creatinine|33|1|0|">Cyclic adenosine monophosphate (c-AMP) mcmol/mol creatinine</option>
+<option value="Cyclic adenosine monophosphate (c-AMP) mg/24 h|32|3.04|0|">Cyclic adenosine monophosphate (c-AMP) mg/24 h</option>
+<option value="Cyclic adenosine monophosphate (c-AMP) mg/g creatinine|33|344|0|">Cyclic adenosine monophosphate (c-AMP) mg/g creatinine</option>
+<option value="Estrogens total mcg/24 h|34|3.47|0|">Estrogens total mcg/24 h</option>
+<option value="Estrogens total nmol/d|34|1|0|">Estrogens total nmol/d</option>
+<option value="Glucose mg/d|35|0.0056|0|">Glucose mg/d</option>
+<option value="Glucose mmol/d|35|1|0|">Glucose mmol/d</option>
+<option value="Homovanillic Acid (HVA) mcg/24 h|37|0.0055|0|">Homovanillic Acid (HVA) mcg/24 h</option>
+<option value="Homovanillic Acid (HVA) mcg/mg of creatinine|38|0.621|0|">Homovanillic Acid (HVA) mcg/mg of creatinine</option>
+<option value="Homovanillic Acid (HVA) mcmol/d|36|1|0|">Homovanillic Acid (HVA) mcmol/d</option>
+<option value="Homovanillic Acid (HVA) mcmol/d|37|1|0|">Homovanillic Acid (HVA) mcmol/d</option>
+<option value="Homovanillic Acid (HVA) mg/24 h|36|5.49|0|">Homovanillic Acid (HVA) mg/24 h</option>
+<option value="Homovanillic Acid (HVA) mmol/mol of creatinine|38|1|0|">Homovanillic Acid (HVA) mmol/mol of creatinine</option>
+<option value="Lead mcg/24 h|39|0.0048|0|">Lead mcg/24 h</option>
+<option value="Lead mcmol/d|39|1|0|">Lead mcmol/d</option>
+<option value="Magnesium mg/24 h|40|0.411|0|">Magnesium mg/24 h</option>
+<option value="Magnesium mmol/d|40|1|0|">Magnesium mmol/d</option>
+<option value="Metanephrines fractionated - metanephrine mcmol/d|42|1|0|">Metanephrines fractionated - metanephrine mcmol/d</option>
+<option value="Metanephrines fractionated - metanephrine mcmol/mol creatinine|43|1|0|">Metanephrines fractionated - metanephrine mcmol/mol creatinine</option>
+<option value="Metanephrines fractionated - metanephrine mg/24 h|42|5.07|0|">Metanephrines fractionated - metanephrine mg/24 h</option>
+<option value="Metanephrines fractionated - metanephrine mg/g creatinine|43|0.5736|0|">Metanephrines fractionated - metanephrine mg/g creatinine</option>
+<option value="Metanephrines fractionated - normetanephrine mg/ g creatinine|45|0.617|0|">Metanephrines fractionated - normetanephrine mg/ g creatinine</option>
+<option value="Metanephrines fractionated - normetanephrine mmol/ mol creatinine|45|1|0|">Metanephrines fractionated - normetanephrine mmol/ mol creatinine</option>
+<option value="Metanephrines fractionated - normetanephrine ng/mL|44|5.46|0|">Metanephrines fractionated - normetanephrine ng/mL</option>
+<option value="Metanephrines fractionated - normetanephrine nmol/L|44|1|0|">Metanephrines fractionated - normetanephrine nmol/L</option>
+<option value="Muramidase (lysozyme) mg/24 h|46|1|0|">Muramidase (lysozyme) mg/24 h</option>
+<option value="Muramidase (lysozyme) mg/d|46|1|0|">Muramidase (lysozyme) mg/d</option>
+<option value="Phosphate (inorganic phosphorus) g/24 h|48|32.29|0|">Phosphate (inorganic phosphorus) g/24 h</option>
+<option value="Phosphate (inorganic phosphorus) mmol/d|48|1|0|">Phosphate (inorganic phosphorus) mmol/d</option>
+<option value="Porphobilinogen mcmol/d|49|1|0|">Porphobilinogen mcmol/d</option>
+<option value="Porphobilinogen mg/24 h|49|4.42|0|">Porphobilinogen mg/24 h</option>
+<option value="Potassium mg/24 h|51|0.0256|0|">Potassium mg/24 h</option>
+<option value="Potassium mmol/d|51|1|0|">Potassium mmol/d</option>
+<option value="Pregnanediol mcmol/d|52|1|0|">Pregnanediol mcmol/d</option>
+<option value="Pregnanediol mg/d|52|3.12|0|">Pregnanediol mg/d</option>
+<option value="Protein total g/d|53|1|0|">Protein total g/d</option>
+<option value="Protein total mg/24 h|53|0.001|0|">Protein total mg/24 h</option>
+<option value="Sodium mg/24 h|56|0.0435|0|">Sodium mg/24 h</option>
+<option value="Sodium mmol/d|56|1|0|">Sodium mmol/d</option>
+<option value="Urea nitrogen g/24 h|57|0.0357|0|">Urea nitrogen g/24 h</option>
+<option value="Urea nitrogen mol/d urea|57|1|0|">Urea nitrogen mol/d urea</option>
+<option value="Uric acid mg/24 h|58|0.0059|0|">Uric acid mg/24 h</option>
+<option value="Uric acid mmol/d|58|1|0|">Uric acid mmol/d</option>
+<option value="Uroporphyrin mcg/24 h|59|1.204|0|">Uroporphyrin mcg/24 h</option>
+<option value="Uroporphyrin mcg/gm creatinine|60|1.1362|0|">Uroporphyrin mcg/gm creatinine</option>
+<option value="Uroporphyrin nmol/ mmol creatinine|60|1|0|">Uroporphyrin nmol/ mmol creatinine</option>
+<option value="Uroporphyrin nmol/d|59|1|0|">Uroporphyrin nmol/d</option>
+<option value="Vanillylmandelic acid (VMA) mcg / mg creatinine|62|0.571|0|">Vanillylmandelic acid (VMA) mcg / mg creatinine</option>
+<option value="Vanillylmandelic acid (VMA) mcmol/d|61|1|0|">Vanillylmandelic acid (VMA) mcmol/d</option>
+<option value="Vanillylmandelic acid (VMA) mg/24 h|61|5.046|0|">Vanillylmandelic acid (VMA) mg/24 h</option>
+<option value="Vanillylmandelic acid (VMA) mmol / mol of creatinine|62|1|0|">Vanillylmandelic acid (VMA) mmol / mol of creatinine</option>
+<option value="Xylose g/5 h|64|6.66|0|">Xylose g/5 h</option>
+<option value="Xylose mg/dL|63|0.0666|0|">Xylose mg/dL</option>
+<option value="Xylose mmol/5 h|64|1|0|">Xylose mmol/5 h</option>
+<option value="Xylose mmol/L|63|1|0|">Xylose mmol/L</option>
+<option value="Zinc mcmol/d|65|1|0|">Zinc mcmol/d</option>
+<option value="Zinc mg/d|65|15.3|0|">Zinc mg/d</option>
+<option value="0|0|1|0"></option>
+</select></td></tr></table>
+
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">
+设定小数点的最大显示精确度:
+</span>
+<select name="decpts" onchange="setDecPts();" class="medCalcFontSelect">
+<option>0</option>
+<option selected="selected">1</option>
+<option>2</option>
+<option>3</option>
+</select>
+</div>
+</div>
+</center>
+</form>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><font color="#aa0000">在该计算器中, <b>mcg</b>是<b>微克</b>的缩写.</font></li>
+<li>要进行简单的单位换算，在右侧的下拉选择器中输入起始单位。然后在顶部的<b>从</b>输入方格中输入起始值。要得到换算值，在右下方的选择器中选择新单位。 换算值应即刻出现<b>至</b>方格中。
+</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">使用下列转换系数，
+通过简单的系数相乘进行数据转换。
+</span></li>
+
+</ol>
+</div>
+
+<div class="calc_tables_supp">
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">转换系数</span>
+<br />&nbsp;<br />
+<table border="1" cellpadding="4" cellspacing="0" summary="EBMcalc Table" class="medCalcFontOne">
+
+<tr><td align="left">17-Hydroxycorticosteroids (17-OHCS) mg/g of creatinine</td><td>X</td><td align="center">113.1</td><td>=</td><td align="left">17-Hydroxycorticosteroids (17-OHCS) mg/mol of creatine</td></tr>
+<tr><td align="left">17-Hydroxyketosteroids (17-OHKS cortisol) mcg/24 h</td><td>X</td><td align="center">2.76</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">17-Hydroxyketosteroids (17-OHKS cortisol) mg/24 h</td><td>X</td><td align="center">2.76</td><td>=</td><td align="left">17-Hydroxyketosteroids (17-OHKS cortisol) mcmol/d</td></tr>
+<tr><td align="left">17-Ketosteroids (as DHEA) mg/24 h</td><td>X</td><td align="center">3.47</td><td>=</td><td align="left">17-Ketosteroids (as DHEA) mcmol/d</td></tr>
+<tr><td align="left">5-Hydroxyindoleacetic acid (5-HIAA) mg/24 h</td><td>X</td><td align="center">5.2</td><td>=</td><td align="left">5-Hydroxyindoleacetic acid (5-HIAA) mcmol/d</td></tr>
+<tr><td align="left">Albumin mg/24 h</td><td>X</td><td align="center">0.001</td><td>=</td><td align="left">Albumin g/d</td></tr>
+<tr><td align="left">Aldosterone mcg/24 h</td><td>X</td><td align="center">2.77</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Aldosterone mmol/d</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Aldosterone mEq/24 h</td></tr>
+<tr><td align="left">Aminolevulinic acid mg/24 h</td><td>X</td><td align="center">7.63</td><td>=</td><td align="left">Aminolevulinic acid mcmol/d</td></tr>
+<tr><td align="left">Amylase Somogyi units/h</td><td>X</td><td align="center">0.185</td><td>=</td><td align="left">Amylase U/h</td></tr>
+<tr><td align="left">Ascorbic acid mg/dL</td><td>X</td><td align="center">5.678</td><td>=</td><td align="left">Ascorbic acid mcmol/L</td></tr>
+<tr><td align="left">Calcium mg/24 h</td><td>X</td><td align="center">0.025</td><td>=</td><td align="left">Calcium mmol/d</td></tr>
+<tr><td align="left">Catecholamines : Dopamine mcg/24 h</td><td>X</td><td align="center">6.53</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Catecholamines : Dopamine mcg/mg creatinine</td><td>X</td><td align="center">738</td><td>=</td><td align="left">Catecholamines : Dopamine mcmol/mol creatinine</td></tr>
+<tr><td align="left">Catecholamines : Dopamine ng/mL</td><td>X</td><td align="center">6.53</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Catecholamines : Dopamine pg/mL</td><td>X</td><td align="center">6.53</td><td>=</td><td align="left">Catecholamines : Dopamine pmol/L</td></tr>
+<tr><td align="left">Catecholamines : Epinephrine mcg/24 h</td><td>X</td><td align="center">5.46</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Catecholamines : Epinephrine mcg/mg creatinine</td><td>X</td><td align="center">617</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Catecholamines : Epinephrine ng/mL</td><td>X</td><td align="center">5.46</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Catecholamines : Epinephrine pg/mL</td><td>X</td><td align="center">5.46</td><td>=</td><td align="left">Catecholamines : Epinephrine pmol/L</td></tr>
+<tr><td align="left">Catecholamines : Norepinephrine mcg/24 h</td><td>X</td><td align="center">5.91</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Catecholamines : Norepinephrine mcg/mg creatinine</td><td>X</td><td align="center">669</td><td>=</td><td align="left">Catecholamines : Norepinephrine mcmol/mol creatinine</td></tr>
+<tr><td align="left">Catecholamines : Norepinephrine ng/mL</td><td>X</td><td align="center">5.91</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Catecholamines : Norepinephrine pg/mL</td><td>X</td><td align="center">5.91</td><td>=</td><td align="left">Catecholamines : Norepinephrine pmol/L</td></tr>
+<tr><td align="left">Chloride mmol/d</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Chloride mEq/24 h</td></tr>
+<tr><td align="left">Copper mcg/24 h</td><td>X</td><td align="center">0.0157</td><td>=</td><td align="left">Copper mcmol/d</td></tr>
+<tr><td align="left">Coproporphyrin mcg/dL</td><td>X</td><td align="center">15.27</td><td>=</td><td align="left">Coproporphyrin nmol/L</td></tr>
+<tr><td align="left">Coproporphyrins mcg/24 h</td><td>X</td><td align="center">1.527</td><td>=</td><td align="left">Coproporphyrins nmol/d</td></tr>
+<tr><td align="left">Creatinine mg/24 h</td><td>X</td><td align="center">0.0088</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Creatinine mg/kg/24 h</td><td>X</td><td align="center">8.84</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Cyclic adenosine monophosphate (c-AMP) mg/24 h</td><td>X</td><td align="center">3.04</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Cyclic adenosine monophosphate (c-AMP) mg/g creatinine</td><td>X</td><td align="center">344</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Estrogens total mcg/24 h</td><td>X</td><td align="center">3.47</td><td>=</td><td align="left">Estrogens total nmol/d</td></tr>
+<tr><td align="left">Glucose mg/d</td><td>X</td><td align="center">0.0056</td><td>=</td><td align="left">Glucose mmol/d</td></tr>
+<tr><td align="left">Homovanillic Acid (HVA) mcg/24 h</td><td>X</td><td align="center">0.0055</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Homovanillic Acid (HVA) mcg/mg of creatinine</td><td>X</td><td align="center">0.621</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Homovanillic Acid (HVA) mg/24 h</td><td>X</td><td align="center">5.49</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Lead mcg/24 h</td><td>X</td><td align="center">0.0048</td><td>=</td><td align="left">Lead mcmol/d</td></tr>
+<tr><td align="left">Magnesium mg/24 h</td><td>X</td><td align="center">0.411</td><td>=</td><td align="left">Magnesium mmol/d</td></tr>
+<tr><td align="left">Metanephrines fractionated - metanephrine mg/24 h</td><td>X</td><td align="center">5.07</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Metanephrines fractionated - metanephrine mg/g creatinine</td><td>X</td><td align="center">0.5736</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Metanephrines fractionated - normetanephrine mg/ g creatinine</td><td>X</td><td align="center">0.617</td><td>=</td><td align="left">Metanephrines fractionated - normetanephrine mmol/ mol creatinine</td></tr>
+<tr><td align="left">Metanephrines fractionated - normetanephrine ng/mL</td><td>X</td><td align="center">5.46</td><td>=</td><td align="left">Metanephrines fractionated - normetanephrine nmol/L</td></tr>
+<tr><td align="left">Muramidase (lysozyme) mg/d</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Muramidase (lysozyme) mg/24 h</td></tr>
+<tr><td align="left">Phosphate (inorganic phosphorus) g/24 h</td><td>X</td><td align="center">32.29</td><td>=</td><td align="left">Phosphate (inorganic phosphorus) mmol/d</td></tr>
+<tr><td align="left">Porphobilinogen mg/24 h</td><td>X</td><td align="center">4.42</td><td>=</td><td align="left">Porphobilinogen mcmol/d</td></tr>
+<tr><td align="left">Potassium mg/24 h</td><td>X</td><td align="center">0.0256</td><td>=</td><td align="left">Potassium mmol/d</td></tr>
+<tr><td align="left">Pregnanediol mg/d</td><td>X</td><td align="center">3.12</td><td>=</td><td align="left">Pregnanediol mcmol/d</td></tr>
+<tr><td align="left">Protein total mg/24 h</td><td>X</td><td align="center">0.001</td><td>=</td><td align="left">Protein total g/d</td></tr>
+<tr><td align="left">Sodium mg/24 h</td><td>X</td><td align="center">0.0435</td><td>=</td><td align="left">Sodium mmol/d</td></tr>
+<tr><td align="left">Urea nitrogen g/24 h</td><td>X</td><td align="center">0.0357</td><td>=</td><td align="left">Urea nitrogen mol/d urea</td></tr>
+<tr><td align="left">Uric acid mg/24 h</td><td>X</td><td align="center">0.0059</td><td>=</td><td align="left">Uric acid mmol/d</td></tr>
+<tr><td align="left">Uroporphyrin mcg/24 h</td><td>X</td><td align="center">1.204</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Uroporphyrin mcg/gm creatinine</td><td>X</td><td align="center">1.1362</td><td>=</td><td align="left">Uroporphyrin nmol/ mmol creatinine</td></tr>
+<tr><td align="left">Vanillylmandelic acid (VMA) mcg / mg creatinine</td><td>X</td><td align="center">0.571</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Vanillylmandelic acid (VMA) mg/24 h</td><td>X</td><td align="center">5.046</td><td>=</td><td align="left">Vanillylmandelic acid (VMA) mcmol/d</td></tr>
+<tr><td align="left">Xylose g/5 h</td><td>X</td><td align="center">6.66</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Xylose mg/dL</td><td>X</td><td align="center">0.0666</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Zinc mg/d</td><td>X</td><td align="center">15.3</td><td>=</td><td align="left">Zinc mcmol/d</td></tr>
+
+</table>
+</div>
+<br />&nbsp;<br /><div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div></div>
+</body>
+</html>
+
+<!-- 1662471521 //-->

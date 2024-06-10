@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>国际单位换算： 生化检查</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Nurse, SIfriendly, fac_all, fac_uc, fac_lab, internat, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+
+codes = new Array();
+codeparts = new Array();
+var dp = 1;
+var tovalue;
+var to_selected = 0;
+
+function showToValue(){
+with (document.SI_chem_form){
+to_param.value = fixDP(tovalue, dp);
+}}
+
+function setDecPts(){
+with (document.SI_chem_form){
+dp = decpts.options[decpts.selectedIndex].text;
+unitConvert();
+}}
+
+function unitLoad(){
+with (document.SI_chem_form){
+
+to_selected = 0;
+
+for (i = 0; i < from_unit.options.length; i++) { codes[i] = from_unit.options[i].value; }
+
+codeparts = from_unit.options[from_unit.selectedIndex].value.split('|');
+findunit = codeparts[0];
+findtype = codeparts[1];
+to_unit.options.length = 0;
+
+for (i = 0; i < codes.length; i++){
+codeparts = codes[i].split('|');
+if (codeparts[1]  == findtype) {
+	to_unit.options[to_unit.options.length] = new Option(codeparts[0],codes[i]);
+	if ((to_selected == 0) && (codeparts[0] != findunit)) { to_unit.options[to_unit.options.length - 1].selected = true; to_selected = 1; }
+	}
+}
+to_param.value = "";
+unitConvert();
+}}
+
+function unitConvert(){
+with (document.SI_chem_form){
+
+if (to_unit.selectedIndex + from_unit.selectedIndex == 0) return;
+
+if (from_param.value > ''){
+unitcode = from_unit.options[from_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+fromtype = codeparts[1];
+frommult = parseFloat(codeparts[2]);
+fromadd = parseFloat(codeparts[3]);
+
+unitcode = to_unit.options[to_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+totype = codeparts[1];
+tomult = parseFloat(codeparts[2]);
+toadd = parseFloat(codeparts[3]);
+
+fromvalue = parseFloat(from_param.value);
+tovalue = ((fromvalue * frommult + fromadd) - toadd) / tomult;
+showToValue();
+}}}
+
+function clrResults(){
+with (document.SI_chem_form){
+from_param.value = '';
+fromvalue = 0;
+to_param.value = '';
+tovalue = 0;
+}}
+
+/* ]]> */
+</script>
+
+
+
+<form name="SI_chem_form" id="SI_chem_form" action="" onsubmit="return false;" onkeydown="to_param.value='';" onkeyup="unitConvert();">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+国际单位换算： 生化检查
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<center>
+<div id="calc_main">
+<div id="calc_input">
+<table border="0" cellpadding="6" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right"><span class="medCalcFontOneBold">从</span></td>
+<td align="left"><input type="text" name="from_param" style="width:50px;" onchange="unitConvert();" /></td>
+<td>
+<select name="from_unit" onchange="unitLoad();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="11-Deoxycorticosterone (DOC) pg/mL|1|3.03|0|">11-Deoxycorticosterone (DOC) pg/mL</option>
+<option value="11-Deoxycorticosterone (DOC) pmol/L|1|1|0|">11-Deoxycorticosterone (DOC) pmol/L</option>
+<option value="Acetone mcmol/L|2|1|0|">Acetone mcmol/L</option>
+<option value="Acetone mg/dL|2|172.95|0|">Acetone mg/dL</option>
+<option value="Adrenocorticotropic hormone ACTH) pg/mL|3|0.2202|0|">Adrenocorticotropic hormone ACTH) pg/mL</option>
+<option value="Adrenocorticotropic hormone ACTH) pmol/L|3|1|0|">Adrenocorticotropic hormone ACTH) pmol/L</option>
+<option value="Alanine amino-transferase (ALT SGPT) mcKat/L|4|1|0|">Alanine amino-transferase (ALT SGPT) mcKat/L</option>
+<option value="Alanine amino-transferase (ALT SGPT) U/L at 37&#176; C|4|0.017|0|">Alanine amino-transferase (ALT SGPT) U/L at 37&#176; C</option>
+<option value="Albumin g/dL|5|10|0|">Albumin g/dL</option>
+<option value="Albumin g/L|5|1|0|">Albumin g/L</option>
+<option value="Aldolase mcKat/L|6|1|0|">Aldolase mcKat/L</option>
+<option value="Aldolase U/L|6|0.017|0|">Aldolase U/L</option>
+<option value="Aldosterone ng/dL|7|0.0277|0|">Aldosterone ng/dL</option>
+<option value="Aldosterone nmol/L|7|1|0|">Aldosterone nmol/L</option>
+<option value="Alkaline phosphatase mcKat/L|8|1|0|">Alkaline phosphatase mcKat/L</option>
+<option value="Alkaline phosphatase U/L|8|0.017|0|">Alkaline phosphatase U/L</option>
+<option value="Alpha-1 Antitrypsin g/L|9|1|0|">Alpha-1 Antitrypsin g/L</option>
+<option value="Alpha-1 Antitrypsin mg/dL|9|0.01|0|">Alpha-1 Antitrypsin mg/dL</option>
+<option value="Alpha-Fetoprotein (AFP) g/L|12|1|0|">Alpha-Fetoprotein (AFP) g/L</option>
+<option value="Alpha-Fetoprotein (AFP) mcg/dL|14|10|0|">Alpha-Fetoprotein (AFP) mcg/dL</option>
+<option value="Alpha-Fetoprotein (AFP) mcg/L|10|1|0|">Alpha-Fetoprotein (AFP) mcg/L</option>
+<option value="Alpha-Fetoprotein (AFP) mcg/L|14|1|0|">Alpha-Fetoprotein (AFP) mcg/L</option>
+<option value="Alpha-Fetoprotein (AFP) mg/dL|12|0.01|0|">Alpha-Fetoprotein (AFP) mg/dL</option>
+<option value="Alpha-Fetoprotein (AFP) mg/dL|13|10|0|">Alpha-Fetoprotein (AFP) mg/dL</option>
+<option value="Alpha-Fetoprotein (AFP) mg/L|13|1|0|">Alpha-Fetoprotein (AFP) mg/L</option>
+<option value="Alpha-Fetoprotein (AFP) ng/dL|11|10|0|">Alpha-Fetoprotein (AFP) ng/dL</option>
+<option value="Alpha-Fetoprotein (AFP) ng/L|11|1|0|">Alpha-Fetoprotein (AFP) ng/L</option>
+<option value="Alpha-Fetoprotein (AFP) ng/mL|10|1|0|">Alpha-Fetoprotein (AFP) ng/mL</option>
+<option value="Ammonia mcg N/dL|16|0.714|0|">Ammonia mcg N/dL</option>
+<option value="Ammonia mcg NH3/dL|15|0.5872|0|">Ammonia mcg NH3/dL</option>
+<option value="Ammonia mcmol N/L|16|1|0|">Ammonia mcmol N/L</option>
+<option value="Ammonia mcmol NH3/L|15|1|0|">Ammonia mcmol NH3/L</option>
+<option value="Amylase mcKat/L|17|1|0|">Amylase mcKat/L</option>
+<option value="Amylase U/L|17|0.017|0|">Amylase U/L</option>
+<option value="Androstenedione ng/dL|18|34.92|0|">Androstenedione ng/dL</option>
+<option value="Androstenedione pmol/L|18|1|0|">Androstenedione pmol/L</option>
+<option value="Angiotensin converting enzyme (ACE) nmoL/min/mL|19|1|0|">Angiotensin converting enzyme (ACE) nmoL/min/mL</option>
+<option value="Angiotensin converting enzyme (ACE) U/L|19|1|0|">Angiotensin converting enzyme (ACE) U/L</option>
+<option value="Angiotensin II ng/dL|20|10|0|">Angiotensin II ng/dL</option>
+<option value="Angiotensin II ng/L|20|1|0|">Angiotensin II ng/L</option>
+<option value="Antidiuretic hormone (ADH) ng/L|21|1|0|">Antidiuretic hormone (ADH) ng/L</option>
+<option value="Antidiuretic hormone (ADH) pg/mL|21|1|0|">Antidiuretic hormone (ADH) pg/mL</option>
+<option value="Apolipoprotein A1 mg/dL|22|10|0|">Apolipoprotein A1 mg/dL</option>
+<option value="Apolipoprotein A1 mg/L|22|1|0|">Apolipoprotein A1 mg/L</option>
+<option value="Apolipoprotein B mg/dL|23|10|0|">Apolipoprotein B mg/dL</option>
+<option value="Apolipoprotein B mg/L|23|1|0|">Apolipoprotein B mg/L</option>
+<option value="Aspartate amino-transferase (AST SGOT) mcKat/L|24|1|0|">Aspartate amino-transferase (AST SGOT) mcKat/L</option>
+<option value="Aspartate amino-transferase (AST SGOT) U/L at 37&#176; C|24|0.017|0|">Aspartate amino-transferase (AST SGOT) U/L at 37&#176; C</option>
+<option value="Bicarbonate mEq/L|25|1|0|">Bicarbonate mEq/L</option>
+<option value="Bicarbonate mmol/L|25|1|0|">Bicarbonate mmol/L</option>
+<option value="Bilirubin mcmol/L|26|1|0|">Bilirubin mcmol/L</option>
+<option value="Bilirubin mg/dL|26|17.1|0|">Bilirubin mg/dL</option>
+<option value="Calcitonin ng/L|27|1|0|">Calcitonin ng/L</option>
+<option value="Calcitonin pg/mL|27|1|0|">Calcitonin pg/mL</option>
+<option value="Calcium ionized mg/dL|30|0.25|0|">Calcium ionized mg/dL</option>
+<option value="Calcium ionized mmol/L|30|1|0|">Calcium ionized mmol/L</option>
+<option value="Calcium mEq/L|29|0.5|0|">Calcium mEq/L</option>
+<option value="Calcium mg/dL|28|0.25|0|">Calcium mg/dL</option>
+<option value="Calcium mmol/L|28|1|0|">Calcium mmol/L</option>
+<option value="Calcium mmol/L|29|1|0|">Calcium mmol/L</option>
+<option value="Carbon dioxide partial pressure pCO2 kPa|31|1|0|">Carbon dioxide partial pressure pCO2 kPa</option>
+<option value="Carbon dioxide partial pressure pCO2 mm Hg|31|0.133|0|">Carbon dioxide partial pressure pCO2 mm Hg</option>
+<option value="Carbon dioxide total mEq/L|32|1|0|">Carbon dioxide total mEq/L</option>
+<option value="Carbon dioxide total mmol/L|32|1|0|">Carbon dioxide total mmol/L</option>
+<option value="Carcinoembryonic Antigen (CEA) mcg/L|33|1|0|">Carcinoembryonic Antigen (CEA) mcg/L</option>
+<option value="Carcinoembryonic Antigen (CEA) mcg/mL|34|1|0|">Carcinoembryonic Antigen (CEA) mcg/mL</option>
+<option value="Carcinoembryonic Antigen (CEA) mg/L|34|1|0|">Carcinoembryonic Antigen (CEA) mg/L</option>
+<option value="Carcinoembryonic Antigen (CEA) ng/mL|33|1|0|">Carcinoembryonic Antigen (CEA) ng/mL</option>
+<option value="Carotene mcg/dL|35|0.0186|0|">Carotene mcg/dL</option>
+<option value="Carotene mcmol/L|35|1|0|">Carotene mcmol/L</option>
+<option value="Catecholamines fractionated - epinephrine pg/mL|36|5.458|0|">Catecholamines fractionated - epinephrine pg/mL</option>
+<option value="Catecholamines fractionated - epinephrine pmol/L|36|1|0|">Catecholamines fractionated - epinephrine pmol/L</option>
+<option value="Catecholamines fractionated - norepinephrine nmol/L|37|1|0|">Catecholamines fractionated - norepinephrine nmol/L</option>
+<option value="Catecholamines fractionated - norepinephrine pg/mL|37|0.0059|0|">Catecholamines fractionated - norepinephrine pg/mL</option>
+<option value="Ceruloplasmin mg/dL|38|10|0|">Ceruloplasmin mg/dL</option>
+<option value="Ceruloplasmin mg/L|38|1|0|">Ceruloplasmin mg/L</option>
+<option value="Chloride mEq/L|39|1|0|">Chloride mEq/L</option>
+<option value="Chloride mg/dL|40|1|0|">Chloride mg/dL</option>
+<option value="Chloride mmol/L|39|1|0|">Chloride mmol/L</option>
+<option value="Chloride mmol/L|40|1|0|">Chloride mmol/L</option>
+<option value="Cholesterol mg/dL|41|0.0259|0|">Cholesterol mg/dL</option>
+<option value="Cholesterol mmol/L|41|1|0|">Cholesterol mmol/L</option>
+<option value="Copper mcg/dL|42|0.157|0|">Copper mcg/dL</option>
+<option value="Copper mcmol/L|42|1|0|">Copper mcmol/L</option>
+<option value="Coproporphyrins mcg/dL|43|15|0|">Coproporphyrins mcg/dL</option>
+<option value="Coproporphyrins nmol/L|43|1|0|">Coproporphyrins nmol/L</option>
+<option value="Cortisol mcg/dL|44|0.028|0|">Cortisol mcg/dL</option>
+<option value="Cortisol mcmol/L|44|1|0|">Cortisol mcmol/L</option>
+<option value="Cortisol ng/mL|45|2.76|0|">Cortisol ng/mL</option>
+<option value="Cortisol nmol/L|45|1|0|">Cortisol nmol/L</option>
+<option value="Creatine kinase mcKat/L|47|1|0|">Creatine kinase mcKat/L</option>
+<option value="Creatine kinase U/L at 37&#176; C|47|0.017|0|">Creatine kinase U/L at 37&#176; C</option>
+<option value="Creatine mcmol/L|46|1|0|">Creatine mcmol/L</option>
+<option value="Creatine mg/dL|46|76.3|0|">Creatine mg/dL</option>
+<option value="Creatinine clearance mL/min/1.73 m^2|49|0.0096|0|">Creatinine clearance mL/min/1.73 m^2</option>
+<option value="Creatinine clearance mL/sec/m^2|49|1|0|">Creatinine clearance mL/sec/m^2</option>
+<option value="Creatinine mcmol/L|48|1|0|">Creatinine mcmol/L</option>
+<option value="Creatinine mg/dL|48|88.4|0|">Creatinine mg/dL</option>
+<option value="Cyclic Adenosine monophosphate (cAMP) mcg/L|50|3.04|0|">Cyclic Adenosine monophosphate (cAMP) mcg/L</option>
+<option value="Cyclic Adenosine monophosphate (cAMP) nmol/L|50|1|0|">Cyclic Adenosine monophosphate (cAMP) nmol/L</option>
+<option value="Dehydroepiandrosterone sulfate (DHEA-S) mcg/mL|52|2.6|0|">Dehydroepiandrosterone sulfate (DHEA-S) mcg/mL</option>
+<option value="Dehydroepiandrosterone sulfate (DHEA-S) mcmol/L|52|1|0|">Dehydroepiandrosterone sulfate (DHEA-S) mcmol/L</option>
+<option value="Delta-Aminolevulinic acid mcmol/L|53|1|0|">Delta-Aminolevulinic acid mcmol/L</option>
+<option value="Delta-Aminolevulinic acid mg/dL|53|76.26|0|">Delta-Aminolevulinic acid mg/dL</option>
+<option value="Ferritin mcg/L|54|1|0|">Ferritin mcg/L</option>
+<option value="Ferritin ng/mL|54|1|0|">Ferritin ng/mL</option>
+<option value="Folate ng/mL|55|2.266|0|">Folate ng/mL</option>
+<option value="Folate nmol/L|55|1|0|">Folate nmol/L</option>
+<option value="Galactose mg/dL|56|0.05551|0|">Galactose mg/dL</option>
+<option value="Galactose mmol/L|56|1|0|">Galactose mmol/L</option>
+<option value="Gamma glutamyl transferease (GGT) mcKat/L|57|1|0|">Gamma glutamyl transferease (GGT) mcKat/L</option>
+<option value="Gamma glutamyl transferease (GGT) U/L at 37&#176; C|57|0.017|0|">Gamma glutamyl transferease (GGT) U/L at 37&#176; C</option>
+<option value="Gastrin ng/L|58|1|0|">Gastrin ng/L</option>
+<option value="Gastrin pg/mL|58|1|0|">Gastrin pg/mL</option>
+<option value="Glucose mg/dL|59|0.0555|0|">Glucose mg/dL</option>
+<option value="Glucose mmol/L|59|1|0|">Glucose mmol/L</option>
+<option value="Glutathione mg/dL|60|0.0325|0|">Glutathione mg/dL</option>
+<option value="Glutathione mmol/L|60|1|0|">Glutathione mmol/L</option>
+<option value="Growth hormone mcg/L|61|1|0|">Growth hormone mcg/L</option>
+<option value="Growth hormone ng/mL|61|1|0|">Growth hormone ng/mL</option>
+<option value="Haptoglobin g/L|62|1|0|">Haptoglobin g/L</option>
+<option value="Haptoglobin mg/dL|62|0.01|0|">Haptoglobin mg/dL</option>
+<option value="HDL-cholesterol mg/dL|63|0.0259|0|">HDL-cholesterol mg/dL</option>
+<option value="HDL-cholesterol mmol/L|63|1|0|">HDL-cholesterol mmol/L</option>
+<option value="Human chorionic gonadotropin (HCG) beta-subunit IU/L|64|1|0|">Human chorionic gonadotropin (HCG) beta-subunit IU/L</option>
+<option value="Human chorionic gonadotropin (HCG) beta-subunit mU/mL|64|1|0|">Human chorionic gonadotropin (HCG) beta-subunit mU/mL</option>
+<option value="Hydroxybutyric dehydrogenase kU/L|65|1|0|">Hydroxybutyric dehydrogenase kU/L</option>
+<option value="Hydroxybutyric dehydrogenase U/mL|65|1|0|">Hydroxybutyric dehydrogenase U/mL</option>
+<option value="Insulin mcIU/mL|66|7.175|0|">Insulin mcIU/mL</option>
+<option value="Insulin pmol/L|66|1|0|">Insulin pmol/L</option>
+<option value="Iron binding capacity mcg/dL|68|0.179|0|">Iron binding capacity mcg/dL</option>
+<option value="Iron binding capacity mcmol/L|68|1|0|">Iron binding capacity mcmol/L</option>
+<option value="Iron mcg/dL|67|0.179|0|">Iron mcg/dL</option>
+<option value="Iron mcmol/L|67|1|0|">Iron mcmol/L</option>
+<option value="Iron saturation %|69|0.01|0|">Iron saturation %</option>
+<option value="Iron saturation fraction saturation|69|1|0|">Iron saturation fraction saturation</option>
+<option value="Isocitrate dehydrogenase (ICD) mcKat/L|70|1|0|">Isocitrate dehydrogenase (ICD) mcKat/L</option>
+<option value="Isocitrate dehydrogenase (ICD) U/L|70|0.017|0|">Isocitrate dehydrogenase (ICD) U/L</option>
+<option value="Lactate dehydrogenase (LD) U/L at 37&#176; C|72|1|0|">Lactate dehydrogenase (LD) U/L at 37&#176; C</option>
+<option value="Lactate dehydrogenase (LD) U/L at 37&#176; C|72|1|0|">Lactate dehydrogenase (LD) U/L at 37&#176; C</option>
+<option value="Lactate mg/dL|71|0.111|0|">Lactate mg/dL</option>
+<option value="Lactate mmol/L|71|1|0|">Lactate mmol/L</option>
+<option value="LDL-cholesterol mg/dL|73|0.0259|0|">LDL-cholesterol mg/dL</option>
+<option value="LDL-cholesterol mmol/L|73|1|0|">LDL-cholesterol mmol/L</option>
+<option value="Lead mcg/dL|74|0.0483|0|">Lead mcg/dL</option>
+<option value="Lead mcmol/L|74|1|0|">Lead mcmol/L</option>
+<option value="Leucine aminopeptidase (LAP) mcKat/L|76|1|0|">Leucine aminopeptidase (LAP) mcKat/L</option>
+<option value="Leucine aminopeptidase (LAP) U/L|76|0.017|0|">Leucine aminopeptidase (LAP) U/L</option>
+<option value="Lipase Cherry-Crandal U/L|77|1|0|">Lipase Cherry-Crandal U/L</option>
+<option value="Lipase Cherry-Crandal U/mL|77|278|0|">Lipase Cherry-Crandal U/mL</option>
+<option value="Lipase mcKat/L|78|1|0|">Lipase mcKat/L</option>
+<option value="Lipase U/L|78|0.017|0|">Lipase U/L</option>
+<option value="Lipids total g/L|79|1|0|">Lipids total g/L</option>
+<option value="Lipids total mg/dL|79|0.01|0|">Lipids total mg/dL</option>
+<option value="Luteinizing hormone (LH) IU/L|80|1|0|">Luteinizing hormone (LH) IU/L</option>
+<option value="Luteinizing hormone (LH) mIU/mL|80|1|0|">Luteinizing hormone (LH) mIU/mL</option>
+<option value="Magnesium mg/dL|82|0.411|0|">Magnesium mg/dL</option>
+<option value="Magnesium mmol/L|82|1|0|">Magnesium mmol/L</option>
+<option value="Malic dehydrogenase mcKat/L|83|1|0|">Malic dehydrogenase mcKat/L</option>
+<option value="Malic dehydrogenase U/L|83|0.017|0|">Malic dehydrogenase U/L</option>
+<option value="Methemoglobin g/dL|84|10|0|">Methemoglobin g/dL</option>
+<option value="Methemoglobin g/L|84|1|0|">Methemoglobin g/L</option>
+<option value="Muramidase mg/L|85|1|0|">Muramidase mg/L</option>
+<option value="Muramidase mg/L|85|1|0|">Muramidase mg/L</option>
+<option value="Osmolality mOsm/kg H2O|87|1|0|">Osmolality mOsm/kg H2O</option>
+<option value="Osmolality mOsm/kg H2O|87|1|0|">Osmolality mOsm/kg H2O</option>
+<option value="Osteocalcin mcg/L|88|1|0|">Osteocalcin mcg/L</option>
+<option value="Osteocalcin ng/mL|88|1|0|">Osteocalcin ng/mL</option>
+<option value="Oxygen partial pressure pO2 kPa|89|1|0|">Oxygen partial pressure pO2 kPa</option>
+<option value="Oxygen partial pressure pO2 mm Hg|89|0.133|0|">Oxygen partial pressure pO2 mm Hg</option>
+<option value="Parathyroid hormone (PTH) ng/L|90|1|0|">Parathyroid hormone (PTH) ng/L</option>
+<option value="Parathyroid hormone (PTH) pg/mL|90|1|0|">Parathyroid hormone (PTH) pg/mL</option>
+<option value="PH nEq/L|91|1|0|">PH nEq/L</option>
+<option value="PH nmol/L|91|1|0|">PH nmol/L</option>
+<option value="Phenylalanine mcmol/L|92|1|0|">Phenylalanine mcmol/L</option>
+<option value="Phenylalanine mg/dL|92|60.54|0|">Phenylalanine mg/dL</option>
+<option value="Phosphate inorganic phosphorus mg/dL|93|0.323|0|">Phosphate inorganic phosphorus mg/dL</option>
+<option value="Phosphate inorganic phosphorus mmol/L|93|1|0|">Phosphate inorganic phosphorus mmol/L</option>
+<option value="Porphobilinogen mcg/d|94|4.42|0|">Porphobilinogen mcg/d</option>
+<option value="Porphobilinogen mcmol/d|94|1|0|">Porphobilinogen mcmol/d</option>
+<option value="Potassium mEq/L|95|1|0|">Potassium mEq/L</option>
+<option value="Potassium mmol/L|95|1|0|">Potassium mmol/L</option>
+<option value="Progesterone ng/dL|96|0.0318|0|">Progesterone ng/dL</option>
+<option value="Progesterone nmol/L|96|1|0|">Progesterone nmol/L</option>
+<option value="Prolactin mcg/L|97|1|0|">Prolactin mcg/L</option>
+<option value="Prolactin ng/mL|97|1|0|">Prolactin ng/mL</option>
+<option value="Protein total g/dL|98|10|0|">Protein total g/dL</option>
+<option value="Protein total g/L|98|1|0|">Protein total g/L</option>
+<option value="Protoporphyrin mcmol/L|99|1|0|">Protoporphyrin mcmol/L</option>
+<option value="Protoporphyrin mg/dL|99|0.0178|0|">Protoporphyrin mg/dL</option>
+<option value="Pyruvate mcmol/L|100|1|0|">Pyruvate mcmol/L</option>
+<option value="Pyruvate mg/dL|100|113.6|0|">Pyruvate mg/dL</option>
+<option value="Renin (plasma renin activity PRA) mcg/L/hr|101|1|0|">Renin (plasma renin activity PRA) mcg/L/hr</option>
+<option value="Renin (plasma renin activity PRA) ng/mL/hr|101|1|0|">Renin (plasma renin activity PRA) ng/mL/hr</option>
+<option value="Reverse T3 (rT3) ng/dL|102|0.0154|0|">Reverse T3 (rT3) ng/dL</option>
+<option value="Reverse T3 (rT3) nmol/L|102|1|0|">Reverse T3 (rT3) nmol/L</option>
+<option value="Serotonin mcmol/L|103|1|0|">Serotonin mcmol/L</option>
+<option value="Serotonin ng/mL|103|0.0057|0|">Serotonin ng/mL</option>
+<option value="Sodium mEq/L|104|1|0|">Sodium mEq/L</option>
+<option value="Sodium mmol/L|104|1|0|">Sodium mmol/L</option>
+<option value="Testosterone ng/dL|105|0.0347|0|">Testosterone ng/dL</option>
+<option value="Testosterone nmol/L|105|1|0|">Testosterone nmol/L</option>
+<option value="Thyroglobulin mcg/L|106|1|0|">Thyroglobulin mcg/L</option>
+<option value="Thyroglobulin ng/mL|106|1|0|">Thyroglobulin ng/mL</option>
+<option value="Thyroid stimulating hormone (TSH) mcU/mL|109|1|0|">Thyroid stimulating hormone (TSH) mcU/mL</option>
+<option value="Thyroid stimulating hormone (TSH) mIU/L|109|1|0|">Thyroid stimulating hormone (TSH) mIU/L</option>
+<option value="Thyrotropin releasing hormone (TRH) pg/mL|111|2.759|0|">Thyrotropin releasing hormone (TRH) pg/mL</option>
+<option value="Thyrotropin releasing hormone (TRH) pmol/L|111|1|0|">Thyrotropin releasing hormone (TRH) pmol/L</option>
+<option value="Thyroxine (T4) total mcg/dL|112|12.9|0|">Thyroxine (T4) total mcg/dL</option>
+<option value="Thyroxine (T4) total nmol/L|112|1|0|">Thyroxine (T4) total nmol/L</option>
+<option value="Thyroxine binding globulin (TBG) mg/dL|107|10|0|">Thyroxine binding globulin (TBG) mg/dL</option>
+<option value="Thyroxine binding globulin (TBG) mg/L|107|1|0|">Thyroxine binding globulin (TBG) mg/L</option>
+<option value="Thyroxine free ng/dL|113|12.9|0|">Thyroxine free ng/dL</option>
+<option value="Thyroxine free pmol/L|113|1|0|">Thyroxine free pmol/L</option>
+<option value="Transferrin (TIBC) g/L|114|1|0|">Transferrin (TIBC) g/L</option>
+<option value="Transferrin (TIBC) mg/dL|114|0.01|0|">Transferrin (TIBC) mg/dL</option>
+<option value="Tri-iodothyronine (T3) free nmol/L|115|1|0|">Tri-iodothyronine (T3) free nmol/L</option>
+<option value="Tri-iodothyronine (T3) free pg/mL|115|15.4|0|">Tri-iodothyronine (T3) free pg/mL</option>
+<option value="Triglycerides mg/dL|117|0.0113|0|">Triglycerides mg/dL</option>
+<option value="Triglycerides mmol/L|117|1|0|">Triglycerides mmol/L</option>
+<option value="Urea nitrogen mg/dL|121|0.357|0|">Urea nitrogen mg/dL</option>
+<option value="Urea nitrogen mmol/L urea|121|1|0|">Urea nitrogen mmol/L urea</option>
+<option value="Uric acid mg/dL|122|0.0595|0|">Uric acid mg/dL</option>
+<option value="Uric acid mmol/L|122|1|0|">Uric acid mmol/L</option>
+<option value="Viscocity centipoise|123|1|0|">Viscocity centipoise</option>
+<option value="Viscocity centipoise|123|1|0|">Viscocity centipoise</option>
+<option value="Vitamin A1 mcg/dL|124|0.0349|0|">Vitamin A1 mcg/dL</option>
+<option value="Vitamin A1 mcmol/L|124|1|0|">Vitamin A1 mcmol/L</option>
+<option value="Vitamin B12 (cyanocobalamin) pg/mL|125|0.738|0|">Vitamin B12 (cyanocobalamin) pg/mL</option>
+<option value="Vitamin B12 (cyanocobalamin) pmol/L|125|1|0|">Vitamin B12 (cyanocobalamin) pmol/L</option>
+<option value="Vitamin B12 unsaturated binding capacity pg/mL|126|0.738|0|">Vitamin B12 unsaturated binding capacity pg/mL</option>
+<option value="Vitamin B12 unsaturated binding capacity pmol/L|126|1|0|">Vitamin B12 unsaturated binding capacity pmol/L</option>
+<option value="Vitamin B6 ng/mL|127|5.982|0|">Vitamin B6 ng/mL</option>
+<option value="Vitamin B6 nmol/L|127|1|0|">Vitamin B6 nmol/L</option>
+<option value="Vitamin C (ascorbic acid) mcmol/L|128|1|0|">Vitamin C (ascorbic acid) mcmol/L</option>
+<option value="Vitamin C (ascorbic acid) mg/dL|128|56.78|0|">Vitamin C (ascorbic acid) mg/dL</option>
+<option value="Vitamin D (calciferol 1 25 pg/mL|129|2.4|0|">Vitamin D (calciferol 1 25 pg/mL</option>
+<option value="Vitamin D (calciferol 1 25 pmol/L|129|1|0|">Vitamin D (calciferol 1 25 pmol/L</option>
+<option value="Vitamin D (calciferol 25 ng/mL|130|2.496|0|">Vitamin D (calciferol 25 ng/mL</option>
+<option value="Vitamin D (calciferol 25 nmol/L|130|1|0|">Vitamin D (calciferol 25 nmol/L</option>
+<option value="Vitamin E (tocopherol) ng/mL|131|2.322|0|">Vitamin E (tocopherol) ng/mL</option>
+<option value="Vitamin E (tocopherol) nmol/L|131|1|0|">Vitamin E (tocopherol) nmol/L</option>
+<option value="Xylose (from absorption) mg/dL|132|0.0666|0|">Xylose (from absorption) mg/dL</option>
+<option value="Xylose (from absorption) mmol/L|132|1|0|">Xylose (from absorption) mmol/L</option>
+<option value="Zinc mcg/dL|133|0.153|0|">Zinc mcg/dL</option>
+<option value="Zinc mcmol/L|133|1|0|">Zinc mcmol/L</option>
+<option value="0|0|1|0"></option>
+</select></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">至</span></td>
+<td align="left"><input type="text" name="to_param" style="width:50px;" onfocus="blur();" /></td>
+<td align="left">
+<select name="to_unit" onchange="unitConvert();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="11-Deoxycorticosterone (DOC) pg/mL|1|3.03|0|">11-Deoxycorticosterone (DOC) pg/mL</option>
+<option value="11-Deoxycorticosterone (DOC) pmol/L|1|1|0|">11-Deoxycorticosterone (DOC) pmol/L</option>
+<option value="Acetone mcmol/L|2|1|0|">Acetone mcmol/L</option>
+<option value="Acetone mg/dL|2|172.95|0|">Acetone mg/dL</option>
+<option value="Adrenocorticotropic hormone ACTH) pg/mL|3|0.2202|0|">Adrenocorticotropic hormone ACTH) pg/mL</option>
+<option value="Adrenocorticotropic hormone ACTH) pmol/L|3|1|0|">Adrenocorticotropic hormone ACTH) pmol/L</option>
+<option value="Alanine amino-transferase (ALT SGPT) mcKat/L|4|1|0|">Alanine amino-transferase (ALT SGPT) mcKat/L</option>
+<option value="Alanine amino-transferase (ALT SGPT) U/L at 37&#176; C|4|0.017|0|">Alanine amino-transferase (ALT SGPT) U/L at 37&#176; C</option>
+<option value="Albumin g/dL|5|10|0|">Albumin g/dL</option>
+<option value="Albumin g/L|5|1|0|">Albumin g/L</option>
+<option value="Aldolase mcKat/L|6|1|0|">Aldolase mcKat/L</option>
+<option value="Aldolase U/L|6|0.017|0|">Aldolase U/L</option>
+<option value="Aldosterone ng/dL|7|0.0277|0|">Aldosterone ng/dL</option>
+<option value="Aldosterone nmol/L|7|1|0|">Aldosterone nmol/L</option>
+<option value="Alkaline phosphatase mcKat/L|8|1|0|">Alkaline phosphatase mcKat/L</option>
+<option value="Alkaline phosphatase U/L|8|0.017|0|">Alkaline phosphatase U/L</option>
+<option value="Alpha-1 Antitrypsin g/L|9|1|0|">Alpha-1 Antitrypsin g/L</option>
+<option value="Alpha-1 Antitrypsin mg/dL|9|0.01|0|">Alpha-1 Antitrypsin mg/dL</option>
+<option value="Alpha-Fetoprotein (AFP) g/L|12|1|0|">Alpha-Fetoprotein (AFP) g/L</option>
+<option value="Alpha-Fetoprotein (AFP) mcg/dL|14|10|0|">Alpha-Fetoprotein (AFP) mcg/dL</option>
+<option value="Alpha-Fetoprotein (AFP) mcg/L|10|1|0|">Alpha-Fetoprotein (AFP) mcg/L</option>
+<option value="Alpha-Fetoprotein (AFP) mcg/L|14|1|0|">Alpha-Fetoprotein (AFP) mcg/L</option>
+<option value="Alpha-Fetoprotein (AFP) mg/dL|12|0.01|0|">Alpha-Fetoprotein (AFP) mg/dL</option>
+<option value="Alpha-Fetoprotein (AFP) mg/dL|13|10|0|">Alpha-Fetoprotein (AFP) mg/dL</option>
+<option value="Alpha-Fetoprotein (AFP) mg/L|13|1|0|">Alpha-Fetoprotein (AFP) mg/L</option>
+<option value="Alpha-Fetoprotein (AFP) ng/dL|11|10|0|">Alpha-Fetoprotein (AFP) ng/dL</option>
+<option value="Alpha-Fetoprotein (AFP) ng/L|11|1|0|">Alpha-Fetoprotein (AFP) ng/L</option>
+<option value="Alpha-Fetoprotein (AFP) ng/mL|10|1|0|">Alpha-Fetoprotein (AFP) ng/mL</option>
+<option value="Ammonia mcg N/dL|16|0.714|0|">Ammonia mcg N/dL</option>
+<option value="Ammonia mcg NH3/dL|15|0.5872|0|">Ammonia mcg NH3/dL</option>
+<option value="Ammonia mcmol N/L|16|1|0|">Ammonia mcmol N/L</option>
+<option value="Ammonia mcmol NH3/L|15|1|0|">Ammonia mcmol NH3/L</option>
+<option value="Amylase mcKat/L|17|1|0|">Amylase mcKat/L</option>
+<option value="Amylase U/L|17|0.017|0|">Amylase U/L</option>
+<option value="Androstenedione ng/dL|18|34.92|0|">Androstenedione ng/dL</option>
+<option value="Androstenedione pmol/L|18|1|0|">Androstenedione pmol/L</option>
+<option value="Angiotensin converting enzyme (ACE) nmoL/min/mL|19|1|0|">Angiotensin converting enzyme (ACE) nmoL/min/mL</option>
+<option value="Angiotensin converting enzyme (ACE) U/L|19|1|0|">Angiotensin converting enzyme (ACE) U/L</option>
+<option value="Angiotensin II ng/dL|20|10|0|">Angiotensin II ng/dL</option>
+<option value="Angiotensin II ng/L|20|1|0|">Angiotensin II ng/L</option>
+<option value="Antidiuretic hormone (ADH) ng/L|21|1|0|">Antidiuretic hormone (ADH) ng/L</option>
+<option value="Antidiuretic hormone (ADH) pg/mL|21|1|0|">Antidiuretic hormone (ADH) pg/mL</option>
+<option value="Apolipoprotein A1 mg/dL|22|10|0|">Apolipoprotein A1 mg/dL</option>
+<option value="Apolipoprotein A1 mg/L|22|1|0|">Apolipoprotein A1 mg/L</option>
+<option value="Apolipoprotein B mg/dL|23|10|0|">Apolipoprotein B mg/dL</option>
+<option value="Apolipoprotein B mg/L|23|1|0|">Apolipoprotein B mg/L</option>
+<option value="Aspartate amino-transferase (AST SGOT) mcKat/L|24|1|0|">Aspartate amino-transferase (AST SGOT) mcKat/L</option>
+<option value="Aspartate amino-transferase (AST SGOT) U/L at 37&#176; C|24|0.017|0|">Aspartate amino-transferase (AST SGOT) U/L at 37&#176; C</option>
+<option value="Bicarbonate mEq/L|25|1|0|">Bicarbonate mEq/L</option>
+<option value="Bicarbonate mmol/L|25|1|0|">Bicarbonate mmol/L</option>
+<option value="Bilirubin mcmol/L|26|1|0|">Bilirubin mcmol/L</option>
+<option value="Bilirubin mg/dL|26|17.1|0|">Bilirubin mg/dL</option>
+<option value="Calcitonin ng/L|27|1|0|">Calcitonin ng/L</option>
+<option value="Calcitonin pg/mL|27|1|0|">Calcitonin pg/mL</option>
+<option value="Calcium ionized mg/dL|30|0.25|0|">Calcium ionized mg/dL</option>
+<option value="Calcium ionized mmol/L|30|1|0|">Calcium ionized mmol/L</option>
+<option value="Calcium mEq/L|29|0.5|0|">Calcium mEq/L</option>
+<option value="Calcium mg/dL|28|0.25|0|">Calcium mg/dL</option>
+<option value="Calcium mmol/L|28|1|0|">Calcium mmol/L</option>
+<option value="Calcium mmol/L|29|1|0|">Calcium mmol/L</option>
+<option value="Carbon dioxide partial pressure pCO2 kPa|31|1|0|">Carbon dioxide partial pressure pCO2 kPa</option>
+<option value="Carbon dioxide partial pressure pCO2 mm Hg|31|0.133|0|">Carbon dioxide partial pressure pCO2 mm Hg</option>
+<option value="Carbon dioxide total mEq/L|32|1|0|">Carbon dioxide total mEq/L</option>
+<option value="Carbon dioxide total mmol/L|32|1|0|">Carbon dioxide total mmol/L</option>
+<option value="Carcinoembryonic Antigen (CEA) mcg/L|33|1|0|">Carcinoembryonic Antigen (CEA) mcg/L</option>
+<option value="Carcinoembryonic Antigen (CEA) mcg/mL|34|1|0|">Carcinoembryonic Antigen (CEA) mcg/mL</option>
+<option value="Carcinoembryonic Antigen (CEA) mg/L|34|1|0|">Carcinoembryonic Antigen (CEA) mg/L</option>
+<option value="Carcinoembryonic Antigen (CEA) ng/mL|33|1|0|">Carcinoembryonic Antigen (CEA) ng/mL</option>
+<option value="Carotene mcg/dL|35|0.0186|0|">Carotene mcg/dL</option>
+<option value="Carotene mcmol/L|35|1|0|">Carotene mcmol/L</option>
+<option value="Catecholamines fractionated - epinephrine pg/mL|36|5.458|0|">Catecholamines fractionated - epinephrine pg/mL</option>
+<option value="Catecholamines fractionated - epinephrine pmol/L|36|1|0|">Catecholamines fractionated - epinephrine pmol/L</option>
+<option value="Catecholamines fractionated - norepinephrine nmol/L|37|1|0|">Catecholamines fractionated - norepinephrine nmol/L</option>
+<option value="Catecholamines fractionated - norepinephrine pg/mL|37|0.0059|0|">Catecholamines fractionated - norepinephrine pg/mL</option>
+<option value="Ceruloplasmin mg/dL|38|10|0|">Ceruloplasmin mg/dL</option>
+<option value="Ceruloplasmin mg/L|38|1|0|">Ceruloplasmin mg/L</option>
+<option value="Chloride mEq/L|39|1|0|">Chloride mEq/L</option>
+<option value="Chloride mg/dL|40|1|0|">Chloride mg/dL</option>
+<option value="Chloride mmol/L|39|1|0|">Chloride mmol/L</option>
+<option value="Chloride mmol/L|40|1|0|">Chloride mmol/L</option>
+<option value="Cholesterol mg/dL|41|0.0259|0|">Cholesterol mg/dL</option>
+<option value="Cholesterol mmol/L|41|1|0|">Cholesterol mmol/L</option>
+<option value="Copper mcg/dL|42|0.157|0|">Copper mcg/dL</option>
+<option value="Copper mcmol/L|42|1|0|">Copper mcmol/L</option>
+<option value="Coproporphyrins mcg/dL|43|15|0|">Coproporphyrins mcg/dL</option>
+<option value="Coproporphyrins nmol/L|43|1|0|">Coproporphyrins nmol/L</option>
+<option value="Cortisol mcg/dL|44|0.028|0|">Cortisol mcg/dL</option>
+<option value="Cortisol mcmol/L|44|1|0|">Cortisol mcmol/L</option>
+<option value="Cortisol ng/mL|45|2.76|0|">Cortisol ng/mL</option>
+<option value="Cortisol nmol/L|45|1|0|">Cortisol nmol/L</option>
+<option value="Creatine kinase mcKat/L|47|1|0|">Creatine kinase mcKat/L</option>
+<option value="Creatine kinase U/L at 37&#176; C|47|0.017|0|">Creatine kinase U/L at 37&#176; C</option>
+<option value="Creatine mcmol/L|46|1|0|">Creatine mcmol/L</option>
+<option value="Creatine mg/dL|46|76.3|0|">Creatine mg/dL</option>
+<option value="Creatinine clearance mL/min/1.73 m^2|49|0.0096|0|">Creatinine clearance mL/min/1.73 m^2</option>
+<option value="Creatinine clearance mL/sec/m^2|49|1|0|">Creatinine clearance mL/sec/m^2</option>
+<option value="Creatinine mcmol/L|48|1|0|">Creatinine mcmol/L</option>
+<option value="Creatinine mg/dL|48|88.4|0|">Creatinine mg/dL</option>
+<option value="Cyclic Adenosine monophosphate (cAMP) mcg/L|50|3.04|0|">Cyclic Adenosine monophosphate (cAMP) mcg/L</option>
+<option value="Cyclic Adenosine monophosphate (cAMP) nmol/L|50|1|0|">Cyclic Adenosine monophosphate (cAMP) nmol/L</option>
+<option value="Dehydroepiandrosterone sulfate (DHEA-S) mcg/mL|52|2.6|0|">Dehydroepiandrosterone sulfate (DHEA-S) mcg/mL</option>
+<option value="Dehydroepiandrosterone sulfate (DHEA-S) mcmol/L|52|1|0|">Dehydroepiandrosterone sulfate (DHEA-S) mcmol/L</option>
+<option value="Delta-Aminolevulinic acid mcmol/L|53|1|0|">Delta-Aminolevulinic acid mcmol/L</option>
+<option value="Delta-Aminolevulinic acid mg/dL|53|76.26|0|">Delta-Aminolevulinic acid mg/dL</option>
+<option value="Ferritin mcg/L|54|1|0|">Ferritin mcg/L</option>
+<option value="Ferritin ng/mL|54|1|0|">Ferritin ng/mL</option>
+<option value="Folate ng/mL|55|2.266|0|">Folate ng/mL</option>
+<option value="Folate nmol/L|55|1|0|">Folate nmol/L</option>
+<option value="Galactose mg/dL|56|0.05551|0|">Galactose mg/dL</option>
+<option value="Galactose mmol/L|56|1|0|">Galactose mmol/L</option>
+<option value="Gamma glutamyl transferease (GGT) mcKat/L|57|1|0|">Gamma glutamyl transferease (GGT) mcKat/L</option>
+<option value="Gamma glutamyl transferease (GGT) U/L at 37&#176; C|57|0.017|0|">Gamma glutamyl transferease (GGT) U/L at 37&#176; C</option>
+<option value="Gastrin ng/L|58|1|0|">Gastrin ng/L</option>
+<option value="Gastrin pg/mL|58|1|0|">Gastrin pg/mL</option>
+<option value="Glucose mg/dL|59|0.0555|0|">Glucose mg/dL</option>
+<option value="Glucose mmol/L|59|1|0|">Glucose mmol/L</option>
+<option value="Glutathione mg/dL|60|0.0325|0|">Glutathione mg/dL</option>
+<option value="Glutathione mmol/L|60|1|0|">Glutathione mmol/L</option>
+<option value="Growth hormone mcg/L|61|1|0|">Growth hormone mcg/L</option>
+<option value="Growth hormone ng/mL|61|1|0|">Growth hormone ng/mL</option>
+<option value="Haptoglobin g/L|62|1|0|">Haptoglobin g/L</option>
+<option value="Haptoglobin mg/dL|62|0.01|0|">Haptoglobin mg/dL</option>
+<option value="HDL-cholesterol mg/dL|63|0.0259|0|">HDL-cholesterol mg/dL</option>
+<option value="HDL-cholesterol mmol/L|63|1|0|">HDL-cholesterol mmol/L</option>
+<option value="Human chorionic gonadotropin (HCG) beta-subunit IU/L|64|1|0|">Human chorionic gonadotropin (HCG) beta-subunit IU/L</option>
+<option value="Human chorionic gonadotropin (HCG) beta-subunit mU/mL|64|1|0|">Human chorionic gonadotropin (HCG) beta-subunit mU/mL</option>
+<option value="Hydroxybutyric dehydrogenase kU/L|65|1|0|">Hydroxybutyric dehydrogenase kU/L</option>
+<option value="Hydroxybutyric dehydrogenase U/mL|65|1|0|">Hydroxybutyric dehydrogenase U/mL</option>
+<option value="Insulin mcIU/mL|66|7.175|0|">Insulin mcIU/mL</option>
+<option value="Insulin pmol/L|66|1|0|">Insulin pmol/L</option>
+<option value="Iron binding capacity mcg/dL|68|0.179|0|">Iron binding capacity mcg/dL</option>
+<option value="Iron binding capacity mcmol/L|68|1|0|">Iron binding capacity mcmol/L</option>
+<option value="Iron mcg/dL|67|0.179|0|">Iron mcg/dL</option>
+<option value="Iron mcmol/L|67|1|0|">Iron mcmol/L</option>
+<option value="Iron saturation %|69|0.01|0|">Iron saturation %</option>
+<option value="Iron saturation fraction saturation|69|1|0|">Iron saturation fraction saturation</option>
+<option value="Isocitrate dehydrogenase (ICD) mcKat/L|70|1|0|">Isocitrate dehydrogenase (ICD) mcKat/L</option>
+<option value="Isocitrate dehydrogenase (ICD) U/L|70|0.017|0|">Isocitrate dehydrogenase (ICD) U/L</option>
+<option value="Lactate dehydrogenase (LD) U/L at 37&#176; C|72|1|0|">Lactate dehydrogenase (LD) U/L at 37&#176; C</option>
+<option value="Lactate dehydrogenase (LD) U/L at 37&#176; C|72|1|0|">Lactate dehydrogenase (LD) U/L at 37&#176; C</option>
+<option value="Lactate mg/dL|71|0.111|0|">Lactate mg/dL</option>
+<option value="Lactate mmol/L|71|1|0|">Lactate mmol/L</option>
+<option value="LDL-cholesterol mg/dL|73|0.0259|0|">LDL-cholesterol mg/dL</option>
+<option value="LDL-cholesterol mmol/L|73|1|0|">LDL-cholesterol mmol/L</option>
+<option value="Lead mcg/dL|74|0.0483|0|">Lead mcg/dL</option>
+<option value="Lead mcmol/L|74|1|0|">Lead mcmol/L</option>
+<option value="Leucine aminopeptidase (LAP) mcKat/L|76|1|0|">Leucine aminopeptidase (LAP) mcKat/L</option>
+<option value="Leucine aminopeptidase (LAP) U/L|76|0.017|0|">Leucine aminopeptidase (LAP) U/L</option>
+<option value="Lipase Cherry-Crandal U/L|77|1|0|">Lipase Cherry-Crandal U/L</option>
+<option value="Lipase Cherry-Crandal U/mL|77|278|0|">Lipase Cherry-Crandal U/mL</option>
+<option value="Lipase mcKat/L|78|1|0|">Lipase mcKat/L</option>
+<option value="Lipase U/L|78|0.017|0|">Lipase U/L</option>
+<option value="Lipids total g/L|79|1|0|">Lipids total g/L</option>
+<option value="Lipids total mg/dL|79|0.01|0|">Lipids total mg/dL</option>
+<option value="Luteinizing hormone (LH) IU/L|80|1|0|">Luteinizing hormone (LH) IU/L</option>
+<option value="Luteinizing hormone (LH) mIU/mL|80|1|0|">Luteinizing hormone (LH) mIU/mL</option>
+<option value="Magnesium mg/dL|82|0.411|0|">Magnesium mg/dL</option>
+<option value="Magnesium mmol/L|82|1|0|">Magnesium mmol/L</option>
+<option value="Malic dehydrogenase mcKat/L|83|1|0|">Malic dehydrogenase mcKat/L</option>
+<option value="Malic dehydrogenase U/L|83|0.017|0|">Malic dehydrogenase U/L</option>
+<option value="Methemoglobin g/dL|84|10|0|">Methemoglobin g/dL</option>
+<option value="Methemoglobin g/L|84|1|0|">Methemoglobin g/L</option>
+<option value="Muramidase mg/L|85|1|0|">Muramidase mg/L</option>
+<option value="Muramidase mg/L|85|1|0|">Muramidase mg/L</option>
+<option value="Osmolality mOsm/kg H2O|87|1|0|">Osmolality mOsm/kg H2O</option>
+<option value="Osmolality mOsm/kg H2O|87|1|0|">Osmolality mOsm/kg H2O</option>
+<option value="Osteocalcin mcg/L|88|1|0|">Osteocalcin mcg/L</option>
+<option value="Osteocalcin ng/mL|88|1|0|">Osteocalcin ng/mL</option>
+<option value="Oxygen partial pressure pO2 kPa|89|1|0|">Oxygen partial pressure pO2 kPa</option>
+<option value="Oxygen partial pressure pO2 mm Hg|89|0.133|0|">Oxygen partial pressure pO2 mm Hg</option>
+<option value="Parathyroid hormone (PTH) ng/L|90|1|0|">Parathyroid hormone (PTH) ng/L</option>
+<option value="Parathyroid hormone (PTH) pg/mL|90|1|0|">Parathyroid hormone (PTH) pg/mL</option>
+<option value="PH nEq/L|91|1|0|">PH nEq/L</option>
+<option value="PH nmol/L|91|1|0|">PH nmol/L</option>
+<option value="Phenylalanine mcmol/L|92|1|0|">Phenylalanine mcmol/L</option>
+<option value="Phenylalanine mg/dL|92|60.54|0|">Phenylalanine mg/dL</option>
+<option value="Phosphate inorganic phosphorus mg/dL|93|0.323|0|">Phosphate inorganic phosphorus mg/dL</option>
+<option value="Phosphate inorganic phosphorus mmol/L|93|1|0|">Phosphate inorganic phosphorus mmol/L</option>
+<option value="Porphobilinogen mcg/d|94|4.42|0|">Porphobilinogen mcg/d</option>
+<option value="Porphobilinogen mcmol/d|94|1|0|">Porphobilinogen mcmol/d</option>
+<option value="Potassium mEq/L|95|1|0|">Potassium mEq/L</option>
+<option value="Potassium mmol/L|95|1|0|">Potassium mmol/L</option>
+<option value="Progesterone ng/dL|96|0.0318|0|">Progesterone ng/dL</option>
+<option value="Progesterone nmol/L|96|1|0|">Progesterone nmol/L</option>
+<option value="Prolactin mcg/L|97|1|0|">Prolactin mcg/L</option>
+<option value="Prolactin ng/mL|97|1|0|">Prolactin ng/mL</option>
+<option value="Protein total g/dL|98|10|0|">Protein total g/dL</option>
+<option value="Protein total g/L|98|1|0|">Protein total g/L</option>
+<option value="Protoporphyrin mcmol/L|99|1|0|">Protoporphyrin mcmol/L</option>
+<option value="Protoporphyrin mg/dL|99|0.0178|0|">Protoporphyrin mg/dL</option>
+<option value="Pyruvate mcmol/L|100|1|0|">Pyruvate mcmol/L</option>
+<option value="Pyruvate mg/dL|100|113.6|0|">Pyruvate mg/dL</option>
+<option value="Renin (plasma renin activity PRA) mcg/L/hr|101|1|0|">Renin (plasma renin activity PRA) mcg/L/hr</option>
+<option value="Renin (plasma renin activity PRA) ng/mL/hr|101|1|0|">Renin (plasma renin activity PRA) ng/mL/hr</option>
+<option value="Reverse T3 (rT3) ng/dL|102|0.0154|0|">Reverse T3 (rT3) ng/dL</option>
+<option value="Reverse T3 (rT3) nmol/L|102|1|0|">Reverse T3 (rT3) nmol/L</option>
+<option value="Serotonin mcmol/L|103|1|0|">Serotonin mcmol/L</option>
+<option value="Serotonin ng/mL|103|0.0057|0|">Serotonin ng/mL</option>
+<option value="Sodium mEq/L|104|1|0|">Sodium mEq/L</option>
+<option value="Sodium mmol/L|104|1|0|">Sodium mmol/L</option>
+<option value="Testosterone ng/dL|105|0.0347|0|">Testosterone ng/dL</option>
+<option value="Testosterone nmol/L|105|1|0|">Testosterone nmol/L</option>
+<option value="Thyroglobulin mcg/L|106|1|0|">Thyroglobulin mcg/L</option>
+<option value="Thyroglobulin ng/mL|106|1|0|">Thyroglobulin ng/mL</option>
+<option value="Thyroid stimulating hormone (TSH) mcU/mL|109|1|0|">Thyroid stimulating hormone (TSH) mcU/mL</option>
+<option value="Thyroid stimulating hormone (TSH) mIU/L|109|1|0|">Thyroid stimulating hormone (TSH) mIU/L</option>
+<option value="Thyrotropin releasing hormone (TRH) pg/mL|111|2.759|0|">Thyrotropin releasing hormone (TRH) pg/mL</option>
+<option value="Thyrotropin releasing hormone (TRH) pmol/L|111|1|0|">Thyrotropin releasing hormone (TRH) pmol/L</option>
+<option value="Thyroxine (T4) total mcg/dL|112|12.9|0|">Thyroxine (T4) total mcg/dL</option>
+<option value="Thyroxine (T4) total nmol/L|112|1|0|">Thyroxine (T4) total nmol/L</option>
+<option value="Thyroxine binding globulin (TBG) mg/dL|107|10|0|">Thyroxine binding globulin (TBG) mg/dL</option>
+<option value="Thyroxine binding globulin (TBG) mg/L|107|1|0|">Thyroxine binding globulin (TBG) mg/L</option>
+<option value="Thyroxine free ng/dL|113|12.9|0|">Thyroxine free ng/dL</option>
+<option value="Thyroxine free pmol/L|113|1|0|">Thyroxine free pmol/L</option>
+<option value="Transferrin (TIBC) g/L|114|1|0|">Transferrin (TIBC) g/L</option>
+<option value="Transferrin (TIBC) mg/dL|114|0.01|0|">Transferrin (TIBC) mg/dL</option>
+<option value="Tri-iodothyronine (T3) free nmol/L|115|1|0|">Tri-iodothyronine (T3) free nmol/L</option>
+<option value="Tri-iodothyronine (T3) free pg/mL|115|15.4|0|">Tri-iodothyronine (T3) free pg/mL</option>
+<option value="Triglycerides mg/dL|117|0.0113|0|">Triglycerides mg/dL</option>
+<option value="Triglycerides mmol/L|117|1|0|">Triglycerides mmol/L</option>
+<option value="Urea nitrogen mg/dL|121|0.357|0|">Urea nitrogen mg/dL</option>
+<option value="Urea nitrogen mmol/L urea|121|1|0|">Urea nitrogen mmol/L urea</option>
+<option value="Uric acid mg/dL|122|0.0595|0|">Uric acid mg/dL</option>
+<option value="Uric acid mmol/L|122|1|0|">Uric acid mmol/L</option>
+<option value="Viscocity centipoise|123|1|0|">Viscocity centipoise</option>
+<option value="Viscocity centipoise|123|1|0|">Viscocity centipoise</option>
+<option value="Vitamin A1 mcg/dL|124|0.0349|0|">Vitamin A1 mcg/dL</option>
+<option value="Vitamin A1 mcmol/L|124|1|0|">Vitamin A1 mcmol/L</option>
+<option value="Vitamin B12 (cyanocobalamin) pg/mL|125|0.738|0|">Vitamin B12 (cyanocobalamin) pg/mL</option>
+<option value="Vitamin B12 (cyanocobalamin) pmol/L|125|1|0|">Vitamin B12 (cyanocobalamin) pmol/L</option>
+<option value="Vitamin B12 unsaturated binding capacity pg/mL|126|0.738|0|">Vitamin B12 unsaturated binding capacity pg/mL</option>
+<option value="Vitamin B12 unsaturated binding capacity pmol/L|126|1|0|">Vitamin B12 unsaturated binding capacity pmol/L</option>
+<option value="Vitamin B6 ng/mL|127|5.982|0|">Vitamin B6 ng/mL</option>
+<option value="Vitamin B6 nmol/L|127|1|0|">Vitamin B6 nmol/L</option>
+<option value="Vitamin C (ascorbic acid) mcmol/L|128|1|0|">Vitamin C (ascorbic acid) mcmol/L</option>
+<option value="Vitamin C (ascorbic acid) mg/dL|128|56.78|0|">Vitamin C (ascorbic acid) mg/dL</option>
+<option value="Vitamin D (calciferol 1 25 pg/mL|129|2.4|0|">Vitamin D (calciferol 1 25 pg/mL</option>
+<option value="Vitamin D (calciferol 1 25 pmol/L|129|1|0|">Vitamin D (calciferol 1 25 pmol/L</option>
+<option value="Vitamin D (calciferol 25 ng/mL|130|2.496|0|">Vitamin D (calciferol 25 ng/mL</option>
+<option value="Vitamin D (calciferol 25 nmol/L|130|1|0|">Vitamin D (calciferol 25 nmol/L</option>
+<option value="Vitamin E (tocopherol) ng/mL|131|2.322|0|">Vitamin E (tocopherol) ng/mL</option>
+<option value="Vitamin E (tocopherol) nmol/L|131|1|0|">Vitamin E (tocopherol) nmol/L</option>
+<option value="Xylose (from absorption) mg/dL|132|0.0666|0|">Xylose (from absorption) mg/dL</option>
+<option value="Xylose (from absorption) mmol/L|132|1|0|">Xylose (from absorption) mmol/L</option>
+<option value="Zinc mcg/dL|133|0.153|0|">Zinc mcg/dL</option>
+<option value="Zinc mcmol/L|133|1|0|">Zinc mcmol/L</option>
+<option value="0|0|1|0"></option>
+</select></td></tr></table>
+
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">
+设定小数点的最大显示精确度:
+</span>
+<select name="decpts" onchange="setDecPts();" class="medCalcFontSelect">
+<option>0</option>
+<option selected="selected">1</option>
+<option>2</option>
+<option>3</option>
+</select>
+</div>
+</div>
+</center>
+</form>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><font color="#aa0000">在该计算器中, <b>mcg</b>是<b>微克</b>的缩写.</font></li>
+<li>要进行简单的单位换算，在右侧的下拉选择器中输入起始单位。然后在顶部的<b>从</b>输入方格中输入起始值。要得到换算值，在右下方的选择器中选择新单位。 换算值应即刻出现<b>至</b>方格中。
+</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">使用下列转换系数，
+通过简单的系数相乘进行数据转换。
+</span></li>
+
+</ol>
+</div>
+
+<div class="calc_tables_supp">
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">转换系数</span>
+<br />&nbsp;<br />
+<table border="1" cellpadding="4" cellspacing="0" summary="EBMcalc Table" class="medCalcFontOne">
+
+<tr><td align="left">11-Deoxycorticosterone (DOC) pg/mL</td><td>X</td><td align="center">3.03</td><td>=</td><td align="left">11-Deoxycorticosterone (DOC) pmol/L</td></tr>
+<tr><td align="left">Acetone mg/dL</td><td>X</td><td align="center">172.95</td><td>=</td><td align="left">Acetone mcmol/L</td></tr>
+<tr><td align="left">Adrenocorticotropic hormone ACTH) pg/mL</td><td>X</td><td align="center">0.2202</td><td>=</td><td align="left">Adrenocorticotropic hormone ACTH) pmol/L</td></tr>
+<tr><td align="left">Alanine amino-transferase (ALT SGPT) U/L at 37&#176; C</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Alanine amino-transferase (ALT SGPT) mcKat/L</td></tr>
+<tr><td align="left">Albumin g/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Albumin g/L</td></tr>
+<tr><td align="left">Aldolase U/L</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Aldolase mcKat/L</td></tr>
+<tr><td align="left">Aldosterone ng/dL</td><td>X</td><td align="center">0.0277</td><td>=</td><td align="left">Aldosterone nmol/L</td></tr>
+<tr><td align="left">Alkaline phosphatase U/L</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Alkaline phosphatase mcKat/L</td></tr>
+<tr><td align="left">Alpha-1 Antitrypsin mg/dL</td><td>X</td><td align="center">0.01</td><td>=</td><td align="left">Alpha-1 Antitrypsin g/L</td></tr>
+<tr><td align="left">Alpha-Fetoprotein (AFP) mcg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Alpha-Fetoprotein (AFP) mg/dL</td><td>X</td><td align="center">0.01</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Alpha-Fetoprotein (AFP) mg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Alpha-Fetoprotein (AFP) mg/L</td></tr>
+<tr><td align="left">Alpha-Fetoprotein (AFP) ng/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Alpha-Fetoprotein (AFP) ng/L</td></tr>
+<tr><td align="left">Ammonia mcg N/dL</td><td>X</td><td align="center">0.714</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Ammonia mcg NH3/dL</td><td>X</td><td align="center">0.5872</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Amylase U/L</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Amylase mcKat/L</td></tr>
+<tr><td align="left">Androstenedione ng/dL</td><td>X</td><td align="center">34.92</td><td>=</td><td align="left">Androstenedione pmol/L</td></tr>
+<tr><td align="left">Angiotensin converting enzyme (ACE) U/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Angiotensin converting enzyme (ACE) nmoL/min/mL</td></tr>
+<tr><td align="left">Angiotensin II ng/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Angiotensin II ng/L</td></tr>
+<tr><td align="left">Antidiuretic hormone (ADH) pg/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Antidiuretic hormone (ADH) ng/L</td></tr>
+<tr><td align="left">Apolipoprotein A1 mg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Apolipoprotein A1 mg/L</td></tr>
+<tr><td align="left">Apolipoprotein B mg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Apolipoprotein B mg/L</td></tr>
+<tr><td align="left">Aspartate amino-transferase (AST SGOT) U/L at 37&#176; C</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Aspartate amino-transferase (AST SGOT) mcKat/L</td></tr>
+<tr><td align="left">Bicarbonate mmol/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Bicarbonate mEq/L</td></tr>
+<tr><td align="left">Bilirubin mg/dL</td><td>X</td><td align="center">17.1</td><td>=</td><td align="left">Bilirubin mcmol/L</td></tr>
+<tr><td align="left">Calcitonin pg/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Calcitonin ng/L</td></tr>
+<tr><td align="left">Calcium ionized mg/dL</td><td>X</td><td align="center">0.25</td><td>=</td><td align="left">Calcium ionized mmol/L</td></tr>
+<tr><td align="left">Calcium mEq/L</td><td>X</td><td align="center">0.5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Calcium mg/dL</td><td>X</td><td align="center">0.25</td><td>=</td><td align="left">Calcium mmol/L</td></tr>
+<tr><td align="left">Carbon dioxide partial pressure pCO2 mm Hg</td><td>X</td><td align="center">0.133</td><td>=</td><td align="left">Carbon dioxide partial pressure pCO2 kPa</td></tr>
+<tr><td align="left">Carbon dioxide total mmol/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Carbon dioxide total mEq/L</td></tr>
+<tr><td align="left">Carcinoembryonic Antigen (CEA) mg/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Carcinoembryonic Antigen (CEA) mcg/mL</td></tr>
+<tr><td align="left">Carotene mcg/dL</td><td>X</td><td align="center">0.0186</td><td>=</td><td align="left">Carotene mcmol/L</td></tr>
+<tr><td align="left">Catecholamines fractionated - epinephrine pg/mL</td><td>X</td><td align="center">5.458</td><td>=</td><td align="left">Catecholamines fractionated - epinephrine pmol/L</td></tr>
+<tr><td align="left">Catecholamines fractionated - norepinephrine pg/mL</td><td>X</td><td align="center">0.0059</td><td>=</td><td align="left">Catecholamines fractionated - norepinephrine nmol/L</td></tr>
+<tr><td align="left">Ceruloplasmin mg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Ceruloplasmin mg/L</td></tr>
+<tr><td align="left">Cholesterol mg/dL</td><td>X</td><td align="center">0.0259</td><td>=</td><td align="left">Cholesterol mmol/L</td></tr>
+<tr><td align="left">Copper mcg/dL</td><td>X</td><td align="center">0.157</td><td>=</td><td align="left">Copper mcmol/L</td></tr>
+<tr><td align="left">Coproporphyrins mcg/dL</td><td>X</td><td align="center">15</td><td>=</td><td align="left">Coproporphyrins nmol/L</td></tr>
+<tr><td align="left">Cortisol mcg/dL</td><td>X</td><td align="center">0.028</td><td>=</td><td align="left">Cortisol mcmol/L</td></tr>
+<tr><td align="left">Cortisol ng/mL</td><td>X</td><td align="center">2.76</td><td>=</td><td align="left">Cortisol nmol/L</td></tr>
+<tr><td align="left">Creatine kinase U/L at 37&#176; C</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Creatine kinase mcKat/L</td></tr>
+<tr><td align="left">Creatine mg/dL</td><td>X</td><td align="center">76.3</td><td>=</td><td align="left">Creatine mcmol/L</td></tr>
+<tr><td align="left">Creatinine clearance mL/min/1.73 m^2</td><td>X</td><td align="center">0.0096</td><td>=</td><td align="left">Creatinine clearance mL/sec/m^2</td></tr>
+<tr><td align="left">Creatinine mg/dL</td><td>X</td><td align="center">88.4</td><td>=</td><td align="left">Creatinine mcmol/L</td></tr>
+<tr><td align="left">Cyclic Adenosine monophosphate (cAMP) mcg/L</td><td>X</td><td align="center">3.04</td><td>=</td><td align="left">Cyclic Adenosine monophosphate (cAMP) nmol/L</td></tr>
+<tr><td align="left">Dehydroepiandrosterone sulfate (DHEA-S) mcg/mL</td><td>X</td><td align="center">2.6</td><td>=</td><td align="left">Dehydroepiandrosterone sulfate (DHEA-S) mcmol/L</td></tr>
+<tr><td align="left">Delta-Aminolevulinic acid mg/dL</td><td>X</td><td align="center">76.26</td><td>=</td><td align="left">Delta-Aminolevulinic acid mcmol/L</td></tr>
+<tr><td align="left">Ferritin ng/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Ferritin mcg/L</td></tr>
+<tr><td align="left">Folate ng/mL</td><td>X</td><td align="center">2.266</td><td>=</td><td align="left">Folate nmol/L</td></tr>
+<tr><td align="left">Galactose mg/dL</td><td>X</td><td align="center">0.05551</td><td>=</td><td align="left">Galactose mmol/L</td></tr>
+<tr><td align="left">Gamma glutamyl transferease (GGT) U/L at 37&#176; C</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Gamma glutamyl transferease (GGT) mcKat/L</td></tr>
+<tr><td align="left">Gastrin pg/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Gastrin ng/L</td></tr>
+<tr><td align="left">Glucose mg/dL</td><td>X</td><td align="center">0.0555</td><td>=</td><td align="left">Glucose mmol/L</td></tr>
+<tr><td align="left">Glutathione mg/dL</td><td>X</td><td align="center">0.0325</td><td>=</td><td align="left">Glutathione mmol/L</td></tr>
+<tr><td align="left">Growth hormone ng/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Growth hormone mcg/L</td></tr>
+<tr><td align="left">Haptoglobin mg/dL</td><td>X</td><td align="center">0.01</td><td>=</td><td align="left">Haptoglobin g/L</td></tr>
+<tr><td align="left">HDL-cholesterol mg/dL</td><td>X</td><td align="center">0.0259</td><td>=</td><td align="left">HDL-cholesterol mmol/L</td></tr>
+<tr><td align="left">Human chorionic gonadotropin (HCG) beta-subunit mU/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Human chorionic gonadotropin (HCG) beta-subunit IU/L</td></tr>
+<tr><td align="left">Hydroxybutyric dehydrogenase U/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Hydroxybutyric dehydrogenase kU/L</td></tr>
+<tr><td align="left">Insulin mcIU/mL</td><td>X</td><td align="center">7.175</td><td>=</td><td align="left">Insulin pmol/L</td></tr>
+<tr><td align="left">Iron binding capacity mcg/dL</td><td>X</td><td align="center">0.179</td><td>=</td><td align="left">Iron binding capacity mcmol/L</td></tr>
+<tr><td align="left">Iron mcg/dL</td><td>X</td><td align="center">0.179</td><td>=</td><td align="left">Iron mcmol/L</td></tr>
+<tr><td align="left">Iron saturation %</td><td>X</td><td align="center">0.01</td><td>=</td><td align="left">Iron saturation fraction saturation</td></tr>
+<tr><td align="left">Isocitrate dehydrogenase (ICD) U/L</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Isocitrate dehydrogenase (ICD) mcKat/L</td></tr>
+<tr><td align="left">Lactate mg/dL</td><td>X</td><td align="center">0.111</td><td>=</td><td align="left">Lactate mmol/L</td></tr>
+<tr><td align="left">LDL-cholesterol mg/dL</td><td>X</td><td align="center">0.0259</td><td>=</td><td align="left">LDL-cholesterol mmol/L</td></tr>
+<tr><td align="left">Lead mcg/dL</td><td>X</td><td align="center">0.0483</td><td>=</td><td align="left">Lead mcmol/L</td></tr>
+<tr><td align="left">Leucine aminopeptidase (LAP) U/L</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Leucine aminopeptidase (LAP) mcKat/L</td></tr>
+<tr><td align="left">Lipase Cherry-Crandal U/mL</td><td>X</td><td align="center">278</td><td>=</td><td align="left">Lipase Cherry-Crandal U/L</td></tr>
+<tr><td align="left">Lipase U/L</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Lipase mcKat/L</td></tr>
+<tr><td align="left">Lipids total mg/dL</td><td>X</td><td align="center">0.01</td><td>=</td><td align="left">Lipids total g/L</td></tr>
+<tr><td align="left">Luteinizing hormone (LH) mIU/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Luteinizing hormone (LH) IU/L</td></tr>
+<tr><td align="left">Magnesium mg/dL</td><td>X</td><td align="center">0.411</td><td>=</td><td align="left">Magnesium mmol/L</td></tr>
+<tr><td align="left">Malic dehydrogenase U/L</td><td>X</td><td align="center">0.017</td><td>=</td><td align="left">Malic dehydrogenase mcKat/L</td></tr>
+<tr><td align="left">Methemoglobin g/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Methemoglobin g/L</td></tr>
+<tr><td align="left">Osteocalcin ng/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Osteocalcin mcg/L</td></tr>
+<tr><td align="left">Oxygen partial pressure pO2 mm Hg</td><td>X</td><td align="center">0.133</td><td>=</td><td align="left">Oxygen partial pressure pO2 kPa</td></tr>
+<tr><td align="left">Parathyroid hormone (PTH) pg/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Parathyroid hormone (PTH) ng/L</td></tr>
+<tr><td align="left">PH nmol/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">PH nEq/L</td></tr>
+<tr><td align="left">Phenylalanine mg/dL</td><td>X</td><td align="center">60.54</td><td>=</td><td align="left">Phenylalanine mcmol/L</td></tr>
+<tr><td align="left">Phosphate inorganic phosphorus mg/dL</td><td>X</td><td align="center">0.323</td><td>=</td><td align="left">Phosphate inorganic phosphorus mmol/L</td></tr>
+<tr><td align="left">Porphobilinogen mcg/d</td><td>X</td><td align="center">4.42</td><td>=</td><td align="left">Porphobilinogen mcmol/d</td></tr>
+<tr><td align="left">Potassium mmol/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Potassium mEq/L</td></tr>
+<tr><td align="left">Progesterone ng/dL</td><td>X</td><td align="center">0.0318</td><td>=</td><td align="left">Progesterone nmol/L</td></tr>
+<tr><td align="left">Prolactin ng/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Prolactin mcg/L</td></tr>
+<tr><td align="left">Protein total g/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Protein total g/L</td></tr>
+<tr><td align="left">Protoporphyrin mg/dL</td><td>X</td><td align="center">0.0178</td><td>=</td><td align="left">Protoporphyrin mcmol/L</td></tr>
+<tr><td align="left">Pyruvate mg/dL</td><td>X</td><td align="center">113.6</td><td>=</td><td align="left">Pyruvate mcmol/L</td></tr>
+<tr><td align="left">Renin (plasma renin activity PRA) ng/mL/hr</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Renin (plasma renin activity PRA) mcg/L/hr</td></tr>
+<tr><td align="left">Reverse T3 (rT3) ng/dL</td><td>X</td><td align="center">0.0154</td><td>=</td><td align="left">Reverse T3 (rT3) nmol/L</td></tr>
+<tr><td align="left">Serotonin ng/mL</td><td>X</td><td align="center">0.0057</td><td>=</td><td align="left">Serotonin mcmol/L</td></tr>
+<tr><td align="left">Sodium mmol/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Sodium mEq/L</td></tr>
+<tr><td align="left">Testosterone ng/dL</td><td>X</td><td align="center">0.0347</td><td>=</td><td align="left">Testosterone nmol/L</td></tr>
+<tr><td align="left">Thyroglobulin ng/mL</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Thyroglobulin mcg/L</td></tr>
+<tr><td align="left">Thyroid stimulating hormone (TSH) mIU/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Thyroid stimulating hormone (TSH) mcU/mL</td></tr>
+<tr><td align="left">Thyrotropin releasing hormone (TRH) pg/mL</td><td>X</td><td align="center">2.759</td><td>=</td><td align="left">Thyrotropin releasing hormone (TRH) pmol/L</td></tr>
+<tr><td align="left">Thyroxine (T4) total mcg/dL</td><td>X</td><td align="center">12.9</td><td>=</td><td align="left">Thyroxine (T4) total nmol/L</td></tr>
+<tr><td align="left">Thyroxine binding globulin (TBG) mg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Thyroxine binding globulin (TBG) mg/L</td></tr>
+<tr><td align="left">Thyroxine free ng/dL</td><td>X</td><td align="center">12.9</td><td>=</td><td align="left">Thyroxine free pmol/L</td></tr>
+<tr><td align="left">Transferrin (TIBC) mg/dL</td><td>X</td><td align="center">0.01</td><td>=</td><td align="left">Transferrin (TIBC) g/L</td></tr>
+<tr><td align="left">Tri-iodothyronine (T3) free pg/mL</td><td>X</td><td align="center">15.4</td><td>=</td><td align="left">Tri-iodothyronine (T3) free nmol/L</td></tr>
+<tr><td align="left">Triglycerides mg/dL</td><td>X</td><td align="center">0.0113</td><td>=</td><td align="left">Triglycerides mmol/L</td></tr>
+<tr><td align="left">Urea nitrogen mg/dL</td><td>X</td><td align="center">0.357</td><td>=</td><td align="left">Urea nitrogen mmol/L urea</td></tr>
+<tr><td align="left">Uric acid mg/dL</td><td>X</td><td align="center">0.0595</td><td>=</td><td align="left">Uric acid mmol/L</td></tr>
+<tr><td align="left">Vitamin A1 mcg/dL</td><td>X</td><td align="center">0.0349</td><td>=</td><td align="left">Vitamin A1 mcmol/L</td></tr>
+<tr><td align="left">Vitamin B12 (cyanocobalamin) pg/mL</td><td>X</td><td align="center">0.738</td><td>=</td><td align="left">Vitamin B12 (cyanocobalamin) pmol/L</td></tr>
+<tr><td align="left">Vitamin B12 unsaturated binding capacity pg/mL</td><td>X</td><td align="center">0.738</td><td>=</td><td align="left">Vitamin B12 unsaturated binding capacity pmol/L</td></tr>
+<tr><td align="left">Vitamin B6 ng/mL</td><td>X</td><td align="center">5.982</td><td>=</td><td align="left">Vitamin B6 nmol/L</td></tr>
+<tr><td align="left">Vitamin C (ascorbic acid) mg/dL</td><td>X</td><td align="center">56.78</td><td>=</td><td align="left">Vitamin C (ascorbic acid) mcmol/L</td></tr>
+<tr><td align="left">Vitamin D (calciferol 1 25 pg/mL</td><td>X</td><td align="center">2.4</td><td>=</td><td align="left">Vitamin D (calciferol 1 25 pmol/L</td></tr>
+<tr><td align="left">Vitamin D (calciferol 25 ng/mL</td><td>X</td><td align="center">2.496</td><td>=</td><td align="left">Vitamin D (calciferol 25 nmol/L</td></tr>
+<tr><td align="left">Vitamin E (tocopherol) ng/mL</td><td>X</td><td align="center">2.322</td><td>=</td><td align="left">Vitamin E (tocopherol) nmol/L</td></tr>
+<tr><td align="left">Xylose (from absorption) mg/dL</td><td>X</td><td align="center">0.0666</td><td>=</td><td align="left">Xylose (from absorption) mmol/L</td></tr>
+<tr><td align="left">Zinc mcg/dL</td><td>X</td><td align="center">0.153</td><td>=</td><td align="left">Zinc mcmol/L</td></tr>
+
+</table>
+</div>
+<br />&nbsp;<br /><div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div></div>
+</body>
+</html>
+
+<!-- 1662471520 //-->

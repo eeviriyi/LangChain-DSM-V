@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>不稳定型心绞痛的结局预测</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="cardiology, critical care, prognosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+UnstableAnginaOutcome_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+UnstableAnginaOutcome_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function UnstableAnginaOutcome_fx() {
+with(document.UnstableAnginaOutcome_form){
+
+Score = 0.0;
+doCalc = true;
+
+if (cc1.checked){
+Score = Score + 1;
+}
+if (cc2.checked){
+Score = Score + 1;
+}
+if (cc3.checked){
+Score = Score + 1;
+}
+if (cc4.checked){
+Score = Score + 1;
+}
+if (cc5.checked){
+Score = Score + 1;
+}
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.UnstableAnginaOutcome_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 1)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 2) && (Score <= 2)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 3) && (Score <= 3)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 4) && (Score <= 5)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="UnstableAnginaOutcome_form" id="UnstableAnginaOutcome_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+不稳定型心绞痛的结局预测
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel1" name="cc1" onclick="UnstableAnginaOutcome_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel1');" >患者年龄大于 65 岁 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel2" name="cc2" onclick="UnstableAnginaOutcome_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel2');" >患者既往接受过冠状动脉旁路移植术 (CABG) (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel3" name="cc3" onclick="UnstableAnginaOutcome_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel3');" >患者服用过阿司匹林 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel4" name="cc4" onclick="UnstableAnginaOutcome_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel4');" >患者服用过 β 受体阻滞剂 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel5" name="cc5" onclick="UnstableAnginaOutcome_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel5');" >心电图 (EKG) 显示 ST 段压低 (1 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+出现不良结局的风险
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 1 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">风险为 6.5%</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">2 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">风险为 14.6%</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">3 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">风险为 22.7%</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">4 - 5 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">风险为 37.1%</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>不良结局是指最初发病后 7 天内出现以下情况之一：1) 难治性缺血；2) 心肌梗死；和 3) 死亡。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Sabatine MS, Januzzi JL, Snapinn S, et al. A risk score system for predicting adverse outcomes and magnitude of benefit with glycoprotein IIb/IIIa inhibitor therapy in patients with unstable angina pectoris. <i>Am J Cardiol</i>. 2001; 88: 488-92. PubMed ID: 11524055 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11524055"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471529 //-->

@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>SIRS 标准：全身炎症反应综合征</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="covid, critical care, sepsis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+SIRS_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+SIRS_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function SIRS_fx() {
+
+with(document.SIRS_form){
+
+
+doCalc = true;
+param_value = parseFloat(Temperature_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Temperature_unit.options[Temperature_unit.selectedIndex].value.split('|');
+Temperature = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Pulse_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Pulse_unit.options[Pulse_unit.selectedIndex].value.split('|');
+Pulse = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Respiratory_Rate_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Respiratory_Rate_unit.options[Respiratory_Rate_unit.selectedIndex].value.split('|');
+Respiratory_Rate = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(PaCO2_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = PaCO2_unit.options[PaCO2_unit.selectedIndex].value.split('|');
+PaCO2 = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(WBC_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = WBC_unit.options[WBC_unit.selectedIndex].value.split('|');
+WBC = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(WBC_Band_Percent_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = WBC_Band_Percent_unit.options[WBC_Band_Percent_unit.selectedIndex].value.split('|');
+WBC_Band_Percent = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = 0;
+
+if (Temperature>38){
+Temp_Factor = 1;
+}
+else 
+if (Temperature>=36){
+Temp_Factor = 0;
+}
+else{ Temp_Factor = 1;
+}
+if (Pulse>90){
+Pulse_Factor = 1;
+}
+else{ Pulse_Factor = 0;
+}var WBC_Factor = 0;
+var Resp_Factor = 0;
+if ((Respiratory_Rate > 20) || (PaCO2 < 32)) Resp_Factor = 1;
+if ((WBC < 4000) || (WBC > 12000) || (WBC_Band_Percent > 10)) WBC_Factor = 1;
+SIRS_Score =  Temp_Factor + Pulse_Factor + WBC_Factor + Resp_Factor;
+
+unit_parts = SIRS_Score_unit.options[SIRS_Score_unit.selectedIndex].value.split('|');
+if (doCalc) SIRS_Score_param.value = fixDP((SIRS_Score - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+if (doCalc){
+rrclr();
+if ((SIRS_Score >= 0) && (SIRS_Score <= 1)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((SIRS_Score >= 2) && (SIRS_Score <= 4)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+
+
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.SIRS_form){
+
+if (Temperature_param.value && isNaN(Temperature_param.value)){ clrValue(Temperature_param); alertNaN('体温'); }
+if (Pulse_param.value && isNaN(Pulse_param.value)){ clrValue(Pulse_param); alertNaN('脉搏'); }
+if (Respiratory_Rate_param.value && isNaN(Respiratory_Rate_param.value)){ clrValue(Respiratory_Rate_param); alertNaN('呼吸频率'); }
+if (PaCO2_param.value && isNaN(PaCO2_param.value)){ clrValue(PaCO2_param); alertNaN('PaCO<sub>2</sub>'); }
+if (WBC_param.value && isNaN(WBC_param.value)){ clrValue(WBC_param); alertNaN('WBC'); }
+if (WBC_Band_Percent_param.value && isNaN(WBC_Band_Percent_param.value)){ clrValue(WBC_Band_Percent_param); alertNaN('WBC 杆状核百分比'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.SIRS_form){
+
+SIRS_Score_param.value = '';
+
+rrclr();
+
+}
+
+}
+
+var Temperature = null,
+Pulse = null,
+Respiratory_Rate = null,
+PaCO2 = null,
+WBC = null,
+WBC_Band_Percent = null,
+SIRS_Score = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="SIRS_form" id="SIRS_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="SIRS_fx();" onreset="rrclr();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+SIRS 标准：全身炎症反应综合征
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">体温</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Temperature_param" size="6" value="" onblur="SIRS_fx(); minMaxCheck();" onchange="SIRS_fx();" /></td>
+<td align="left" valign="top"> <select name="Temperature_unit" onchange="SIRS_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|degC" selected="selected">degC</option>
+<option value="0.555555555555556|-17.7777777777778|degF">degF</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">脉搏</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Pulse_param" size="6" value="" onblur="SIRS_fx(); minMaxCheck();" onchange="SIRS_fx();" /></td>
+<td align="left" valign="top"> <select name="Pulse_unit" onchange="SIRS_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|beats/min" selected="selected">beats/min</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">呼吸频率</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Respiratory_Rate_param" size="6" value="" onblur="SIRS_fx(); minMaxCheck();" onchange="SIRS_fx();" /></td>
+<td align="left" valign="top"> <select name="Respiratory_Rate_unit" onchange="SIRS_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|breaths/min" selected="selected">breaths/min</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">PaCO<sub>2</sub></span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="PaCO2_param" size="6" value="" onblur="SIRS_fx(); minMaxCheck();" onchange="SIRS_fx();" /></td>
+<td align="left" valign="top"> <select name="PaCO2_unit" onchange="SIRS_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">WBC</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="WBC_param" size="6" value="" onblur="SIRS_fx(); minMaxCheck();" onchange="SIRS_fx();" /></td>
+<td align="left" valign="top"> <select name="WBC_unit" onchange="SIRS_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|#/mcL">#/mcL</option>
+<option value="1|0|#/microL" selected="selected">#/microL</option>
+<option value="1|0|/mcL">/mcL</option>
+<option value="1|0|/microL">/microL</option>
+<option value="1000|0|10E+9/L">10E+9/L</option>
+<option value="1000000|0|Mill/mcl">Mill/mcl</option>
+<option value="1000|0|Thous/mcL">Thous/mcL</option>
+<option value="1000|0|X10E+09/L">X10E+09/L</option>
+<option value="1|0|cells/mcL">cells/mcL</option>
+<option value="1|0|cells/microL">cells/microL</option>
+<option value="1000|0|x10(3)/mcL">x10(3)/mcL</option>
+<option value="1000|0|x10(3)/microL">x10(3)/microL</option>
+<option value="1|0|x10(6)/L">x10(6)/L</option>
+<option value="1000000|0|x10(6)/mcL">x10(6)/mcL</option>
+<option value="1000000|0|x10(6)/microL">x10(6)/microL</option>
+<option value="1000|0|x10(9)/L">x10(9)/L</option>
+<option value="1000|0|x1000/mm3">x1000/mm3</option>
+<option value="1000|0|x10^3/mcL">x10^3/mcL</option>
+<option value="1000|0|x10^3/microL">x10^3/microL</option>
+<option value="1|0|x10^6/L">x10^6/L</option>
+<option value="1000000|0|x10^6/mcL">x10^6/mcL</option>
+<option value="1000000|0|x10^6/microL">x10^6/microL</option>
+<option value="1000|0|x10^9/L">x10^9/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">WBC 杆状核百分比</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="WBC_Band_Percent_param" size="6" value="" onblur="SIRS_fx(); minMaxCheck();" onchange="SIRS_fx();" /></td>
+<td align="left" valign="top"> <select name="WBC_Band_Percent_unit" onchange="SIRS_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|ratio">ratio</option>
+</select></td></tr>
+
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">SIRS 评分</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="SIRS_Score_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="SIRS_Score_unit" onchange="SIRS_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|#">#</option>
+<option value="1|0|index">index</option>
+<option value="1|0|none">none</option>
+<option value="1|0|number">number</option>
+<option value="1|0|points" selected="selected">points</option>
+<option value="1|0|score">score</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+SIRS 解释
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 1 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">不存在 SIRS</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">2 - 4 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">存在 SIRS</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">SIRS评分 = 体温系数 + 脉搏系数 + WBC系数 + 呼吸系数</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+<br />&nbsp;<br />
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">计算详情和变量</span>
+<ul class="medCalcFontOne">
+<li><b>体温系数</b> 是通过此有序逻辑分配的数值: <ul><li><span style="white-space: nowrap;">如果 <b>体温</b> &gt;38 degC <b>体温系数</b> = 1</span></li><li><span style="white-space: nowrap;">否则，如果 <b>体温</b> &ge;36 degC <b>体温系数</b> = 0</span></li><li><span style="white-space: nowrap;">否则 <b>体温系数</b> = 1.</span></li></ul></li><li><b>脉搏系数</b> 是通过此有序逻辑分配的数值: <ul><li><span style="white-space: nowrap;">如果 <b>脉搏</b> &gt;90 beats/min <b>脉搏系数</b> = 1</span></li><li><span style="white-space: nowrap;">否则 <b>脉搏系数</b> = 0.</span></li></ul></li><li>当<b>呼吸频率</b> &gt;20 次/分或  <b>PaCO<sub>2</sub></b> &lt;20 mmHg 时，<b>呼吸系数</b>设为 1。否则<b>呼吸系数</b>设为 0。</li>
+<li>如果 <b>WBC</b> 为 &lt;4,000 #/microL，<b>WBC</b>  &gt;12,000 #/microL 或 <b>WBC 杆状核百分比</b>为 &gt;10%，则 <b>WBC 系数</b>设为 1。否则 <b>WBC 系数</b>设为 0。</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Bone RC, Balk RA, Cerra FB, et al. Definitions for sepsis and organ failure and  guidelines for the use of innovative therapies in sepsis. <i>Chest</i>. 1992 Jun;101(6):1644-55. PubMed ID: 1303622 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/1303622"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+with(document.SIRS_form){
+var Temp_Factor = 0;
+var Pulse_Factor = 0;
+
+}
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- 1662471519 //-->

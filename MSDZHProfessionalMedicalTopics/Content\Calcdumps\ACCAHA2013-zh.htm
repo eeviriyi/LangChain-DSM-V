@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>心血管风险评估（10年，ACC/AHA 2013)</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="sst, opti, acpjc, cardiac, endocrin, patient, epidem, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+ACCAHA2013_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+ACCAHA2013_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function ACCAHA2013_fx() {
+
+with(document.ACCAHA2013_form){
+
+
+doCalc = true;
+rbchk = false;
+if (Race_radio[0].checked){ rbchk = true; Race = 0;  }
+if (Race_radio[1].checked){ rbchk = true; Race = 1;  }
+if (Race_radio[2].checked){ rbchk = true; Race = 1;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Sex_radio[0].checked){ rbchk = true; if (Race == 0) {C_Age = 17.114; C_Sq_Age = 0; C_Total_Chol = 0.94; C_Age_Total_Chol = 0; C_HDL_Chol = -18.92; C_Age_HDL_Chol = 4.475;  C_On_Hypertension_Meds = 29.291; C_Age_On_Hypertension_Meds = -6.432; C_Off_Hypertension_Meds = 27.82; C_Age_Off_Hypertension_Meds = -6.087;  C_Smoker = 0.691; C_Age_Smoker = 0; C_Diabetes = 0.874; S10 = 0.9533; Mean_Terms = 86.61;};  if (Race == 1) {C_Age = -29.799; C_Sq_Age = 4.884; C_Total_Chol = 13.54; C_Age_Total_Chol = -3.114; C_HDL_Chol = -13.578; C_Age_HDL_Chol = 3.149;  C_On_Hypertension_Meds = 2.019; C_Age_On_Hypertension_Meds = 0; C_Off_Hypertension_Meds = 1.957; C_Age_Off_Hypertension_Meds = 0;  C_Smoker = 7.574; C_Age_Smoker = -1.665; C_Diabetes = 0.661; S10 = 0.9665; Mean_Terms = -29.18;}; }
+if (Sex_radio[1].checked){ rbchk = true; if (Race == 0) {C_Age = 2.469; C_Sq_Age = 0; C_Total_Chol = 0.302; C_Age_Total_Chol = 0; C_HDL_Chol = -0.307; C_Age_HDL_Chol = 0;  C_On_Hypertension_Meds = 1.916; C_Age_On_Hypertension_Meds = 0; C_Off_Hypertension_Meds = 1.809; C_Age_Off_Hypertension_Meds = 0;  C_Smoker = 0.549; C_Age_Smoker = 0; C_Diabetes = 0.645; S10 = 0.8954; Mean_Terms = 19.54;};  if (Race == 1) {C_Age = 12.344; C_Sq_Age = 0; C_Total_Chol = 11.853; C_Age_Total_Chol = -2.664; C_HDL_Chol = -7.99; C_Age_HDL_Chol = 1.769;  C_On_Hypertension_Meds = 1.797; C_Age_On_Hypertension_Meds = 0; C_Off_Hypertension_Meds = 1.764; C_Age_Off_Hypertension_Meds = 0;  C_Smoker = 7.837; C_Age_Smoker = -1.795; C_Diabetes = 0.658; S10 = 0.9144; Mean_Terms = 61.18;}; }
+if (!rbchk) doCalc = false;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Total_Cholesterol_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Total_Cholesterol_unit.options[Total_Cholesterol_unit.selectedIndex].value.split('|');
+Total_Cholesterol = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(HDL_Cholesterol_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = HDL_Cholesterol_unit.options[HDL_Cholesterol_unit.selectedIndex].value.split('|');
+HDL_Cholesterol = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Systolic_Blood_Pressure_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Systolic_Blood_Pressure_unit.options[Systolic_Blood_Pressure_unit.selectedIndex].value.split('|');
+Systolic_Blood_Pressure = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+rbchk = false;
+if (On_Hypertension_Med_radio[0].checked){ rbchk = true; On_Hypertension_Med = 0;  }
+if (On_Hypertension_Med_radio[1].checked){ rbchk = true; On_Hypertension_Med = 1;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Diabetes_radio[0].checked){ rbchk = true; Diabetes = 0;  }
+if (Diabetes_radio[1].checked){ rbchk = true; Diabetes = 1;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Smoker_radio[0].checked){ rbchk = true; Smoker = 0;  }
+if (Smoker_radio[1].checked){ rbchk = true; Smoker = 1;  }
+if (!rbchk) doCalc = false;
+dp = decpts.options[decpts.selectedIndex].text;
+Terms =  (C_Age * ln(Age)) + (C_Sq_Age * sq(ln(Age))) +  (C_Total_Chol * ln(Total_Cholesterol)) + (C_Age_Total_Chol * ln(Age) * ln(Total_Cholesterol)) +  (C_HDL_Chol * ln(HDL_Cholesterol)) + (C_Age_HDL_Chol * ln(Age) * ln(HDL_Cholesterol)) +  (On_Hypertension_Med * C_On_Hypertension_Meds * ln(Systolic_Blood_Pressure)) + (On_Hypertension_Med * C_Age_On_Hypertension_Meds * ln(Age) * ln(Systolic_Blood_Pressure)) +  (!On_Hypertension_Med * C_Off_Hypertension_Meds * ln(Systolic_Blood_Pressure)) + (!On_Hypertension_Med * C_Age_Off_Hypertension_Meds * ln(Age) * ln(Systolic_Blood_Pressure)) +  (C_Smoker * Smoker) + (C_Age_Smoker * ln(Age) * Smoker) + (C_Diabetes * Diabetes);
+
+Ten_Year_Risk =  100 * (1 - power(S10, eTo(Terms - Mean_Terms)));
+
+unit_parts = Ten_Year_Risk_unit.options[Ten_Year_Risk_unit.selectedIndex].value.split('|');
+if (doCalc) Ten_Year_Risk_param.value = fixDP((Ten_Year_Risk - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.ACCAHA2013_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('年龄'); }
+if (Age_param.value && (Age < (20 - 0.00001))) {
+Age = 0;
+clrValue(Age_param);
+clrResults();
+doCalc = false;
+ alert("最小值 年龄 是 20 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Age_param.value && Age > 79) {
+clrValue(Age_param);
+clrResults();
+Age = 0;
+doCalc = false;
+ alert("最大值 年龄 是 79 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Total_Cholesterol_param.value && isNaN(Total_Cholesterol_param.value)){ clrValue(Total_Cholesterol_param); alertNaN('总胆固醇'); }
+if (Total_Cholesterol_param.value && (Total_Cholesterol < (100 - 0.00001))) {
+Total_Cholesterol = 0;
+clrValue(Total_Cholesterol_param);
+clrResults();
+doCalc = false;
+ alert("最小值 总胆固醇 是 100 mg/dL.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Total_Cholesterol_param.value && Total_Cholesterol > 1000) {
+clrValue(Total_Cholesterol_param);
+clrResults();
+Total_Cholesterol = 0;
+doCalc = false;
+ alert("最大值 总胆固醇 是 1000 mg/dL.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (HDL_Cholesterol_param.value && isNaN(HDL_Cholesterol_param.value)){ clrValue(HDL_Cholesterol_param); alertNaN('高密度脂蛋白胆固醇'); }
+if (Systolic_Blood_Pressure_param.value && isNaN(Systolic_Blood_Pressure_param.value)){ clrValue(Systolic_Blood_Pressure_param); alertNaN('收缩期血压'); }
+if (Systolic_Blood_Pressure_param.value && (Systolic_Blood_Pressure < (95 - 0.00001))) {
+Systolic_Blood_Pressure = 0;
+clrValue(Systolic_Blood_Pressure_param);
+clrResults();
+doCalc = false;
+ alert("最小值 收缩期血压 是 95 mmHg.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Systolic_Blood_Pressure_param.value && Systolic_Blood_Pressure > 300) {
+clrValue(Systolic_Blood_Pressure_param);
+clrResults();
+Systolic_Blood_Pressure = 0;
+doCalc = false;
+ alert("最大值 收缩期血压 是 300 mmHg.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.ACCAHA2013_form){
+
+Ten_Year_Risk_param.value = '';
+
+
+}
+
+}
+
+var Race = null,
+Age = null,
+Total_Cholesterol = null,
+HDL_Cholesterol = null,
+Systolic_Blood_Pressure = null,
+On_Hypertension_Med = null,
+Diabetes = null,
+Smoker = null,
+Terms = null,
+Ten_Year_Risk = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="ACCAHA2013_form" id="ACCAHA2013_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="ACCAHA2013_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+心血管风险评估（10年，ACC/AHA 2013)
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">种族</span></td>
+<td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel1" value="非裔美国人|0" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel1');"> 非裔美国人</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel2" value="白种人|1" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel2');"> 白种人</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel3" value="其他（见注释）|1" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel3');"> 其他（见注释）</span></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">性别</span></td>
+<td colspan="3" align="left"><input type="radio" name="Sex_radio" id="togel4" value="女" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel4');"> 女</span></td></tr>
+<tr><td align="left"><br /></td>
+<td colspan="3" align="left"><input type="radio" name="Sex_radio" id="togel5" value=" 男" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel5');">  男</span></td></tr>
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">年龄</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="ACCAHA2013_fx(); minMaxCheck();" onchange="ACCAHA2013_fx();" /></td>
+<td align="left" valign="top"> <select name="Age_unit" onchange="ACCAHA2013_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">总胆固醇</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Total_Cholesterol_param" size="6" value="" onblur="ACCAHA2013_fx(); minMaxCheck();" onchange="ACCAHA2013_fx();" /></td>
+<td align="left" valign="top"> <select name="Total_Cholesterol_unit" onchange="ACCAHA2013_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mg/dL_Chol" selected="selected">mg/dL</option>
+<option value="38.6697602474865|0|mmol/L_Chol">mmol/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">高密度脂蛋白胆固醇</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="HDL_Cholesterol_param" size="6" value="" onblur="ACCAHA2013_fx(); minMaxCheck();" onchange="ACCAHA2013_fx();" /></td>
+<td align="left" valign="top"> <select name="HDL_Cholesterol_unit" onchange="ACCAHA2013_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mg/dL_Chol" selected="selected">mg/dL</option>
+<option value="38.6697602474865|0|mmol/L_Chol">mmol/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">收缩期血压</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Systolic_Blood_Pressure_param" size="6" value="" onblur="ACCAHA2013_fx(); minMaxCheck();" onchange="ACCAHA2013_fx();" /></td>
+<td align="left" valign="top"> <select name="Systolic_Blood_Pressure_unit" onchange="ACCAHA2013_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select></td></tr>
+
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">服用降血压药</span></td>
+<td colspan="2" align="left"><input type="radio" name="On_Hypertension_Med_radio" id="togel6" value="否|0" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel6');"> 否</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="On_Hypertension_Med_radio" id="togel7" value="是|1" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel7');"> 是</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">糖尿病</span></td>
+<td colspan="2" align="left"><input type="radio" name="Diabetes_radio" id="togel8" value="否|0" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel8');"> 否</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Diabetes_radio" id="togel9" value="是|1" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel9');"> 是</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">吸烟者</span></td>
+<td colspan="2" align="left"><input type="radio" name="Smoker_radio" id="togel10" value="否|0" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel10');"> 否</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Smoker_radio" id="togel11" value="是|1" onclick="ACCAHA2013_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel11');"> 是</span></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">10 年 风险</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Ten_Year_Risk_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Ten_Year_Risk_unit" onchange="ACCAHA2013_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|ratio">ratio</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontResultParam">小数点精确度 &nbsp;</span>
+<select name="decpts" onchange="ACCAHA2013_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+<br />&nbsp;<br />
+<div id="calc_hints">
+<span class="medCalcFontOne">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span>
+ 
+</div>
+
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li class="parentNote">该计算器有助于预测以下<i>动脉粥样</i>硬化性心血管疾病事件的10年风险：
+<ul class="childNoteList">
+<li class="childNote">非致命性心肌梗死的  首次发病</li>
+<li class="childNote">冠心病（CHD）致死</li>
+<li class="childNote">致命或非致命性中风</li>
+</ul></li>
+<li>该计算器可能会高估相关风险（参考Lancet文献），若有任何问题，需要与患者商讨。</li>
+<li>风险评估开发主要基于白种和非裔美国人受试群体。对于美洲印第安人、南亚血统的亚裔美国人以及波多黎各人而言， 相关风险也有可能被低估。对于东亚血统的亚裔美国人以及部分墨西哥裔美国人而言， 风险可能被高估。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">术语 = (C年龄 * ln(年龄)) + (CSq年龄 * sq(ln(年龄))) +  (CTotalChol * ln(总胆固醇)) + (C年龄TotalChol * ln(年龄) * ln(总胆固醇)) +  (CHDLChol * ln(高密度脂蛋白胆固醇)) + (C年龄HDLChol * ln(年龄) * ln(高密度脂蛋白胆固醇)) +  (服用降血压药 * C服用降血压药s * ln(收缩期血压)) + (服用降血压药 * C年龄服用降血压药s * ln(年龄) * ln(收缩期血压)) +  (!服用降血压药 * COffHypertensionMeds * ln(收缩期血压)) + (!服用降血压药 * C年龄OffHypertensionMeds * ln(年龄) * ln(收缩期血压)) +  (C吸烟者 * 吸烟者) + (C年龄吸烟者 * ln(年龄) * 吸烟者) + (C糖尿病 * 糖尿病)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">10年风险 = 100 * (1 - S10<sup>e<sup>(术语-Mean术语)</sup></sup>)</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Goff DC Jr, Lloyd-Jones DM, Bennett G, et.al. 2013 ACC/AHA Guideline on the Assessment of Cardiovascular Risk:  A Report of the American College of Cardiology/American Heart Association Task Force on Practice Guidelines. <i> Circulation</i>. 2013 Nov 12. PubMed ID: 24222018 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24222018"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Stone NJ, Robinson J, Lichtenstein AH, et al. 2013 ACC/AHA Guideline on the Treatment of Blood  Cholesterol to Reduce Atherosclerotic Cardiovascular Risk in Adults: A Report of  the American College of Cardiology/American Heart Association Task Force on  Practice Guidelines. <i>Circulation</i>. 2013 Nov 12. PubMed ID: 24222016 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24222016"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Ridker PM, Cook NR. Statins: new American guidelines for prevention of  cardiovascular disease. <i>Lancet</i>. 2013 Nov 30;382(9907):1762-5. doi:  10.1016/S0140-6736(13)62388-0. Epub 2013 Nov 20. PubMed ID: 24268611 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24268611"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Downs J, Good C. New Cholesterol Guidelines: Has Godot Finally Arrived? <i>Ann Intern Med</i>. 2014 Jan 28. doi: 10.7326/M13-2850. PubMed ID: 24473934 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24473934"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Vaishnava P, Eagle KA. ACP Journal Club. ACC/AHA, Adult Treatment Panel III, and ESC guidelines  overestimated risk for CVD in older adults. <i>Ann Intern Med</i>. 2014 Aug 19;161(4):JC13. PubMed ID: 25133380 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/25133380"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Kavousi M, Leening MJ, Nanchen D, et al. Comparison of Application of the ACC/AHA  Guidelines, Adult Treatment Panel III Guidelines, and European Society of  Cardiology Guidelines for Cardiovascular Disease Prevention in a European Cohort. <i> JAMA</i>. 2014 Mar 29. doi: 10.1001/jama.2014.2632. PubMed ID: 24681960 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24681960"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Navar-Boggan AM, Newby LK. ACC/AHA Pooled Cohort Risk Equations predicted 5-y  risk for CV events in adults considered for statin initiation. <i>Ann Intern Med</i>. 2014 Aug 19;161(4):JC12. PubMed ID: 25133379 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/25133379"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Muntner P, Colantonio LD, Cushman M, et al. Validation of the Atherosclerotic  Cardiovascular Disease Pooled Cohort Risk Equations. <i>JAMA</i>. 2014 Mar 29. doi: 10.1001/jama.2014.2630. PubMed ID: 24682252 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24682252"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">DeFilippis AP, Young R, Carrubba CJ, et al. An analysis of calibration and  discrimination among multiple cardiovascular risk scores in a modern multiethnic  cohort. <i>Ann Intern Med</i>. 2015 Feb 17;162(4):266-75. PubMed ID: 25686167 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/25686167"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Ridker PM, Cook NR. Comparing cardiovascular risk prediction scores. <i>Ann Intern Med</i>. 2015 Feb 17;162(4):313-4. PubMed ID: 25686171 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/25686171"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+with(document.ACCAHA2013_form){
+
+var C_Age; var C_Sq_Age; var C_Total_Chol; var C_Age_Total_Chol; var C_HDL_Chol; var C_Age_HDL_Chol; var On_Hypertension_Med = 0;
+
+On_Hypertension_Med_radio[0].checked = true; var C_On_Hypertension_Meds; var C_Age_On_Hypertension_Meds;
+
+var C_Off_Hypertension_Meds; var C_Age_Off_Hypertension_Meds;
+
+var C_Smoker; var C_Age_Smoker; var C_Diabetes; var S10; var Mean_Terms;
+
+}
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- 1662471459 //-->

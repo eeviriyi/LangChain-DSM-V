@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Pancreatitis Prognosis Criteria</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Gastroenterology, surgery, critical, prognosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+function Pancreatitis_fx() {
+with(document.Pancreatitis_form){
+
+Score = 0.0;
+doCalc = true;
+
+if (cc1.checked){
+Score = Score + 1;
+}
+if (cc2.checked){
+Score = Score + 1;
+}
+if (cc3.checked){
+Score = Score + 1;
+}
+if (cc4.checked){
+Score = Score + 1;
+}
+if (cc5.checked){
+Score = Score + 1;
+}
+if (cc6.checked){
+Score = Score + 1;
+}
+if (cc7.checked){
+Score = Score + 1;
+}
+if (cc8.checked){
+Score = Score + 1;
+}
+if (cc9.checked){
+Score = Score + 1;
+}
+if (cc10.checked){
+Score = Score + 1;
+}
+if (cc11.checked){
+Score = Score + 1;
+}
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.Pancreatitis_form.cctotal.value = '';
+}
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 2)){ document.getElementById('rr1_1').bgColor = '#cccccc';
+}
+if ((Score >= 3) && (Score <= 4)){ document.getElementById('rr1_2').bgColor = '#cccccc';
+}
+if ((Score >= 5) && (Score <= 6)){ document.getElementById('rr1_3').bgColor = '#cccccc';
+}
+if ((Score >= 7) && (Score <= 11)){ document.getElementById('rr1_4').bgColor = '#cccccc';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="Pancreatitis_form" id="Pancreatitis_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Pancreatitis Prognosis Criteria
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Criteria at time of patient admission to hospital:</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc1" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Age &gt;55 (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc2" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Glucose &gt;200 mg/dL (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc3" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">WBC &gt;16,000 (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc4" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">AST &gt;250 (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc5" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">LDH &gt;350 (1 point)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Criteria that may develop over the first 2 hospital days:</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc6" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">BUN rises more than 5 mg/dL (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc7" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Base deficit &gt;4 mEq/L (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc8" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Hct drops 10% or greater (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc9" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">PO2 &lt;60 mmHg (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc10" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Calcium &lt;8 mg/dL (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc11" onclick="Pancreatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Fluid sequestration &gt;6 L (1 point)</span></td></tr>
+
+</table>
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+Total Criteria Point Count:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="Reset Form" />    </center>
+<br />&nbsp;<br />
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ Ranson Criteria
+</span></td></tr></table><br />&nbsp;<br />
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 to 2 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Mortality is 1%</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">3 to 4 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Mortality is 16%</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">5 to 6 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Mortality is 40%</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">7 to 11 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Mortality almost 100%</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Ranson JH, Rifkind KM, Turner JW. Prognostic signs and nonoperative peritoneal lavage in acute pancreatitis. <i>Surg Gyne Ob</i>. 143:209, 1976. PubMed ID: 941075 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/941075"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2018 Foundation Internet Services &nbsp;&nbsp; [Build 255633 v18.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+Pancreatitis_fx();
+
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1532964269 //-->

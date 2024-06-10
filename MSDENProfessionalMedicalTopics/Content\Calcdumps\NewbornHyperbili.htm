@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Newborn Hyperbilirubinemia Assessment</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Nurse, pediatrics, critical care, gyne, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' is improperly formatted. You may only input the digits 0-9 and a decimal point.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+NewbornHyperbili_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+NewbornHyperbili_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function NewbornHyperbili_fx() {
+
+with(document.NewbornHyperbili_form){
+
+
+doCalc = true;
+param_value = parseFloat(Infant_Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Infant_Age_unit.options[Infant_Age_unit.selectedIndex].value.split('|');
+Infant_Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Total_Bilirubin_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Total_Bilirubin_unit.options[Total_Bilirubin_unit.selectedIndex].value.split('|');
+Total_Bilirubin = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+rbchk = false;
+if (Clinical_Risk_Group_radio[0].checked){ rbchk = true; Clinical_Risk_Group = 1;  }
+if (Clinical_Risk_Group_radio[1].checked){ rbchk = true; Clinical_Risk_Group = 2;  }
+if (Clinical_Risk_Group_radio[2].checked){ rbchk = true; Clinical_Risk_Group = 2;  }
+if (Clinical_Risk_Group_radio[3].checked){ rbchk = true; Clinical_Risk_Group = 3;  }
+if (!rbchk) doCalc = false;
+dp = 1;
+p40th = interpN1(n1_40th, Infant_Age);
+p75th = interpN1(n1_75th, Infant_Age);
+p95th = interpN1(n1_95th, Infant_Age);
+plow = interpN2(n2_low, Infant_Age);
+pmed = interpN2(n2_med, Infant_Age);
+phigh = interpN2(n2_high, Infant_Age);
+tlow = interpN3(n3_low, Infant_Age);
+tmed = interpN3(n3_med, Infant_Age);
+thigh = interpN3(n3_high, Infant_Age);
+tlow5 = tlow + 5;
+tmed5 = tmed + 5;
+thigh5 = thigh + 5;
+p40th_txt = fixDP(p40th,2) + ' mg/dL [' +  fixDP(p40th*17.1,1) + ' mcmol/L]';
+p75th_txt = fixDP(p75th,2) + ' mg/dL [' + fixDP(p75th*17.1,1) + ' mcmol/L]';
+p95th_txt = fixDP(p95th,2) + ' mg/dL [' + fixDP(p95th*17.1,1) + ' mcmol/L]';
+plow_txt = fixDP(plow,2) + ' mg/dL [' + fixDP(plow*17.1,1) + ' mcmol/L]';
+pmed_txt = fixDP(pmed,2) + ' mg/dL [' + fixDP(pmed*17.1,1) + ' mcmol/L]';
+phigh_txt = fixDP(phigh,2) + ' mg/dL [' + fixDP(phigh*17.1,1) + ' mcmol/L]';
+tlow_txt = fixDP(tlow,2) + ' mg/dL [' + fixDP(tlow*17.1,1) + ' mcmol/L]';
+tmed_txt = fixDP(tmed,2) + ' mg/dL [' + fixDP(tmed*17.1,1) + ' mcmol/L]';
+thigh_txt = fixDP(thigh,2) + ' mg/dL [' + fixDP(thigh*17.1,1) + ' mcmol/L]';
+tlow5_txt = fixDP(tlow5,2) + ' mg/dL [' + fixDP(tlow5*17.1,1) + ' mcmol/L]';
+tmed5_txt = fixDP(tmed5,2) + ' mg/dL [' + fixDP(tmed5*17.1,1) + ' mcmol/L]';
+thigh5_txt = fixDP(thigh5,2) + ' mg/dL [' + fixDP(thigh5*17.1,1) + ' mcmol/L]';
+document.getElementById('ttxt').innerHTML = '';
+if(doCalc){
+if(Total_Bilirubin >= 25){ document.getElementById('ttxt').innerHTML = "The subject's bilirubin is greater or equal to 25 mg/dL [427.5 mcmol/L]. <br />&nbsp;<br />The AAP guidelines recommend EXCHANGE TRANSFUSION for patients in this group.";}
+else if((Clinical_Risk_Group == 1) && (Total_Bilirubin >= tlow5)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is greater than 5 mg/dL [85.5 mcmol/L] above the hour-specific threshold for exchange transfusion for this clinical risk group (risk group 1 threshold for exchange transfusion: " +  tlow_txt + ").<br />&nbsp;<br />The AAP guidelines recommend EXCHANGE TRANSFUSION for patients in this group.";}
+else if((Clinical_Risk_Group == 2) && (Total_Bilirubin >= tmed5)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is greater than 5 mg/dL [85.5 mcmol/L] above the hour-specific threshold for exchange transfusion for this clinical risk group (risk group 2 threshold for exchange transfusion: " + tmed_txt + ").<br />&nbsp;<br />The AAP guidelines recommend EXCHANGE TRANSFUSION for patients in this group.";}
+else if((Clinical_Risk_Group == 3) && (Total_Bilirubin >= thigh5)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is greater than 5 mg/dL [85.5 mcmol/L] above the hour-specific threshold for exchange transfusion for this clinical risk group (risk group 3 threshold for exchange transfusion: " + thigh_txt + ").<br />&nbsp;<br />The AAP guidelines recommend EXCHANGE TRANSFUSION for patients in this group.";}
+else if((Clinical_Risk_Group == 1) && (Total_Bilirubin >= tlow)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is above the hour-specific threshold for exchange transfusion, and the patient has no additional clinical risk factors (risk group 1 threshold for exchange transfusion: " + tlow_txt + "). <br />&nbsp;<br />The AAP guidelines recommend PHOTOTHERAPY and rechecking of serum bilirubin within 2 to 3 hours. If the subsequent bilirubin level remains above this threshold despite phototherapy, EXCHANGE TRANSFUSION is recommended.";}
+else if((Clinical_Risk_Group == 2) && (Total_Bilirubin >= tmed)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is above the hour-specific threshold for exchange transfusion, and the patient has additional clinical risk factors (risk group 2 threshold for exchange transfusion: " + tmed_txt + "). <br />&nbsp;<br />The AAP guidelines recommend EXCHANGE TRANSFUSION for patients in this group.";}
+else if((Clinical_Risk_Group == 3) && (Total_Bilirubin >= thigh)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is above the hour-specific threshold for exchange transfusion, and the patient has additional clinical risk factors (risk group 3 threshold for exchange transfusion: " + thigh_txt + "). <br />&nbsp;<br />The AAP guidelines recommend EXCHANGE TRANSFUSION for patients in this group.";}
+else if((Clinical_Risk_Group == 1) && (Total_Bilirubin >= plow)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is in the HIGH risk zone; other clinical risk factors are low (risk group 1 threshold for phototherapy: " + plow_txt + "). <br />&nbsp;<br />The AAP guidelines recommend PHOTOTHERAPY for patients in this group, with repeat measurements of serum bilirubin after the start of therapy.";}
+else if((Clinical_Risk_Group == 2) && (Total_Bilirubin >= pmed)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is in the HIGH risk zone, and the patient has other clinical risk factors (risk group 2 threshold for phototherapy: " + pmed_txt + "). <br />&nbsp;<br />The AAP guidelines recommend PHOTOTHERAPY for patients in this group, with repeat measurements of serum bilirubin after the start of therapy. Home phototherapy should not be used for this group.";}
+else if((Clinical_Risk_Group == 3) && (Total_Bilirubin >= phigh)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is in the HIGH risk zone, and the patient has other clinical risk factors (risk group 3 threshold for phototherapy: " + phigh_txt + "). <br />&nbsp;<br />The AAP guidelines recommend PHOTOTHERAPY for patients in this group, with repeat measurements of serum bilirubin after the start of therapy. Home phototherapy should not be used for this group.";}
+else if((Clinical_Risk_Group == 1) && (Total_Bilirubin >= p95th)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is above the 95th percentile for this patient's age (" + p95th_txt + "), but the other clinical risk factors are low. <br />&nbsp;<br />Monitoring of bilirubin (either by serum or transcutaneous measurement) is recommended as these infants are at a high to intermediate risk that future bilirubin levels will rise above the 95th percentile. The threshold for starting phototherapy is " +  plow_txt + " at the patient's current age.";}
+else if((Clinical_Risk_Group == 2) && (Total_Bilirubin >= p95th)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is above the 95th percentile for this patient's age (" + p95th_txt + "), but still below the phototherapy threshold. <br />&nbsp;<br />Monitoring of bilirubin (either by serum or transcutaneous measurement) is recommended as these infants are at a high to intermediate risk that future bilirubin levels will reach the threshold for starting phototherapy (" +  pmed_txt + " at the patient's current age.)";}
+else if((Clinical_Risk_Group == 1) && (Total_Bilirubin >= p75th) && (Total_Bilirubin < p95th)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is in the HIGH-INTERMEDIATE RISK zone (between the 75th and 95th percentiles for this age: " + p75th_txt + "-" + p95th_txt + "); other clinical risk factors are low (risk group 1) <br />&nbsp;<br />Monitoring of bilirubin (either by serum or transcutaneous measurement) is recommended as these infants are at a high to intermediate risk that future bilirubin levels will rise above the 95th percentile. The threshold for starting phototherapy is " + plow_txt + " at the patient's current age.";}
+else if((Clinical_Risk_Group == 2) && (Total_Bilirubin >= p75th) && (Total_Bilirubin < p95th)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is in the HIGH-INTERMEDIATE RISK zone (between the 75th and 95th percentiles for this age: " + p75th_txt + "-" + p95th_txt + "), and the patient has other clinical risk factors (risk group 2). <br />&nbsp;<br />Monitoring of bilirubin (either by serum or transcutaneous measurement) is recommended as these infants are at a high to intermediate risk that future bilirubin levels will rise above the 95th percentile. The threshold for starting phototherapy is " + pmed_txt + " at the patient's current age.";}
+else if((Clinical_Risk_Group == 3) && (Total_Bilirubin >= p75th) && (Total_Bilirubin < p95th)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is in the HIGH-INTERMEDIATE RISK zone (between the 75th and 95th percentiles for this age: " + p75th_txt + "-" + p95th_txt + "), and the patient has other clinical risk factors (risk group 3) <br />&nbsp;<br />Monitoring of bilirubin (either by serum or transcutaneous measurement) is recommended as these infants are at a high to intermediate risk that future bilirubin levels will rise above the 95th percentile. The threshold for starting phototherapy is " + phigh_txt + " at the patient's current age.";}
+else if((Total_Bilirubin >= p40th) && (Total_Bilirubin < p75th)){ document.getElementById('ttxt').innerHTML = "The bilirubin level is in the LOW-INTERMEDIATE RISK zone (between the 40th and 75th percentiles for this age: " + p40th_txt + "-" + p75th_txt + ") <br />&nbsp;<br />Phototherapy is not recommended at this time because there is low to intermediate risk that future bilirubin levels will rise above the 95th percentile.";}
+else if(Total_Bilirubin < p40th){ document.getElementById('ttxt').innerHTML = "The bilirubin level is in the LOW  RISK zone (less than the 40th percentile for this age: " + p40th_txt + "). <br />&nbsp;<br />Phototherapy is not recommended at this time because there is low risk that future bilirubin levels will rise above the 95th percentile.";}
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.NewbornHyperbili_form){
+
+if (Infant_Age_param.value && isNaN(Infant_Age_param.value)){ clrValue(Infant_Age_param); alertNaN('Infant Age'); }
+if (Infant_Age_param.value && (Infant_Age < (12 - 0.00001))) {
+Infant_Age = 0;
+clrValue(Infant_Age_param);
+clrResults();
+doCalc = false;
+ alert("The minimum value for Infant Age is 12 Hours.\nIf you are specifying a value with a different unit, change the unit selector first.");
+}
+if (Infant_Age_param.value && Infant_Age > 147.99) {
+clrValue(Infant_Age_param);
+clrResults();
+Infant_Age = 0;
+doCalc = false;
+ alert("The maximum value for Infant Age is 147.99 Hours.\nIf you are specifying a value with a different unit, change the unit selector first.");
+}
+if (Total_Bilirubin_param.value && isNaN(Total_Bilirubin_param.value)){ clrValue(Total_Bilirubin_param); alertNaN('Total Bilirubin'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.NewbornHyperbili_form){
+
+document.getElementById('ttxt').innerHTML = '';
+
+
+}
+
+}
+
+var Infant_Age = null,
+Total_Bilirubin = null,
+Clinical_Risk_Group = null,
+param_value = null;
+
+
+n1_40th = new Array();
+n1_75th = new Array();
+n1_95th = new Array();
+
+n1_40th[0] = 4.0; n1_75th[0] = 5.0; n1_95th[0] = 7.0; 
+n1_40th[1] = 4.4; n1_75th[1] = 5.5; n1_95th[1] = 7.2; 
+n1_40th[2] = 4.7; n1_75th[2] = 5.9; n1_95th[2] = 7.4; 
+n1_40th[3] = 4.9; n1_75th[3] = 6.1; n1_95th[3] = 7.8; 
+n1_40th[4] = 5.5; n1_75th[4] = 7.0; n1_95th[4] = 8.9; 
+n1_40th[5] = 6.3; n1_75th[5] = 8.0; n1_95th[5] = 10.0; 
+n1_40th[6] = 7.0; n1_75th[6] = 8.9; n1_95th[6] = 11.1; 
+n1_40th[7] = 7.7; n1_75th[7] = 9.9; n1_95th[7] = 12.2; 
+n1_40th[8] = 8.2; n1_75th[8] = 10.3; n1_95th[8] = 12.5; 
+n1_40th[9] = 8.6; n1_75th[9] = 10.8; n1_95th[9] = 13.2; 
+n1_40th[10] = 9.0; n1_75th[10] = 11.3; n1_95th[10] = 13.8; 
+n1_40th[11] = 9.3; n1_75th[11] = 12.0; n1_95th[11] = 14.4; 
+n1_40th[12] = 9.6; n1_75th[12] = 12.6; n1_95th[12] = 15.2; 
+n1_40th[13] = 10.2; n1_75th[13] = 12.9; n1_95th[13] = 15.4; 
+n1_40th[14] = 10.7; n1_75th[14] = 13.1; n1_95th[14] = 15.6; 
+n1_40th[15] = 11.2; n1_75th[15] = 13.4; n1_95th[15] = 15.9; 
+n1_40th[16] = 11.3; n1_75th[16] = 13.8; n1_95th[16] = 16.2; 
+n1_40th[17] = 11.4; n1_75th[17] = 14.3; n1_95th[17] = 16.4; 
+n1_40th[18] = 11.6; n1_75th[18] = 14.7; n1_95th[18] = 16.7; 
+n1_40th[19] = 11.8; n1_75th[19] = 14.7; n1_95th[19] = 17.0; 
+n1_40th[20] = 12.2; n1_75th[20] = 15.0; n1_95th[20] = 17.2; 
+n1_40th[21] = 12.3; n1_75th[21] = 15.2; n1_95th[21] = 17.4; 
+n1_40th[22] = 12.5; n1_75th[22] = 15.3; n1_95th[22] = 17.4; 
+n1_40th[23] = 12.7; n1_75th[23] = 15.4; n1_95th[23] = 17.5; 
+n1_40th[24] = 12.8; n1_75th[24] = 15.5; n1_95th[24] = 17.5; 
+n1_40th[25] = 13.0; n1_75th[25] = 15.6; n1_95th[25] = 17.5; 
+n1_40th[26] = 13.1; n1_75th[26] = 15.7; n1_95th[26] = 17.6; 
+n1_40th[27] = 13.2; n1_75th[27] = 15.8; n1_95th[27] = 17.7; 
+n1_40th[28] = 13.2; n1_75th[28] = 15.7; n1_95th[28] = 17.6; 
+n1_40th[29] = 13.2; n1_75th[29] = 15.6; n1_95th[29] = 17.5; 
+n1_40th[30] = 13.2; n1_75th[30] = 15.5; n1_95th[30] = 17.4; 
+n1_40th[31] = 13.2; n1_75th[31] = 15.4; n1_95th[31] = 17.4; 
+n1_40th[32] = 13.2; n1_75th[32] = 15.3; n1_95th[32] = 17.3; 
+n1_40th[33] = 13.2; n1_75th[33] = 15.2; n1_95th[33] = 17.3; 
+n1_40th[34] = 13.2; n1_75th[34] = 15.3; n1_95th[34] = 17.4; 
+
+function interpN1(thisp, thisx){
+var xconv = (thisx - 12) / 4;
+x1 = Math.floor(xconv);  
+x2 = x1 + 1;
+xfrac = xconv - x1;
+return xfrac * (thisp[x2] - thisp[x1]) + thisp[x1];
+}
+
+n2_high = new Array();
+n2_med = new Array();
+n2_low = new Array();
+
+n2_high[0] = 5.8; n2_med[0] = 7.6; n2_low[0] = 9.0; 
+n2_high[1] = 6.5; n2_med[1] = 8.2; n2_low[1] = 9.8; 
+n2_high[2] = 7.1; n2_med[2] = 9.0; n2_low[2] = 10.7; 
+n2_high[3] = 7.8; n2_med[3] = 9.8; n2_low[3] = 11.6; 
+n2_high[4] = 8.3; n2_med[4] = 10.2; n2_low[4] = 12.2; 
+n2_high[5] = 8.9; n2_med[5] = 11.0; n2_low[5] = 12.9; 
+n2_high[6] = 9.4; n2_med[6] = 11.7; n2_low[6] = 13.5; 
+n2_high[7] = 10.0; n2_med[7] = 12.0; n2_low[7] = 14.1; 
+n2_high[8] = 10.7; n2_med[8] = 12.5; n2_low[8] = 14.8; 
+n2_high[9] = 11.2; n2_med[9] = 13.0; n2_low[9] = 15.1; 
+n2_high[10] = 11.7; n2_med[10] = 13.5; n2_low[10] = 15.8; 
+n2_high[11] = 12.0; n2_med[11] = 14.1; n2_low[11] = 16.0; 
+n2_high[12] = 12.4; n2_med[12] = 14.6; n2_low[12] = 16.5; 
+n2_high[13] = 12.8; n2_med[13] = 14.9; n2_low[13] = 16.9; 
+n2_high[14] = 13.1; n2_med[14] = 15.0; n2_low[14] = 17.2; 
+n2_high[15] = 13.4; n2_med[15] = 15.3; n2_low[15] = 17.7; 
+n2_high[16] = 13.7; n2_med[16] = 15.9; n2_low[16] = 18.0; 
+n2_high[17] = 13.9; n2_med[17] = 16.1; n2_low[17] = 18.3; 
+n2_high[18] = 14.0; n2_med[18] = 16.4; n2_low[18] = 18.8; 
+n2_high[19] = 14.1; n2_med[19] = 16.8; n2_low[19] = 19.0; 
+n2_high[20] = 14.3; n2_med[20] = 17.0; n2_low[20] = 19.5; 
+n2_high[21] = 14.5; n2_med[21] = 17.2; n2_low[21] = 19.8; 
+n2_high[22] = 14.7; n2_med[22] = 17.5; n2_low[22] = 20.0; 
+n2_high[23] = 14.8; n2_med[23] = 17.8; n2_low[23] = 20.1; 
+n2_high[24] = 14.9; n2_med[24] = 18.0; n2_low[24] = 20.4; 
+n2_high[25] = 15.0; n2_med[25] = 18.0; n2_low[25] = 20.7; 
+n2_high[26] = 15.0; n2_med[26] = 18.1; n2_low[26] = 20.9; 
+n2_high[27] = 15.0; n2_med[27] = 18.1; n2_low[27] = 21.0; 
+n2_high[28] = 15.0; n2_med[28] = 18.1; n2_low[28] = 21.0; 
+n2_high[29] = 15.0; n2_med[29] = 18.1; n2_low[29] = 21.0; 
+n2_high[30] = 15.0; n2_med[30] = 18.1; n2_low[30] = 21.0; 
+n2_high[31] = 15.0; n2_med[31] = 18.1; n2_low[31] = 21.0; 
+n2_high[32] = 15.0; n2_med[32] = 18.1; n2_low[32] = 21.0; 
+n2_high[33] = 15.0; n2_med[33] = 18.1; n2_low[33] = 21.0; 
+n2_high[34] = 15.0; n2_med[34] = 18.1; n2_low[34] = 21.0; 
+
+function interpN2(thisp, thisx){
+var xconv = (thisx - 12) / 4;
+x1 = Math.floor(xconv);  
+x2 = x1 + 1;
+xfrac = xconv - x1;
+return xfrac * (thisp[x2] - thisp[x1]) + thisp[x1];
+}
+
+n3_high = new Array();
+n3_med = new Array();
+n3_low = new Array();
+
+n3_high[0] = 13.4; n3_med[0] = 15.1; n3_low[0] = 17.7; 
+n3_high[1] = 14.0; n3_med[1] = 15.6; n3_low[1] = 18.0; 
+n3_high[2] = 14.5; n3_med[2] = 16.1; n3_low[2] = 18.5; 
+n3_high[3] = 15.0; n3_med[3] = 16.6; n3_low[3] = 19.0; 
+n3_high[4] = 15.3; n3_med[4] = 17.0; n3_low[4] = 19.6; 
+n3_high[5] = 15.7; n3_med[5] = 17.4; n3_low[5] = 20.1; 
+n3_high[6] = 16.0; n3_med[6] = 18.0; n3_low[6] = 20.9; 
+n3_high[7] = 16.3; n3_med[7] = 18.3; n3_low[7] = 21.2; 
+n3_high[8] = 16.8; n3_med[8] = 18.8; n3_low[8] = 21.8; 
+n3_high[9] = 17.1; n3_med[9] = 19.0; n3_low[9] = 22.1; 
+n3_high[10] = 17.4; n3_med[10] = 19.5; n3_low[10] = 22.4; 
+n3_high[11] = 17.7; n3_med[11] = 19.9; n3_low[11] = 22.8; 
+n3_high[12] = 18.0; n3_med[12] = 20.1; n3_low[12] = 23.0; 
+n3_high[13] = 18.2; n3_med[13] = 20.5; n3_low[13] = 23.3; 
+n3_high[14] = 18.4; n3_med[14] = 21.0; n3_low[14] = 23.7; 
+n3_high[15] = 18.6; n3_med[15] = 21.2; n3_low[15] = 24.0; 
+n3_high[16] = 18.7; n3_med[16] = 21.7; n3_low[16] = 24.1; 
+n3_high[17] = 18.8; n3_med[17] = 21.9; n3_low[17] = 24.3; 
+n3_high[18] = 18.9; n3_med[18] = 22.0; n3_low[18] = 24.4; 
+n3_high[19] = 18.9; n3_med[19] = 22.1; n3_low[19] = 24.5; 
+n3_high[20] = 19.0; n3_med[20] = 22.3; n3_low[20] = 24.8; 
+n3_high[21] = 19.0; n3_med[21] = 22.4; n3_low[21] = 25.0; 
+n3_high[22] = 19.0; n3_med[22] = 22.4; n3_low[22] = 25.0; 
+n3_high[23] = 19.0; n3_med[23] = 22.4; n3_low[23] = 25.0; 
+n3_high[24] = 19.0; n3_med[24] = 22.4; n3_low[24] = 25.0; 
+n3_high[25] = 19.0; n3_med[25] = 22.4; n3_low[25] = 25.0; 
+n3_high[26] = 19.0; n3_med[26] = 22.4; n3_low[26] = 25.0; 
+n3_high[27] = 19.0; n3_med[27] = 22.4; n3_low[27] = 25.0; 
+n3_high[28] = 19.0; n3_med[28] = 22.4; n3_low[28] = 25.0; 
+n3_high[29] = 19.0; n3_med[29] = 22.4; n3_low[29] = 25.0; 
+n3_high[30] = 19.0; n3_med[30] = 22.4; n3_low[30] = 25.0; 
+n3_high[31] = 19.0; n3_med[31] = 22.4; n3_low[31] = 25.0; 
+n3_high[32] = 19.0; n3_med[32] = 22.4; n3_low[32] = 25.0; 
+n3_high[33] = 19.0; n3_med[33] = 22.4; n3_low[33] = 25.0; 
+n3_high[34] = 19.0; n3_med[34] = 22.4; n3_low[34] = 25.0; 
+
+function interpN3(thisp, thisx){
+var xconv = (thisx - 12) / 4;
+x1 = Math.floor(xconv);  
+x2 = x1 + 1;
+xfrac = xconv - x1;
+return xfrac * (thisp[x2] - thisp[x1]) + thisp[x1];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="NewbornHyperbili_form" id="NewbornHyperbili_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="NewbornHyperbili_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Newborn Hyperbilirubinemia Assessment
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+Input
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Infant Age</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Infant_Age_param" size="6" value="" onblur="NewbornHyperbili_fx(); minMaxCheck();" onchange="NewbornHyperbili_fx();" aria-label="Use this input box to enter the value Infant Age" /></td>
+<td align="left" valign="top"> <select name="Infant_Age_unit" onchange="NewbornHyperbili_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect" aria-label="Use this pulldown selector to set the unit of measure for the value Infant Age">
+<option value="24|0|Days">Days</option>
+<option value="1|0|Hours" selected="selected">Hours</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Total Bilirubin</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Total_Bilirubin_param" size="6" value="" onblur="NewbornHyperbili_fx(); minMaxCheck();" onchange="NewbornHyperbili_fx();" aria-label="Use this input box to enter the value Total Bilirubin" /></td>
+<td align="left" valign="top"> <select name="Total_Bilirubin_unit" onchange="NewbornHyperbili_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect" aria-label="Use this pulldown selector to set the unit of measure for the value Total Bilirubin">
+<option value="0.0584795321637427|0|mcmol/L_Bili">mcmol/L</option>
+<option value="1|0|mg%_Bili">mg%</option>
+<option value="1|0|mg/dL_Bili" selected="selected">mg/dL</option>
+</select></td></tr>
+
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">Clinical Risk Group</span></td>
+<td colspan="2" align="left"><input type="radio" name="Clinical_Risk_Group_radio" id="togel1" value="Group 1: Gestation &gt;=38 weeks and medically well|1" onclick="NewbornHyperbili_fx();" aria-label="This button selects an option for the variable: Clinical Risk Group. The variable option is Group 1: Gestation &gt;=38 weeks and medically well." /><span class="medCalcFontOneClick" onclick="setRB('togel1');"> Group 1: Gestation &gt;=38 weeks and medically well</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Clinical_Risk_Group_radio" id="togel2" value="Group 2: Gestation &gt;=38 weeks and clinical risk factors|2" onclick="NewbornHyperbili_fx();" aria-label="This button selects an option for the variable: Clinical Risk Group. The variable option is Group 2: Gestation &gt;=38 weeks and clinical risk factors." /><span class="medCalcFontOneClick" onclick="setRB('togel2');"> Group 2: Gestation &gt;=38 weeks and clinical risk factors</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Clinical_Risk_Group_radio" id="togel3" value=" Group 2: Gestation 35 to 37.9 weeks and medically well|2" onclick="NewbornHyperbili_fx();" aria-label="This button selects an option for the variable: Clinical Risk Group. The variable option is  Group 2: Gestation 35 to 37.9 weeks and medically well." /><span class="medCalcFontOneClick" onclick="setRB('togel3');">  Group 2: Gestation 35 to 37.9 weeks and medically well</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Clinical_Risk_Group_radio" id="togel4" value="Group 3: Gestation 35 to 37.9 weeks and clinical risk factors|3" onclick="NewbornHyperbili_fx();" aria-label="This button selects an option for the variable: Clinical Risk Group. The variable option is Group 3: Gestation 35 to 37.9 weeks and clinical risk factors." /><span class="medCalcFontOneClick" onclick="setRB('togel4');"> Group 3: Gestation 35 to 37.9 weeks and clinical risk factors</span></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">Results</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="2">
+&nbsp;<br />
+<table border="1" cellpadding="4" summary="tt" width="285"><tr>
+<td bgcolor="#ffffff" valign="top" align="left" height="285"><div id="ttxt" class="medCalcFontOneBold"aria-label="Calculation results will be displayed here" tabindex="0"></div></td>
+</tr></table>
+</td></tr>
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center><br />&nbsp;<br />
+<div id="calc_buttons">
+<center>
+<span class="medCalcFontOne">
+
+
+
+
+
+<input type="reset" name="reset" value="Reset form" onclick="clrResults();" />
+
+</span>
+</center>
+</div>
+
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+<br />&nbsp;<br />
+<div id="calc_hints">
+<span class="medCalcFontOne">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span>
+ 
+</div>
+
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">Notes</span>
+<ul class="medCalcFontOne">
+<li>Results are not available for infants greater than 6 days of age or less than 12 hours of age.</li>
+<li class="parentNote">Clinical risk factors include
+<ul class="childNoteList">
+<li class="childNote">Isoimmune hemolytic disease</li>
+<li class="childNote">G6PD deficiency</li>
+<li class="childNote">Asphyxia</li>
+<li class="childNote">Lethargy</li>
+<li class="childNote">Unstable temperature</li>
+<li class="childNote">Sepsis</li>
+<li class="childNote">Acidosis</li>
+<li class="childNote">Albumin less than 3 gm/L, when considering phototherapy</li>
+</ul></li>
+
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Bhutani VK, Johnson L, Sivieri EM. Predictive ability of a predischarge hour-specific serum bilirubin  for subsequent significant hyperbilirubinemia in healthy term and near-term newborns. <i>Pediatrics</i>. 1999 Jan; 103:6-14. PubMed ID: 9917432 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9917432"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">American Academy of Pediatrics Subcommittee on Hyperbilirubinemia. Management of hyperbilirubinemia  in the newborn infant 35 or more weeks of gestation. <i>Pediatrics</i>. 2004 Jul;114(1):297-316. PubMed ID: 15231951 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/15231951"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662473286 //-->

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>儿童气管导管大小（1 到 8 周岁）</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="pediatrics, anesthesia, critical care, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+PediatricETTubeSize_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+PediatricETTubeSize_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function PediatricETTubeSize_fx() {
+
+with(document.PediatricETTubeSize_form){
+
+
+doCalc = true;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = 1;
+Uncuffed_Endotracheal_Tube_Size =  Uncuffed_Endotracheal_Tube_Size;
+
+if (doCalc) Uncuffed_Endotracheal_Tube_Size_param.value = fixDP(Uncuffed_Endotracheal_Tube_Size, dp);
+
+
+
+Cuffed_Endotracheal_Tube_Size =  Cuffed_Endotracheal_Tube_Size;
+
+if (doCalc) Cuffed_Endotracheal_Tube_Size_param.value = fixDP(Cuffed_Endotracheal_Tube_Size, dp);
+
+
+
+if (doCalc){
+if ((Age - Math.floor(Age)) >= 0.5){ Round_Age = Math.floor(Age) + 1; } else { Round_Age = Math.floor(Age); };
+if (Round_Age == 1){ Uncuffed_Endotracheal_Tube_Size_param.value = '4.0'; };
+if (Round_Age == 2){ Uncuffed_Endotracheal_Tube_Size_param.value = '4.5'; Cuffed_Endotracheal_Tube_Size_param.value = '4.0'; };
+if (Age < 2){ Cuffed_Endotracheal_Tube_Size_param.value = '3.5'; };
+if (Round_Age == 3){ Uncuffed_Endotracheal_Tube_Size_param.value = '5.0'; Cuffed_Endotracheal_Tube_Size_param.value = '4.0'; };
+if (Round_Age == 4){ Uncuffed_Endotracheal_Tube_Size_param.value = '5.0'; Cuffed_Endotracheal_Tube_Size_param.value = '4.5'; };
+if (Round_Age == 5){ Uncuffed_Endotracheal_Tube_Size_param.value = '5.0'; Cuffed_Endotracheal_Tube_Size_param.value = '4.5'; };
+if (Round_Age == 6){ Uncuffed_Endotracheal_Tube_Size_param.value = '5.5'; Cuffed_Endotracheal_Tube_Size_param.value = '5.0'; };
+if (Round_Age == 7){ Uncuffed_Endotracheal_Tube_Size_param.value = '6.0'; Cuffed_Endotracheal_Tube_Size_param.value = '5.0'; };
+if (Round_Age == 8){ Uncuffed_Endotracheal_Tube_Size_param.value = '6.0'; Cuffed_Endotracheal_Tube_Size_param.value = '5.5'; };
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.PediatricETTubeSize_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('年龄'); }
+if (Age_param.value && (Age < (1 - 0.00001))) {
+Age = 0;
+clrValue(Age_param);
+clrResults();
+doCalc = false;
+ alert("最小值 年龄 是 1 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Age_param.value && Age > 8) {
+clrValue(Age_param);
+clrResults();
+Age = 0;
+doCalc = false;
+ alert("最大值 年龄 是 8 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.PediatricETTubeSize_form){
+
+Uncuffed_Endotracheal_Tube_Size_param.value = '';
+Cuffed_Endotracheal_Tube_Size_param.value = '';
+
+
+}
+
+}
+
+var Age = null,
+Uncuffed_Endotracheal_Tube_Size = null,
+Cuffed_Endotracheal_Tube_Size = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="PediatricETTubeSize_form" id="PediatricETTubeSize_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="PediatricETTubeSize_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+儿童气管导管大小（1 到 8 周岁）
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">年龄</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="PediatricETTubeSize_fx(); minMaxCheck();" onchange="PediatricETTubeSize_fx();" /></td>
+<td align="left" valign="top"> <select name="Age_unit" onchange="PediatricETTubeSize_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">无囊气管导管大小</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Uncuffed_Endotracheal_Tube_Size_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<span style="white-space: nowrap;"><span class="medCalcFontResultParam">mm (ID)</span>
+</span>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">有囊气管导管大小</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Cuffed_Endotracheal_Tube_Size_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<span style="white-space: nowrap;"><span class="medCalcFontResultParam">mm (ID)</span>
+</span>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>一周岁以下婴儿，选用内径为 3.5mm 的无囊导管。</li>
+<li>体重 3.5 kg 以上及&lt;1 周岁以上婴儿，可选用内径为 3.0 mm 的有囊气管导管。</li>
+<li>ID 表示内径。两周岁及以上患者，年龄指标整合入计算气管导管的大小， 所得气管导管应能穿过声带，足够密封以进行通气（无囊气管导管）  或在囊充气后能进行通气（有囊气管导管）。</li>
+<li>有囊气管方程式适用于低位、薄壁有囊气管导管。</li>
+<li>同上述适用于薄壁低压有囊气管导管计算器不同， 使用常规有囊气管导管时，应选择比无囊气管导管公式计算所得尺寸小一整个尺寸的导管。</li>
+<li>在气管导管插管过程中，应同时准备比计算值大半个尺寸和小半个尺寸的导管， 不管该准备的无囊或有囊气管导管是否用得到。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">无囊气管导管大小 = 无囊气管导管大小</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">有囊气管导管大小 = 有囊气管导管大小</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">无囊气管导管大小= 4 +（年龄/4）</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">有囊气管导管大小= 3.5 +（年龄/4）</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">King BR, Baker MD, Braitman LE, et al. Endotracheal tube selection in children: a comparison of four methods. <i>Ann Emerg Med</i>. 1993 Mar;22(3):530-4.</span></li>
+<li><span class="medCalcFontRef">Khine HH, Corddry DH, Kettrick RG, et al. Comparison of cuffed and uncuffed endotracheal tubes in young children during general anesthesia. <i>Anesthesiology</i>.  1997 Mar;86(3):627-31; discussion 27A.</span></li>
+<li><span class="medCalcFontRef">Wheeler, M, Cote, CJ, Todres, ID. The pediatric airway. In: Cote C, Lerman J, Todres ID (Eds). <i>A Practice of Anesthesia for Infants and Children,  4th ed</i>. Saunders-Elsevier, Philadelphia 2009. p.237.</span></li>
+<li><span class="medCalcFontRef">Kleinman ME, de Caen AR, Chameides L, et.al. Pediatric basic and advanced life support: 2010 International  Consensus on Cardiopulmonary  Resuscitation and Emergency Cardiovascular Care Science with Treatment Recommendations. <i>Pediatrics</i>. 2010 Nov;126(5):e1261-318.</span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+with(document.PediatricETTubeSize_form){
+
+var Uncuffed_Endotracheal_Tube_Size;
+
+var Cuffed_Endotracheal_Tube_Size;
+
+}
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- 1662471511 //-->

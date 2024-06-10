@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Behcet's Syndrome Japanese Ministry of Health and Welfare Criteria</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="rheumatology, dermatology, internat, diagnosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+
+function BehcetsJapan_fx() {
+
+with(document.BehcetsJapan_form){
+
+mcResult = "Insufficient";
+
+setScore0 = 0;
+setScore1 = 0;
+setScore2 = 0;
+
+if (cc1.checked){ setScore0 = setScore0 + 1;
+}
+if (cc2.checked){ setScore1 = setScore1 + 1;
+}
+if (cc3.checked){ setScore1 = setScore1 + 1;
+}
+if (cc4.checked){ setScore1 = setScore1 + 1;
+}
+if (cc5.checked){ setScore2 = setScore2 + 1;
+}
+if (cc6.checked){ setScore2 = setScore2 + 1;
+}
+if (cc7.checked){ setScore2 = setScore2 + 1;
+}
+if (cc8.checked){ setScore2 = setScore2 + 1;
+}
+if (cc9.checked){ setScore2 = setScore2 + 1;
+}
+if (setScore0 >= 1 && setScore1 >= 1 && setScore2 >= 0) mcResult = "Diagnostic of Incomplete Form";
+if (setScore0 >= 1 && setScore1 >= 0 && setScore2 >= 2) mcResult = "Also Incomplete Form";
+if (setScore0 >= 1 && setScore1 >= 3 && setScore2 >= 0) mcResult = "Diagnostic of Complete Form";
+mccriteria.value = mcResult + ' with:\r\n' + setScore0 + " Major Occular Criteria \r\n" + setScore1 + " Other Major Criteria \r\n" + setScore2 + " Minor Criteria \r\n";
+
+
+}
+
+}
+/* ]]> */
+</script>
+
+
+
+<form name="BehcetsJapan_form" id="BehcetsJapan_form" action="" onsubmit="return false;">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Behcet's Syndrome Japanese Ministry of Health and Welfare Criteria
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="left"><br /></td><td colspan="2"><span class="medCalcFontIOBold">Diagnostic of Incomplete Form :</span>
+<span class="medCalcFontCCTab">
+1 Major Occular Criteria and 1 Other Major Criteria and 0 Minor Criteria </span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2"><span class="medCalcFontIOBold">Also Incomplete Form :</span>
+<span class="medCalcFontCCTab">
+1 Major Occular Criteria and 0 Other Major Criteria and 2 Minor Criteria </span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2"><span class="medCalcFontIOBold">Diagnostic of Complete Form :</span>
+<span class="medCalcFontCCTab">
+1 Major Occular Criteria and 3 Other Major Criteria and 0 Minor Criteria </span></td></tr>
+
+<tr><td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontIOBold">Major Occular Criteria</span></td></tr>
+
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc1" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Iridocyclitis often with hypopyon or chorioretinitis</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontIOBold">Other Major Criteria</span></td></tr>
+
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc2" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Recurrent oral aphthous ulcerations</span></td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc3" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Genital ulcers</span></td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc4" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Skin lesions: erythema nodosum-like lesions, folliculitis, acneform nodules, thrombophlebitis, cutaneous hypersensitivity</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontIOBold">Minor Criteria</span></td></tr>
+
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc5" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Arthritis</span></td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc6" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Epididymitis</span></td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc7" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Intestinal symptoms attributed to ileocecal ulcers</span></td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc8" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Symptomatic nervous system lesions</span></td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc9" onclick="BehcetsJapan_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Vascular symptoms: obliterative thrombophlebitis, arterial occlusion, aneurysm</span></td></tr>
+
+</table>
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center>
+<textarea cols="35" rows="5" name="mccriteria" onfocus="blur();" class="medCalcFontTextArea">
+</textarea>
+</center>
+<br />&nbsp;<br />
+<center>
+<input type="reset" name="reset" value="Reset Form" />    
+</center>
+</div>
+</div>
+<br />&nbsp;<br />
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">International Study Group for Behcet's Disease. Criteria for diagnosis of Behcet's disease. <i>Lancet</i>.  1990 May 5;335(8697):1078-80. PubMed ID: 1970380 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/1970380"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u> Legal Notices and Disclaimer </u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo"> All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+ <b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b> <a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span> <br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2018 Foundation Internet Services &nbsp;&nbsp; [Build 255633 v18.3]</span></center></td></tr></table></center>
+ </div>
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+/* ]]> */
+</script>
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1532964163 //-->

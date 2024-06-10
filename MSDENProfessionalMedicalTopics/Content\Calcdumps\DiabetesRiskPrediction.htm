@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Risk of Acquiring Diabetes Mellitus (7.5-year)</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="sst, opti, endocrine, metabolism, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+return msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' is improperly formatted. You may only input the digits 0-9 and a decimal point.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+
+function DiabetesRiskPrediction_fx() {
+
+with(document.DiabetesRiskPrediction_form){
+
+
+doCalc = true;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Height_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Height_unit.options[Height_unit.selectedIndex].value.split('|');
+Height = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Weight_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Weight_unit.options[Weight_unit.selectedIndex].value.split('|');
+Weight = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+rbchk = false;
+if (Sex_radio[0].checked){ rbchk = true; Sex = 1;  }
+if (Sex_radio[1].checked){ rbchk = true; Sex = 0;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (MA_radio[0].checked){ rbchk = true; MA = 1;  }
+if (MA_radio[1].checked){ rbchk = true; MA = 0;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (FMH_DM_radio[0].checked){ rbchk = true; FMH_DM = 0;  }
+if (FMH_DM_radio[1].checked){ rbchk = true; FMH_DM = 1;  }
+if (!rbchk) doCalc = false;
+param_value = parseFloat(FBS_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = FBS_unit.options[FBS_unit.selectedIndex].value.split('|');
+FBS = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Systolic_Blood_Pressure_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Systolic_Blood_Pressure_unit.options[Systolic_Blood_Pressure_unit.selectedIndex].value.split('|');
+Systolic_Blood_Pressure = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(HDL_Cholesterol_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = HDL_Cholesterol_unit.options[HDL_Cholesterol_unit.selectedIndex].value.split('|');
+HDL_Cholesterol = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = decpts.options[decpts.selectedIndex].text;
+BMI =  (Weight/2.205) / power((Height/39.37), 2);
+
+unit_parts = BMI_unit.options[BMI_unit.selectedIndex].value.split('|');
+if (doCalc) BMI_param.value = fixDP((BMI - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+Terms =  (0.028 * Age) + (0.661 * Sex) + (0.412 * MA) + (0.079 * FBS) + (0.018 * Systolic_Blood_Pressure) - (0.039 * HDL_Cholesterol) + (0.07 * BMI) + (0.481 * FMH_DM) - 13.415;
+
+unit_parts = Terms_unit.options[Terms_unit.selectedIndex].value.split('|');
+if (doCalc) Terms_param.value = fixDP((Terms - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+Risk_of_Diabetes =  100 / (1 + eTo(-1 * Terms));
+
+unit_parts = Risk_of_Diabetes_unit.options[Risk_of_Diabetes_unit.selectedIndex].value.split('|');
+if (doCalc) Risk_of_Diabetes_param.value = fixDP((Risk_of_Diabetes - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+
+}
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.DiabetesRiskPrediction_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('Age'); }
+if (Height_param.value && isNaN(Height_param.value)){ clrValue(Height_param); alertNaN('Height'); }
+if (Weight_param.value && isNaN(Weight_param.value)){ clrValue(Weight_param); alertNaN('Weight'); }
+if (FBS_param.value && isNaN(FBS_param.value)){ clrValue(FBS_param); alertNaN('FBS'); }
+if (Systolic_Blood_Pressure_param.value && isNaN(Systolic_Blood_Pressure_param.value)){ clrValue(Systolic_Blood_Pressure_param); alertNaN('Systolic Blood Pressure'); }
+if (HDL_Cholesterol_param.value && isNaN(HDL_Cholesterol_param.value)){ clrValue(HDL_Cholesterol_param); alertNaN('HDL Cholesterol'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.DiabetesRiskPrediction_form){
+
+BMI_param.value = '';
+Terms_param.value = '';
+Risk_of_Diabetes_param.value = '';
+
+
+}
+
+}
+
+var Age = null,
+Height = null,
+Weight = null,
+Sex = null,
+MA = null,
+FMH_DM = null,
+FBS = null,
+Systolic_Blood_Pressure = null,
+HDL_Cholesterol = null,
+BMI = null,
+Terms = null,
+Risk_of_Diabetes = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="DiabetesRiskPrediction_form" id="DiabetesRiskPrediction_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="DiabetesRiskPrediction_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Risk of Acquiring Diabetes Mellitus (7.5-year)
+</span></td></tr></table><br />&nbsp;<br />
+
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">BMI = (Weight/2.205) / (Height/39.37)<sup>2</sup></span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">Terms = (0.028 * Age) + (0.661 * Sex) + (0.412 * MA) + (0.079 * FBS) + (0.018 * SystolicBloodPressure) - (0.039 * HDLCholesterol) + (0.07 * BMI) + (0.481 * FMHDM) - 13.415</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">RiskofDiabetes = 100 / (1 + e<sup>(-1*Terms)</sup>)</span></td></tr></table><br />&nbsp;<br />
+</div>
+</center>
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+Input:
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Age</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="minMaxCheck(); DiabetesRiskPrediction_fx();" onchange="DiabetesRiskPrediction_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="Age_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select> </td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Height</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Height_param" size="6" value="" onblur="minMaxCheck(); DiabetesRiskPrediction_fx();" onchange="DiabetesRiskPrediction_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="Height_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.393700787401575|0|cm">cm</option>
+<option value="12|0|ft">ft</option>
+<option value="1|0|in" selected="selected">in</option>
+<option value="3.93700787401575e-05|0|micm">micm</option>
+<option value="0.0393700787401575|0|mm">mm</option>
+<option value="39.3700787401575|0|m">m</option>
+<option value="3.93700787401575e-08|0|nm">nm</option>
+<option value="36|0|yd">yd</option>
+</select> </td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Weight</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Weight_param" size="6" value="" onblur="minMaxCheck(); DiabetesRiskPrediction_fx();" onchange="DiabetesRiskPrediction_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="Weight_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00220462262184878|0|gm">gm</option>
+<option value="2.20462262184878|0|kg">kg</option>
+<option value="1|0|lb" selected="selected">lb</option>
+<option value="2.20462262184878e-06|0|mg">mg</option>
+</select> </td></tr>
+
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">Sex</span></td>
+<td colspan="2" align="left"><span class="medCalcFontOne"><input type="radio" name="Sex_radio" value="Female|1" onclick="DiabetesRiskPrediction_fx();" /> Female (1)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><span class="medCalcFontOne"><input type="radio" name="Sex_radio" value="Male|0" onclick="DiabetesRiskPrediction_fx();" /> Male (0)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">MA</span></td>
+<td colspan="2" align="left"><span class="medCalcFontOne"><input type="radio" name="MA_radio" value="Mexican American|1" onclick="DiabetesRiskPrediction_fx();" /> Mexican American (1)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><span class="medCalcFontOne"><input type="radio" name="MA_radio" value="Non-Hispanic white|0" onclick="DiabetesRiskPrediction_fx();" /> Non-Hispanic white (0)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">FMH DM</span></td>
+<td colspan="2" align="left"><span class="medCalcFontOne"><input type="radio" name="FMH_DM_radio" value="No family history of DM|0" onclick="DiabetesRiskPrediction_fx();" /> No family history of DM (0)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><span class="medCalcFontOne"><input type="radio" name="FMH_DM_radio" value="Positive family history of DM|1" onclick="DiabetesRiskPrediction_fx();" /> Positive family history of DM (1)</span></td></tr>
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">FBS</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="FBS_param" size="6" value="" onblur="minMaxCheck(); DiabetesRiskPrediction_fx();" onchange="DiabetesRiskPrediction_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="FBS_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mg/dL_Glu" selected="selected">mg/dL</option>
+<option value="18.018018018018|0|mmol/L_Glu">mmol/L</option>
+</select> </td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Systolic Blood Pressure</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Systolic_Blood_Pressure_param" size="6" value="" onblur="minMaxCheck(); DiabetesRiskPrediction_fx();" onchange="DiabetesRiskPrediction_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="Systolic_Blood_Pressure_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select> </td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">HDL Cholesterol</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="HDL_Cholesterol_param" size="6" value="" onblur="minMaxCheck(); DiabetesRiskPrediction_fx();" onchange="DiabetesRiskPrediction_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="HDL_Cholesterol_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mg/dL_Chol" selected="selected">mg/dL</option>
+<option value="38.6697602474865|0|mmol/L_Chol">mmol/L</option>
+</select> </td></tr>
+
+
+</table>
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">Results:</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellspacing="4">
+<tr>
+<td align="right"><span class="medCalcFontOneBold">BMI</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="BMI_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontOne">
+<select name="BMI_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|kg/sqm" selected="selected">kg/sqm</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontOneBold">Terms</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Terms_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontOne">
+<select name="Terms_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|#">#</option>
+<option value="1|0|index">index</option>
+<option value="1|0|logit" selected="selected">logit</option>
+<option value="1|0|none">none</option>
+<option value="1|0|number">number</option>
+<option value="1|0|points">points</option>
+<option value="1|0|score">score</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontOneBold">Risk of Diabetes</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Risk_of_Diabetes_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontOne">
+<select name="Risk_of_Diabetes_unit" onchange="DiabetesRiskPrediction_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|rate">rate</option>
+<option value="100|0|ratio">ratio</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontOneBold">Decimal Precision &nbsp;</span>
+<select name="decpts" onchange="DiabetesRiskPrediction_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+<br />&nbsp;<br />
+<div id="calc_hints">
+<span class="medCalcFontOne">
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span>
+ 
+</div>
+
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">Notes</span>
+<ul class="medCalcFontOne">
+<li>Equation parameters such as <b>Sex</b>, have two or more discrete values that may be used in the calculation. The numbers in the parentheses, e.g.  (1), represent the values that will be used.</li>
+<li><b>BMI</b> is body mass index.</li>
+<li><b>FBS</b> is fasting blood sugar.</li>
+<li>A <b>FMH DM</b> means at least one parent or sibling has diabetes.</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Stern MP, Williams K, Haffner SM. Identification of persons at high risk for  type 2 diabetes mellitus: do we need the oral glucose tolerance test?. <i>Ann Intern  Med</i>. 2002 Apr 16;136(8):575-81. PubMed ID: 11955025 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11955025"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2018 Foundation Internet Services &nbsp;&nbsp; [Build 255633 v18.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1532964198 //-->

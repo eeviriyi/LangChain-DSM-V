@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>白塞氏综合征国际研究组织标准</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="rheumatology, dermatology, internat, diagnosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+BehcetsInternational_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+BehcetsInternational_fx();
+}
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+
+function BehcetsInternational_fx() {
+
+with(document.BehcetsInternational_form){
+
+mcResult = "不充分";
+
+setScore0 = 0;
+setScore1 = 0;
+
+if (cc1.checked){ setScore0 = setScore0 + 1;
+}
+if (cc2.checked){ setScore1 = setScore1 + 1;
+}
+if (cc3.checked){ setScore1 = setScore1 + 1;
+}
+if (cc4.checked){ setScore1 = setScore1 + 1;
+}
+if (cc5.checked){ setScore1 = setScore1 + 1;
+}
+if (setScore0 >= 1 && setScore1 >= 2) mcResult = "诊断";
+mccriteria.value = mcResult + ' 以:\r\n' + setScore0 + " 必要标准 \r\n" + setScore1 + " 次要标准 \r\n";
+
+
+}
+
+}
+/* ]]> */
+</script>
+
+
+
+<form name="BehcetsInternational_form" id="BehcetsInternational_form" action="" onsubmit="return false;">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+白塞氏综合征国际研究组织标准
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="left"><br /></td><td colspan="2"><span class="medCalcFontOneBold">诊断:</span>
+<span class="medCalcFontCCTab">
+1 必要标准 以及 2 次要标准 </span></td></tr>
+
+<tr><td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="3" align="left"><br />&nbsp;<br /><span class="medCalcFontOneBold">必要标准</span></td></tr>
+
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc1" id="togel1" onclick="BehcetsInternational_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel1');" >复发性口腔性溃疡：医师或患者观察到轻型阿弗他溃疡、重型阿弗他溃疡或疱疹样溃疡，12 个月内复发至少 3 次</td></tr>
+<tr><td colspan="3" align="left"><br />&nbsp;<br /><span class="medCalcFontOneBold">次要标准</span></td></tr>
+
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc2" id="togel2" onclick="BehcetsInternational_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel2');" >复发性外阴溃疡：医师或患者观察到阿弗他溃疡或瘢痕形成</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc3" id="togel3" onclick="BehcetsInternational_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel3');" >眼部病变：前葡萄膜炎、后葡萄膜炎，或裂隙灯检查见玻璃体内细胞，或经眼科医师查见视网膜血管炎</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc4" id="togel4" onclick="BehcetsInternational_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel4');" >皮肤病变：医师或患者观察到结节性红斑、假毛囊炎或丘疹脓疱性病变、或医师观察到未进行皮质激素治疗的青春期后患者出现痤疮样结节</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc5" id="togel5" onclick="BehcetsInternational_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel5');" >经医师判断 24-48 小时内针刺反应试验（Behcetine 试验）。</td></tr>
+
+</table>
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center>
+<div id="mccriteriadiv">
+<textarea cols="35" rows="5" name="mccriteria" id="mccriteria" onfocus="blur();" class="medCalcFontTextArea"></textarea>
+</div>
+</center>
+<br />&nbsp;<br />
+<center>
+<input type="reset" name="reset" value="重设表格" />    
+</center>
+</div>
+</div>
+<br />&nbsp;<br />
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">International Study Group for Behcet's Disease. Criteria for diagnosis of Behcet's disease. <i>Lancet</i>.  1990 May 5;335(8697):1078-80. PubMed ID: 1970380 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/1970380"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+
+
+</form>
+<div id="calc_disclaimer">  <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u> 法律条款及免责声明 </u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo"> EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+ <b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b> <a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span> <br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+ </div>
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471467 //-->

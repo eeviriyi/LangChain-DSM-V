@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Waterlow Scale for Stratification of Pressure Sore Risk</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Wound, Geriatrics, Surgery, Nutrition, Dermatology, smoke, prognosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+function Waterlow_fx() {
+with(document.Waterlow_form){
+
+Score = 0.0;
+doCalc = true;
+
+if (cc1[0].checked){
+Score = Score + 2; 
+}
+if (cc1[1].checked){
+Score = Score + 1; 
+}
+if (cc2[0].checked){
+Score = Score + 1; 
+}
+if (cc2[1].checked){
+Score = Score + 2; 
+}
+if (cc2[2].checked){
+Score = Score + 3; 
+}
+if (cc2[3].checked){
+Score = Score + 4; 
+}
+if (cc2[4].checked){
+Score = Score + 5; 
+}
+if (cc3[0].checked){
+Score = Score + 0; 
+}
+if (cc3[1].checked){
+Score = Score + 1; 
+}
+if (cc3[2].checked){
+Score = Score + 2; 
+}
+if (cc3[3].checked){
+Score = Score + 3; 
+}
+if (cc4[0].checked){
+Score = Score + 0; 
+}
+if (cc4[1].checked){
+Score = Score + 1; 
+}
+if (cc4[2].checked){
+Score = Score + 2; 
+}
+if (cc4[3].checked){
+Score = Score + 3; 
+}
+if (cc5.checked){
+Score = Score + 1;
+}
+if (cc6.checked){
+Score = Score + 1;
+}
+if (cc7.checked){
+Score = Score + 1;
+}
+if (cc8.checked){
+Score = Score + 1;
+}
+if (cc9.checked){
+Score = Score + 2;
+}
+if (cc10.checked){
+Score = Score + 3;
+}
+if (cc11[0].checked){
+Score = Score + 0; 
+}
+if (cc11[1].checked){
+Score = Score + 1; 
+}
+if (cc11[2].checked){
+Score = Score + 2; 
+}
+if (cc11[3].checked){
+Score = Score + 3; 
+}
+if (cc11[4].checked){
+Score = Score + 4; 
+}
+if (cc11[5].checked){
+Score = Score + 5; 
+}
+if (cc12[0].checked){
+Score = Score + 0; 
+}
+if (cc12[1].checked){
+Score = Score + 1; 
+}
+if (cc12[2].checked){
+Score = Score + 2; 
+}
+if (cc12[3].checked){
+Score = Score + 3; 
+}
+if (cc13.checked){
+Score = Score + 8;
+}
+if (cc14.checked){
+Score = Score + 5;
+}
+if (cc15.checked){
+Score = Score + 5;
+}
+if (cc16.checked){
+Score = Score + 2;
+}
+if (cc17.checked){
+Score = Score + 1;
+}
+if (cc18.checked){
+Score = Score + 5;
+}
+if (cc19.checked){
+Score = Score + 5;
+}
+if (cc20.checked){
+Score = Score + 5;
+}
+if (cc21.checked){
+Score = Score + 5;
+}
+if (cc22.checked){
+Score = Score + 5;
+}
+if (cc23.checked){
+Score = Score + 5;
+}
+if (cc24.checked){
+Score = Score + 5;
+}
+if (cc25.checked){
+Score = Score + 4;
+}
+if (cc26.checked){
+Score = Score + 4;
+}
+if (cc27.checked){
+Score = Score + 4;
+}
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.Waterlow_form.cctotal.value = '';
+}
+
+if (doCalc){
+rrclr();
+if ((Score >= 10) && (Score <= 14)){ document.getElementById('rr1_1').bgColor = '#cccccc';
+}
+if ((Score >= 15) && (Score <= 19)){ document.getElementById('rr1_2').bgColor = '#cccccc';
+}
+if ((Score >= 20) && (Score <= 92)){ document.getElementById('rr1_3').bgColor = '#cccccc';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="Waterlow_form" id="Waterlow_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Waterlow Scale for Stratification of Pressure Sore Risk
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Sex </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc1" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Female (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc1" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Male (1 point)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Age </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">14-49 years old (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">50-64 (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">65-74 (3 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">75-80 (4 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">81 + Years old (5 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Physical Build / Weight </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc3" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Average (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc3" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Above average (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc3" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Obese (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc3" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Below average (3 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Continence </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc4" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Has catheter (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc4" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Occasionally incontinent (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc4" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Has catheter but incontinent of feces (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc4" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Incontinent of urine and feces (3 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Abnormal Skin Condition</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc5" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Atrophic, tissue paper like (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc6" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Dry (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc7" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Edemetous (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc8" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Clammy (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc9" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">discolored (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc10" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Breakdown present (3 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Mobility </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">full (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Restless (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Apathetic (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Restricted (3 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">In traction (4 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Chairbound (5 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Appetite </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc12" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">average (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc12" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Poor (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc12" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">NG tube / fluids only (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" name="cc12" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Anorexic (3 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc13" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Terminal Cachexia (8 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc14" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Cardiac Failure (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc15" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Peripheral Vascular Disease (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc16" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Anemia (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc17" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Smoker (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc18" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Diabetic Neurologic Deficit (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc19" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Multiple Sclerosis Neurologic Deficit (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc20" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">CVA Neurologic Deficit (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc21" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Motor Sensory Neurologic Deficit (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc22" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Paraplegic Neurologic Deficit (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc23" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Recent Orthopedic Surgery Below Waist (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc24" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">Recent Spinal Anesthetic (over 2 hours table time) (5 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc25" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">On Cytotoxic Medications (4 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc26" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">On High Dose Corticosteroid (4 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" name="cc27" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontCCTab">On Anti-inflamatory Medications (4 points)</span></td></tr>
+
+</table>
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+Total Criteria Point Count:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="Reset Form" />    </center>
+<br />&nbsp;<br />
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ Waterlow Score
+</span></td></tr></table><br />&nbsp;<br />
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">10 to 14 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Patient at risk</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">15 to 19 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">High risk</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">20 to 92 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Very high risk</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Waterlow J. The history and use of the Waterlow card. <i>Nurs Times</i>. 1998 Feb 18-24;94(7):63-7. PubMed ID: 9536738 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9536738"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Wellard S, Lo K. Comparing Norton, Braden and Waterlow risk assessment scales for pressure ulcers in spinal cord injuries. <i>Contemp Nurse</i>. 2000 Jun;9(2):155-60. PubMed ID: 11855004 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/11855004"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2018 Foundation Internet Services &nbsp;&nbsp; [Build 255633 v18.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+Waterlow_fx();
+
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1532964324 //-->

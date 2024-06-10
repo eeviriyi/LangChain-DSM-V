@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>右至左肺内分流率（Qs/Qt）</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="anesth, cardiology, pulmonary, critical care, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+Qs_Qt_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+Qs_Qt_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function Qs_Qt_fx() {
+
+with(document.Qs_Qt_form){
+
+
+doCalc = true;
+param_value = parseFloat(Temp_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Temp_unit.options[Temp_unit.selectedIndex].value.split('|');
+Temp = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Altitude_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Altitude_unit.options[Altitude_unit.selectedIndex].value.split('|');
+Altitude = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(paCO2_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = paCO2_unit.options[paCO2_unit.selectedIndex].value.split('|');
+paCO2 = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(paO2_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = paO2_unit.options[paO2_unit.selectedIndex].value.split('|');
+paO2 = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = decpts.options[decpts.selectedIndex].text;
+pH2O =  47 * eTo((Temp - 37) / 18.4);
+
+unit_parts = pH2O_unit.options[pH2O_unit.selectedIndex].value.split('|');
+if (doCalc) pH2O_param.value = fixDP((pH2O - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+pATM =  760 * eTo(- Altitude / 7000);
+
+unit_parts = pATM_unit.options[pATM_unit.selectedIndex].value.split('|');
+if (doCalc) pATM_param.value = fixDP((pATM - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+pAO2 =  pATM - pH2O - paCO2;
+
+unit_parts = pAO2_unit.options[pAO2_unit.selectedIndex].value.split('|');
+if (doCalc) pAO2_param.value = fixDP((pAO2 - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+AaG =  pAO2 - paO2;
+
+unit_parts = AaG_unit.options[AaG_unit.selectedIndex].value.split('|');
+if (doCalc) AaG_param.value = fixDP((AaG - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+Qs_Qt =  100 * ( .0031 * AaG) / ((.0031 * AaG) + 5);
+
+unit_parts = Qs_Qt_unit.options[Qs_Qt_unit.selectedIndex].value.split('|');
+if (doCalc) Qs_Qt_param.value = fixDP((Qs_Qt - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.Qs_Qt_form){
+
+if (Temp_param.value && isNaN(Temp_param.value)){ clrValue(Temp_param); alertNaN('温度'); }
+if (Altitude_param.value && isNaN(Altitude_param.value)){ clrValue(Altitude_param); alertNaN('海拔'); }
+if (paCO2_param.value && isNaN(paCO2_param.value)){ clrValue(paCO2_param); alertNaN('paCO2'); }
+if (paO2_param.value && isNaN(paO2_param.value)){ clrValue(paO2_param); alertNaN('paO2'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.Qs_Qt_form){
+
+pH2O_param.value = '';
+pATM_param.value = '';
+pAO2_param.value = '';
+AaG_param.value = '';
+Qs_Qt_param.value = '';
+
+
+}
+
+}
+
+var Temp = null,
+Altitude = null,
+paCO2 = null,
+paO2 = null,
+pH2O = null,
+pATM = null,
+pAO2 = null,
+AaG = null,
+Qs_Qt = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="Qs_Qt_form" id="Qs_Qt_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="Qs_Qt_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+右至左肺内分流率（Qs/Qt）
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">温度</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Temp_param" size="6" value="37" onblur="Qs_Qt_fx(); minMaxCheck();" onchange="Qs_Qt_fx();" /></td>
+<td align="left" valign="top"> <select name="Temp_unit" onchange="Qs_Qt_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|degC" selected="selected">degC</option>
+<option value="0.555555555555556|-17.7777777777778|degF">degF</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">海拔</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Altitude_param" size="6" value="0" onblur="Qs_Qt_fx(); minMaxCheck();" onchange="Qs_Qt_fx();" /></td>
+<td align="left" valign="top"> <select name="Altitude_unit" onchange="Qs_Qt_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.01|0|cm">cm</option>
+<option value="0.3048|0|ft">ft</option>
+<option value="0.0254|0|in">in</option>
+<option value="1e-06|0|micm">micm</option>
+<option value="0.001|0|mm">mm</option>
+<option value="1|0|m" selected="selected">m</option>
+<option value="1e-09|0|nm">nm</option>
+<option value="0.9144|0|yd">yd</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">paCO2</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="paCO2_param" size="6" value="40" onblur="Qs_Qt_fx(); minMaxCheck();" onchange="Qs_Qt_fx();" /></td>
+<td align="left" valign="top"> <select name="paCO2_unit" onchange="Qs_Qt_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">paO2</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="paO2_param" size="6" value="" onblur="Qs_Qt_fx(); minMaxCheck();" onchange="Qs_Qt_fx();" /></td>
+<td align="left" valign="top"> <select name="paO2_unit" onchange="Qs_Qt_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select></td></tr>
+
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">pH2O</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="pH2O_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="pH2O_unit" onchange="Qs_Qt_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">pATM</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="pATM_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="pATM_unit" onchange="Qs_Qt_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">pAO2</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="pAO2_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="pAO2_unit" onchange="Qs_Qt_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">AaG</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="AaG_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="AaG_unit" onchange="Qs_Qt_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">Qs Qt</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Qs_Qt_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Qs_Qt_unit" onchange="Qs_Qt_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|ratio">ratio</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontResultParam">小数点精确度 &nbsp;</span>
+<select name="decpts" onchange="Qs_Qt_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>此计算仅能用于受试者呼吸 100% 氧气达至少 20 分钟的情况。</li>
+<li>此测试有效的前提是，受试者应有正常基线的 A-a 梯度和正常的氧气消耗量。</li>
+<li>以上等式简化了传统的 A-a 梯度计算，因为 FI02 和呼吸商在氮冲洗后均被假设为 1。</li>
+<li>正常最高分流率接近 5%。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">pH2O = 47 * e<sup>((温度-37)/18.4)</sup></span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">pATM = 760 * e<sup>(-海拔/7000)</sup></span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">pAO2 = pATM - pH2O - paCO2</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">AaG = pAO2 - paO2</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">QsQt = 100 * ( .0031 * AaG) / ((.0031 * AaG) + 5)</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Chiang ST. A nomogram for venous shunt (Qs-Qt) calculation. <i>Thorax</i>. 1968 Sep;23(5):563-5. PubMed ID: 5680242 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/5680242"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471517 //-->

@@ -1,0 +1,1226 @@
+﻿[
+  {
+    "ItemId": "{032D6951-0B57-4B58-9F84-5911D554C013}",
+    "Name": "Antinuclear Antibody (ANA)",
+    "SectionName": "Cardiovascular Disorders",
+    "FileName": "ANAAntinuclearAntibodyTest.html",
+    "Url": "/-/media/Manual/LabTests/ANAAntinuclearAntibodyTest.html",
+    "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+    "TopicTitle": "Raynaud Syndrome",
+    "TopicId": "{D10E1F00-3EAD-437F-92EC-EBB36FA0AB7E}",
+    "TopicLocations": [
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{962D703D-A82D-49C9-8DBD-45C9704B4768}",
+        "TopicName": "Amyotrophic Lateral Sclerosis (ALS) and Other Motor Neuron Diseases (MNDs)",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7AD851C2-3147-4438-BF6F-8FFC01B162D9}",
+        "TopicName": "Polyneuropathy",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D10E1F00-3EAD-437F-92EC-EBB36FA0AB7E}",
+        "TopicName": "Raynaud Syndrome",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{9837A504-8E44-4EE5-BA92-6E2B04332270}",
+        "TopicName": "Diffuse Alveolar Hemorrhage",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{0C270686-2BDA-447E-A018-75E6D942B197}",
+        "TopicName": "Autoimmune Myositis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD6D4F8B-5B14-45F1-9EEE-924A81D58005}",
+        "TopicName": "Fever in Infants and Children",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{A44484CA-4C5B-470B-BBDB-88B0DCD21FBB}",
+        "TopicName": "Juvenile Idiopathic Arthritis (JIA)",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{48A11CFA-DB3D-412E-983B-86AA69EA0F56}",
+        "TopicName": "Sjögren Syndrome",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7E76F834-148A-4F02-BE62-DAF4ECBBDAAD}",
+        "TopicName": "Systemic Lupus Erythematosus (SLE)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{498A2D50-CCB8-427E-896B-5C8322590A89}",
+        "TopicName": "Kawasaki Disease",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{90AD5DCF-DE01-47C7-93AD-3FB196198D99}",
+        "TopicName": "Mixed Connective Tissue Disease (MCTD)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D5C0C2A4-2A53-4289-AD63-596D87007007}",
+        "TopicName": "Systemic Sclerosis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD5BC215-20A2-4C51-9F6E-4213E076CEDC}",
+        "TopicName": "Relapsing Polychondritis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{6672B996-96E0-4F7C-8997-E60D56B5A548}",
+    "Name": "D-dimer",
+    "SectionName": "Cardiovascular Disorders",
+    "FileName": "DDimerTest.html",
+    "Url": "/-/media/Manual/LabTests/DDimerTest.html",
+    "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+    "TopicTitle": "Deep Venous Thrombosis (DVT)",
+    "TopicId": "{40A030FA-C405-40DB-867D-6853F28279BE}",
+    "TopicLocations": [
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{13B11502-6350-4B8A-B94F-9408502CAE2A}",
+        "TopicName": "Vaginal Bleeding During Late Pregnancy",
+        "SectionName": "Gynecology and Obstetrics"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{40A030FA-C405-40DB-867D-6853F28279BE}",
+        "TopicName": "Deep Venous Thrombosis (DVT)",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{422D9DFA-7BD4-43E8-9360-98721B39FDE4}",
+        "TopicName": "Dyspnea",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{04BDB331-74E7-4552-B984-0E863FC6C2CD}",
+        "TopicName": "Pulmonary Embolism (PE)",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{18F67047-6499-41D9-B1CC-0C4290E7C571}",
+        "TopicName": "Disseminated Intravascular Coagulation (DIC)",
+        "SectionName": "Hematology and Oncology"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{AF046BF5-044C-4550-BE39-526D69A29CCA}",
+        "TopicName": "Overview of Coagulation Disorders",
+        "SectionName": "Hematology and Oncology"
+      }
+    ]
+  },
+  {
+    "ItemId": "{071F3D74-1E6B-4418-9422-17B3928D6188}",
+    "Name": "Cortisol",
+    "SectionName": "Endocrine and Metabolic Disorders",
+    "FileName": "CortisolTest.html",
+    "Url": "/-/media/Manual/LabTests/CortisolTest.html",
+    "SectionId": "{4EA3F68C-A029-4073-A010-F26F493D2D02}",
+    "TopicTitle": "Addison Disease",
+    "TopicId": "{514A1668-981D-44C8-A293-A14EFA1C4095}",
+    "TopicLocations": [
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{514A1668-981D-44C8-A293-A14EFA1C4095}",
+        "TopicName": "Addison Disease",
+        "SectionName": "Endocrine and Metabolic Disorders"
+      },
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{46936254-30F6-46F9-AE22-B306335DE3D9}",
+        "TopicName": "Cushing Syndrome",
+        "SectionName": "Endocrine and Metabolic Disorders"
+      },
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{1AA9BCDF-0B1A-46CB-B140-76E99848D0D0}",
+        "TopicName": "Overview of Malabsorption",
+        "SectionName": "Gastrointestinal Disorders"
+      },
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D1142209-FE0E-47BA-B049-A7DBCCB665D8}",
+        "TopicName": "Secondary Adrenal Insufficiency",
+        "SectionName": "Endocrine and Metabolic Disorders"
+      },
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{174ED760-1C54-443E-A579-55EEFE8A1597}",
+        "TopicName": "Nonfunctional Adrenal Masses",
+        "SectionName": "Endocrine and Metabolic Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{B07A88CC-B945-4526-A77D-774B0064758C}",
+    "Name": "Carcinoembryonic Antigen (CEA)",
+    "SectionName": "Gastrointestinal Disorders",
+    "FileName": "CEATest.html",
+    "Url": "/-/media/Manual/LabTests/CEATest.html",
+    "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+    "TopicTitle": "Colorectal Cancer",
+    "TopicId": "{F22D0D54-B1B3-42B8-A738-7D7CDF7C5056}",
+    "TopicLocations": [
+      {
+        "Title": "Carcinoembryonic Antigen (CEA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{F22D0D54-B1B3-42B8-A738-7D7CDF7C5056}",
+        "TopicName": "Colorectal Cancer",
+        "SectionName": "Gastrointestinal Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{071F3D74-1E6B-4418-9422-17B3928D6188}",
+    "Name": "Cortisol",
+    "SectionName": "Gastrointestinal Disorders",
+    "FileName": "CortisolTest.html",
+    "Url": "/-/media/Manual/LabTests/CortisolTest.html",
+    "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+    "TopicTitle": "Overview of Malabsorption",
+    "TopicId": "{1AA9BCDF-0B1A-46CB-B140-76E99848D0D0}",
+    "TopicLocations": [
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{514A1668-981D-44C8-A293-A14EFA1C4095}",
+        "TopicName": "Addison Disease",
+        "SectionName": "Endocrine and Metabolic Disorders"
+      },
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{46936254-30F6-46F9-AE22-B306335DE3D9}",
+        "TopicName": "Cushing Syndrome",
+        "SectionName": "Endocrine and Metabolic Disorders"
+      },
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{1AA9BCDF-0B1A-46CB-B140-76E99848D0D0}",
+        "TopicName": "Overview of Malabsorption",
+        "SectionName": "Gastrointestinal Disorders"
+      },
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D1142209-FE0E-47BA-B049-A7DBCCB665D8}",
+        "TopicName": "Secondary Adrenal Insufficiency",
+        "SectionName": "Endocrine and Metabolic Disorders"
+      },
+      {
+        "Title": "Cortisol",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{174ED760-1C54-443E-A579-55EEFE8A1597}",
+        "TopicName": "Nonfunctional Adrenal Masses",
+        "SectionName": "Endocrine and Metabolic Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{6672B996-96E0-4F7C-8997-E60D56B5A548}",
+    "Name": "D-dimer",
+    "SectionName": "Gynecology and Obstetrics",
+    "FileName": "DDimerTest.html",
+    "Url": "/-/media/Manual/LabTests/DDimerTest.html",
+    "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+    "TopicTitle": "Vaginal Bleeding During Late Pregnancy",
+    "TopicId": "{13B11502-6350-4B8A-B94F-9408502CAE2A}",
+    "TopicLocations": [
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{13B11502-6350-4B8A-B94F-9408502CAE2A}",
+        "TopicName": "Vaginal Bleeding During Late Pregnancy",
+        "SectionName": "Gynecology and Obstetrics"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{40A030FA-C405-40DB-867D-6853F28279BE}",
+        "TopicName": "Deep Venous Thrombosis (DVT)",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{422D9DFA-7BD4-43E8-9360-98721B39FDE4}",
+        "TopicName": "Dyspnea",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{04BDB331-74E7-4552-B984-0E863FC6C2CD}",
+        "TopicName": "Pulmonary Embolism (PE)",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{18F67047-6499-41D9-B1CC-0C4290E7C571}",
+        "TopicName": "Disseminated Intravascular Coagulation (DIC)",
+        "SectionName": "Hematology and Oncology"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{AF046BF5-044C-4550-BE39-526D69A29CCA}",
+        "TopicName": "Overview of Coagulation Disorders",
+        "SectionName": "Hematology and Oncology"
+      }
+    ]
+  },
+  {
+    "ItemId": "{01684294-8F88-417B-982B-E3708BA63F99}",
+    "Name": "Estrogens",
+    "SectionName": "Gynecology and Obstetrics",
+    "FileName": "EstrogenLevelsTest.html",
+    "Url": "/-/media/Manual/LabTests/EstrogenLevelsTest.html",
+    "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+    "TopicTitle": "Decreased Ovarian Reserve (DOR)",
+    "TopicId": "{C4D99101-938D-470E-822A-001B8981D38B}",
+    "TopicLocations": [
+      {
+        "Title": "Estrogens",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{C4D99101-938D-470E-822A-001B8981D38B}",
+        "TopicName": "Decreased Ovarian Reserve (DOR)",
+        "SectionName": "Gynecology and Obstetrics"
+      }
+    ]
+  },
+  {
+    "ItemId": "{6672B996-96E0-4F7C-8997-E60D56B5A548}",
+    "Name": "D-dimer",
+    "SectionName": "Hematology and Oncology",
+    "FileName": "DDimerTest.html",
+    "Url": "/-/media/Manual/LabTests/DDimerTest.html",
+    "SectionId": "{04926BDD-DC3D-45E0-89C0-075AEBCF7310}",
+    "TopicTitle": "Disseminated Intravascular Coagulation (DIC)",
+    "TopicId": "{18F67047-6499-41D9-B1CC-0C4290E7C571}",
+    "TopicLocations": [
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{13B11502-6350-4B8A-B94F-9408502CAE2A}",
+        "TopicName": "Vaginal Bleeding During Late Pregnancy",
+        "SectionName": "Gynecology and Obstetrics"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{40A030FA-C405-40DB-867D-6853F28279BE}",
+        "TopicName": "Deep Venous Thrombosis (DVT)",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{422D9DFA-7BD4-43E8-9360-98721B39FDE4}",
+        "TopicName": "Dyspnea",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{04BDB331-74E7-4552-B984-0E863FC6C2CD}",
+        "TopicName": "Pulmonary Embolism (PE)",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{18F67047-6499-41D9-B1CC-0C4290E7C571}",
+        "TopicName": "Disseminated Intravascular Coagulation (DIC)",
+        "SectionName": "Hematology and Oncology"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{AF046BF5-044C-4550-BE39-526D69A29CCA}",
+        "TopicName": "Overview of Coagulation Disorders",
+        "SectionName": "Hematology and Oncology"
+      }
+    ]
+  },
+  {
+    "ItemId": "{02713071-4864-410A-ABB8-E4ABBE9D8277}",
+    "Name": "Direct Antiglobulin Test",
+    "SectionName": "Hematology and Oncology",
+    "FileName": "HaptoglobinHPTest.html",
+    "Url": "/-/media/Manual/LabTests/HaptoglobinHPTest.html",
+    "SectionId": "{04926BDD-DC3D-45E0-89C0-075AEBCF7310}",
+    "TopicTitle": "Macroglobulinemia",
+    "TopicId": "{6E7F976E-5014-428E-82C7-2E1ECE5DD236}",
+    "TopicLocations": [
+      {
+        "Title": "Direct Antiglobulin Test",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{6E7F976E-5014-428E-82C7-2E1ECE5DD236}",
+        "TopicName": "Macroglobulinemia",
+        "SectionName": "Hematology and Oncology"
+      }
+    ]
+  },
+  {
+    "ItemId": "{0DB27EB9-EE21-4BCA-95BB-0CA062F1B650}",
+    "Name": "Complement",
+    "SectionName": "Immunology; Allergic Disorders",
+    "FileName": "ComplementBloodTest.html",
+    "Url": "/-/media/Manual/LabTests/ComplementBloodTest.html",
+    "SectionId": "{3B491796-22F4-45C1-8556-789400A67C61}",
+    "TopicTitle": "Complement System",
+    "TopicId": "{A0D8E6E9-3C2E-4F3A-84BC-5D0576772DAF}",
+    "TopicLocations": [
+      {
+        "Title": "Complement",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{A0D8E6E9-3C2E-4F3A-84BC-5D0576772DAF}",
+        "TopicName": "Complement System",
+        "SectionName": "Immunology; Allergic Disorders"
+      },
+      {
+        "Title": "Complement",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{F083F596-2D3A-487B-850B-C06E31DC7A50}",
+        "TopicName": "Approach to the Patient With Suspected Immunodeficiency",
+        "SectionName": "Immunology; Allergic Disorders"
+      },
+      {
+        "Title": "Complement",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7E76F834-148A-4F02-BE62-DAF4ECBBDAAD}",
+        "TopicName": "Systemic Lupus Erythematosus (SLE)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{054D1E02-AA44-403B-AB7D-F1B513E869B1}",
+    "Name": "HIV Antiretroviral Drug Resistance Testing, Genotypic",
+    "SectionName": "Infectious Diseases",
+    "FileName": "HIVScreeningTest.html",
+    "Url": "/-/media/Manual/LabTests/HIVScreeningTest.html",
+    "SectionId": "{31B9CCA6-B744-4D01-A4C5-6642DD6C8F29}",
+    "TopicTitle": "Human Immunodeficiency Virus (HIV) Infection",
+    "TopicId": "{F74E7EDD-B57E-443C-AF88-E04A1F79DA48}",
+    "TopicLocations": [
+      {
+        "Title": "HIV Antiretroviral Drug Resistance Testing, Genotypic",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{F74E7EDD-B57E-443C-AF88-E04A1F79DA48}",
+        "TopicName": "Human Immunodeficiency Virus (HIV) Infection",
+        "SectionName": "Infectious Diseases"
+      },
+      {
+        "Title": "HIV Antiretroviral Drug Resistance Testing, Genotypic",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{6EA530B9-C85E-4653-B466-245F2A0E10EA}",
+        "TopicName": "Human Immunodeficiency Virus (HIV) Infection in Infants and Children",
+        "SectionName": "Pediatrics"
+      }
+    ]
+  },
+  {
+    "ItemId": "{032D6951-0B57-4B58-9F84-5911D554C013}",
+    "Name": "Antinuclear Antibody (ANA)",
+    "SectionName": "Musculoskeletal and Connective Tissue Disorders",
+    "FileName": "ANAAntinuclearAntibodyTest.html",
+    "Url": "/-/media/Manual/LabTests/ANAAntinuclearAntibodyTest.html",
+    "SectionId": "{47E70A29-213F-41BF-BE95-ACDBE09995DB}",
+    "TopicTitle": "Autoimmune Myositis",
+    "TopicId": "{0C270686-2BDA-447E-A018-75E6D942B197}",
+    "TopicLocations": [
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{962D703D-A82D-49C9-8DBD-45C9704B4768}",
+        "TopicName": "Amyotrophic Lateral Sclerosis (ALS) and Other Motor Neuron Diseases (MNDs)",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7AD851C2-3147-4438-BF6F-8FFC01B162D9}",
+        "TopicName": "Polyneuropathy",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D10E1F00-3EAD-437F-92EC-EBB36FA0AB7E}",
+        "TopicName": "Raynaud Syndrome",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{9837A504-8E44-4EE5-BA92-6E2B04332270}",
+        "TopicName": "Diffuse Alveolar Hemorrhage",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{0C270686-2BDA-447E-A018-75E6D942B197}",
+        "TopicName": "Autoimmune Myositis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD6D4F8B-5B14-45F1-9EEE-924A81D58005}",
+        "TopicName": "Fever in Infants and Children",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{A44484CA-4C5B-470B-BBDB-88B0DCD21FBB}",
+        "TopicName": "Juvenile Idiopathic Arthritis (JIA)",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{48A11CFA-DB3D-412E-983B-86AA69EA0F56}",
+        "TopicName": "Sjögren Syndrome",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7E76F834-148A-4F02-BE62-DAF4ECBBDAAD}",
+        "TopicName": "Systemic Lupus Erythematosus (SLE)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{498A2D50-CCB8-427E-896B-5C8322590A89}",
+        "TopicName": "Kawasaki Disease",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{90AD5DCF-DE01-47C7-93AD-3FB196198D99}",
+        "TopicName": "Mixed Connective Tissue Disease (MCTD)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D5C0C2A4-2A53-4289-AD63-596D87007007}",
+        "TopicName": "Systemic Sclerosis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD5BC215-20A2-4C51-9F6E-4213E076CEDC}",
+        "TopicName": "Relapsing Polychondritis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{0DB27EB9-EE21-4BCA-95BB-0CA062F1B650}",
+    "Name": "Complement",
+    "SectionName": "Musculoskeletal and Connective Tissue Disorders",
+    "FileName": "ComplementBloodTest.html",
+    "Url": "/-/media/Manual/LabTests/ComplementBloodTest.html",
+    "SectionId": "{47E70A29-213F-41BF-BE95-ACDBE09995DB}",
+    "TopicTitle": "Systemic Lupus Erythematosus (SLE)",
+    "TopicId": "{7E76F834-148A-4F02-BE62-DAF4ECBBDAAD}",
+    "TopicLocations": [
+      {
+        "Title": "Complement",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{A0D8E6E9-3C2E-4F3A-84BC-5D0576772DAF}",
+        "TopicName": "Complement System",
+        "SectionName": "Immunology; Allergic Disorders"
+      },
+      {
+        "Title": "Complement",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{F083F596-2D3A-487B-850B-C06E31DC7A50}",
+        "TopicName": "Approach to the Patient With Suspected Immunodeficiency",
+        "SectionName": "Immunology; Allergic Disorders"
+      },
+      {
+        "Title": "Complement",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7E76F834-148A-4F02-BE62-DAF4ECBBDAAD}",
+        "TopicName": "Systemic Lupus Erythematosus (SLE)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{032D6951-0B57-4B58-9F84-5911D554C013}",
+    "Name": "Antinuclear Antibody (ANA)",
+    "SectionName": "Neurologic Disorders",
+    "FileName": "ANAAntinuclearAntibodyTest.html",
+    "Url": "/-/media/Manual/LabTests/ANAAntinuclearAntibodyTest.html",
+    "SectionId": "{693C35DA-1ADF-4D55-B641-2C501365F83B}",
+    "TopicTitle": "Amyotrophic Lateral Sclerosis (ALS) and Other Motor Neuron Diseases (MNDs)",
+    "TopicId": "{962D703D-A82D-49C9-8DBD-45C9704B4768}",
+    "TopicLocations": [
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{962D703D-A82D-49C9-8DBD-45C9704B4768}",
+        "TopicName": "Amyotrophic Lateral Sclerosis (ALS) and Other Motor Neuron Diseases (MNDs)",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7AD851C2-3147-4438-BF6F-8FFC01B162D9}",
+        "TopicName": "Polyneuropathy",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D10E1F00-3EAD-437F-92EC-EBB36FA0AB7E}",
+        "TopicName": "Raynaud Syndrome",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{9837A504-8E44-4EE5-BA92-6E2B04332270}",
+        "TopicName": "Diffuse Alveolar Hemorrhage",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{0C270686-2BDA-447E-A018-75E6D942B197}",
+        "TopicName": "Autoimmune Myositis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD6D4F8B-5B14-45F1-9EEE-924A81D58005}",
+        "TopicName": "Fever in Infants and Children",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{A44484CA-4C5B-470B-BBDB-88B0DCD21FBB}",
+        "TopicName": "Juvenile Idiopathic Arthritis (JIA)",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{48A11CFA-DB3D-412E-983B-86AA69EA0F56}",
+        "TopicName": "Sjögren Syndrome",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7E76F834-148A-4F02-BE62-DAF4ECBBDAAD}",
+        "TopicName": "Systemic Lupus Erythematosus (SLE)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{498A2D50-CCB8-427E-896B-5C8322590A89}",
+        "TopicName": "Kawasaki Disease",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{90AD5DCF-DE01-47C7-93AD-3FB196198D99}",
+        "TopicName": "Mixed Connective Tissue Disease (MCTD)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D5C0C2A4-2A53-4289-AD63-596D87007007}",
+        "TopicName": "Systemic Sclerosis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD5BC215-20A2-4C51-9F6E-4213E076CEDC}",
+        "TopicName": "Relapsing Polychondritis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{032D6951-0B57-4B58-9F84-5911D554C013}",
+    "Name": "Antinuclear Antibody (ANA)",
+    "SectionName": "Pediatrics",
+    "FileName": "ANAAntinuclearAntibodyTest.html",
+    "Url": "/-/media/Manual/LabTests/ANAAntinuclearAntibodyTest.html",
+    "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+    "TopicTitle": "Fever in Infants and Children",
+    "TopicId": "{FD6D4F8B-5B14-45F1-9EEE-924A81D58005}",
+    "TopicLocations": [
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{962D703D-A82D-49C9-8DBD-45C9704B4768}",
+        "TopicName": "Amyotrophic Lateral Sclerosis (ALS) and Other Motor Neuron Diseases (MNDs)",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7AD851C2-3147-4438-BF6F-8FFC01B162D9}",
+        "TopicName": "Polyneuropathy",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D10E1F00-3EAD-437F-92EC-EBB36FA0AB7E}",
+        "TopicName": "Raynaud Syndrome",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{9837A504-8E44-4EE5-BA92-6E2B04332270}",
+        "TopicName": "Diffuse Alveolar Hemorrhage",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{0C270686-2BDA-447E-A018-75E6D942B197}",
+        "TopicName": "Autoimmune Myositis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD6D4F8B-5B14-45F1-9EEE-924A81D58005}",
+        "TopicName": "Fever in Infants and Children",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{A44484CA-4C5B-470B-BBDB-88B0DCD21FBB}",
+        "TopicName": "Juvenile Idiopathic Arthritis (JIA)",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{48A11CFA-DB3D-412E-983B-86AA69EA0F56}",
+        "TopicName": "Sjögren Syndrome",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7E76F834-148A-4F02-BE62-DAF4ECBBDAAD}",
+        "TopicName": "Systemic Lupus Erythematosus (SLE)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{498A2D50-CCB8-427E-896B-5C8322590A89}",
+        "TopicName": "Kawasaki Disease",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{90AD5DCF-DE01-47C7-93AD-3FB196198D99}",
+        "TopicName": "Mixed Connective Tissue Disease (MCTD)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D5C0C2A4-2A53-4289-AD63-596D87007007}",
+        "TopicName": "Systemic Sclerosis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD5BC215-20A2-4C51-9F6E-4213E076CEDC}",
+        "TopicName": "Relapsing Polychondritis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{054D1E02-AA44-403B-AB7D-F1B513E869B1}",
+    "Name": "HIV Antiretroviral Drug Resistance Testing, Genotypic",
+    "SectionName": "Pediatrics",
+    "FileName": "HIVScreeningTest.html",
+    "Url": "/-/media/Manual/LabTests/HIVScreeningTest.html",
+    "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+    "TopicTitle": "Human Immunodeficiency Virus (HIV) Infection in Infants and Children",
+    "TopicId": "{6EA530B9-C85E-4653-B466-245F2A0E10EA}",
+    "TopicLocations": [
+      {
+        "Title": "HIV Antiretroviral Drug Resistance Testing, Genotypic",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{F74E7EDD-B57E-443C-AF88-E04A1F79DA48}",
+        "TopicName": "Human Immunodeficiency Virus (HIV) Infection",
+        "SectionName": "Infectious Diseases"
+      },
+      {
+        "Title": "HIV Antiretroviral Drug Resistance Testing, Genotypic",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{6EA530B9-C85E-4653-B466-245F2A0E10EA}",
+        "TopicName": "Human Immunodeficiency Virus (HIV) Infection in Infants and Children",
+        "SectionName": "Pediatrics"
+      }
+    ]
+  },
+  {
+    "ItemId": "{032D6951-0B57-4B58-9F84-5911D554C013}",
+    "Name": "Antinuclear Antibody (ANA)",
+    "SectionName": "Pulmonary Disorders",
+    "FileName": "ANAAntinuclearAntibodyTest.html",
+    "Url": "/-/media/Manual/LabTests/ANAAntinuclearAntibodyTest.html",
+    "SectionId": "{7E7F2D93-AF3C-436C-895E-66A03E20F65B}",
+    "TopicTitle": "Diffuse Alveolar Hemorrhage",
+    "TopicId": "{9837A504-8E44-4EE5-BA92-6E2B04332270}",
+    "TopicLocations": [
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{962D703D-A82D-49C9-8DBD-45C9704B4768}",
+        "TopicName": "Amyotrophic Lateral Sclerosis (ALS) and Other Motor Neuron Diseases (MNDs)",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7AD851C2-3147-4438-BF6F-8FFC01B162D9}",
+        "TopicName": "Polyneuropathy",
+        "SectionName": "Neurologic Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D10E1F00-3EAD-437F-92EC-EBB36FA0AB7E}",
+        "TopicName": "Raynaud Syndrome",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{9837A504-8E44-4EE5-BA92-6E2B04332270}",
+        "TopicName": "Diffuse Alveolar Hemorrhage",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{0C270686-2BDA-447E-A018-75E6D942B197}",
+        "TopicName": "Autoimmune Myositis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD6D4F8B-5B14-45F1-9EEE-924A81D58005}",
+        "TopicName": "Fever in Infants and Children",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{A44484CA-4C5B-470B-BBDB-88B0DCD21FBB}",
+        "TopicName": "Juvenile Idiopathic Arthritis (JIA)",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{48A11CFA-DB3D-412E-983B-86AA69EA0F56}",
+        "TopicName": "Sjögren Syndrome",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{7E76F834-148A-4F02-BE62-DAF4ECBBDAAD}",
+        "TopicName": "Systemic Lupus Erythematosus (SLE)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{498A2D50-CCB8-427E-896B-5C8322590A89}",
+        "TopicName": "Kawasaki Disease",
+        "SectionName": "Pediatrics"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{90AD5DCF-DE01-47C7-93AD-3FB196198D99}",
+        "TopicName": "Mixed Connective Tissue Disease (MCTD)",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{D5C0C2A4-2A53-4289-AD63-596D87007007}",
+        "TopicName": "Systemic Sclerosis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      },
+      {
+        "Title": "Antinuclear Antibody (ANA)",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{FD5BC215-20A2-4C51-9F6E-4213E076CEDC}",
+        "TopicName": "Relapsing Polychondritis",
+        "SectionName": "Musculoskeletal and Connective Tissue Disorders"
+      }
+    ]
+  },
+  {
+    "ItemId": "{6672B996-96E0-4F7C-8997-E60D56B5A548}",
+    "Name": "D-dimer",
+    "SectionName": "Pulmonary Disorders",
+    "FileName": "DDimerTest.html",
+    "Url": "/-/media/Manual/LabTests/DDimerTest.html",
+    "SectionId": "{7E7F2D93-AF3C-436C-895E-66A03E20F65B}",
+    "TopicTitle": "Dyspnea",
+    "TopicId": "{422D9DFA-7BD4-43E8-9360-98721B39FDE4}",
+    "TopicLocations": [
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{13B11502-6350-4B8A-B94F-9408502CAE2A}",
+        "TopicName": "Vaginal Bleeding During Late Pregnancy",
+        "SectionName": "Gynecology and Obstetrics"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{40A030FA-C405-40DB-867D-6853F28279BE}",
+        "TopicName": "Deep Venous Thrombosis (DVT)",
+        "SectionName": "Cardiovascular Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{422D9DFA-7BD4-43E8-9360-98721B39FDE4}",
+        "TopicName": "Dyspnea",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{04BDB331-74E7-4552-B984-0E863FC6C2CD}",
+        "TopicName": "Pulmonary Embolism (PE)",
+        "SectionName": "Pulmonary Disorders"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{18F67047-6499-41D9-B1CC-0C4290E7C571}",
+        "TopicName": "Disseminated Intravascular Coagulation (DIC)",
+        "SectionName": "Hematology and Oncology"
+      },
+      {
+        "Title": "D-dimer",
+        "SitecoreItemId": null,
+        "Type": null,
+        "BrightcoveVideoId": null,
+        "TopicId": "{AF046BF5-044C-4550-BE39-526D69A29CCA}",
+        "TopicName": "Overview of Coagulation Disorders",
+        "SectionName": "Hematology and Oncology"
+      }
+    ]
+  }
+]

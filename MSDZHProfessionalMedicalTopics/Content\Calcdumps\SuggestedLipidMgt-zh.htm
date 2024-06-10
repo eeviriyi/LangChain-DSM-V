@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>建议的血脂水平升高患者的治疗方案 TreeCalc [1993: 已废弃]</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Cardiovascular, Metabolism, nutrition, Endocrinology, therapy, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+建议的血脂水平升高患者的治疗方案 TreeCalc<sup>&#174;</sup> [1993: 已废弃]
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<span id="txhtm" class="medCalcFontOne"> </span>
+<br />&nbsp;<br />
+<center>
+<form name="hereform" id="hereform" action="">
+<input type="button" name="backup" onclick="backUp();" value="返回" />
+&nbsp; 
+<input type="button" name="restart" onclick="mainTrunk();" value="重新开始" />  
+</form>
+</center>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><font color="#990000">此计算器因其历史价值包括在 EBMcalc中。 此计算器的内容被视为已废弃。</font></li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Summary of the second report of the National Cholesterol Education Program  (NCEP) Expert Panel on Detection. Evaluation, and Treatment of High Blood  Cholesterol in Adults (Adult Treatment Panel II). <i>JAMA</i>. 1993 Jun 16;269(23):3015-23. PubMed ID: 8501844 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8501844"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+
+
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+branch = new Array();
+bparts = new Array();
+var historytxt;
+var branchpointshead;
+var branchpointsfoot;
+var historyref = '<br />&nbsp;<br /><span class=\"medCalcFontRef\"><br />&nbsp;<br /><b>参考:<\/b><\/span><ol>' + "<li><span class=\"medCalcFontRef\">Summary of the second report of the National Cholesterol Education Program  (NCEP) Expert Panel on Detection. Evaluation, and Treatment of High Blood  Cholesterol in Adults (Adult Treatment Panel II). <i>JAMA<\/i>. 1993 Jun 16;269(23):3015-23. PubMed ID: 8501844 <a target=\"_blank\" href=\"https://www.ncbi.nlm.nih.gov/pubmed/8501844\"><img border=\"0\" src=\"pubmed.gif\" align=\"top\" alt=\"PubMed Logo\" /><\/a> <\/span><\/li> <\/ol>";
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+var hxidx;
+decpoints = new Array();
+decselected = new Array();
+decpoints[1] = 1;
+decselected[1] = '';
+htmtitle = '<span class="medCalcFontDT">Decision Tool: 建议的血脂水平升高患者的治疗方案 TreeCalc [1993: 已废弃]<\/span><br \/>&nbsp;<br \/>';
+
+function alertRestart(){
+alert('The decision tree must restart when this preference is changed.');
+mainTrunk();
+}
+
+branch[1] = "有确凿的 CHD 证据吗？|是|14|否|2";
+branch[2] = "什么是总胆固醇？|&lt;200 mg/dL|3|200-239 mg/dL|4|&ge;240 mg/dL|5";
+branch[3] = "什么是 HDL 胆固醇？|≥35 mg/dL|6|&lt;35 mg/dL|5";
+branch[4] = "什么是 HDL 胆固醇？|≥35 mg/dL|7|&lt;35 mg/dL|5";
+branch[5] = "进行脂蛋白分析。LDL 胆固醇？ [（总胆固醇-HDL）-（甘油三酯/5）]|&lt;130 mg/dL|9|130-159 mg/dL|10|&ge;160 mg/dL|11";
+branch[6] = "5 年内重新评估总胆固醇和 HDL 水平。提供有关饮食、体育活动和风险因素降低的信息。";
+branch[7] = "是否有 &ge;2 个阳性风险因素？ [年龄（男性 &ge;45 岁，女性 &ge;55 岁或过早绝经，无雌激素替代治疗）、吸烟、高血压或目前正在服用药物来控制高血压，HDL 胆固醇 &le;35 mg/dL、糖尿病，早期 CHD 家族史]|是|5|否|8";
+branch[8] = "1-2 年内重新评估总胆固醇和 HDL 水平。加强体育活动和其他风险因素降低的活动。";
+branch[9] = "5 年内重新评估总胆固醇和 HDL 水平。提供有关饮食、体育活动和风险因素降低的信息。";
+branch[10] = "是否有 &ge;2 个阳性风险因素？ [年龄（男性 &ge;45 岁，女性 &ge;55 岁或过早绝经，无雌激素替代治疗）、吸烟、高血压或目前正在服用药物来控制高血压，HDL 胆固醇 &le;35 mg/dL、糖尿病，早期 CHD 家族史]|是|12|否|13";
+branch[11] = "临床检查（病史、体格检查、实验室检测），以检查继发病因或家族性疾病。考虑可以改变的风险因素。开始步骤一的饮食；如果不能继续步骤二的饮食。目标 LDL &lt;160 mg/dL。如果 LDL ≥ 190mg/dL，请考虑药物治疗。";
+branch[12] = "临床检查（病史、体格检查、实验室检测），以检查继发病因或家族性疾病。考虑可以改变的风险因素。开始步骤一的饮食；如果不能继续步骤二的饮食。目标 LDL &lt;130 mg/dL。如果 LDL &ge; 160mg/dL，请考虑药物治疗。";
+branch[13] = "每年重新评估总胆固醇、HDL 和 LDL。提供关于步骤一的饮食和体育活动的信息。";
+branch[14] = "进行脂蛋白分析。目标 LDL &lt;100 mg/dL。什么是 LDL？|&gt;100 mg/dL|15|&le;100 mg/dL|16";
+branch[15] = "进行临床检查并开始饮食和/或药物治疗。";
+branch[16] = "个性化饮食和体育活动指导，并且每年重复进行脂蛋白分析。";
+
+function backUp(){
+
+if (hxidx > 1){
+hxidx--;
+
+branchpointshead = '<br />&nbsp;<br /><b>决定点数<\/b><br /><ul class="medCalcFontOneBold">';
+branchpointsfoot = '<\/ul>';
+
+historytxt = '';
+for (h = hxidx; h > 0; h--) historytxt = historytxt + decselected[h];
+loadBranch(decpoints[hxidx]);
+}
+
+else{
+branchpointshead = '';
+branchpointsfoot = '';
+}}
+
+function writeHxTxt(htxt){
+document.getElementById('txhtm').innerHTML = htxt + '<sc' + 'ript language="JavaScript1.1">window.scroll(0,0)<\/s' + 'cript>';
+}
+
+function makeChoice(b,i,c){
+bparts = branch[b].split('|');
+hxidx++;
+decselected[hxidx] = '<li>' +  bparts[0] + ':<b> &nbsp;' + bparts[i] + '<\/b><\/li>';
+decpoints[hxidx] = c;
+historytxt = '';
+for (h = hxidx; h > 0; h--) historytxt = historytxt + decselected[h];
+branchpointshead = '<br />&nbsp;<br /><b>决定点数<\/b><br /><ul class="medCalcFontOneBold">';
+branchpointsfoot = '<\/ul>';
+loadBranch(c);
+}
+
+function mainTrunk(){
+branchpointshead = '';
+branchpointsfoot = '';
+historytxt = '';
+hxidx = 1;
+loadBranch(1);
+}
+
+function loadBranch(b){
+bparts = branch[b].split('|');
+
+if (!bparts[1]) {
+historytxt = '<b>终点<\/b><br />&nbsp;<br /><ul class="medCalcFontOneBold"><li>' + bparts[0] + '<\/li><\/ul>' + branchpointshead + historytxt + branchpointsfoot;
+writeHxTxt(historytxt);
+return;
+}
+
+i = 1;
+htxtoptions = '<ul class="medCalcFontOneBold">';
+
+while (bparts[i]){
+htxtoptions = htxtoptions + '\n<li><a href="" onclick="makeChoice(' + b + ',' + i + ','  + bparts[i+1] + '); return false;">' + bparts[i] + '<\/a><\/li>';
+i=i+2;
+}
+
+htxtoptions = htxtoptions + '<\/ul>';
+
+writeHxTxt('<b>' + bparts[0] + '<\/b>' + htxtoptions + branchpointshead + historytxt + branchpointsfoot);
+}
+mainTrunk();
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+<div id="calc_disclaimer">  <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u> 法律条款及免责声明 </u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo"> EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+ <b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b> <a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span> <br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+ </div>
+</div>
+</body>
+</html>
+
+
+<!-- 1662471525 //-->

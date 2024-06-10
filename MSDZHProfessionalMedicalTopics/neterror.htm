@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, minimum-scale=0.1">
+
+<link rel="stylesheet" type="text/css" href="./Content/Font/opensans.css" />
+<style>
+h1 { font-family: "Open Sans"; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: "Open Sans"; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: "Open Sans"; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: "Open Sans"; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: "Open Sans"; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }
+body{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+</style>
+<script>
+        var style="touch-action: pan-x pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1);"
+            function resizeImage(){                
+                var imgElement = document.getElementById("imgerror");
+        imgElement.style.width = "100%";
+        imgElement.style.height =  window.orientation != 0 ? "100%" : "auto";
+        imgElement.style.transform = window.orientation != 0 ? "translate3d(0px, 0px, 0px) scale3d(1, 1, 1)" : "translate3d(0px, 0px, 0px) scale3d(1, 1, 1)";
+        //imgElement.style.transformStyle="translate3d(0px, 0px, 0px) scale3d(1, 1, 1)";
+        imgElement.style.touchAction = "pan-x pan-y";
+        imgElement.style.userSelect = "none";
+        
+            }
+            window.onresize = resizeImage;
+            window.onload = resizeImage;
+        </script>
+</head>
+<body>
+<center>
+<img id="imgerror" src="./Content/Images/no-wifi.png"  >
+</center>
+</body>
+</html>

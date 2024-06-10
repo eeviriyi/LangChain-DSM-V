@@ -1,0 +1,378 @@
+/*
+MedCalc 3000 Style Sheet
+Copyright 2008-2015, Foundation Internet Services, LLC
+*/
+
+a:link {
+        color: #006600;
+        }
+
+a:visited {
+        color: #006600;
+        }
+
+a:active {
+        color: #006600 ;
+        }
+
+
+select { font-size:13px; }
+
+input[type=number] { WIDTH: 60px; }
+input[type=number][size='3'],input[type=number].num3wide { WIDTH: 42px; }
+input[type=number][size='4'],input[type=number].num4wide { WIDTH: 52px; }
+input[type=number][size='5'],input[type=number].num5wide { WIDTH: 54px; }
+input[type=number][size='6'],input[type=number].num6wide { WIDTH: 64px; }
+input[type=number][size='7'],input[type=number].num7wide { WIDTH: 76px; }
+input[type=number][size='8'],input[type=number].num8wide { WIDTH: 84px; }
+input[type=number][size='9'],input[type=number].num9wide { WIDTH: 92px; }
+input[type=number][size='10'],input[type=number].num10wide { WIDTH: 100px; }
+
+
+
+li {
+        margin-bottom: 16px;
+}
+
+dd {
+        margin-top: 16px;
+        FONT-WEIGHT: bold;
+        FONT-SIZE: 12px;
+        COLOR: #323083;
+        FONT-STYLE: normal;
+        FONT-FAMILY: arial, helvetica, sans-serif;
+        TEXT-DECORATION: none;
+}
+
+sup {
+position: relative;
+top: -3px;
+vertical-align: top;
+font-size: 100%;
+}
+
+.medCalcBody {
+        BACKGROUND-COLOR: white;
+        MARGIN: 10px;
+        FONT-WEIGHT: normal;
+        FONT-SIZE: 12px;
+        COLOR: #000000;
+        FONT-STYLE: normal;
+        FONT-FAMILY: arial, helvetica, sans-serif;
+        TEXT-DECORATION:  none;
+        }
+
+
+
+.iphoneDropDown:hover {
+
+       background-color:#B0ABAB;
+
+}
+
+.iphoneDropDown {
+
+                FONT-WEIGHT: normal;
+                FONT-SIZE: 13px;
+                COLOR: #000000;
+                FONT-STYLE: normal;
+                FONT-FAMILY: arial, helvetica, sans-serif;
+                TEXT-DECORATION:  none;
+                TEXT-ALIGN:left;
+                border:1px ridge #000000;
+                padding:2px;
+                width:100%;
+                cursor:pointer;
+
+}
+
+ 
+
+.dropdownmenu {
+
+                FONT-WEIGHT: normal;
+                FONT-SIZE: 13px;
+                COLOR: #000000;
+                FONT-STYLE: normal;
+                FONT-FAMILY: arial, helvetica, sans-serif;
+                TEXT-DECORATION:  none;
+                TEXT-ALIGN:left;
+                border:1px solid #000000;
+
+}
+
+ 
+.dropdownback td {
+
+                border-top: 1px solid #eaeaea;
+
+}
+
+
+.medCalcFontZero {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 14px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontDither {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 14px;
+	COLOR: #aaaaaa;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontZeroBold {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 14px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontZeroItalic {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 14px;
+	COLOR: #000000;
+	FONT-STYLE: italic;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontOne {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION:  none;
+	}
+
+.medCalcFontOneBold {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION:  none;
+	}
+
+.medCalcFontOneWhiteBold {
+        FONT-WEIGHT: bold;
+        FONT-SIZE: 12px;
+        COLOR: #ffffff;
+        FONT-STYLE: normal;
+        FONT-FAMILY: arial, helvetica, sans-serif;
+        TEXT-DECORATION:  none;
+        }
+
+.medCalcFontRR {
+        FONT-WEIGHT: normal;
+        FONT-SIZE: 12px;
+        COLOR: #000000;
+        FONT-STYLE: normal;
+        FONT-FAMILY: 'Lucida Console', Monaco, 'Lucida Grande', monospace;
+        TEXT-DECORATION:  none;
+        }
+
+.medCalcFontSelect {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION:  none;
+	}
+
+.medCalcFontTextArea {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 14px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION:  none;
+	}
+
+.medCalcFontTwo {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 10px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontTwoBlue {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 10px;
+	COLOR: #4d637b;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcTitleBox {
+	BACKGROUND-COLOR: #cccccc;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+.medCalcFontTitleBox {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 18px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontEqName {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #003366;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFormuliBox {
+        BACKGROUND-COLOR: #003300;
+        TEXT-ALIGN: left;
+        }
+
+
+.medCalcFontFormuli {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #ffffff;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontIO {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #aa0000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontIO2 {
+        FONT-WEIGHT: normal;
+        FONT-SIZE: 11px;
+        COLOR: #aa0000;
+        FONT-STYLE: normal;
+        FONT-FAMILY: arial, helvetica, sans-serif;
+        TEXT-DECORATION: none;
+        }
+
+.medCalcFontIOBold {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #aa0000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+
+.medCalcResultBox {     
+        BACKGROUND-COLOR: #eeeeee;
+        TEXT-ALIGN: left;
+        }
+
+
+.medCalcFontRef {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontCCTab {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontCCTabBold {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #003366;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontIndex {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 14px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontIndexBold {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 14px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontMathPref {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontMathPrefLight {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #ffffff;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontMathPrefBold {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: arial, helvetica, sans-serif;
+	TEXT-DECORATION: none;
+	}
+
+.medCalcFontCCTabBold {
+    font:-apple-system-body !important;
+}
+
+body {
+    font:-apple-system-body !important;
+}
+
+* {
+    font:-apple-system-body !important;
+}

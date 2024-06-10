@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>Waterlow 压疮危险评级量表</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Wound, Geriatrics, Surgery, Nutrition, Dermatology, smoke, prognosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+Waterlow_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+Waterlow_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function Waterlow_fx() {
+with(document.Waterlow_form){
+
+Score = 0.0;
+doCalc = true;
+
+rbchk = false;
+if (cc1[0].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc1[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc2[0].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc2[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc2[2].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc2[3].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc2[4].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc3[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc3[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc3[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc3[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc4[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc4[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc4[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc4[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (!rbchk) doCalc = false;
+if (cc5.checked){
+Score = Score + 1;
+}
+if (cc6.checked){
+Score = Score + 1;
+}
+if (cc7.checked){
+Score = Score + 1;
+}
+if (cc8.checked){
+Score = Score + 1;
+}
+if (cc9.checked){
+Score = Score + 2;
+}
+if (cc10.checked){
+Score = Score + 3;
+}
+rbchk = false;
+if (cc11[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc11[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc11[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc11[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc11[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc11[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc12[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc12[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc12[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc12[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (!rbchk) doCalc = false;
+if (cc13.checked){
+Score = Score + 8;
+}
+if (cc14.checked){
+Score = Score + 5;
+}
+if (cc15.checked){
+Score = Score + 5;
+}
+if (cc16.checked){
+Score = Score + 2;
+}
+if (cc17.checked){
+Score = Score + 1;
+}
+if (cc18.checked){
+Score = Score + 5;
+}
+if (cc19.checked){
+Score = Score + 5;
+}
+if (cc20.checked){
+Score = Score + 5;
+}
+if (cc21.checked){
+Score = Score + 5;
+}
+if (cc22.checked){
+Score = Score + 5;
+}
+if (cc23.checked){
+Score = Score + 5;
+}
+if (cc24.checked){
+Score = Score + 5;
+}
+if (cc25.checked){
+Score = Score + 4;
+}
+if (cc26.checked){
+Score = Score + 4;
+}
+if (cc27.checked){
+Score = Score + 4;
+}
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.Waterlow_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 10) && (Score <= 14)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 15) && (Score <= 19)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 20) && (Score <= 92)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="Waterlow_form" id="Waterlow_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Waterlow 压疮危险评级量表
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">性别 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel1" name="cc1" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');">女 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel2" name="cc1" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">男 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">年龄 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">14-49 周岁 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">50-64 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel5" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');">65-74 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel6" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel6');">75-80 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel7" name="cc2" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel7');">81 周岁及以上 (5 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">体格/体重 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel8" name="cc3" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel8');">中等 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel9" name="cc3" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');">中等以上 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel10" name="cc3" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');">肥胖 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel11" name="cc3" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel11');">中等以下 (3 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">控尿控便 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel12" name="cc4" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel12');">有插管 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel13" name="cc4" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel13');">偶尔失禁 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel14" name="cc4" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel14');">有插管但排便失禁 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel15" name="cc4" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel15');">排尿排便失禁 (3 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">皮肤状况异常</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel16" name="cc5" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel16');" >萎缩、手纸样 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel17" name="cc6" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel17');" >干燥 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel18" name="cc7" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel18');" >水肿 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel19" name="cc8" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel19');" >粘湿 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel20" name="cc9" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel20');" >脱色 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel21" name="cc10" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel21');" >裂开 (3 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">活动度 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel22" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel22');">完全 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel23" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel23');">不安 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel24" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel24');">冷淡 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel25" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel25');">受限 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel26" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel26');">牵引 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel27" name="cc11" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel27');">依赖轮椅 (5 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">胃口 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel28" name="cc12" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel28');">一般 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel29" name="cc12" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel29');">不好 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel30" name="cc12" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel30');">鼻胃管/仅液体 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel31" name="cc12" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel31');">厌食 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel32" name="cc13" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel32');" >晚期恶病质 (8 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel33" name="cc14" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel33');" >心力衰竭 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel34" name="cc15" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel34');" >外周血管性疾病 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel35" name="cc16" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel35');" >贫血 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel36" name="cc17" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel36');" >吸烟者 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel37" name="cc18" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel37');" >糖尿病性神经功能缺陷 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel38" name="cc19" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel38');" >多发性硬化症神经功能缺陷 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel39" name="cc20" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel39');" >CVA 神经功能缺陷 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel40" name="cc21" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel40');" >运动感觉神经功能缺陷 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel41" name="cc22" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel41');" >瘫痪性神经功能缺陷 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel42" name="cc23" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel42');" >近期腰部以下骨科手术 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel43" name="cc24" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel43');" >近期脊髓麻醉（手术时间超过 2 小时） (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel44" name="cc25" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel44');" >进行细胞毒性药物治疗 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel45" name="cc26" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel45');" >服用高剂量皮质激素 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel46" name="cc27" onclick="Waterlow_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel46');" >服用抗炎性药物 (4 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+Waterlow 评分
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">10 - 14 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">患者存在风险</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">15 - 19 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">高风险</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">20 - 92 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">非常高风险</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Waterlow J. The history and use of the Waterlow card. <i>Nurs Times</i>. 1998 Feb 18-24;94(7):63-7. PubMed ID: 9536738 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9536738"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Wellard S, Lo K. Comparing Norton, Braden and Waterlow risk assessment scales for pressure ulcers in spinal cord injuries. <i>Contemp Nurse</i>. 2000 Jun;9(2):155-60. PubMed ID: 11855004 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11855004"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471533 //-->

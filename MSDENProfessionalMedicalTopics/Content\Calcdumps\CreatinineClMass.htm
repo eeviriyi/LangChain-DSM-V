@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Creatinine Clearance by Mass</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Renal, Fluid, Metabolism, diagnosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+return msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' is improperly formatted. You may only input the digits 0-9 and a decimal point.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+
+function CreatinineClMass_fx() {
+
+with(document.CreatinineClMass_form){
+
+
+doCalc = true;
+param_value = parseFloat(Urine_Creat_Mass_24_Hours_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Urine_Creat_Mass_24_Hours_unit.options[Urine_Creat_Mass_24_Hours_unit.selectedIndex].value.split('|');
+Urine_Creat_Mass_24_Hours = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Serum_Creat_Conc_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Serum_Creat_Conc_unit.options[Serum_Creat_Conc_unit.selectedIndex].value.split('|');
+Serum_Creat_Conc = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = decpts.options[decpts.selectedIndex].text;
+Creat_Clear =  Urine_Creat_Mass_24_Hours / Serum_Creat_Conc / 0.0144;
+
+unit_parts = Creat_Clear_unit.options[Creat_Clear_unit.selectedIndex].value.split('|');
+if (doCalc) Creat_Clear_param.value = fixDP((Creat_Clear - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+
+}
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.CreatinineClMass_form){
+
+if (Urine_Creat_Mass_24_Hours_param.value && isNaN(Urine_Creat_Mass_24_Hours_param.value)){ clrValue(Urine_Creat_Mass_24_Hours_param); alertNaN('Urine Creat Mass 24 Hours'); }
+if (Serum_Creat_Conc_param.value && isNaN(Serum_Creat_Conc_param.value)){ clrValue(Serum_Creat_Conc_param); alertNaN('Serum Creat Conc'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.CreatinineClMass_form){
+
+Creat_Clear_param.value = '';
+
+
+}
+
+}
+
+var Urine_Creat_Mass_24_Hours = null,
+Serum_Creat_Conc = null,
+Creat_Clear = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="CreatinineClMass_form" id="CreatinineClMass_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="CreatinineClMass_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Creatinine Clearance by Mass
+</span></td></tr></table><br />&nbsp;<br />
+
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">CreatClear = UrineCreatMass24Hours / SerumCreatConc / 0.0144</span></td></tr></table><br />&nbsp;<br />
+</div>
+</center>
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+Input:
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Urine Creat Mass 24 Hours</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Urine_Creat_Mass_24_Hours_param" size="6" value="" onblur="minMaxCheck(); CreatinineClMass_fx();" onchange="CreatinineClMass_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="Urine_Creat_Mass_24_Hours_unit" onchange="CreatinineClMass_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|gm" selected="selected">gm</option>
+<option value="1000|0|kg">kg</option>
+<option value="453.59237|0|lb">lb</option>
+<option value="0.001|0|mg">mg</option>
+</select> </td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Serum Creat Conc</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Serum_Creat_Conc_param" size="6" value="" onblur="minMaxCheck(); CreatinineClMass_fx();" onchange="CreatinineClMass_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="Serum_Creat_Conc_unit" onchange="CreatinineClMass_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="100|0|gm/L">gm/L</option>
+<option value="1000|0|gm/dL">gm/dL</option>
+<option value="0.001|0|mcg/dL">mcg/dL</option>
+<option value="0.1|0|mcg/mL">mcg/mL</option>
+<option value="1|0|mg%">mg%</option>
+<option value="1|0|mg/dL" selected="selected">mg/dL</option>
+<option value="100|0|mg/mL">mg/mL</option>
+<option value="0.0001|0|ng/mL">ng/mL</option>
+</select> </td></tr>
+
+
+</table>
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">Result:</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellspacing="4">
+<tr>
+<td align="right"><span class="medCalcFontOneBold">Creat Clear</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Creat_Clear_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontOne">
+<select name="Creat_Clear_unit" onchange="CreatinineClMass_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1000|0|L/min">L/min</option>
+<option value="60000|0|L/sec">L/sec</option>
+<option value="0.01666666667|0|mL/hr">mL/hr</option>
+<option value="1|0|mL/min" selected="selected">mL/min</option>
+<option value="60|0|mL/sec">mL/sec</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontOneBold">Decimal Precision &nbsp;</span>
+<select name="decpts" onchange="CreatinineClMass_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">Notes</span>
+<ul class="medCalcFontOne">
+<li><font color="#aa0000">In this calculator, <b>mcg</b> is the abbreviation for <b>micrograms</b>.</font></li>
+<li>This equation is a simple re-write of the standard formula: <b>Clearance = UV/P</b></li>
+<li>The volume term <b>V</b> is actually best represented as <b>V dot</b> (for flow), with units of mL/min.</li>
+<li>The term <b>UV</b> is the mass of creatinine excreted in one day.</li>
+<li>The constant <b>0.0144</b> is a properly scaled version of the number of minutes in one day: <b>1440</b></li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2018 Foundation Internet Services &nbsp;&nbsp; [Build 255633 v18.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1532964192 //-->

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>男性总体心血管疾病 Framingham 10 年风险率（2008 版本）</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="patientuse, neuro, geriatrics, cardio, smoke, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+Framingham08_M_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+Framingham08_M_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function Framingham08_M_fx() {
+
+with(document.Framingham08_M_form){
+
+
+doCalc = true;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Systolic_BP_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Systolic_BP_unit.options[Systolic_BP_unit.selectedIndex].value.split('|');
+Systolic_BP = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Total_cholesterol_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Total_cholesterol_unit.options[Total_cholesterol_unit.selectedIndex].value.split('|');
+Total_cholesterol = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(HDL_cholesterol_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = HDL_cholesterol_unit.options[HDL_cholesterol_unit.selectedIndex].value.split('|');
+HDL_cholesterol = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+Sys_BP_Factor = parseFloat(Sys_BP_Factor_pulldown.options[Sys_BP_Factor_pulldown.selectedIndex].value);
+Cig = parseFloat(Cig_pulldown.options[Cig_pulldown.selectedIndex].value);
+DM = parseFloat(DM_pulldown.options[DM_pulldown.selectedIndex].value);
+dp = decpts.options[decpts.selectedIndex].text;
+Risk_Factors =  (ln(Age) * 3.06117) + (ln(Total_cholesterol) * 1.12370) - (ln(HDL_cholesterol) * 0.93263) +  (ln(Systolic_BP) * Sys_BP_Factor) + Cig + DM - 23.9802;
+
+if (doCalc) Risk_Factors_param.value = fixDP(Risk_Factors, dp);
+
+
+
+Risk =  100 * (1 - power(0.88936, eTo(Risk_Factors)));
+
+unit_parts = Risk_unit.options[Risk_unit.selectedIndex].value.split('|');
+if (doCalc) Risk_param.value = fixDP((Risk - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.Framingham08_M_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('年龄'); }
+if (Age_param.value && (Age < (19 - 0.00001))) {
+Age = 0;
+clrValue(Age_param);
+clrResults();
+doCalc = false;
+ alert("最小值 年龄 是 19 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Age_param.value && Age > 80) {
+clrValue(Age_param);
+clrResults();
+Age = 0;
+doCalc = false;
+ alert("最大值 年龄 是 80 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Systolic_BP_param.value && isNaN(Systolic_BP_param.value)){ clrValue(Systolic_BP_param); alertNaN('收缩压'); }
+if (Total_cholesterol_param.value && isNaN(Total_cholesterol_param.value)){ clrValue(Total_cholesterol_param); alertNaN('总胆固醇'); }
+if (HDL_cholesterol_param.value && isNaN(HDL_cholesterol_param.value)){ clrValue(HDL_cholesterol_param); alertNaN('高密度脂蛋白胆固醇'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.Framingham08_M_form){
+
+Risk_Factors_param.value = '';
+Risk_param.value = '';
+
+
+}
+
+}
+
+var Age = null,
+Systolic_BP = null,
+Total_cholesterol = null,
+HDL_cholesterol = null,
+Sys_BP_Factor = null,
+Cig = null,
+DM = null,
+Risk_Factors = null,
+Risk = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="Framingham08_M_form" id="Framingham08_M_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="Framingham08_M_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+男性总体心血管疾病 Framingham 10 年风险率（2008 版本）
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">年龄</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="Framingham08_M_fx(); minMaxCheck();" onchange="Framingham08_M_fx();" /></td>
+<td align="left" valign="top"> <select name="Age_unit" onchange="Framingham08_M_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">收缩压</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Systolic_BP_param" size="6" value="" onblur="Framingham08_M_fx(); minMaxCheck();" onchange="Framingham08_M_fx();" /></td>
+<td align="left" valign="top"> <select name="Systolic_BP_unit" onchange="Framingham08_M_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">总胆固醇</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Total_cholesterol_param" size="6" value="" onblur="Framingham08_M_fx(); minMaxCheck();" onchange="Framingham08_M_fx();" /></td>
+<td align="left" valign="top"> <select name="Total_cholesterol_unit" onchange="Framingham08_M_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mg/dL_Chol" selected="selected">mg/dL</option>
+<option value="38.6697602474865|0|mmol/L_Chol">mmol/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">高密度脂蛋白胆固醇</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="HDL_cholesterol_param" size="6" value="" onblur="Framingham08_M_fx(); minMaxCheck();" onchange="Framingham08_M_fx();" /></td>
+<td align="left" valign="top"> <select name="HDL_cholesterol_unit" onchange="Framingham08_M_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mg/dL_HDL" selected="selected">mg/dL</option>
+<option value="38.6697602474865|0|mmol/L_HDL">mmol/L</option>
+</select></td></tr>
+
+<tr><td align="right"><span class="medCalcFontOneBold">抗高血压药物治疗</span></td>
+<td colspan="2" align="left">&nbsp;&nbsp;<select name="Sys_BP_Factor_pulldown" onchange="Framingham08_M_fx();" class="medCalcFontSelect" style="width:170px;">
+<option value="1.93303">否 (1.93303)</option>
+<option value="1.99881">是 (1.99881)</option>
+
+</select>
+</td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">吸烟</span></td>
+<td colspan="2" align="left">&nbsp;&nbsp;<select name="Cig_pulldown" onchange="Framingham08_M_fx();" class="medCalcFontSelect" style="width:170px;">
+<option value="0">否 (0)</option>
+<option value="0.65451">是 (0.65451)</option>
+
+</select>
+</td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">患有糖尿病</span></td>
+<td colspan="2" align="left">&nbsp;&nbsp;<select name="DM_pulldown" onchange="Framingham08_M_fx();" class="medCalcFontSelect" style="width:170px;">
+<option value="0">否 (0)</option>
+<option value="0.57367">是 (0.57367)</option>
+
+</select>
+</td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">风险因素</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Risk_Factors_param" size="6" onfocus="blur();" /></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">风险</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Risk_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Risk_unit" onchange="Framingham08_M_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|ratio">ratio</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontResultParam">小数点精确度 &nbsp;</span>
+<select name="decpts" onchange="Framingham08_M_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>该风险评估工具基于比例风险的 Cox 回归模型。</li>
+<li>心血管疾病包括冠心病、脑血管疾病、外周血管疾病和心脏衰竭。</li>
+<li>可适用于既往无心血管疾病男性群体。</li>
+<li>BP：血压。</li>
+<li>HDL：高密度脂蛋白。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">风险因素 = (ln(年龄) * 3.06117) + (ln(总胆固醇) * 1.12370) - (ln(高密度脂蛋白胆固醇) * 0.93263) +  (ln(收缩压) * SysBPFactor) + 吸烟 + 糖尿病 - 23.9802</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">风险 = 100 * (1 - 0.88936<sup>e<sup>(风险因素)</sup></sup>)</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">D'Agostino RB Sr, Vasan RS, Pencina MJ, et al. General Cardiovascular Risk Profile for  Use in Primary Care. The Framingham Heart Study. <i>Circulation</i>. 2008 Jan 22. PubMed ID: 18212285 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/18212285"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471491 //-->

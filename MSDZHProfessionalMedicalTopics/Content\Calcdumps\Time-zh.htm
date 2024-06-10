@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>时间单位换算</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="units, Pediatrics, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+
+codes = new Array();
+codeparts = new Array();
+var dp = 1;
+var tovalue;
+var to_selected = 0;
+
+function showToValue(){
+with (document.Time_form){
+to_param.value = fixDP(tovalue, dp);
+}}
+
+function setDecPts(){
+with (document.Time_form){
+dp = decpts.options[decpts.selectedIndex].text;
+unitConvert();
+}}
+
+function unitLoad(){
+with (document.Time_form){
+
+to_selected = 0;
+
+for (i = 0; i < from_unit.options.length; i++) { codes[i] = from_unit.options[i].value; }
+
+codeparts = from_unit.options[from_unit.selectedIndex].value.split('|');
+findunit = codeparts[0];
+findtype = codeparts[1];
+to_unit.options.length = 0;
+
+for (i = 0; i < codes.length; i++){
+codeparts = codes[i].split('|');
+if (codeparts[1]  == findtype) {
+	to_unit.options[to_unit.options.length] = new Option(codeparts[0],codes[i]);
+	if ((to_selected == 0) && (codeparts[0] != findunit)) { to_unit.options[to_unit.options.length - 1].selected = true; to_selected = 1; }
+	}
+}
+to_param.value = "";
+unitConvert();
+}}
+
+function unitConvert(){
+with (document.Time_form){
+
+if (to_unit.selectedIndex + from_unit.selectedIndex == 0) return;
+
+if (from_param.value > ''){
+unitcode = from_unit.options[from_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+fromtype = codeparts[1];
+frommult = parseFloat(codeparts[2]);
+fromadd = parseFloat(codeparts[3]);
+
+unitcode = to_unit.options[to_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+totype = codeparts[1];
+tomult = parseFloat(codeparts[2]);
+toadd = parseFloat(codeparts[3]);
+
+fromvalue = parseFloat(from_param.value);
+tovalue = ((fromvalue * frommult + fromadd) - toadd) / tomult;
+showToValue();
+}}}
+
+function clrResults(){
+with (document.Time_form){
+from_param.value = '';
+fromvalue = 0;
+to_param.value = '';
+tovalue = 0;
+}}
+
+/* ]]> */
+</script>
+
+
+
+<form name="Time_form" id="Time_form" action="" onsubmit="return false;" onkeydown="to_param.value='';" onkeyup="unitConvert();">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+时间单位换算
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<center>
+<div id="calc_main">
+<div id="calc_input">
+<table border="0" cellpadding="6" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right"><span class="medCalcFontOneBold">从</span></td>
+<td align="left"><input type="text" name="from_param" style="width:50px;" onchange="unitConvert();" /></td>
+<td>
+<select name="from_unit" onchange="unitLoad();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="anomalistic year|3|3.15584329e+7|0|">anomalistic year</option>
+<option value="astronomical year|3|3.155787559e+7|0|">astronomical year</option>
+<option value="blink|3|0.864|0|">blink</option>
+<option value="c&eacute;|3|86.4|0|">c&eacute;</option>
+<option value="century|3|3.15576e+9|0|">century</option>
+<option value="chronon|3|1e-23|0|">chronon</option>
+<option value="civil year|3|3.1536e+7|0|">civil year</option>
+<option value="cron|3|3.15576e+13|0|">cron</option>
+<option value="day (24 hours)|3|86400|0|">day (24 hours)</option>
+<option value="eon|3|3.15576e+16|0|">eon</option>
+<option value="Gaussian year|3|3.1558368787e+7|0|">Gaussian year</option>
+<option value="gigan|3|3.15576e+16|0|">gigan</option>
+<option value="Gregorian year|3|3.15576e+7|0|">Gregorian year</option>
+<option value="hour (60 minutes)|3|3600|0|">hour (60 minutes)</option>
+<option value="Julian year|3|3.1556952e+7|0|">Julian year</option>
+<option value="mean solar day|3|86400|0|">mean solar day</option>
+<option value="megayear|3|3.15576e+13|0|">megayear</option>
+<option value="millennium|3|3.15576e+10|0|">millennium</option>
+<option value="minute (60 seconds)|3|60|0|">minute (60 seconds)</option>
+<option value="month (30 days)|3|2.592e+6|0|">month (30 days)</option>
+<option value="second|3|1|0|">second</option>
+<option value="shake|3|1e-8|0|">shake</option>
+<option value="sidereal day|3|86164.0905|0|">sidereal day</option>
+<option value="sidereal year|3|3.15581495e+7|0|">sidereal year</option>
+<option value="stellar day|3|86164.0989|0|">stellar day</option>
+<option value="tempon|3|1e-23|0|">tempon</option>
+<option value="tropical year|3|3.1556925975e+7|0|">tropical year</option>
+<option value="u.a. of time|3|2.418884338e-17|0|">u.a. of time</option>
+<option value="wink|3|3.333333333e-12|0|">wink</option>
+<option value="year (365.25 days)|3|3.15576e+7|0|">year (365.25 days)</option>
+<option value="0|0|1|0"></option>
+</select></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">至</span></td>
+<td align="left"><input type="text" name="to_param" style="width:50px;" onfocus="blur();" /></td>
+<td align="left">
+<select name="to_unit" onchange="unitConvert();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="anomalistic year|3|3.15584329e+7|0|">anomalistic year</option>
+<option value="astronomical year|3|3.155787559e+7|0|">astronomical year</option>
+<option value="blink|3|0.864|0|">blink</option>
+<option value="c&eacute;|3|86.4|0|">c&eacute;</option>
+<option value="century|3|3.15576e+9|0|">century</option>
+<option value="chronon|3|1e-23|0|">chronon</option>
+<option value="civil year|3|3.1536e+7|0|">civil year</option>
+<option value="cron|3|3.15576e+13|0|">cron</option>
+<option value="day (24 hours)|3|86400|0|">day (24 hours)</option>
+<option value="eon|3|3.15576e+16|0|">eon</option>
+<option value="Gaussian year|3|3.1558368787e+7|0|">Gaussian year</option>
+<option value="gigan|3|3.15576e+16|0|">gigan</option>
+<option value="Gregorian year|3|3.15576e+7|0|">Gregorian year</option>
+<option value="hour (60 minutes)|3|3600|0|">hour (60 minutes)</option>
+<option value="Julian year|3|3.1556952e+7|0|">Julian year</option>
+<option value="mean solar day|3|86400|0|">mean solar day</option>
+<option value="megayear|3|3.15576e+13|0|">megayear</option>
+<option value="millennium|3|3.15576e+10|0|">millennium</option>
+<option value="minute (60 seconds)|3|60|0|">minute (60 seconds)</option>
+<option value="month (30 days)|3|2.592e+6|0|">month (30 days)</option>
+<option value="second|3|1|0|">second</option>
+<option value="shake|3|1e-8|0|">shake</option>
+<option value="sidereal day|3|86164.0905|0|">sidereal day</option>
+<option value="sidereal year|3|3.15581495e+7|0|">sidereal year</option>
+<option value="stellar day|3|86164.0989|0|">stellar day</option>
+<option value="tempon|3|1e-23|0|">tempon</option>
+<option value="tropical year|3|3.1556925975e+7|0|">tropical year</option>
+<option value="u.a. of time|3|2.418884338e-17|0|">u.a. of time</option>
+<option value="wink|3|3.333333333e-12|0|">wink</option>
+<option value="year (365.25 days)|3|3.15576e+7|0|">year (365.25 days)</option>
+<option value="0|0|1|0"></option>
+</select></td></tr></table>
+
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">
+设定小数点的最大显示精确度:
+</span>
+<select name="decpts" onchange="setDecPts();" class="medCalcFontSelect">
+<option>0</option>
+<option selected="selected">1</option>
+<option>2</option>
+<option>3</option>
+</select>
+</div>
+</div>
+</center>
+</form>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>要进行简单的单位换算，在右侧的下拉选择器中输入起始单位。然后在顶部的<b>从</b>输入方格中输入起始值。要得到换算值，在右下方的选择器中选择新单位。 换算值应即刻出现<b>至</b>方格中。
+</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">使用下列转换系数，
+通过简单的系数相乘进行数据转换。
+</span></li>
+
+</ol>
+</div>
+
+<div class="calc_tables_supp">
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">转换系数</span>
+<br />&nbsp;<br />
+<table border="1" cellpadding="4" cellspacing="0" summary="EBMcalc Table" class="medCalcFontOne">
+
+<tr><td align="left">anomalistic year</td><td>X</td><td align="center">3.15584329e+7</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">astronomical year</td><td>X</td><td align="center">3.155787559e+7</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">blink</td><td>X</td><td align="center">0.864</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">c&eacute;</td><td>X</td><td align="center">86.4</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">century</td><td>X</td><td align="center">3.15576e+9</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">chronon</td><td>X</td><td align="center">1e-23</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">civil year</td><td>X</td><td align="center">3.1536e+7</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">cron</td><td>X</td><td align="center">3.15576e+13</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">day (24 hours)</td><td>X</td><td align="center">86400</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">eon</td><td>X</td><td align="center">3.15576e+16</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">Gaussian year</td><td>X</td><td align="center">3.1558368787e+7</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">gigan</td><td>X</td><td align="center">3.15576e+16</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">Gregorian year</td><td>X</td><td align="center">3.15576e+7</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">hour (60 minutes)</td><td>X</td><td align="center">3600</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">Julian year</td><td>X</td><td align="center">3.1556952e+7</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">mean solar day</td><td>X</td><td align="center">86400</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">megayear</td><td>X</td><td align="center">3.15576e+13</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">millennium</td><td>X</td><td align="center">3.15576e+10</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">minute (60 seconds)</td><td>X</td><td align="center">60</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">month (30 days)</td><td>X</td><td align="center">2.592e+6</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">shake</td><td>X</td><td align="center">1e-8</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">sidereal day</td><td>X</td><td align="center">86164.0905</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">sidereal year</td><td>X</td><td align="center">3.15581495e+7</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">stellar day</td><td>X</td><td align="center">86164.0989</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">tempon</td><td>X</td><td align="center">1e-23</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">tropical year</td><td>X</td><td align="center">3.1556925975e+7</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">u.a. of time</td><td>X</td><td align="center">2.418884338e-17</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">wink</td><td>X</td><td align="center">3.333333333e-12</td><td>=</td><td align="left">second</td></tr>
+<tr><td align="left">year (365.25 days)</td><td>X</td><td align="center">3.15576e+7</td><td>=</td><td align="left">second</td></tr>
+
+</table>
+</div>
+<br />&nbsp;<br /><div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div></div>
+</body>
+</html>
+
+<!-- 1662471528 //-->

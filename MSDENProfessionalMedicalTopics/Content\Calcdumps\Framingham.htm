@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Cardiovascular Risk Assessment by Total Cholesterol (10-year, Framingham 1998) [1998: outdated]</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Cardiovascular, Geriatrics, women, fac_all, fac_med, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+function Framingham_fx() {
+with(document.Framingham_form){
+
+Score = 0.0;
+doCalc = true;
+
+Score = Score + parseFloat(age.options[age.selectedIndex].value);
+Score = Score + parseFloat(chol.options[chol.selectedIndex].value);
+Score = Score + parseFloat(hdl.options[hdl.selectedIndex].value);
+Score = Score + parseFloat(bp.options[bp.selectedIndex].value);
+Score = Score + parseFloat(diabetes.options[diabetes.selectedIndex].value);
+Score = Score + parseFloat(cc1.options[cc1.selectedIndex].value);
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.Framingham_form.cctotal.value = '';
+}
+
+if (doCalc){
+rr1.selectedIndex = -1;
+for (i = 0; i < rr1.options.length; i++){
+
+if (rr1.options[i].value.indexOf(':') > 0) range = rr1.options[i].value.split(':');
+else range = rr1.options[i].value.split('-');
+if ((Score >= range[0]) && (Score <= range[1])){ rr1.selectedIndex = i;
+}}}
+}
+}
+
+
+
+function varload1(){
+with(document.Framingham_form){
+age.options.length = 0;
+age.options[age.options.length] = new Option('30-34 (-9 points)', '-9');
+age.options[age.options.length] = new Option('35-39 (-4 points)', '-4');
+age.options[age.options.length] = new Option('40-44 (0 points)', '0', true, true);
+age.options[age.options.length] = new Option('45-49 (3 points)', '3');
+age.options[age.options.length] = new Option('50-54 (6 points)', '6');
+age.options[age.options.length] = new Option('55-59 (7 points)', '7');
+age.options[age.options.length] = new Option('60-74 (8 points)', '8');
+}
+with(document.Framingham_form){
+chol.options.length = 0;
+chol.options[chol.options.length] = new Option('< 160 mg/dL (-2 points)', '-2');
+chol.options[chol.options.length] = new Option('160-199 mg/dL (0 points)', '0', true, true);
+chol.options[chol.options.length] = new Option('200-279 mg/dL (1 point)', '1');
+chol.options[chol.options.length] = new Option('>= 280 mg/dL (3 points)', '3');
+}
+with(document.Framingham_form){
+hdl.options.length = 0;
+hdl.options[hdl.options.length] = new Option('< 35 mg/dL (5 points)', '5');
+hdl.options[hdl.options.length] = new Option('35-44 mg/dL (2 points)', '2');
+hdl.options[hdl.options.length] = new Option('45-49 mg/dL (1 point)', '1');
+hdl.options[hdl.options.length] = new Option('50-59 mg/dL (0 points)', '0', true, true);
+hdl.options[hdl.options.length] = new Option('>= 60 mg/dL (-3 points)', '-3');
+}
+with(document.Framingham_form){
+bp.options.length = 0;
+bp.options[bp.options.length] = new Option('sys < 120 and dia < 80 (-3 points)', '-3');
+bp.options[bp.options.length] = new Option(' sys < 120 and dia 80-89 (0 points)', '0');
+bp.options[bp.options.length] = new Option('sys 120-139 and dia < 90 (0 points)', '0', true, true);
+bp.options[bp.options.length] = new Option(' sys < 120 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option('sys 120-139 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option(' sys 140-159 and dia < 100 (2 points)', '2');
+bp.options[bp.options.length] = new Option('sys > 159 OR dia > 99 (3 points)', '3');
+}
+with(document.Framingham_form){
+diabetes.options.length = 0;
+diabetes.options[diabetes.options.length] = new Option('No (0 points)', '0');
+diabetes.options[diabetes.options.length] = new Option('Yes (4 points)', '4');
+}
+with(document.Framingham_form){
+rr1.options.length = 0;
+rr1.options[rr1.options.length] = new Option('2 % (0 - 1 points)', '0-1');
+rr1.options[rr1.options.length] = new Option('3 % (2 - 3 points)', '2-3');
+rr1.options[rr1.options.length] = new Option('4 % (4 - 5 points)', '4-5');
+rr1.options[rr1.options.length] = new Option('5 % (6 points)', '6-6');
+rr1.options[rr1.options.length] = new Option('6 % (7 points)', '7-7');
+rr1.options[rr1.options.length] = new Option('7 % (8 points)', '8-8');
+rr1.options[rr1.options.length] = new Option('\8 % (9 points)', '9-9');
+rr1.options[rr1.options.length] = new Option('10 % (10 points)', '10-10');
+rr1.options[rr1.options.length] = new Option('11 % (11 points)', '11-11');
+rr1.options[rr1.options.length] = new Option('13 % (12 points)', '12-12');
+rr1.options[rr1.options.length] = new Option('15 % (13 points)', '13-13');
+rr1.options[rr1.options.length] = new Option('18 % (14 points)', '14-14');
+rr1.options[rr1.options.length] = new Option('20 % (15 points)', '15-15');
+rr1.options[rr1.options.length] = new Option('24 % (16 points)', '16-16');
+rr1.options[rr1.options.length] = new Option('>eq 27 % (17 - 25 points)', '17-25');
+}
+
+}
+
+function varload2(){
+with(document.Framingham_form){
+age.options.length = 0;
+age.options[age.options.length] = new Option('30-34 (-9 points)', '-9');
+age.options[age.options.length] = new Option('35-39 (-4 points)', '-4');
+age.options[age.options.length] = new Option('40-44 (0 points)', '0', true, true);
+age.options[age.options.length] = new Option('45-49 (3 points)', '3');
+age.options[age.options.length] = new Option('50-54 (6 points)', '6');
+age.options[age.options.length] = new Option('55-59 (7 points)', '7');
+age.options[age.options.length] = new Option('60-74 (8 points)', '8');
+}
+with(document.Framingham_form){
+chol.options.length = 0;
+chol.options[chol.options.length] = new Option('<= 4.14 mmol/L (-2 points)', '-2');
+chol.options[chol.options.length] = new Option('4.15-5.17 mmol/L (0 points)', '0', true, true);
+chol.options[chol.options.length] = new Option('5.18-7.24 mmol/L (1 point)', '1');
+chol.options[chol.options.length] = new Option('>= 7.25 mmol/L (3 points)', '3');
+}
+with(document.Framingham_form){
+hdl.options.length = 0;
+hdl.options[hdl.options.length] = new Option('<= 0.90 mmol/L (5 points)', '5');
+hdl.options[hdl.options.length] = new Option('0.91-1.16 mmol/L (2 points)', '2');
+hdl.options[hdl.options.length] = new Option('1.17-1.29 mmol/L (1 point)', '1');
+hdl.options[hdl.options.length] = new Option('1.30-1.55 mmol/L (0 points)', '0', true, true);
+hdl.options[hdl.options.length] = new Option('>= 1.56 mmol/L (-3 points)', '-3');
+}
+with(document.Framingham_form){
+bp.options.length = 0;
+bp.options[bp.options.length] = new Option('sys < 120 and dia < 80 (-3 points)', '-3');
+bp.options[bp.options.length] = new Option('sys < 120 and dia 80-89 (0 points)', '0', true, true);
+bp.options[bp.options.length] = new Option(' sys 120-139 and dia < 90 (0 points)', '0');
+bp.options[bp.options.length] = new Option('sys < 120 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option(' sys 120-139 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option('sys 140-159 and dia < 100 (2 points)', '2');
+bp.options[bp.options.length] = new Option('sys > 159 OR dia > 99 (3 points)', '3');
+}
+with(document.Framingham_form){
+diabetes.options.length = 0;
+diabetes.options[diabetes.options.length] = new Option('No (0 points)', '0');
+diabetes.options[diabetes.options.length] = new Option('Yes (4 points)', '4');
+}
+with(document.Framingham_form){
+rr1.options.length = 0;
+rr1.options[rr1.options.length] = new Option('2 % (0 - 1 points)', '0-1');
+rr1.options[rr1.options.length] = new Option('3 % (2 - 3 points)', '2-3');
+rr1.options[rr1.options.length] = new Option('4 % (4 - 5 points)', '4-5');
+rr1.options[rr1.options.length] = new Option('5 % (6 points)', '6-6');
+rr1.options[rr1.options.length] = new Option('6 % (7 points)', '7-7');
+rr1.options[rr1.options.length] = new Option('7 % (8 points)', '8-8');
+rr1.options[rr1.options.length] = new Option('\8 % (9 points)', '9-9');
+rr1.options[rr1.options.length] = new Option('10 % (10 points)', '10-10');
+rr1.options[rr1.options.length] = new Option('11 % (11 points)', '11-11');
+rr1.options[rr1.options.length] = new Option('13 % (12 points)', '12-12');
+rr1.options[rr1.options.length] = new Option('15 % (13 points)', '13-13');
+rr1.options[rr1.options.length] = new Option('18 % (14 points)', '14-14');
+rr1.options[rr1.options.length] = new Option('20 % (15 points)', '15-15');
+rr1.options[rr1.options.length] = new Option('24 % (16 points)', '16-16');
+rr1.options[rr1.options.length] = new Option('>eq 27 % (17 - 25 points)', '17-25');
+}
+
+}
+
+function varload3(){
+with(document.Framingham_form){
+age.options.length = 0;
+age.options[age.options.length] = new Option('30-34 (-1 points)', '-1');
+age.options[age.options.length] = new Option('35-39 (0 points)', '0', true, true);
+age.options[age.options.length] = new Option('40-44 (1 point)', '1');
+age.options[age.options.length] = new Option('45-49 (2 points)', '2');
+age.options[age.options.length] = new Option('50-54 (3 points)', '3');
+age.options[age.options.length] = new Option('55-59 (4 points)', '4');
+age.options[age.options.length] = new Option('60-64 (5 points)', '5');
+age.options[age.options.length] = new Option('65-69 (6 points)', '6');
+age.options[age.options.length] = new Option('70-74 (7 points)', '7');
+}
+with(document.Framingham_form){
+chol.options.length = 0;
+chol.options[chol.options.length] = new Option('< 160 mg/dL (-3 points)', '-3');
+chol.options[chol.options.length] = new Option('160-199 mg/dL (0 points)', '0', true, true);
+chol.options[chol.options.length] = new Option('200-239 mg/dL (1 point)', '1');
+chol.options[chol.options.length] = new Option('240-279 mg/dL (2 points)', '2');
+chol.options[chol.options.length] = new Option('>= 280 mg/dL (3 points)', '3');
+}
+with(document.Framingham_form){
+hdl.options.length = 0;
+hdl.options[hdl.options.length] = new Option('< 35 mg/dL (2 points)', '2');
+hdl.options[hdl.options.length] = new Option('35-44 mg/dL (1 point)', '1');
+hdl.options[hdl.options.length] = new Option('45-59 mg/dL (0 points)', '0', true, true);
+hdl.options[hdl.options.length] = new Option('>= 60 mg/dL (-2 points)', '-2');
+}
+with(document.Framingham_form){
+bp.options.length = 0;
+bp.options[bp.options.length] = new Option('sys < 130 and dia < 85 (0 points)', '0', true, true);
+bp.options[bp.options.length] = new Option(' sys < 120 and dia 85-89 (1 point)', '1');
+bp.options[bp.options.length] = new Option('sys 120-129 and dia 85-89 (1 point)', '1');
+bp.options[bp.options.length] = new Option(' sys 130-139 and dia < 90 (1 point)', '1');
+bp.options[bp.options.length] = new Option('sys < 120 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option(' sys 120-129 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option('sys 130-139 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option(' sys 140-159 and dia < 100 (2 points)', '2');
+bp.options[bp.options.length] = new Option('sys > 159 OR dia > 99 (3 points)', '3');
+}
+with(document.Framingham_form){
+diabetes.options.length = 0;
+diabetes.options[diabetes.options.length] = new Option('No (0 points)', '0');
+diabetes.options[diabetes.options.length] = new Option('Yes (2 points)', '2');
+}
+with(document.Framingham_form){
+rr1.options.length = 0;
+rr1.options[rr1.options.length] = new Option('3 % (0 - 1 points)', '0-1');
+rr1.options[rr1.options.length] = new Option('4 % (2 points)', '2-2');
+rr1.options[rr1.options.length] = new Option('5 % (3 points)', '3-3');
+rr1.options[rr1.options.length] = new Option('7 % (4 points)', '4-4');
+rr1.options[rr1.options.length] = new Option('8 % (5 points)', '5-5');
+rr1.options[rr1.options.length] = new Option('10 % (6 points)', '6-6');
+rr1.options[rr1.options.length] = new Option('13 % (7 points)', '7-7');
+rr1.options[rr1.options.length] = new Option('16 % (8 points)', '8-8');
+rr1.options[rr1.options.length] = new Option('20 % (9 points)', '9-9');
+rr1.options[rr1.options.length] = new Option('25 % (10 points)', '10-10');
+rr1.options[rr1.options.length] = new Option('31 % (11 points)', '11-11');
+rr1.options[rr1.options.length] = new Option('37 % (12 points)', '12-12');
+rr1.options[rr1.options.length] = new Option('45 % (13 points)', '13-13');
+rr1.options[rr1.options.length] = new Option('>eq 53 % (14 - 29 points)', '14-29');
+}
+
+}
+
+function varload4(){
+with(document.Framingham_form){
+age.options.length = 0;
+age.options[age.options.length] = new Option('30-34 (-1 points)', '-1');
+age.options[age.options.length] = new Option('35-39 (0 points)', '0', true, true);
+age.options[age.options.length] = new Option('40-44 (1 point)', '1');
+age.options[age.options.length] = new Option('45-49 (2 points)', '2');
+age.options[age.options.length] = new Option('50-54 (3 points)', '3');
+age.options[age.options.length] = new Option('55-59 (4 points)', '4');
+age.options[age.options.length] = new Option('60-64 (5 points)', '5');
+age.options[age.options.length] = new Option('65-69 (6 points)', '6');
+age.options[age.options.length] = new Option('70-74 (7 points)', '7');
+}
+with(document.Framingham_form){
+chol.options.length = 0;
+chol.options[chol.options.length] = new Option('<= 4.14 mmol/L (-3 points)', '-3');
+chol.options[chol.options.length] = new Option('4.15-5.17 mmol/L (0 points)', '0', true, true);
+chol.options[chol.options.length] = new Option('5.18-6.21 mmol/L (1 point)', '1');
+chol.options[chol.options.length] = new Option('6.22-7.24 mmol/L (2 points)', '2');
+chol.options[chol.options.length] = new Option('>= 7.25 mmol/L (3 points)', '3');
+}
+with(document.Framingham_form){
+hdl.options.length = 0;
+hdl.options[hdl.options.length] = new Option('<= 0.90 mmol/L (2 points)', '2');
+hdl.options[hdl.options.length] = new Option('0.91-1.16 mmol/L (1 point)', '1');
+hdl.options[hdl.options.length] = new Option('1.17-1.55 mmol/L (0 points)', '0', true, true);
+hdl.options[hdl.options.length] = new Option('>= 1.56 mmol/L (-2 points)', '-2');
+}
+with(document.Framingham_form){
+bp.options.length = 0;
+bp.options[bp.options.length] = new Option('sys < 130 and dia < 85 (0 points)', '0', true, true);
+bp.options[bp.options.length] = new Option(' sys < 120 and dia 85-89 (1 point)', '1');
+bp.options[bp.options.length] = new Option('sys 120-129 and dia 85-89 (1 point)', '1');
+bp.options[bp.options.length] = new Option(' sys 130-139 and dia < 90 (1 point)', '1');
+bp.options[bp.options.length] = new Option('sys < 120 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option(' sys 120-129 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option('sys 130-139 and dia 90-99 (2 points)', '2');
+bp.options[bp.options.length] = new Option(' sys 140-159 and dia < 100 (2 points)', '2');
+bp.options[bp.options.length] = new Option('sys > 159 OR dia > 99 (3 points)', '3');
+}
+with(document.Framingham_form){
+diabetes.options.length = 0;
+diabetes.options[diabetes.options.length] = new Option('No (0 points)', '0');
+diabetes.options[diabetes.options.length] = new Option('Yes (2 points)', '2');
+}
+with(document.Framingham_form){
+rr1.options.length = 0;
+rr1.options[rr1.options.length] = new Option('3 % (0 - 1 points)', '0-1');
+rr1.options[rr1.options.length] = new Option('4 % (2 points)', '2-2');
+rr1.options[rr1.options.length] = new Option('5 % (3 points)', '3-3');
+rr1.options[rr1.options.length] = new Option('7 % (4 points)', '4-4');
+rr1.options[rr1.options.length] = new Option('8 % (5 points)', '5-5');
+rr1.options[rr1.options.length] = new Option('10 % (6 points)', '6-6');
+rr1.options[rr1.options.length] = new Option('13 % (7 points)', '7-7');
+rr1.options[rr1.options.length] = new Option('16 % (8 points)', '8-8');
+rr1.options[rr1.options.length] = new Option('20 % (9 points)', '9-9');
+rr1.options[rr1.options.length] = new Option('25 % (10 points)', '10-10');
+rr1.options[rr1.options.length] = new Option('31 % (11 points)', '11-11');
+rr1.options[rr1.options.length] = new Option('37 % (12 points)', '12-12');
+rr1.options[rr1.options.length] = new Option('45 % (13 points)', '13-13');
+rr1.options[rr1.options.length] = new Option('>eq 53 % (14 - 29 points)', '14-29');
+}
+
+}
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="Framingham_form" id="Framingham_form" action="" onsubmit="return false;" onreset="Framingham_fx(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Cardiovascular Risk Assessment by Total Cholesterol (10-year, Framingham 1998) [1998: outdated]
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" valign="top"><span class="medCalcFontCCTabBold">Category</span></td>
+<td colspan="2" nowrap="nowrap"><span class="medCalcFontCCTab">
+&nbsp;&nbsp;&nbsp;&nbsp;Female <input type="radio" name="varradio" onclick="varload1(); Framingham_fx();" checked="checked" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+Female (SI) <input type="radio" name="varradio" onclick="varload2(); Framingham_fx();" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+Male <input type="radio" name="varradio" onclick="varload3(); Framingham_fx();" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+Male (SI) <input type="radio" name="varradio" onclick="varload4(); Framingham_fx();" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<br />&nbsp;</span></td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">Age</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="age" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">Total Cholesterol</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="chol" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">HDL Cholesterol</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="hdl" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">Blood Pressure (mm Hg)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="bp" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">Diabetes?</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="diabetes" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">Smoker?</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc1" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option value="0">No (0 points)</option>
+<option value="2">Yes (2 points)</option>
+</select> &nbsp; </td></tr>
+
+</table>
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+Total Criteria Point Count:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="Reset Form" />    </center>
+<br />&nbsp;<br />
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+10 Year Coronary Heart Disease Risk
+</span></td></tr></table><br />&nbsp;<br />
+<center>
+<select name="rr1" size="3" onchange="Framingham_fx();" class="medCalcFontRR" style="width:250px; height:200px;">
+<option value="1">1- Points : _&nbsp;&nbsp;</option>
+<option value="1">1- Points : _</option>
+<option value="1">1- Points : _</option>
+
+</select>
+</center>
+</div>
+</div>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">Notes</span>
+<ul class="medCalcFontOne">
+<li><font color="#990000">This calculator is included in EBMcalc for its historical value.  The content of this calculator is considered out of date.</font></li>
+<li>The risk estimating score sheets are only for persons without known heart disease.</li>
+<li>The Framingham Heart Study risk algorithm encompasses only coronary heart disease, not other heart and vascular diseases.</li>
+<li>The Framingham Heart Study population is almost all Caucasian. The Framingham risk algorithm may not fit other populations quite as well.</li>
+<li>For some of the sex-age groups in Framingham, the numbers of events are quite small. Therefore, the estimates of risk for those groups may lack precision.</li>
+<li>Other organizations are considering how the information from the Framingham risk algorithm, as well as other assessments of risk, might best be incorporated into clinical practice. As new information and guidelines become available, they will be added.</li>
+<li>The Framingham risk score estimates the risk of developing CHD within a 10-year time period. This risk score may not adequately reflect the long-term or lifetime CHD risk of young adults, which is: one in two for men and one in three for women.</li>
+<li>The presence of any CHD risk factor requires appropriate attention because a single risk factor may confer a high risk for CHD in the long run, even if the 10-year risk does not appear to be high.</li>
+<li>Since age is a prominent determinant of the CHD risk score, the 10-year hazards of CHD are, on average, high in older persons. This may over-identify candidates for aggressive interventions. Relative risk estimates (risk in comparison with low risk individuals) may be more useful than absolute risk estimates in the elderly.</li>
+<li>The score derived from this algorithm should not be used in place of a medical examination.</li>
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Wilson PW, D'Agostino RB, Levy D, Belanger AM, Silbershatz H, Kannel WB. Prediction of coronary heart disease using risk factor categories. <i>Circulation</i>. 1998;97:1837-1847. PubMed ID: 9603539 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/9603539"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2018 Foundation Internet Services &nbsp;&nbsp; [Build 255633 v18.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+varload1()
+
+Framingham_fx();
+
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1532964211 //-->

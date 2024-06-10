@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>面积单位换算</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="units, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+
+codes = new Array();
+codeparts = new Array();
+var dp = 1;
+var tovalue;
+var to_selected = 0;
+
+function showToValue(){
+with (document.Area_form){
+to_param.value = fixDP(tovalue, dp);
+}}
+
+function setDecPts(){
+with (document.Area_form){
+dp = decpts.options[decpts.selectedIndex].text;
+unitConvert();
+}}
+
+function unitLoad(){
+with (document.Area_form){
+
+to_selected = 0;
+
+for (i = 0; i < from_unit.options.length; i++) { codes[i] = from_unit.options[i].value; }
+
+codeparts = from_unit.options[from_unit.selectedIndex].value.split('|');
+findunit = codeparts[0];
+findtype = codeparts[1];
+to_unit.options.length = 0;
+
+for (i = 0; i < codes.length; i++){
+codeparts = codes[i].split('|');
+if (codeparts[1]  == findtype) {
+	to_unit.options[to_unit.options.length] = new Option(codeparts[0],codes[i]);
+	if ((to_selected == 0) && (codeparts[0] != findunit)) { to_unit.options[to_unit.options.length - 1].selected = true; to_selected = 1; }
+	}
+}
+to_param.value = "";
+unitConvert();
+}}
+
+function unitConvert(){
+with (document.Area_form){
+
+if (to_unit.selectedIndex + from_unit.selectedIndex == 0) return;
+
+if (from_param.value > ''){
+unitcode = from_unit.options[from_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+fromtype = codeparts[1];
+frommult = parseFloat(codeparts[2]);
+fromadd = parseFloat(codeparts[3]);
+
+unitcode = to_unit.options[to_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+totype = codeparts[1];
+tomult = parseFloat(codeparts[2]);
+toadd = parseFloat(codeparts[3]);
+
+fromvalue = parseFloat(from_param.value);
+tovalue = ((fromvalue * frommult + fromadd) - toadd) / tomult;
+showToValue();
+}}}
+
+function clrResults(){
+with (document.Area_form){
+from_param.value = '';
+fromvalue = 0;
+to_param.value = '';
+tovalue = 0;
+}}
+
+/* ]]> */
+</script>
+
+
+
+<form name="Area_form" id="Area_form" action="" onsubmit="return false;" onkeydown="to_param.value='';" onkeyup="unitConvert();">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+面积单位换算
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<center>
+<div id="calc_main">
+<div id="calc_input">
+<table border="0" cellpadding="6" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right"><span class="medCalcFontOneBold">从</span></td>
+<td align="left"><input type="text" name="from_param" style="width:50px;" onchange="unitConvert();" /></td>
+<td>
+<select name="from_unit" onchange="unitLoad();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="acre (Cunningham)|14|5188.27746462|0|">acre (Cunningham)</option>
+<option value="acre (Ireland)|14|6527.18777806|0|">acre (Ireland)</option>
+<option value="acre (plantation)|14|5188.27746462|0|">acre (plantation)</option>
+<option value="acre (Scotland)|14|4935.19075902|0|">acre (Scotland)</option>
+<option value="acre (US, survey)|14|4046.87260987|0|">acre (US, survey)</option>
+<option value="acre|14|4046.85642240|0|">acre</option>
+<option value="are|14|100|0|">are</option>
+<option value="arpent (de Paris)|14|3418.87|0|">arpent (de Paris)</option>
+<option value="arpent (Qu&egrave;bec)|14|3418.894|0|">arpent (Qu&egrave;bec)</option>
+<option value="barn|14|1e-28|0|">barn</option>
+<option value="barrel (US, liquid) per foot|14|3.91208895e-1|0|">barrel (US, liquid) per foot</option>
+<option value="barrel (US, liquid) per inch|14|4.69450674|0|">barrel (US, liquid) per inch</option>
+<option value="barrel (US, petrol) per foot|14|5.216118600e-1|0|">barrel (US, petrol) per foot</option>
+<option value="barrel (US, petrol) per inch|14|6.25934232|0|">barrel (US, petrol) per inch</option>
+<option value="circular inch|14|5.067074791e-4|0|">circular inch</option>
+<option value="circular mile (int.)|14|2.034179489e+6|0|">circular mile (int.)</option>
+<option value="circular mile (int., naut.)|14|2.693840302e+6|0|">circular mile (int., naut.)</option>
+<option value="circular mile (statute, land)|14|2.034171905e+6|0|">circular mile (statute, land)</option>
+<option value="circular mile (US, naut.)|14|2.697285795e+6|0|">circular mile (US, naut.)</option>
+<option value="circular millimetre|14|7.853981634e-7|0|">circular millimetre</option>
+<option value="circular mil|14|5.06707479e-10|0|">circular mil</option>
+<option value="gallon (UK) per foot|14|1.4915e-2|0|">gallon (UK) per foot</option>
+<option value="gallon (UK) per inch|14|1.7898e-1|0|">gallon (UK) per inch</option>
+<option value="gallon (UK) per mile (int.)|14|2.82480534e-6|0|">gallon (UK) per mile (int.)</option>
+<option value="gallon (US) per foot|14|1.241933e-2|0|">gallon (US) per foot</option>
+<option value="gallon (US) per inch|14|1.4903196e-1|0|">gallon (US) per inch</option>
+<option value="gallon (US) per mile (int.)|14|2.352141449e-6|0|">gallon (US) per mile (int.)</option>
+<option value="hectare|14|1e+4|0|">hectare</option>
+<option value="kilometre|14|1e+6|0|">kilometre</option>
+<option value="perche (de Paris)|14|34.1887|0|">perche (de Paris)</option>
+<option value="quarter section|14|6.474970276e+5|0|">quarter section</option>
+<option value="rood (UK)|14|1011.71410560|0|">rood (UK)</option>
+<option value="shed|14|1e-52|0|">shed</option>
+<option value="skein (UK)|14|109.728|0|">skein (UK)</option>
+<option value="square angstrom|14|1e-20|0|">square angstrom</option>
+<option value="square attometre|14|1e-36|0|">square attometre</option>
+<option value="square bohr (a.u.)|14|2.800285609e-21|0|">square bohr (a.u.)</option>
+<option value="square centimetre|14|1e-4|0|">square centimetre</option>
+<option value="square chain (Eng.)|14|929.0304|0|">square chain (Eng.)</option>
+<option value="square chain (Gunter's)|14|404.68564224|0|">square chain (Gunter's)</option>
+<option value="square chain (Ramsden's)|14|929.0304|0|">square chain (Ramsden's)</option>
+<option value="square chain (surv.)|14|404.68564224|0|">square chain (surv.)</option>
+<option value="square decimetre|14|1e-2|0|">square decimetre</option>
+<option value="square femtometre|14|1e-30|0|">square femtometre</option>
+<option value="square fermi|14|1e-30|0|">square fermi</option>
+<option value="square foot (US, survey)|14|9.290341161e-2|0|">square foot (US, survey)</option>
+<option value="square foot|14|9.290304e-2|0|">square foot</option>
+<option value="square inch|14|6.4516e-4|0|">square inch</option>
+<option value="square league (Canadian)|14|2.329992900e+7|0|">square league (Canadian)</option>
+<option value="square league (int., naut.)|14|3.086913600e+7|0|">square league (int., naut.)</option>
+<option value="square league (metric)|14|1.6e+7|0|">square league (metric)</option>
+<option value="square league (statute)|14|2.330989299e+7|0|">square league (statute)</option>
+<option value="square league (UK, naut.)|14|3.090861844e+7|0|">square league (UK, naut.)</option>
+<option value="square league (US, naut.)|14|3.090861844e+7|0|">square league (US, naut.)</option>
+<option value="square metre|14|1|0|">square metre</option>
+<option value="square micron|14|1e-12|0|">square micron</option>
+<option value="square mile (geog.)|14|5.508001297e+7|0|">square mile (geog.)</option>
+<option value="square mile (int.)|14|2.589997766e+6|0|">square mile (int.)</option>
+<option value="square mile (int., naut.)|14|3.429904000e+6|0|">square mile (int., naut.)</option>
+<option value="square mile (tele., naut.)|14|3.442203397e+6|0|">square mile (tele., naut.)</option>
+<option value="square mile (UK, naut.)|14|3.434290938e+6|0|">square mile (UK, naut.)</option>
+<option value="square mile (US, naut.)|14|3.434290938e+6|0|">square mile (US, naut.)</option>
+<option value="square mile (US, statute)|14|2.589988110e+6|0|">square mile (US, statute)</option>
+<option value="square mile (US, survey)|14|2.589998470e+6|0|">square mile (US, survey)</option>
+<option value="square millimetre|14|1e-6|0|">square millimetre</option>
+<option value="square nanometre|14|1e-18|0|">square nanometre</option>
+<option value="square picometre|14|1e-24|0|">square picometre</option>
+<option value="square rod/perch/pole|14|25.2928526400|0|">square rod/perch/pole</option>
+<option value="square yard (old)|14|8.361257141e-1|0|">square yard (old)</option>
+<option value="square yard (US)|14|8.361307045e-1|0|">square yard (US)</option>
+<option value="square yard (WMA, 1963)|14|8.3612736e-1|0|">square yard (WMA, 1963)</option>
+<option value="township (US)|14|9.323957197e+7|0|">township (US)</option>
+<option value="vergees (Guernsey)|14|1541.65958949|0|">vergees (Guernsey)</option>
+<option value="vergees (Jersey)|14|1798.60285440|0|">vergees (Jersey)</option>
+<option value="0|0|1|0"></option>
+</select></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">至</span></td>
+<td align="left"><input type="text" name="to_param" style="width:50px;" onfocus="blur();" /></td>
+<td align="left">
+<select name="to_unit" onchange="unitConvert();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="acre (Cunningham)|14|5188.27746462|0|">acre (Cunningham)</option>
+<option value="acre (Ireland)|14|6527.18777806|0|">acre (Ireland)</option>
+<option value="acre (plantation)|14|5188.27746462|0|">acre (plantation)</option>
+<option value="acre (Scotland)|14|4935.19075902|0|">acre (Scotland)</option>
+<option value="acre (US, survey)|14|4046.87260987|0|">acre (US, survey)</option>
+<option value="acre|14|4046.85642240|0|">acre</option>
+<option value="are|14|100|0|">are</option>
+<option value="arpent (de Paris)|14|3418.87|0|">arpent (de Paris)</option>
+<option value="arpent (Qu&egrave;bec)|14|3418.894|0|">arpent (Qu&egrave;bec)</option>
+<option value="barn|14|1e-28|0|">barn</option>
+<option value="barrel (US, liquid) per foot|14|3.91208895e-1|0|">barrel (US, liquid) per foot</option>
+<option value="barrel (US, liquid) per inch|14|4.69450674|0|">barrel (US, liquid) per inch</option>
+<option value="barrel (US, petrol) per foot|14|5.216118600e-1|0|">barrel (US, petrol) per foot</option>
+<option value="barrel (US, petrol) per inch|14|6.25934232|0|">barrel (US, petrol) per inch</option>
+<option value="circular inch|14|5.067074791e-4|0|">circular inch</option>
+<option value="circular mile (int.)|14|2.034179489e+6|0|">circular mile (int.)</option>
+<option value="circular mile (int., naut.)|14|2.693840302e+6|0|">circular mile (int., naut.)</option>
+<option value="circular mile (statute, land)|14|2.034171905e+6|0|">circular mile (statute, land)</option>
+<option value="circular mile (US, naut.)|14|2.697285795e+6|0|">circular mile (US, naut.)</option>
+<option value="circular millimetre|14|7.853981634e-7|0|">circular millimetre</option>
+<option value="circular mil|14|5.06707479e-10|0|">circular mil</option>
+<option value="gallon (UK) per foot|14|1.4915e-2|0|">gallon (UK) per foot</option>
+<option value="gallon (UK) per inch|14|1.7898e-1|0|">gallon (UK) per inch</option>
+<option value="gallon (UK) per mile (int.)|14|2.82480534e-6|0|">gallon (UK) per mile (int.)</option>
+<option value="gallon (US) per foot|14|1.241933e-2|0|">gallon (US) per foot</option>
+<option value="gallon (US) per inch|14|1.4903196e-1|0|">gallon (US) per inch</option>
+<option value="gallon (US) per mile (int.)|14|2.352141449e-6|0|">gallon (US) per mile (int.)</option>
+<option value="hectare|14|1e+4|0|">hectare</option>
+<option value="kilometre|14|1e+6|0|">kilometre</option>
+<option value="perche (de Paris)|14|34.1887|0|">perche (de Paris)</option>
+<option value="quarter section|14|6.474970276e+5|0|">quarter section</option>
+<option value="rood (UK)|14|1011.71410560|0|">rood (UK)</option>
+<option value="shed|14|1e-52|0|">shed</option>
+<option value="skein (UK)|14|109.728|0|">skein (UK)</option>
+<option value="square angstrom|14|1e-20|0|">square angstrom</option>
+<option value="square attometre|14|1e-36|0|">square attometre</option>
+<option value="square bohr (a.u.)|14|2.800285609e-21|0|">square bohr (a.u.)</option>
+<option value="square centimetre|14|1e-4|0|">square centimetre</option>
+<option value="square chain (Eng.)|14|929.0304|0|">square chain (Eng.)</option>
+<option value="square chain (Gunter's)|14|404.68564224|0|">square chain (Gunter's)</option>
+<option value="square chain (Ramsden's)|14|929.0304|0|">square chain (Ramsden's)</option>
+<option value="square chain (surv.)|14|404.68564224|0|">square chain (surv.)</option>
+<option value="square decimetre|14|1e-2|0|">square decimetre</option>
+<option value="square femtometre|14|1e-30|0|">square femtometre</option>
+<option value="square fermi|14|1e-30|0|">square fermi</option>
+<option value="square foot (US, survey)|14|9.290341161e-2|0|">square foot (US, survey)</option>
+<option value="square foot|14|9.290304e-2|0|">square foot</option>
+<option value="square inch|14|6.4516e-4|0|">square inch</option>
+<option value="square league (Canadian)|14|2.329992900e+7|0|">square league (Canadian)</option>
+<option value="square league (int., naut.)|14|3.086913600e+7|0|">square league (int., naut.)</option>
+<option value="square league (metric)|14|1.6e+7|0|">square league (metric)</option>
+<option value="square league (statute)|14|2.330989299e+7|0|">square league (statute)</option>
+<option value="square league (UK, naut.)|14|3.090861844e+7|0|">square league (UK, naut.)</option>
+<option value="square league (US, naut.)|14|3.090861844e+7|0|">square league (US, naut.)</option>
+<option value="square metre|14|1|0|">square metre</option>
+<option value="square micron|14|1e-12|0|">square micron</option>
+<option value="square mile (geog.)|14|5.508001297e+7|0|">square mile (geog.)</option>
+<option value="square mile (int.)|14|2.589997766e+6|0|">square mile (int.)</option>
+<option value="square mile (int., naut.)|14|3.429904000e+6|0|">square mile (int., naut.)</option>
+<option value="square mile (tele., naut.)|14|3.442203397e+6|0|">square mile (tele., naut.)</option>
+<option value="square mile (UK, naut.)|14|3.434290938e+6|0|">square mile (UK, naut.)</option>
+<option value="square mile (US, naut.)|14|3.434290938e+6|0|">square mile (US, naut.)</option>
+<option value="square mile (US, statute)|14|2.589988110e+6|0|">square mile (US, statute)</option>
+<option value="square mile (US, survey)|14|2.589998470e+6|0|">square mile (US, survey)</option>
+<option value="square millimetre|14|1e-6|0|">square millimetre</option>
+<option value="square nanometre|14|1e-18|0|">square nanometre</option>
+<option value="square picometre|14|1e-24|0|">square picometre</option>
+<option value="square rod/perch/pole|14|25.2928526400|0|">square rod/perch/pole</option>
+<option value="square yard (old)|14|8.361257141e-1|0|">square yard (old)</option>
+<option value="square yard (US)|14|8.361307045e-1|0|">square yard (US)</option>
+<option value="square yard (WMA, 1963)|14|8.3612736e-1|0|">square yard (WMA, 1963)</option>
+<option value="township (US)|14|9.323957197e+7|0|">township (US)</option>
+<option value="vergees (Guernsey)|14|1541.65958949|0|">vergees (Guernsey)</option>
+<option value="vergees (Jersey)|14|1798.60285440|0|">vergees (Jersey)</option>
+<option value="0|0|1|0"></option>
+</select></td></tr></table>
+
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">
+设定小数点的最大显示精确度:
+</span>
+<select name="decpts" onchange="setDecPts();" class="medCalcFontSelect">
+<option>0</option>
+<option selected="selected">1</option>
+<option>2</option>
+<option>3</option>
+</select>
+</div>
+</div>
+</center>
+</form>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>要进行简单的单位换算，在右侧的下拉选择器中输入起始单位。然后在顶部的<b>从</b>输入方格中输入起始值。要得到换算值，在右下方的选择器中选择新单位。 换算值应即刻出现<b>至</b>方格中。
+</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">使用下列转换系数，
+通过简单的系数相乘进行数据转换。
+</span></li>
+
+</ol>
+</div>
+
+<div class="calc_tables_supp">
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">转换系数</span>
+<br />&nbsp;<br />
+<table border="1" cellpadding="4" cellspacing="0" summary="EBMcalc Table" class="medCalcFontOne">
+
+<tr><td align="left">acre (Cunningham)</td><td>X</td><td align="center">5188.27746462</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">acre (Ireland)</td><td>X</td><td align="center">6527.18777806</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">acre (plantation)</td><td>X</td><td align="center">5188.27746462</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">acre (Scotland)</td><td>X</td><td align="center">4935.19075902</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">acre (US, survey)</td><td>X</td><td align="center">4046.87260987</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">acre</td><td>X</td><td align="center">4046.85642240</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">are</td><td>X</td><td align="center">100</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">arpent (de Paris)</td><td>X</td><td align="center">3418.87</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">arpent (Qu&egrave;bec)</td><td>X</td><td align="center">3418.894</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">barn</td><td>X</td><td align="center">1e-28</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">barrel (US, liquid) per foot</td><td>X</td><td align="center">3.91208895e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">barrel (US, liquid) per inch</td><td>X</td><td align="center">4.69450674</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">barrel (US, petrol) per foot</td><td>X</td><td align="center">5.216118600e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">barrel (US, petrol) per inch</td><td>X</td><td align="center">6.25934232</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">circular inch</td><td>X</td><td align="center">5.067074791e-4</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">circular mile (int.)</td><td>X</td><td align="center">2.034179489e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">circular mile (int., naut.)</td><td>X</td><td align="center">2.693840302e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">circular mile (statute, land)</td><td>X</td><td align="center">2.034171905e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">circular mile (US, naut.)</td><td>X</td><td align="center">2.697285795e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">circular millimetre</td><td>X</td><td align="center">7.853981634e-7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">circular mil</td><td>X</td><td align="center">5.06707479e-10</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">gallon (UK) per foot</td><td>X</td><td align="center">1.4915e-2</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">gallon (UK) per inch</td><td>X</td><td align="center">1.7898e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">gallon (UK) per mile (int.)</td><td>X</td><td align="center">2.82480534e-6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">gallon (US) per foot</td><td>X</td><td align="center">1.241933e-2</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">gallon (US) per inch</td><td>X</td><td align="center">1.4903196e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">gallon (US) per mile (int.)</td><td>X</td><td align="center">2.352141449e-6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">hectare</td><td>X</td><td align="center">1e+4</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">kilometre</td><td>X</td><td align="center">1e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">perche (de Paris)</td><td>X</td><td align="center">34.1887</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">quarter section</td><td>X</td><td align="center">6.474970276e+5</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">rood (UK)</td><td>X</td><td align="center">1011.71410560</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">shed</td><td>X</td><td align="center">1e-52</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">skein (UK)</td><td>X</td><td align="center">109.728</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square angstrom</td><td>X</td><td align="center">1e-20</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square attometre</td><td>X</td><td align="center">1e-36</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square bohr (a.u.)</td><td>X</td><td align="center">2.800285609e-21</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square centimetre</td><td>X</td><td align="center">1e-4</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square chain (Eng.)</td><td>X</td><td align="center">929.0304</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square chain (Gunter's)</td><td>X</td><td align="center">404.68564224</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square chain (Ramsden's)</td><td>X</td><td align="center">929.0304</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square chain (surv.)</td><td>X</td><td align="center">404.68564224</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square decimetre</td><td>X</td><td align="center">1e-2</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square femtometre</td><td>X</td><td align="center">1e-30</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square fermi</td><td>X</td><td align="center">1e-30</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square foot (US, survey)</td><td>X</td><td align="center">9.290341161e-2</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square foot</td><td>X</td><td align="center">9.290304e-2</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square inch</td><td>X</td><td align="center">6.4516e-4</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (Canadian)</td><td>X</td><td align="center">2.329992900e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (int., naut.)</td><td>X</td><td align="center">3.086913600e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (metric)</td><td>X</td><td align="center">1.6e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (statute)</td><td>X</td><td align="center">2.330989299e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (UK, naut.)</td><td>X</td><td align="center">3.090861844e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (US, naut.)</td><td>X</td><td align="center">3.090861844e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square micron</td><td>X</td><td align="center">1e-12</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (geog.)</td><td>X</td><td align="center">5.508001297e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (int.)</td><td>X</td><td align="center">2.589997766e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (int., naut.)</td><td>X</td><td align="center">3.429904000e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (tele., naut.)</td><td>X</td><td align="center">3.442203397e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (UK, naut.)</td><td>X</td><td align="center">3.434290938e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (US, naut.)</td><td>X</td><td align="center">3.434290938e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (US, statute)</td><td>X</td><td align="center">2.589988110e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (US, survey)</td><td>X</td><td align="center">2.589998470e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square millimetre</td><td>X</td><td align="center">1e-6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square nanometre</td><td>X</td><td align="center">1e-18</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square picometre</td><td>X</td><td align="center">1e-24</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square rod/perch/pole</td><td>X</td><td align="center">25.2928526400</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square yard (old)</td><td>X</td><td align="center">8.361257141e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square yard (US)</td><td>X</td><td align="center">8.361307045e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square yard (WMA, 1963)</td><td>X</td><td align="center">8.3612736e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">township (US)</td><td>X</td><td align="center">9.323957197e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">vergees (Guernsey)</td><td>X</td><td align="center">1541.65958949</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">vergees (Jersey)</td><td>X</td><td align="center">1798.60285440</td><td>=</td><td align="left">square metre</td></tr>
+
+</table>
+</div>
+<br />&nbsp;<br /><div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div></div>
+</body>
+</html>
+
+<!-- 1662471464 //-->

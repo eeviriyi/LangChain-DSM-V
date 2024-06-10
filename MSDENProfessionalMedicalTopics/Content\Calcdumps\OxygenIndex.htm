@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Oxygenation Index (OI)</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="anesth, Pulmonary, Pediatrics, Cardiovascular, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+return msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' is improperly formatted. You may only input the digits 0-9 and a decimal point.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+
+function OxygenIndex_fx() {
+
+with(document.OxygenIndex_form){
+
+
+doCalc = true;
+param_value = parseFloat(FiO2_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = FiO2_unit.options[FiO2_unit.selectedIndex].value.split('|');
+FiO2 = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Mean_Airway_Pressure_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Mean_Airway_Pressure_unit.options[Mean_Airway_Pressure_unit.selectedIndex].value.split('|');
+Mean_Airway_Pressure = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(PaO2_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = PaO2_unit.options[PaO2_unit.selectedIndex].value.split('|');
+PaO2 = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = decpts.options[decpts.selectedIndex].text;
+OI =  FiO2 * Mean_Airway_Pressure / PaO2;
+
+unit_parts = OI_unit.options[OI_unit.selectedIndex].value.split('|');
+if (doCalc) OI_param.value = fixDP((OI - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+if (doCalc){
+rrclr();
+if ((OI >= 0) && (OI <= 25)){ document.getElementById('rr1_1').bgColor = '#cccccc';
+}
+if ((OI >= 25) && (OI <= 40)){ document.getElementById('rr1_2').bgColor = '#cccccc';
+}
+if ((OI >= 40) && (OI <= 1000)){ document.getElementById('rr1_3').bgColor = '#cccccc';
+}
+
+
+}
+
+
+}
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.OxygenIndex_form){
+
+if (FiO2_param.value && isNaN(FiO2_param.value)){ clrValue(FiO2_param); alertNaN('FiO2'); }
+if (Mean_Airway_Pressure_param.value && isNaN(Mean_Airway_Pressure_param.value)){ clrValue(Mean_Airway_Pressure_param); alertNaN('Mean Airway Pressure'); }
+if (PaO2_param.value && isNaN(PaO2_param.value)){ clrValue(PaO2_param); alertNaN('PaO2'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.OxygenIndex_form){
+
+OI_param.value = '';
+
+rrclr();
+
+}
+
+}
+
+var FiO2 = null,
+Mean_Airway_Pressure = null,
+PaO2 = null,
+OI = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="OxygenIndex_form" id="OxygenIndex_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="OxygenIndex_fx();" onreset="rrclr();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Oxygenation Index (OI)
+</span></td></tr></table><br />&nbsp;<br />
+
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">OI = FiO2 * MeanAirwayPressure / PaO2</span></td></tr></table><br />&nbsp;<br />
+</div>
+</center>
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+Input:
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">FiO2</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="FiO2_param" size="6" value="" onblur="minMaxCheck(); OxygenIndex_fx();" onchange="OxygenIndex_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="FiO2_unit" onchange="OxygenIndex_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|%O2" selected="selected">%O2</option>
+<option value="100|0|fractionO2">fractionO2</option>
+<option value="3|21|litresO2">litresO2</option>
+</select> </td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Mean Airway Pressure</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Mean_Airway_Pressure_param" size="6" value="" onblur="minMaxCheck(); OxygenIndex_fx();" onchange="OxygenIndex_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="Mean_Airway_Pressure_unit" onchange="OxygenIndex_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0101971584453749|0|Pascal">Pascal</option>
+<option value="1033.22707947762|0|atm">atm</option>
+<option value="1019.71584453749|0|bar">bar</option>
+<option value="1|0|cmH2O" selected="selected">cmH2O</option>
+<option value="13.5950555825428|0|cmHg">cmHg</option>
+<option value="30.48|0|ftH2O">ftH2O</option>
+<option value="1|0|gm/sqcm">gm/sqcm</option>
+<option value="2.54|0|inH2O">inH2O</option>
+<option value="34.5315553878333|0|inHg">inHg</option>
+<option value="10.1971584453749|0|kPa">kPa</option>
+<option value="1.01971584453749|0|mbar">mbar</option>
+<option value="1.35950555825428|0|mmHg">mmHg</option>
+<option value="70.3069601628334|0|psi">psi</option>
+<option value="1.35950555825428|0|torr">torr</option>
+</select> </td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">PaO2</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="PaO2_param" size="6" value="" onblur="minMaxCheck(); OxygenIndex_fx();" onchange="OxygenIndex_fx();" /></td>
+<td align="left" width="125" valign="top"> <select name="PaO2_unit" onchange="OxygenIndex_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select> </td></tr>
+
+
+</table>
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">Result:</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellspacing="4">
+<tr>
+<td align="right"><span class="medCalcFontOneBold">OI</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="OI_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontOne">
+<select name="OI_unit" onchange="OxygenIndex_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|#">#</option>
+<option value="1|0|index" selected="selected">index</option>
+<option value="1|0|logit">logit</option>
+<option value="1|0|none">none</option>
+<option value="1|0|number">number</option>
+<option value="1|0|points">points</option>
+<option value="1|0|score">score</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontOneBold">Decimal Precision &nbsp;</span>
+<select name="decpts" onchange="OxygenIndex_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+<br />&nbsp;<br />
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ Oxygenation Index Interpretation
+</span></td></tr></table><br />&nbsp;<br />
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 to 25 index:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Good outcome</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">25 to 40 index:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> Chance of death &gt;40%</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">40 to 1000 index:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> Consider ECMO (extracorporeal membrance oxygenation)</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">Notes</span>
+<ul class="medCalcFontOne">
+<li>The oxygenation index is used to assess the intensity of ventilatory support required to maintain oxygenation.</li>
+<li>It is used in neonatology and pediatrics to assess the need for potential ECMO therapy.</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Brudno DS et at. Compliance, alveolar-arterial oxygen difference, and oxygenation index changes in patients managed with extracorporeal membrance oxygenation. <i>Ped. Pulmonology</i>. 9(1):19-23,1990. PubMed ID: 2388774 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/2388774"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Durand M et al. Oxygenation index in patients with meconium aspiration: conventional and extracorporeal membrane oxygention therapy. <i>Critical Care Med</i>. 18(4):373-7, 1990. PubMed ID: 2318047 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/2318047"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Perlman M ed. <i>Resident's Handbook of Neonatology, 2nd ed</i>. Hamilton, Ontario: BC Decker, 1999 p. 121. OCLC: 45731102 <a target="_blank" href="http://www.worldcat.org/oclc/45731102"><img border="0" src="worldcat.gif" align="top" alt="WorldCat Logo" /></a></span></li>
+<li><span class="medCalcFontRef">O'Brien A, Short B ed. <i>Children's National Medical Center ECMO Training Manual</i>. 8th ed. May, 1994 p. 19.</span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2018 Foundation Internet Services &nbsp;&nbsp; [Build 255633 v18.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1532964265 //-->

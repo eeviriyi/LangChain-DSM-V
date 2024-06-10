@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Clinical Pulmonary Infection Score (CPIS)</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="covid, pulm, infectious critical care, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script type="text/javascript">
+/* <![CDATA[ */
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+CPIS_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+CPIS_fx();
+}
+
+
+/* ]]> */
+</script>
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+function CPIS_fx() {
+with(document.CPIS_form){
+
+Score = 0.0;
+doCalc = true;
+
+if (cc1[0].checked){
+Score = Score + 0; 
+}
+if (cc1[1].checked){
+Score = Score + 1; 
+}
+if (cc1[2].checked){
+Score = Score + 2; 
+}
+if (cc1[3].checked){
+Score = Score + 2; 
+}
+if (cc2[0].checked){
+Score = Score + 0; 
+}
+if (cc2[1].checked){
+Score = Score + 1; 
+}
+if (cc2[2].checked){
+Score = Score + 2; 
+}
+if (cc3[0].checked){
+Score = Score + 0; 
+}
+if (cc3[1].checked){
+Score = Score + 1; 
+}
+if (cc3[2].checked){
+Score = Score + 2; 
+}
+if (cc4[0].checked){
+Score = Score + 0; 
+}
+if (cc4[1].checked){
+Score = Score + 2; 
+}
+if (cc5[0].checked){
+Score = Score + 0; 
+}
+if (cc5[1].checked){
+Score = Score + 1; 
+}
+if (cc5[2].checked){
+Score = Score + 2; 
+}
+if (cc6[0].checked){
+Score = Score + 0; 
+}
+if (cc6[1].checked){
+Score = Score + 1; 
+}
+if (cc6[2].checked){
+Score = Score + 2; 
+}
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.CPIS_form.cctotal.value = '';
+}
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 6)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 7) && (Score <= 12)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="CPIS_form" id="CPIS_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Clinical Pulmonary Infection Score (CPIS)
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Patient temperature </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel1" name="cc1" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');">&ge;36.5 degrees C and &le;38.4 degrees C (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel2" name="cc1" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">&ge;38.5 degrees C and &le;38.9 degrees C (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc1" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">&ge;39 degrees C (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc1" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">&le;36 degrees C (2 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">WBC </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel5" name="cc2" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');">&ge;4,000/mm<sup>-3</sup> and &le;11,000/mm<sup>-3</sup> (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel6" name="cc2" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel6');">&lt;4,000/mm<sup>-3</sup> or &gt;11,000/mm<sup>-3</sup> (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel7" name="cc2" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel7');"> &lt;4,000/mm<sup>-3</sup> or &gt;11,000/mm<sup>-3</sup> with &ge;500 bands (2 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Tracheal secretions (0-4+ quantifications summed over 24 hours) </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel8" name="cc3" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel8');">&lt;14+ (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel9" name="cc3" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');">&ge;14+ (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel10" name="cc3" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');">&ge;14+ and purulent (2 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">PaO2(mmHg)/FIO2 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel11" name="cc4" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel11');">&gt;240 or ARDS present (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel12" name="cc4" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel12');">&le;240 or no ARDS present (2 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Chest X-Ray </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel13" name="cc5" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel13');">No infiltrate (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel14" name="cc5" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel14');">Patchy or diffuse infiltrate (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel15" name="cc5" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel15');">Distinct infiltrate (2 points)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Quantitative pathogenic bacterial culture growth from tracheal aspirate </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel16" name="cc6" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel16');">&le;1+ or no growth (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel17" name="cc6" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel17');"> &gt;1+ (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel18" name="cc6" onclick="CPIS_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel18');">&gt;1+ and same bacteria seen on gram stain (2 points)</span></td></tr>
+
+</table>
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+Total Criteria Point Count:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="Reset Form" />    </center>
+<br />&nbsp;<br />
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ CPIS Interpretation
+</span></td></tr></table><br />&nbsp;<br />
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 to 6 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Pneumonia less likely</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">7 to 12 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Pneumonia more likely</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">Notes</span>
+<ul class="medCalcFontOne">
+<li>The <b>CPIS</b> is used in the diagnosis of ventilator associated pneumonia.</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Pugin J, Auckenthaler R, Mili N, et al. Diagnosis of  ventilator-associated pneumonia by bacteriologic analysis of bronchoscopic and  nonbronchoscopic "blind" bronchoalveolar lavage fluid. <i>Am Rev Respir Dis</i>. 1991  May;143(5 Pt 1):1121-9. PubMed ID: 2024824 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/2024824"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Rosbolt MB, Sterling ES, Fahy BG. The utility of the clinical pulmonary  infection score. <i>J Intensive Care Med</i>. 2009 Jan-Feb;24(1):26-34. doi:  10.1177/0885066608327097. Epub 2008 Nov 19. Review. PubMed ID: 19019839 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/19019839"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2020 Foundation Internet Services &nbsp;&nbsp; [Build 260908 v20.2]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+CPIS_fx();
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1591128174 //-->

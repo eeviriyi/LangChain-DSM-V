@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>国际单位换算： 体液生化检查</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="SIfriendly, renal, electrolytes, Surgery, fac_all, fac_uc, fac_lab, internat, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+
+codes = new Array();
+codeparts = new Array();
+var dp = 1;
+var tovalue;
+var to_selected = 0;
+
+function showToValue(){
+with (document.SI_bodyfluid_form){
+to_param.value = fixDP(tovalue, dp);
+}}
+
+function setDecPts(){
+with (document.SI_bodyfluid_form){
+dp = decpts.options[decpts.selectedIndex].text;
+unitConvert();
+}}
+
+function unitLoad(){
+with (document.SI_bodyfluid_form){
+
+to_selected = 0;
+
+for (i = 0; i < from_unit.options.length; i++) { codes[i] = from_unit.options[i].value; }
+
+codeparts = from_unit.options[from_unit.selectedIndex].value.split('|');
+findunit = codeparts[0];
+findtype = codeparts[1];
+to_unit.options.length = 0;
+
+for (i = 0; i < codes.length; i++){
+codeparts = codes[i].split('|');
+if (codeparts[1]  == findtype) {
+	to_unit.options[to_unit.options.length] = new Option(codeparts[0],codes[i]);
+	if ((to_selected == 0) && (codeparts[0] != findunit)) { to_unit.options[to_unit.options.length - 1].selected = true; to_selected = 1; }
+	}
+}
+to_param.value = "";
+unitConvert();
+}}
+
+function unitConvert(){
+with (document.SI_bodyfluid_form){
+
+if (to_unit.selectedIndex + from_unit.selectedIndex == 0) return;
+
+if (from_param.value > ''){
+unitcode = from_unit.options[from_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+fromtype = codeparts[1];
+frommult = parseFloat(codeparts[2]);
+fromadd = parseFloat(codeparts[3]);
+
+unitcode = to_unit.options[to_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+totype = codeparts[1];
+tomult = parseFloat(codeparts[2]);
+toadd = parseFloat(codeparts[3]);
+
+fromvalue = parseFloat(from_param.value);
+tovalue = ((fromvalue * frommult + fromadd) - toadd) / tomult;
+showToValue();
+}}}
+
+function clrResults(){
+with (document.SI_bodyfluid_form){
+from_param.value = '';
+fromvalue = 0;
+to_param.value = '';
+tovalue = 0;
+}}
+
+/* ]]> */
+</script>
+
+
+
+<form name="SI_bodyfluid_form" id="SI_bodyfluid_form" action="" onsubmit="return false;" onkeydown="to_param.value='';" onkeyup="unitConvert();">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+国际单位换算： 体液生化检查
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<center>
+<div id="calc_main">
+<div id="calc_input">
+<table border="0" cellpadding="6" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right"><span class="medCalcFontOneBold">从</span></td>
+<td align="left"><input type="text" name="from_param" style="width:50px;" onchange="unitConvert();" /></td>
+<td>
+<select name="from_unit" onchange="unitLoad();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="Acid output in gastric fluid mEq/h|1|1|0|">Acid output in gastric fluid mEq/h</option>
+<option value="Acid output in gastric fluid mmol/h|1|1|0|">Acid output in gastric fluid mmol/h</option>
+<option value="Albumin in amniotic fluid mg/dL|3|10|0|">Albumin in amniotic fluid mg/dL</option>
+<option value="Albumin in amniotic fluid mg/L|3|1|0|">Albumin in amniotic fluid mg/L</option>
+<option value="Albumin in CSF mg/dL|2|10|0|">Albumin in CSF mg/dL</option>
+<option value="Albumin in CSF mg/L|2|1|0|">Albumin in CSF mg/L</option>
+<option value="Bilirubin in amniotic fluid mcmol/L|4|1|0|">Bilirubin in amniotic fluid mcmol/L</option>
+<option value="Bilirubin in amniotic fluid mg/dL|4|17.1|0|">Bilirubin in amniotic fluid mg/dL</option>
+<option value="Chloride in sweat mEq/L|5|1|0|">Chloride in sweat mEq/L</option>
+<option value="Chloride in sweat mmol/L|5|1|0|">Chloride in sweat mmol/L</option>
+<option value="Coproporphyrins in feces mcg/g feces|6|1.5|0|">Coproporphyrins in feces mcg/g feces</option>
+<option value="Coproporphyrins in feces nmol/g feces|6|1|0|">Coproporphyrins in feces nmol/g feces</option>
+<option value="Creatinine in amniotic fluid mcmol/L|7|1|0|">Creatinine in amniotic fluid mcmol/L</option>
+<option value="Creatinine in amniotic fluid mg/dL|7|88.4|0|">Creatinine in amniotic fluid mg/dL</option>
+<option value="DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid ng/mL|8|2.6|0|">DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid ng/mL</option>
+<option value="DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid nmol/L|8|1|0|">DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid nmol/L</option>
+<option value="Estriol in amniotic fluid mcg/dL|9|3.468|0|">Estriol in amniotic fluid mcg/dL</option>
+<option value="Estriol in amniotic fluid nmol/L|9|1|0|">Estriol in amniotic fluid nmol/L</option>
+<option value="Glucose in CSF mg/dL|10|0.05551|0|">Glucose in CSF mg/dL</option>
+<option value="Glucose in CSF mmol/L|10|1|0|">Glucose in CSF mmol/L</option>
+<option value="Hormone receptor estrogen in tissue fmol/mg protein|12|1|0|">Hormone receptor estrogen in tissue fmol/mg protein</option>
+<option value="Hormone receptor estrogen in tissue nmol/kg protein|12|1|0|">Hormone receptor estrogen in tissue nmol/kg protein</option>
+<option value="Hormone receptor progesterone in tissue fmol/mg protein|11|1|0|">Hormone receptor progesterone in tissue fmol/mg protein</option>
+<option value="Hormone receptor progesterone in tissue nmol/kg protein|11|1|0|">Hormone receptor progesterone in tissue nmol/kg protein</option>
+<option value="Nitrogen total in feces g/24 h|13|71.39|0|">Nitrogen total in feces g/24 h</option>
+<option value="Nitrogen total in feces mmol/d|13|1|0|">Nitrogen total in feces mmol/d</option>
+<option value="Protein total in amniotic fluid g/dL|15|10|0|">Protein total in amniotic fluid g/dL</option>
+<option value="Protein total in amniotic fluid g/L|15|1|0|">Protein total in amniotic fluid g/L</option>
+<option value="Protein total in CSF mg/dL|14|10|0|">Protein total in CSF mg/dL</option>
+<option value="Protein total in CSF mg/L|14|1|0|">Protein total in CSF mg/L</option>
+<option value="RBC in CSF /mcL|16|1|0|">RBC in CSF /mcL</option>
+<option value="RBC in CSF 10^6 /L|16|1|0|">RBC in CSF 10^6 /L</option>
+<option value="Sodium in sweat mEq/L|17|1|0|">Sodium in sweat mEq/L</option>
+<option value="Sodium in sweat mmol/L|17|1|0|">Sodium in sweat mmol/L</option>
+<option value="Sperm count in semen 10^6/mL|18|1000|0|">Sperm count in semen 10^6/mL</option>
+<option value="Sperm count in semen 10^9/L|18|1|0|">Sperm count in semen 10^9/L</option>
+<option value="Urea in amniotic fluid mg/dL|19|0.1665|0|">Urea in amniotic fluid mg/dL</option>
+<option value="Urea in amniotic fluid mmol/L|19|1|0|">Urea in amniotic fluid mmol/L</option>
+<option value="Urobilinogen in feces mcmol/d|20|1|0|">Urobilinogen in feces mcmol/d</option>
+<option value="Urobilinogen in feces mg/24 h|20|1.693|0|">Urobilinogen in feces mg/24 h</option>
+<option value="WBC in CSF /mcL|21|1|0|">WBC in CSF /mcL</option>
+<option value="WBC in CSF 10^6 /L|21|1|0|">WBC in CSF 10^6 /L</option>
+<option value="WBC in synovial fluid /mcL|22|1|0|">WBC in synovial fluid /mcL</option>
+<option value="WBC in synovial fluid 10^6/L|22|1|0|">WBC in synovial fluid 10^6/L</option>
+<option value="0|0|1|0"></option>
+</select></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">至</span></td>
+<td align="left"><input type="text" name="to_param" style="width:50px;" onfocus="blur();" /></td>
+<td align="left">
+<select name="to_unit" onchange="unitConvert();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="Acid output in gastric fluid mEq/h|1|1|0|">Acid output in gastric fluid mEq/h</option>
+<option value="Acid output in gastric fluid mmol/h|1|1|0|">Acid output in gastric fluid mmol/h</option>
+<option value="Albumin in amniotic fluid mg/dL|3|10|0|">Albumin in amniotic fluid mg/dL</option>
+<option value="Albumin in amniotic fluid mg/L|3|1|0|">Albumin in amniotic fluid mg/L</option>
+<option value="Albumin in CSF mg/dL|2|10|0|">Albumin in CSF mg/dL</option>
+<option value="Albumin in CSF mg/L|2|1|0|">Albumin in CSF mg/L</option>
+<option value="Bilirubin in amniotic fluid mcmol/L|4|1|0|">Bilirubin in amniotic fluid mcmol/L</option>
+<option value="Bilirubin in amniotic fluid mg/dL|4|17.1|0|">Bilirubin in amniotic fluid mg/dL</option>
+<option value="Chloride in sweat mEq/L|5|1|0|">Chloride in sweat mEq/L</option>
+<option value="Chloride in sweat mmol/L|5|1|0|">Chloride in sweat mmol/L</option>
+<option value="Coproporphyrins in feces mcg/g feces|6|1.5|0|">Coproporphyrins in feces mcg/g feces</option>
+<option value="Coproporphyrins in feces nmol/g feces|6|1|0|">Coproporphyrins in feces nmol/g feces</option>
+<option value="Creatinine in amniotic fluid mcmol/L|7|1|0|">Creatinine in amniotic fluid mcmol/L</option>
+<option value="Creatinine in amniotic fluid mg/dL|7|88.4|0|">Creatinine in amniotic fluid mg/dL</option>
+<option value="DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid ng/mL|8|2.6|0|">DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid ng/mL</option>
+<option value="DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid nmol/L|8|1|0|">DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid nmol/L</option>
+<option value="Estriol in amniotic fluid mcg/dL|9|3.468|0|">Estriol in amniotic fluid mcg/dL</option>
+<option value="Estriol in amniotic fluid nmol/L|9|1|0|">Estriol in amniotic fluid nmol/L</option>
+<option value="Glucose in CSF mg/dL|10|0.05551|0|">Glucose in CSF mg/dL</option>
+<option value="Glucose in CSF mmol/L|10|1|0|">Glucose in CSF mmol/L</option>
+<option value="Hormone receptor estrogen in tissue fmol/mg protein|12|1|0|">Hormone receptor estrogen in tissue fmol/mg protein</option>
+<option value="Hormone receptor estrogen in tissue nmol/kg protein|12|1|0|">Hormone receptor estrogen in tissue nmol/kg protein</option>
+<option value="Hormone receptor progesterone in tissue fmol/mg protein|11|1|0|">Hormone receptor progesterone in tissue fmol/mg protein</option>
+<option value="Hormone receptor progesterone in tissue nmol/kg protein|11|1|0|">Hormone receptor progesterone in tissue nmol/kg protein</option>
+<option value="Nitrogen total in feces g/24 h|13|71.39|0|">Nitrogen total in feces g/24 h</option>
+<option value="Nitrogen total in feces mmol/d|13|1|0|">Nitrogen total in feces mmol/d</option>
+<option value="Protein total in amniotic fluid g/dL|15|10|0|">Protein total in amniotic fluid g/dL</option>
+<option value="Protein total in amniotic fluid g/L|15|1|0|">Protein total in amniotic fluid g/L</option>
+<option value="Protein total in CSF mg/dL|14|10|0|">Protein total in CSF mg/dL</option>
+<option value="Protein total in CSF mg/L|14|1|0|">Protein total in CSF mg/L</option>
+<option value="RBC in CSF /mcL|16|1|0|">RBC in CSF /mcL</option>
+<option value="RBC in CSF 10^6 /L|16|1|0|">RBC in CSF 10^6 /L</option>
+<option value="Sodium in sweat mEq/L|17|1|0|">Sodium in sweat mEq/L</option>
+<option value="Sodium in sweat mmol/L|17|1|0|">Sodium in sweat mmol/L</option>
+<option value="Sperm count in semen 10^6/mL|18|1000|0|">Sperm count in semen 10^6/mL</option>
+<option value="Sperm count in semen 10^9/L|18|1|0|">Sperm count in semen 10^9/L</option>
+<option value="Urea in amniotic fluid mg/dL|19|0.1665|0|">Urea in amniotic fluid mg/dL</option>
+<option value="Urea in amniotic fluid mmol/L|19|1|0|">Urea in amniotic fluid mmol/L</option>
+<option value="Urobilinogen in feces mcmol/d|20|1|0|">Urobilinogen in feces mcmol/d</option>
+<option value="Urobilinogen in feces mg/24 h|20|1.693|0|">Urobilinogen in feces mg/24 h</option>
+<option value="WBC in CSF /mcL|21|1|0|">WBC in CSF /mcL</option>
+<option value="WBC in CSF 10^6 /L|21|1|0|">WBC in CSF 10^6 /L</option>
+<option value="WBC in synovial fluid /mcL|22|1|0|">WBC in synovial fluid /mcL</option>
+<option value="WBC in synovial fluid 10^6/L|22|1|0|">WBC in synovial fluid 10^6/L</option>
+<option value="0|0|1|0"></option>
+</select></td></tr></table>
+
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">
+设定小数点的最大显示精确度:
+</span>
+<select name="decpts" onchange="setDecPts();" class="medCalcFontSelect">
+<option>0</option>
+<option selected="selected">1</option>
+<option>2</option>
+<option>3</option>
+</select>
+</div>
+</div>
+</center>
+</form>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><font color="#aa0000">在该计算器中, <b>mcg</b>是<b>微克</b>的缩写.</font></li>
+<li>要进行简单的单位换算，在右侧的下拉选择器中输入起始单位。然后在顶部的<b>从</b>输入方格中输入起始值。要得到换算值，在右下方的选择器中选择新单位。 换算值应即刻出现<b>至</b>方格中。
+</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">使用下列转换系数，
+通过简单的系数相乘进行数据转换。
+</span></li>
+
+</ol>
+</div>
+
+<div class="calc_tables_supp">
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">转换系数</span>
+<br />&nbsp;<br />
+<table border="1" cellpadding="4" cellspacing="0" summary="EBMcalc Table" class="medCalcFontOne">
+
+<tr><td align="left">Acid output in gastric fluid mmol/h</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Acid output in gastric fluid mEq/h</td></tr>
+<tr><td align="left">Albumin in amniotic fluid mg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Albumin in amniotic fluid mg/L</td></tr>
+<tr><td align="left">Albumin in CSF mg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Albumin in CSF mg/L</td></tr>
+<tr><td align="left">Bilirubin in amniotic fluid mg/dL</td><td>X</td><td align="center">17.1</td><td>=</td><td align="left">Bilirubin in amniotic fluid mcmol/L</td></tr>
+<tr><td align="left">Chloride in sweat mmol/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Chloride in sweat mEq/L</td></tr>
+<tr><td align="left">Coproporphyrins in feces mcg/g feces</td><td>X</td><td align="center">1.5</td><td>=</td><td align="left">Coproporphyrins in feces nmol/g feces</td></tr>
+<tr><td align="left">Creatinine in amniotic fluid mg/dL</td><td>X</td><td align="center">88.4</td><td>=</td><td align="left">Creatinine in amniotic fluid mcmol/L</td></tr>
+<tr><td align="left">DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid ng/mL</td><td>X</td><td align="center">2.6</td><td>=</td><td align="left">DHEA-S (dehydro-epiandrosterone sulfate) in amniotic fluid nmol/L</td></tr>
+<tr><td align="left">Estriol in amniotic fluid mcg/dL</td><td>X</td><td align="center">3.468</td><td>=</td><td align="left">Estriol in amniotic fluid nmol/L</td></tr>
+<tr><td align="left">Glucose in CSF mg/dL</td><td>X</td><td align="center">0.05551</td><td>=</td><td align="left">Glucose in CSF mmol/L</td></tr>
+<tr><td align="left">Hormone receptor estrogen in tissue nmol/kg protein</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Hormone receptor estrogen in tissue fmol/mg protein</td></tr>
+<tr><td align="left">Hormone receptor progesterone in tissue nmol/kg protein</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Hormone receptor progesterone in tissue fmol/mg protein</td></tr>
+<tr><td align="left">Nitrogen total in feces g/24 h</td><td>X</td><td align="center">71.39</td><td>=</td><td align="left">Nitrogen total in feces mmol/d</td></tr>
+<tr><td align="left">Protein total in amniotic fluid g/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Protein total in amniotic fluid g/L</td></tr>
+<tr><td align="left">Protein total in CSF mg/dL</td><td>X</td><td align="center">10</td><td>=</td><td align="left">Protein total in CSF mg/L</td></tr>
+<tr><td align="left">RBC in CSF 10^6 /L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">RBC in CSF /mcL</td></tr>
+<tr><td align="left">Sodium in sweat mmol/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">Sodium in sweat mEq/L</td></tr>
+<tr><td align="left">Sperm count in semen 10^6/mL</td><td>X</td><td align="center">1000</td><td>=</td><td align="left">Sperm count in semen 10^9/L</td></tr>
+<tr><td align="left">Urea in amniotic fluid mg/dL</td><td>X</td><td align="center">0.1665</td><td>=</td><td align="left">Urea in amniotic fluid mmol/L</td></tr>
+<tr><td align="left">Urobilinogen in feces mg/24 h</td><td>X</td><td align="center">1.693</td><td>=</td><td align="left">Urobilinogen in feces mcmol/d</td></tr>
+<tr><td align="left">WBC in CSF 10^6 /L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">WBC in CSF /mcL</td></tr>
+<tr><td align="left">WBC in synovial fluid 10^6/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">WBC in synovial fluid /mcL</td></tr>
+
+</table>
+</div>
+<br />&nbsp;<br /><div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div></div>
+</body>
+</html>
+
+<!-- 1662471519 //-->

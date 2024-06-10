@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>COVID-19 危重预测（Yan，2020 年 3 月 3 日）</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="infectious, critical, emergency, pulm, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+COVID19_Yan_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+COVID19_Yan_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function COVID19_Yan_fx() {
+
+with(document.COVID19_Yan_form){
+
+
+doCalc = true;
+param_value = parseFloat(LDH_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = LDH_unit.options[LDH_unit.selectedIndex].value.split('|');
+LDH = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(hsCRP_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = hsCRP_unit.options[hsCRP_unit.selectedIndex].value.split('|');
+hsCRP = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Percent_Lymphocytes_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Percent_Lymphocytes_unit.options[Percent_Lymphocytes_unit.selectedIndex].value.split('|');
+Percent_Lymphocytes = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = 0;
+prediction.value = "";
+if (LDH && hsCRP && Percent_Lymphocytes){
+if (LDH >= 365) prediction.value = "更可能死亡";
+else if (hsCRP < 41.2) prediction.value = "更可能存活";
+else if (Percent_Lymphocytes > 14.7) prediction.value = "更可能存活";
+else prediction.value = "更可能死亡";
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.COVID19_Yan_form){
+
+if (LDH_param.value && isNaN(LDH_param.value)){ clrValue(LDH_param); alertNaN('LDH'); }
+if (hsCRP_param.value && isNaN(hsCRP_param.value)){ clrValue(hsCRP_param); alertNaN('hsCRP'); }
+if (Percent_Lymphocytes_param.value && isNaN(Percent_Lymphocytes_param.value)){ clrValue(Percent_Lymphocytes_param); alertNaN('淋巴细胞百分比'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.COVID19_Yan_form){
+
+prediction.value = '';
+
+
+}
+
+}
+
+var LDH = null,
+hsCRP = null,
+Percent_Lymphocytes = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="COVID19_Yan_form" id="COVID19_Yan_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="COVID19_Yan_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+COVID-19 危重预测（Yan，2020 年 3 月 3 日）
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">LDH</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="LDH_param" size="6" value="" onblur="COVID19_Yan_fx(); minMaxCheck();" onchange="COVID19_Yan_fx();" /></td>
+<td align="left" valign="top"> <select name="LDH_unit" onchange="COVID19_Yan_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|IU/L_LDH">IU/L</option>
+<option value="1|0|U/L_LDH" selected="selected">U/L</option>
+<option value="59.9880023995201|0|mcKat/L_LDH">mcKat/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">hsCRP</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="hsCRP_param" size="6" value="" onblur="COVID19_Yan_fx(); minMaxCheck();" onchange="COVID19_Yan_fx();" /></td>
+<td align="left" valign="top"> <select name="hsCRP_unit" onchange="COVID19_Yan_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mg/L_HSCRP" selected="selected">mg/L</option>
+<option value="1|0|mg/L_hsCRP">mg/L</option>
+<option value="10|0|mg/dL_HSCRP">mg/dL</option>
+<option value="0.105|0|nmol/L_HSCRP">nmol/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">淋巴细胞百分比</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Percent_Lymphocytes_param" size="6" value="" onblur="COVID19_Yan_fx(); minMaxCheck();" onchange="COVID19_Yan_fx();" /></td>
+<td align="left" valign="top"> <select name="Percent_Lymphocytes_unit" onchange="COVID19_Yan_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|ratio">ratio</option>
+</select></td></tr>
+
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">预测</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="prediction" maxlength="64" onfocus="blur();" /></td>
+</tr>
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>This calculator represents findings from the literature referenced below.
+It is important to understand that these findings may not be representative
+of the experience in your local healthcare system.
+</li><li>此算法基于一份预印出版物<sup>[1]</sup> ，尚未完成同行审议或方法学评价。  不能确认这些结果在您所在机构的临床准确性。</li>
+<li><b>LDH</b>：乳酸脱氢酶；<b>hsCRP</b>：高敏 C 反应蛋白。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">计算详情和变量</span>
+<ul class="medCalcFontOne">
+<li>通过使用 XGBoost Classifier 的机器学习发现了 3 个预测因素<sup>[2]</sup>。</li>
+<li>发现一项决策树分析（从 <b>LDH</b> 测量开始，之后为 <b>hsCRP</b> 和<b>淋巴细胞百分比</b>值） 可预测生存。</li>
+<li><b>LDH</b> >=365 U/L 与死亡风险增高相关。</li>
+<li>对于较低的 <b>LDH</b> 水平，<b>hsCRP</b> 水平 &lt;41.2 mg/L 与生存概率增高相关。</li>
+<li>如果 <b>LDH</b> &lt;365 U/L 且 hsCRP &ge;41.2 mg/L，<b>淋巴细胞百分比</b>值预测结局；在这些情况下，<b>淋巴细胞百分比</b> &gt;14.7% 与生存率增高相关，而<b>淋巴细胞百分比</b> &le;14.7% 与死亡率增高相关。</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Yan L, Zhang HT, Xiao Y, et al. Prediction of criticality in patients with severe  Covid-19 infection using three clinical features: a machine learning-based prognostic model  with clinical data in Wuhan. <i>MedRxiv, the Preprint Server for health Sciences</i>.  <a href="https://www.medrxiv.org/content/10.1101/2020.02.27.20028027v2" target="_blank"> https://www.medrxiv.org/content/10.1101/2020.02.27.20028027v2</a> accessed 3/17/2020.</span></li>
+<li><span class="medCalcFontRef">Chen T, Guestrin C. Xgboost: A scalable tree boosting system. <i>arxiv e-prints</i>. arXiv preprint arXiv:1603.0275, 2016.</span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471474 //-->

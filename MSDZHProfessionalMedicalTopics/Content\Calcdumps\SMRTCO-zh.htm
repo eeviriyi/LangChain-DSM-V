@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>用于评估肺炎严重程度的 SMRT CO 评分</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="covid, pulm, critical care, emergency, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+SMRTCO_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+SMRTCO_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function SMRTCO_fx() {
+with(document.SMRTCO_form){
+
+Score = 0.0;
+doCalc = true;
+
+if (cc1.checked){
+Score = Score + 2;
+}
+if (cc2.checked){
+Score = Score + 1;
+}
+rbchk = false;
+if (cc3[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc3[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc3[2].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (!rbchk) doCalc = false;
+if (cc4.checked){
+Score = Score + 1;
+}
+if (cc5.checked){
+Score = Score + 1;
+}
+rbchk = false;
+if (cc6[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc6[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc6[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (!rbchk) doCalc = false;
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.SMRTCO_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 0)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 1) && (Score <= 1)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 2) && (Score <= 2)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 3) && (Score <= 3)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+if ((Score >= 4) && (Score <= 8)){ document.getElementById('rr1_5').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+document.getElementById('rr1_5').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="SMRTCO_form" id="SMRTCO_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+用于评估肺炎严重程度的 SMRT CO 评分
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">血压和 CXR 因素</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel1" name="cc1" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel1');" >收缩压 &lt;90mmHg (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel2" name="cc2" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel2');" >胸部 X 线上多叶受累 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">呼吸/年龄因素 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc3" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">任何年龄：呼吸频率低于 25 次/分 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc3" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');"> ≤50 岁：呼吸频率 ≥25 次/分 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel5" name="cc3" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');"> >50 岁：呼吸频率 ≥30 次/分 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">心血管因素</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel6" name="cc4" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel6');" >心动过速，≥125 次/分 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">精神状况因素</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel7" name="cc5" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel7');" >意识模糊（急性） (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">氧合/年龄因素 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel8" name="cc6" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel8');">任何年龄： O2 饱和度 &ge;94% (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel9" name="cc6" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');"> ≤50 岁： O2 饱和度 &le;93% (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel10" name="cc6" onclick="SMRTCO_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');"> >50 岁： O2 饱和度 &le;90% (2 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+SMRT CO 评分和通气或血管加压药物支持的风险
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">极低风险</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">1 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">低风险（大约 5%）</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">2 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 中等风险（大约 10%）</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">3 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">高风险（大约 17%）</span></td></tr>
+<tr id="rr1_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">4 - 8 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">极高风险（大约 33%）</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Charles PG, Wolfe R, Whitby M, Fine MJ, Australian Community-Acquired  Pneumonia Study Collaboration, et al. SMART-COP: a tool for predicting the  need for intensive respiratory or vasopressor support in community-acquired  pneumonia. <i>Clin Infect Dis</i>. 2008 Aug 1;47(3):375-84. doi: 10.1086/589754. PubMed ID: 18558884 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/18558884"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471521 //-->

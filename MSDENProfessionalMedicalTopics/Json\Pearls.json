@@ -1,0 +1,2198 @@
+﻿[
+    {
+        "Title": "Paget Disease of Bone",
+        "Pearl": "Consider Paget disease of bone in older adults with elevated alkaline phosphatase but normal GGT levels.",
+        "Date": "2022-09-05T00:00:00",
+        "Id": "{A744E1A4-219D-45A4-8FD1-952D5928DF0E}"
+    },
+    {
+        "Title": "Preeclampsia and Eclampsia",
+        "Pearl": "Check for swelling in the hands (eg, a ring that no longer fits) or face and hyperreflexia, which may be among the more specific findings in preeclampsia.",
+        "Date": "2022-09-06T00:00:00",
+        "Id": "{4C6196D3-5279-40A0-9020-15E4B21B0401}"
+    },
+    {
+        "Title": "Central Diabetes Insipidus",
+        "Pearl": "The water deprivation test should be done while the patient is under constant supervision because serious dehydration may occur. The duration of action of a given dose of desmopressin varies greatly among individuals and must be established for each patient.",
+        "Date": "2022-09-07T00:00:00",
+        "Id": "{F2E3DE68-62BE-42D9-805C-940710551D66}"
+    },
+    {
+        "Title": "Medical Aspects of Long-Term Renal Replacement Therapy",
+        "Pearl": "Consider aluminum toxicity in RRT patients with osteomalacia, iron-resistant microcytic anemia, or neurologic symptoms. ",
+        "Date": "2022-09-08T00:00:00",
+        "Id": "{CF5409A6-5E37-4538-A303-FA746BCD5B83}"
+    },
+    {
+        "Title": "Drug Efficacy and Safety",
+        "Pearl": "Calculate the number needed to treat (NNT) based on absolute, rather than relative, changes in risks.",
+        "Date": "2022-09-09T00:00:00",
+        "Id": "{D4571706-0D3D-4692-8D38-FA1F06F8E45E}"
+    },
+    {
+        "Title": "Guillain-Barré Syndrome ",
+        "Pearl": "Do not give corticosteroids in Guillain-Barré syndrome because they may worsen outcome.",
+        "Date": "2022-09-10T00:00:00",
+        "Id": "{0B9D3DEF-A946-457B-ACE9-670F2DA6722E}"
+    },
+    {
+        "Title": "Diphtheria-Tetanus-Pertussis Vaccine",
+        "Pearl": "Pregnant women should have a booster dose of Tdap during each pregnancy.",
+        "Date": "2022-09-11T00:00:00",
+        "Id": "{{E8083D38-2AFE-4F30-8C63-B46B6ACE8770}"
+    },
+    {
+        "Title": "Arterial Gas Embolism",
+        "Pearl": "Any unconscious diver should be assumed to have arterial gas embolism and should be recompressed promptly. Place unconscious patients with impaired airway reflexes in the lateral decubitus position until the airway can be protected with an endotracheal tube, after which the patient can be placed supine to facilitate care. Left lateral decubitus position (Durant’s maneuver) or Trendelenburg position are no longer recommended.",
+        "Date": "2022-09-12T00:00:00",
+        "Id": "{CF4B03C8-EACE-455B-9559-EE34A81FEB37}"
+    },
+    {
+        "Title": "Sore Throat",
+        "Pearl": "If epiglottitis is considered, directly examine a child's pharynx only in the operating room to minimize the risk of complete airway obstruction.",
+        "Date": "2022-09-13T00:00:00",
+        "Id": "{D5DB30A3-E29A-47CA-9335-27CE44DC8EE5}"
+    },
+    {
+        "Title": "Peritoneal Dialysis",
+        "Pearl": "If peritonitis is suspected based on clinical criteria, start treatment immediately regardless of laboratory findings.",
+        "Date": "2022-09-14T00:00:00",
+        "Id": "{D69B7500-63BA-4897-9644-E4F62A1117CA}"
+    },
+    {
+        "Title": "Addison Disease",
+        "Pearl": "Provocative tests with insulin are hazardous and should not be done. When adrenal crisis is suspected, give hydrocortisone treatment immediately; any delay, including for testing, may be fatal.",
+        "Date": "2022-09-15T00:00:00",
+        "Id": "{514A1668-981D-44C8-A293-A14EFA1C4095}"
+    },
+    {
+        "Title": "Behavioral Emergencies",
+        "Pearl": "Do not assume that the cause of abnormal behavior is a mental disorder or intoxication, even in patients who have a known psychiatric diagnosis or an odor of alcohol.",
+        "Date": "2022-09-16T00:00:00",
+        "Id": "{BDA5C19C-5F79-4B33-B35B-1D56BBCC3F0E}"
+    },
+    {
+        "Title": "Intestinal Obstruction",
+        "Pearl": "Strangulating obstruction can progress to infarction and gangrene in as little as 6 h.",
+        "Date": "2022-09-17T00:00:00",
+        "Id": "{3412DC1C-75A6-417E-929F-84AF738F2CD3}"
+    },
+    {
+        "Title": "Overview of Abdominal Trauma",
+        "Pearl": "Not all penetrating abdominal injuries originate from wounds on the abdominal wall; be suspicious of entrance wounds on the back, buttocks, flank, perineum, and lower chest. Because many intra-abdominal injuries heal without specific treatment, the clinician's primary goal is to identify injuries requiring intervention.",
+        "Date": "2022-09-18T00:00:00",
+        "Id": "{66B13AD1-7698-4C58-8790-078E129ED552}"
+    },
+    {
+        "Title": "Epiglottitis",
+        "Pearl": "Examination of the pharynx or larynx in children with epiglottitis and stridor may precipitate complete airway obstruction.",
+        "Date": "2022-09-19T00:00:00",
+        "Id": "{B96AA4A2-76E4-49B4-A319-2FEA2C9B1B75}"
+    },
+    {
+        "Title": "Overview of Skin Cancer",
+        "Pearl": "Biopsy any skin lesion, whether appearance is typical for cancer or atypical, that enlarges or persists longer than expected.",
+        "Date": "2022-09-20T00:00:00",
+        "Id": "{BB53EBA4-FDAD-4F24-8CD2-69CE8B13A564}"
+    },
+    {
+        "Title": "Infectious Mononucleosis",
+        "Pearl": "Primary HIV infection can resemble acute EBV infection; patients with risk factors for HIV infection should be tested using quantitative HIV RNA viral load in blood, combination antibody immunoassay, and p24 antigen testing.",
+        "Date": "2022-09-21T00:00:00",
+        "Id": "{274AD715-8707-46E8-A44E-965C373612B3}"
+    },
+    {
+        "Title": "Overview of Child Maltreatment",
+        "Pearl": "Lack of visible head lesions does not exclude traumatic brain injury.",
+        "Date": "2022-09-22T00:00:00",
+        "Id": "{1FA6BBA8-E09F-474A-813C-38B571409CD9}"
+    },
+    {
+        "Title": "Preseptal and Orbital Cellulitis",
+        "Pearl": " Suspect orbital cellulitis and consult an ophthalmologist if there is decreased ocular motility, pain with eye movements, proptosis, or decreased visual acuity.",
+        "Date": "2022-09-23T00:00:00",
+        "Id": "{83770BD0-E95A-47E1-98FD-EEF77548A2A9}"
+    },
+    {
+        "Title": "Angioedema",
+        "Pearl": "If angioedema is not accompanied by urticaria and recurs without clear cause or is present in family members, consider hereditary or acquired angioedema.",
+        "Date": "2022-09-24T00:00:00",
+        "Id": "{C0F72208-E822-4428-8006-ECB71CA60E95}"
+    },
+    {
+        "Title": "Tinea Capitis",
+        "Pearl": "Before draining a scalp abscess in a child, consider the diagnosis of kerion.",
+        "Date": "2022-09-25T00:00:00",
+        "Id": "{5568970D-3CEE-43E7-93E3-1FBD76E38097}"
+    },
+    {
+        "Title": "Growth Hormone Deficiency in Children ",
+        "Pearl": "Unlike in many endocrine deficiencies in which hormone levels are diagnostic, random GH levels are of little use in diagnosing growth hormone deficiency.",
+        "Date": "2022-09-26T00:00:00",
+        "Id": "{F3A6A511-480A-41DE-A532-F9BAEF375C40}"
+    },
+    {
+        "Title": "Acute Tubular Necrosis (ATN)",
+        "Pearl": "Diuretics may help maintain urinary output in patients with ATN but do not alter the course of kidney injury.",
+        "Date": "2022-09-27T00:00:00",
+        "Id": "{F0574C62-8698-48FF-B514-196FC4DE3589}"
+    },
+    {
+        "Title": "Overview of Conjunctivitis ",
+        "Pearl": "Suspect another cause of red eye (eg, uveitis, glaucoma, keratitis) if patients have true photophobia, loss of vision, or ciliary flush and do not have significant discharge or tearing.",
+        "Date": "2022-09-28T00:00:00",
+        "Id": "{9D86EF1F-7952-4873-8FA2-BCE561A8F1DE}"
+    },
+    {
+        "Title": "Subarachnoid Hemorrhage ",
+        "Pearl": "Suspect subarachnoid hemorrhage if headache reaches peak, severe intensity within seconds of onset or causes loss of consciousness. Do lumbar puncture if subarachnoid hemorrhage is suspected clinically but CT shows no hemorrhage or is not available; however, lumbar puncture is contraindicated if increased intracranial pressure is suspected.",
+        "Date": "2022-09-29T00:00:00",
+        "Id": "{635F609E-6111-4CC2-8296-DB62F6E16966}"
+    },
+    {
+        "Title": "Overview of Platelet Disorders",
+        "Pearl": "Suspect platelet or vessel wall dysfunction in patients with petechiae and/or hemorrhage but with normal platelet count and coagulation test results.",
+        "Date": "2022-09-30T00:00:00",
+        "Id": "{A90A9588-61C7-43C9-8B6B-3D1737324F72}"
+    },
+    {
+        "Title": "Anthrax",
+        "Pearl": "Sputum examination and Gram stain are unlikely to identify inhalation anthrax because airspace disease is frequently absent.",
+        "Date": "2022-10-01T00:00:00",
+        "Id": "{94D91D2B-AE65-4E10-BEFF-4D2CE103A44A}"
+    },
+    {
+        "Title": "Veno-Occlusive Disease",
+        "Pearl": "Ask patients who have cryptogenic liver abnormalities about use of herbal and natural products (including bush and herb teas) and anabolic steroids (which can cause peliosis hepatis).",
+        "Date": "2022-10-02T00:00:00",
+        "Id": "{64A552CF-6B81-48CA-B330-7B124926F78B}"
+    },
+    {
+        "Title": "Amyotrophic Lateral Sclerosis (ALS) and Other Motor Neuron Diseases (MNDs)",
+        "Pearl": "Suspect ALS or another motor neuron disease in patients who have features of upper and/or lower motor neuron dysfunction (eg, extensor plantar responses plus atrophy and fasciculations). If cranial nerves are affected and findings are compatible with ALS, a treatable alternative cause is less likely.",
+        "Date": "2022-10-03T00:00:00",
+        "Id": "{962D703D-A82D-49C9-8DBD-45C9704B4768}"
+    },
+    {
+        "Title": "Premenstrual Syndrome (PMS)",
+        "Pearl": "Consider premenstrual dysphoric disorder if women have nonspecific but severe symptoms that affect their ability to function just before menses.",
+        "Date": "2022-10-04T00:00:00",
+        "Id": "{9F855C0A-9E3F-4763-A908-7B9918A14620}"
+    },
+    {
+        "Title": "Red Eye",
+        "Pearl": "If pain persists despite an ocular anesthetic in a patient with a normal fluorescein examination, consider anterior uveitis, scleritis, or acute angle-closure glaucoma.",
+        "Date": "2022-10-05T00:00:00",
+        "Id": "{9B920DA6-AB56-40B7-8581-14F7F5E6B451}"
+    },
+    {
+        "Title": "Abdominal Aortic Aneurysms ",
+        "Pearl": "In a hypotensive patient with a ruptured abdominal aortic aneurysm, do not raise mean arterial pressure to > 70 to 80 mm Hg because bleeding may increase.",
+        "Date": "2022-10-06T00:00:00",
+        "Id": "{A3F1C50D-61B7-4CD9-9B84-F273F42A9209}"
+    },
+    {
+        "Title": "Burns",
+        "Pearl": "Assess the airway and prepare for intubation if patients have respiratory symptoms, carbonaceous sputum, perioral burns, singed nasal hairs, or were confined in a burning environment. The Parkland and other burn fluid resuscitation formulas are only a starting point; fluid volume and rate are adjusted based on clinical response.",
+        "Date": "2022-10-07T00:00:00",
+        "Id": "{BF374D4F-9CE7-4C47-88EA-4B1AD5C7674F}"
+    },
+    {
+        "Title": "Overview of Peripheral Nervous System Disorders",
+        "Pearl": "If clinical findings and electrodiagnostic test results are inconclusive, do a biopsy (nerve biopsy for suspected large-fiber neuropathy or skin punch biopsy for suspected small-fiber neuropathy). If all limbs are affected, consider MRI to rule out cervical spinal cord compression.",
+        "Date": "2022-10-08T00:00:00",
+        "Id": "{5F111C54-ABC2-4CD0-82B4-612ED97B8D3F}"
+    },
+    {
+        "Title": "Hemophilia",
+        "Pearl": "Because factor VIII levels may also be reduced in von Willebrand disease, measure von Willebrand factor (VWF) activity, antigen, and multimer composition in patients with newly diagnosed hemophilia A.",
+        "Date": "2022-10-09T00:00:00",
+        "Id": "{2B20455A-34CB-4FAE-BD2C-B7968BA6E60C}"
+    },
+    {
+        "Title": "Euthyroid Sick Syndrome",
+        "Pearl": "Thyroid function tests should not be ordered for severely ill patients unless thyroid dysfunction is highly suspected. ",
+        "Date": "2022-10-10T00:00:00",
+        "Id": "{91B25430-F0D8-48B6-AD7B-1D0D9701A292}"
+    },
+    {
+        "Title": "Calcaneal Fractures",
+        "Pearl": "If patients have calcaneal swelling and tenderness after a high-energy axial load to the calcaneus, check the Bohler angle on x-ray, and check for thoracolumbar compression fracture and compartment syndrome.",
+        "Date": "2022-10-11T00:00:00",
+        "Id": "{B07D9DFD-8CFE-4F48-9A58-85E4ABD6DCD3}"
+    },
+    {
+        "Title": "Splenic Injury",
+        "Pearl": "Ask patients with unexplained left upper quadrant abdominal pain about recent trauma (including contact sports), particularly if there is hypovolemia or shock.",
+        "Date": "2022-10-12T00:00:00",
+        "Id": "{ED718F56-DB20-4D8B-A32A-D8B6EB1C2BCB}"
+    },
+    {
+        "Title": "Scaphoid (Navicular) Fractures",
+        "Pearl": "If clinical findings suggest a scaphoid fracture, do MRI or immobilize with thumb spica splint, even if no fracture is evident on x-ray.",
+        "Date": "2022-10-13T00:00:00",
+        "Id": "{042B1533-36E3-463E-A312-B7C0B9361353}"
+    },
+    {
+        "Title": "Ectopic Pregnancy",
+        "Pearl": "Suspect ectopic pregnancy in any female of reproductive age with pelvic pain, vaginal bleeding, or unexplained syncope or hemorrhagic shock, regardless of sexual, contraceptive, and menstrual history and examination findings.",
+        "Date": "2022-10-14T00:00:00",
+        "Id": "{5B953041-7433-47E9-809D-4A55816652D7}"
+    },
+    {
+        "Title": "Dyslipidemia",
+        "Pearl": "Total and HDL cholesterol can be measured in the nonfasting state, but most patients should have all lipids measured while fasting (usually for 12 hours) for maximum accuracy and consistency. Although higher HDL levels are associated with lower cardiovascular risk, it is not clear whether treatments to increase HDL cholesterol levels decrease risk of cardiovascular events or death.",
+        "Date": "2022-10-15T00:00:00",
+        "Id": "{47789936-4B59-4AEC-9810-C84B2BEAEB1B}"
+    },
+    {
+        "Title": "Overview of Intracranial Tumors",
+        "Pearl": "Brain metastases are about 10 times more common than primary brain tumors.",
+        "Date": "2022-10-16T00:00:00",
+        "Id": "{{C2BD510C-437E-4C2C-80CE-53F446343014}"
+    },
+    {
+        "Title": "Liver Injury Caused by Drugs",
+        "Pearl": "Do not rechallenge with a drug suspected of causing liver injury.",
+        "Date": "2022-10-17T00:00:00",
+        "Id": "{2EF5DAC1-C383-4A6D-8D5F-117775EAA515}"
+    },
+    {
+        "Title": "Pneumomediastinum",
+        "Pearl": "Although pneumomediastinum may produce dramatic findings on examination and/or x-ray and may indicate a serious disorder, treatment of pneumomediastinum itself is usually unnecessary. ",
+        "Date": "2022-10-18T00:00:00",
+        "Id": "{EDF23826-C426-439E-85A2-522B51B2396C}"
+    },
+    {
+        "Title": "Pneumomediastinum",
+        "Pearl": "Although pneumomediastinum may produce dramatic findings on examination and/or x-ray and may indicate a serious disorder, treatment of pneumomediastinum itself is usually unnecessary.",
+        "Date": "2022-10-19T00:00:00",
+        "Id": "{EDF23826-C426-439E-85A2-522B51B2396C}"
+    },
+    {
+        "Title": "Involuntary Weight Loss",
+        "Pearl": "When a chronic disease has been stable, do not assume that it is the cause of acute weight loss.",
+        "Date": "2022-10-20T00:00:00",
+        "Id": "{9F9EAF11-EA90-4AA3-B1B4-81C19DB493C6}"
+    },
+    {
+        "Title": "Involuntary Weight Loss",
+        "Pearl": "When a chronic disease has been stable, do not assume that it is the cause of acute weight loss.",
+        "Date": "2022-10-21T00:00:00",
+        "Id": "{9F9EAF11-EA90-4AA3-B1B4-81C19DB493C6}"
+    },
+    {
+        "Title": "The Optic Pathway",
+        "Pearl": "Consider gadolinium-enhanced MRI for young patients who have eye pain with movement and loss of vision (eg, decreased visual acuity or color vision, field defects) or an afferent pupillary defect. Consider spinal cord imaging in patients with neurologic symptoms suggestive of spinal cord involvement, which can be seen in either NMO or MOG-IgG disease.",
+        "Date": "2022-10-22T00:00:00",
+        "Id": "{BF4B95A4-D878-4EF6-93B5-E1843415C4D8}"
+    },
+    {
+        "Title": "Reentrant Supraventricular Tachycardias (SVT) including Wolff-Parkinson-White Syndrome ",
+        "Pearl": "Although most supraventricular tachycardias have a narrow QRS complex, some have a wide QRS complex and must be distinguished from ventricular tachycardia.",
+        "Date": "2022-10-23T00:00:00",
+        "Id": "{49F03C05-4712-4DFF-AFDB-F64A4542C485}"
+    },
+    {
+        "Title": "Depressive Disorders in Children and Adolescents",
+        "Pearl": "Suicide risk is always a concern in children or adolescents with depression whether they are taking antidepressants or not.",
+        "Date": "2022-10-24T00:00:00",
+        "Id": "{CCAA5083-6325-4354-B5A0-790655AC3888}"
+    },
+    {
+        "Title": "Depressive Disorders in Children and Adolescents",
+        "Pearl": "Suicide risk is always a concern in children or adolescents with depression whether they are taking antidepressants or not.",
+        "Date": "2022-10-25T00:00:00",
+        "Id": "{CCAA5083-6325-4354-B5A0-790655AC3888}"
+    },
+    {
+        "Title": "Rib Fracture",
+        "Pearl": "Minor trauma (eg, due to a fall) in the elderly can cause rib fractures that may have fatal consequences.",
+        "Date": "2022-10-26T00:00:00",
+        "Id": "{693161B2-274A-4AD8-99B0-0B58A3D42D95}"
+    },
+    {
+        "Title": "Diaphragmatic Hernia",
+        "Pearl": "Avoid bag-and-mask ventilation in neonates with respiratory distress due to diaphragmatic hernia because it may further inflate the displaced intrathoracic viscera.",
+        "Date": "2022-10-27T00:00:00",
+        "Id": "{0F0A6564-3AFD-4F0A-8FA2-32FBDA87FF98}"
+    },
+    {
+        "Title": "Adverse Drug Reactions",
+        "Pearl": "Adverse drug reactions occur in 10 to 20% of hospitalizations. About 10 to 20% of these reactions are severe.",
+        "Date": "2022-10-28T00:00:00",
+        "Id": "{CB60BF6E-9351-4F0F-BA54-1DC49AE3864E}"
+    },
+    {
+        "Title": "Traumatic Brain Injury (TBI)",
+        "Pearl": "Delay use of sedative and paralytic drugs until after full neurologic examination whenever possible. Consider chronic subdural hematoma in patients who have unexplained mental status changes and risk factors, including elderly patients taking antiplatelet or anticoagulant drugs or who have brain atrophy and alcoholics, even if there is no history of trauma and even if brain imaging at first shows no obvious abnormalities.",
+        "Date": "2022-10-29T00:00:00",
+        "Id": "{2F7AC770-FEEA-4956-B1D9-A8335681CB8B}"
+    },
+    {
+        "Title": "Snakebites",
+        "Pearl": "Suspect envenomation with all bites caused by venomous snakes, even if there are no signs of envenomation soon after the bite. Do not incise or apply tourniquets to snakebite wounds. Give children envenomated by a pit viper bite full adult doses of antivenom.",
+        "Date": "2022-10-30T00:00:00",
+        "Id": "{FD85E20C-0CC8-41AF-931A-4AF35E51BF61}"
+    },
+    {
+        "Title": "Uterine Fibroids",
+        "Pearl": "When considering using morcellation to treat fibroids, inform patients that dissemination of undiagnosed uterine cancer is a risk.",
+        "Date": "2022-10-31T00:00:00",
+        "Id": "{75ECBF73-829A-4F50-AA51-77E8909A576F}"
+    },
+    {
+        "Title": "Uterine Fibroids",
+        "Pearl": "When considering using morcellation to treat fibroids, inform patients that dissemination of undiagnosed uterine cancer is a risk. ",
+        "Date": "2022-11-01T00:00:00",
+        "Id": "{75ECBF73-829A-4F50-AA51-77E8909A576F}"
+    },
+    {
+        "Title": "Atrial Fibrillation and Wolff-Parkinson-White Syndrome (WPW)",
+        "Pearl": "Do not give digoxin or nondihydropyridine calcium channel blockers (eg, verapamil, diltiazem) to patients with atrial fibrillation and Wolff-Parkinson-White syndrome because these drugs may trigger ventricular fibrillation.",
+        "Date": "2022-11-02T00:00:00",
+        "Id": "{24AEA6F1-850A-4584-BF17-AE606D775562}"
+    },
+    {
+        "Title": "Delirium",
+        "Pearl": "Consider delirium in any older patient who presents with impairment in memory or attention. Treatment of delirium in older patients is best managed by an interdisciplinary team.",
+        "Date": "2022-11-03T00:00:00",
+        "Id": "{5BA0B948-AA27-4077-A84B-AA0F6ED84B66}"
+    },
+    {
+        "Title": "Roseola Infantum",
+        "Pearl": "In roseola infantum, the characteristic rash occurs with defervescence.",
+        "Date": "2022-11-04T00:00:00",
+        "Id": "{31E32DA2-81A0-41ED-8A00-1ACD3CB36E67}"
+    },
+    {
+        "Title": "Tremor",
+        "Pearl": " Consider FXTAS in patients diagnosed with essential tremor if they develop ataxia or signs of parkinsonism.",
+        "Date": "2022-11-05T00:00:00",
+        "Id": "{53F32C1B-440B-41BC-9602-6D88D5A06CB3}"
+    },
+    {
+        "Title": "Corneal Ulcer",
+        "Pearl": "Do a slit-lamp examination and fluorescein staining if patients have a red eye with pain, foreign body sensation, and/or decreased visual acuity.",
+        "Date": "2022-11-06T00:00:00",
+        "Id": "{841AF9AD-37F1-45A5-A920-D6A7E29C3DB2}"
+    },
+    {
+        "Title": "Deep Venous Thrombosis (DVT)",
+        "Pearl": "About 50% of patients with DVT have occult pulmonary emboli.",
+        "Date": "2022-11-07T00:00:00",
+        "Id": "{40A030FA-C405-40DB-867D-6853F28279BE}"
+    },
+    {
+        "Title": "Hirschsprung Disease",
+        "Pearl": "Barium enema for Hirschsprung disease should be done without prior bowel preparation.",
+        "Date": "2022-11-08T00:00:00",
+        "Id": "{6B5B53A6-E97B-4795-A2DA-2C20985B0085}"
+    },
+    {
+        "Title": "Lacerations",
+        "Pearl": "If decompression sickness is suspected, begin recompression immediately, without delays for diagnostic studies.",
+        "Date": "2022-11-09T00:00:00",
+        "Id": "{2956ADBF-728F-4069-8C54-B1B590393F2B}"
+    },
+    {
+        "Title": "Obstructive Sleep Apnea",
+        "Pearl": "Apneic episodes in premature infants should not be attributed to prematurity until serious causes (eg, infectious, cardiac, metabolic, respiratory, central nervous system, thermoregulatory) have been ruled out. Home cardiorespiratory monitors have not been shown to reduce the incidence of sudden infant death syndrome (SIDS) or brief resolved unexplained events (BRUEs).",
+        "Date": "2022-11-10T00:00:00",
+        "Id": "{27875BC0-A3A9-4EA8-A294-0238E6AA5053}"
+    },
+    {
+        "Title": "Pneumothorax (Tension)",
+        "Pearl": "Tension pneumothorax should be diagnosed at the bedside based on clinical findings and treated immediately with needle decompression and/or tube thoracostomy.",
+        "Date": "2022-11-11T00:00:00",
+        "Id": "{2F5FE1B6-69C0-44E4-884F-7CC8240E8C67}"
+    },
+    {
+        "Title": "Contact Dermatitis",
+        "Pearl": "Lesion shape or pattern (linear streaks are almost always indicative of an external allergen or irritant) can help differentiate contact dermatitis from other forms of dermatitis. ",
+        "Date": "2022-11-12T00:00:00",
+        "Id": "{152B2DBF-227A-4038-8215-BE2963389DCB}"
+    },
+    {
+        "Title": "Tuberculosis ",
+        "Pearl": "In hospitals and clinics, the highest risk of TB transmission is from patients who have undiagnosed TB or unidentified drug resistance and are receiving inadequate treatment, not from known TB patients who are receiving effective treatment.",
+        "Date": "2022-11-13T00:00:00",
+        "Id": "{1FEF1F26-C9F6-41EF-8C18-CB7450E146E0}"
+    },
+    {
+        "Title": "Vulvar Cancer",
+        "Pearl": "If a vulvar lesion develops in a woman at low risk of STDs or does not respond to treatment for STDs, consider vulvar cancer.",
+        "Date": "2022-11-14T00:00:00",
+        "Id": "{30E98A63-C233-4AE2-A791-AF490AC52058}"
+    },
+    {
+        "Title": "Urinary Calculi",
+        "Pearl": "Because giving high volumes of fluid does not speed stone passage, normal volumes of IV or oral hydration should be used.",
+        "Date": "2022-11-15T00:00:00",
+        "Id": "{F8AB2070-F4EC-4925-B300-5404B52754BA}"
+    },
+    {
+        "Title": "Pelvic Fractures",
+        "Pearl": "Wrap the pelvis (eg, in sheets) or apply an external fixator as soon as possible to stabilize an unstable pelvic fracture.",
+        "Date": "2022-11-16T00:00:00",
+        "Id": "{58CC8313-37E1-45F7-8C73-96C3E9F73745}"
+    },
+    {
+        "Title": "Ischemic Stroke",
+        "Pearl": "Give systemic corticosteroids as soon as possible to patients 55 years and older who have sudden, painless loss of vision until giant cell arteritis is excluded.",
+        "Date": "2022-11-17T00:00:00",
+        "Id": "{BDE969BB-FBF1-4748-95F9-C1ED7B1BB4FA}"
+    },
+    {
+        "Title": "Bancroftian and Brugian Lymphatic Filariasis",
+        "Pearl": "Before treatment with DEC, assess patients for coinfection with Loa loa or Onchocerca volvulus because DEC can cause serious reactions in patients with those infections.",
+        "Date": "2022-11-18T00:00:00",
+        "Id": "{1F1880A5-8E93-4205-9A53-CF4CC93DC69B}"
+    },
+    {
+        "Title": "Erythropoietic Protoporphyria and X-linked Protoporphyria",
+        "Pearl": "Operating room lights can cause phototoxic injury to internal organs in patients with erythropoietic protoporphyria.",
+        "Date": "2022-11-19T00:00:00",
+        "Id": "{CB378C4B-A6E2-4818-9C10-BDA91016252E}"
+    },
+    {
+        "Title": "Evaluation of Neck and Back Pain",
+        "Pearl": "Treat patients with nonspecific, nonradicular back pain who have no red flag findings symptomatically, without first requiring testing.",
+        "Date": "2022-11-20T00:00:00",
+        "Id": "{F4C6936F-6E72-450A-AA65-35C77CC5381A}"
+    },
+    {
+        "Title": "Celiac Disease",
+        "Pearl": "Strongly consider celiac disease in patients with iron deficiency but no apparent gastrointestinal bleeding.",
+        "Date": "2022-11-21T00:00:00",
+        "Id": "{A7A2C32F-A446-4520-9A65-CD8E39C340A3}"
+    },
+    {
+        "Title": "Sports-Related Concussion",
+        "Pearl": "Patients may have concussion without loss of consciousness.",
+        "Date": "2022-11-22T00:00:00",
+        "Id": "{84E8CBBF-8BAD-4613-8FA6-2D5297E9822F}"
+    },
+    {
+        "Title": "Colonic Diverticulosis",
+        "Pearl": "There is no association between consumption of nuts, seeds, corn, or popcorn and diverticulitis, diverticular hemorrhage, or uncomplicated diverticulosis, and avoidance of these foods is no longer recommended.",
+        "Date": "2022-11-23T00:00:00",
+        "Id": "{5ED70E17-6B16-402C-B516-02E597F7E33E}"
+    },
+    {
+        "Title": "Acid-Base Disorders",
+        "Pearl": "Compensatory mechanisms for acid-base disturbances cannot return pH completely to normal and never overshoot.",
+        "Date": "2022-11-24T00:00:00",
+        "Id": "{95C51F6D-2FFF-400E-B7DC-4A50309B835F}"
+    },
+    {
+        "Title": "Pneumocystis jirovecii Pneumonia",
+        "Pearl": "In immunosuppressed patients who have a dry, nonproductive cough and abnormal chest x-ray or pulse oximetry, pursue further testing for P. jirovecii pneumonia.",
+        "Date": "2022-11-25T00:00:00",
+        "Id": "{158ED3D8-7B77-490A-98EE-E29670D7E361}"
+    },
+    {
+        "Title": "Toxoplasmosis",
+        "Pearl": "No treatment is required for immunocompetent patients who are asymptomatic or have mild, uncomplicated acute toxoplasmosis.",
+        "Date": "2022-11-26T00:00:00",
+        "Id": "{1B76FB97-4740-4B09-BCD6-96F9FF75D841}"
+    },
+    {
+        "Title": "Solitary Pulmonary Nodule",
+        "Pearl": "Solitary rectal ulcer syndrome is poorly named because associated lesions may be solitary or multiple and ulcerated or nonulcerated; they range from mucosal erythema to ulcers to small mass lesions.",
+        "Date": "2022-11-27T00:00:00",
+        "Id": "{F353A9C0-1FB2-4D52-90D2-53843F82B1AF}"
+    },
+    {
+        "Title": "Gastroenteritis",
+        "Pearl": "C. difficile is now probably the most common bacterial cause of diarrhea in the US.",
+        "Date": "2022-11-28T00:00:00",
+        "Id": "{E9054C03-12F3-45D9-BEFF-957335D382A9}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2022-11-29T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2022-11-30T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2022-12-01T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Overview of Arbovirus, Arenavirus, and Filovirus Infections",
+        "Pearl": "Arbovirus is not a family of viruses; the term indicates only that a virus is transmitted by certain species of arthropods—arthropod-borne virus. \r\n\r\nMembers of many different viral families may be arboviruses.",
+        "Date": "2022-12-02T00:00:00",
+        "Id": "{71E8CF24-7992-411B-9969-E46A960BAD77}"
+    },
+    {
+        "Title": "Anemia in Pregnancy",
+        "Pearl": "Transfusion decisions are not based on the Hct but on the severity of symptoms.",
+        "Date": "2022-12-03T00:00:00",
+        "Id": "{D72DA777-701E-4F48-9718-BE9F123DAF66}"
+    },
+    {
+        "Title": "Drug Treatment of Asthma",
+        "Pearl": "Prepare for possible anaphylactic or hypersensitivity reactions in patients being treated with omalizumab, mepolizumab, reslizumab, benralizumab, or dupilumab regardless of how such treatments have been tolerated previously.",
+        "Date": "2022-12-04T00:00:00",
+        "Id": "{A89FFEBF-00AC-4410-BE9B-76394DF0B7C7}"
+    },
+    {
+        "Title": "Measurement of Gas Exchange",
+        "Pearl": "Carboxyhemoglobin levels can be directly measured from venous blood—an arterial sample is unnecessary.",
+        "Date": "2022-12-05T00:00:00",
+        "Id": "{E32F7CC5-AC40-4B9A-9B4A-34B6629410A0}"
+    },
+    {
+        "Title": "Clinical Decision-Making Strategies",
+        "Pearl": "When there is some uncertainty about the diagnosis, the decision to treat must balance the benefit of treating a sick person against the risk of erroneously treating a well person or a person with a different disorder.",
+        "Date": "2022-12-06T00:00:00",
+        "Id": "{806ABFF2-F86E-4A3E-A3BD-3FE25FE6CE1D}"
+    },
+    {
+        "Title": "Pulmonary Embolism (PE)",
+        "Pearl": "In suspected acute pulmonary embolism, absence of venous thrombosis on ultrasonography does not rule out PE. In a patient taking warfarin, virtually any new drug should be checked for potential interactions.",
+        "Date": "2022-12-07T00:00:00",
+        "Id": "{6BD7087F-39A7-4972-BCD5-013CBD8B820A}"
+    },
+    {
+        "Title": "Tetanus",
+        "Pearl": "Tetanus toxin binds irreversibly to nerve terminals, and once bound, it cannot be neutralized.",
+        "Date": "2022-12-08T00:00:00",
+        "Id": "{94F6AB4F-EC3D-4D13-9717-5F776D3FF07C}"
+    },
+    {
+        "Title": "Taenia Solium (Pork Tapeworm) Infection and Cysticercosis",
+        "Pearl": "T. solium eggs are present in ≤ 50% of stool samples from patients with cysticercosis.",
+        "Date": "2022-12-09T00:00:00",
+        "Id": "{7D0D76CF-0708-4D5D-8504-F9392FA23D7C}"
+    },
+    {
+        "Title": "External Ear Obstructions",
+        "Pearl": "Irrigation is not recommended for foreign body removal; hygroscopic foreign bodies (eg, beans or other vegetable matter) swell when water is added, complicating removal. ",
+        "Date": "2022-12-10T00:00:00",
+        "Id": "{FBCA6BEB-87EB-492C-B3A6-1F43FC063C32}"
+    },
+    {
+        "Title": "Endometriosis",
+        "Pearl": "Consider endometriosis if women have persistent cyclic pelvic pain, particularly if urine and/or cervical cultures are negative.",
+        "Date": "2022-12-11T00:00:00",
+        "Id": "{39E81F9E-F27C-4C69-AFEC-29B5A87FAC8E}"
+    },
+    {
+        "Title": "Compartment Syndrome",
+        "Pearl": "If pain is more than expected for the severity of the apparent injury, consider compartment syndrome; check for exacerbation of pain with passive muscle stretching, and if compartments are palpable, check for tenseness.",
+        "Date": "2022-12-12T00:00:00",
+        "Id": "{CECFD08B-9388-4002-9B87-8714E7B9850E}"
+    },
+    {
+        "Title": "Transposition of the Great Arteries (TGA)",
+        "Pearl": "PGE1infusion is usually helpful in d-TGA, but it can be harmful if the patent foramen ovale is small.",
+        "Date": "2022-12-13T00:00:00",
+        "Id": "{5E34D76D-1327-4C79-8F54-9B38E17B9CDF}"
+    },
+    {
+        "Title": "Neurofibromatosis",
+        "Pearl": "Neurofibromatosis is the most common cancer among infants.",
+        "Date": "2022-12-14T00:00:00",
+        "Id": "{8DAC00B9-09F3-4A04-BB87-6D4BB308BFBC}"
+    },
+    {
+        "Title": "Overview of Inflammatory Bowel Disease",
+        "Pearl": "Uninflamed colonic diverticula do not cause symptoms, and their presence should not be considered explanatory.",
+        "Date": "2022-12-15T00:00:00",
+        "Id": "{6FE6E5AA-0E7B-44DC-8AF8-8CBF7D9AB5A8}"
+    },
+    {
+        "Title": "Evaluation of Anemia",
+        "Pearl": "Anemia is not a diagnosis; it is a manifestation of an underlying disorder. Thus, even mild, asymptomatic anemia should be investigated so that the primary problem can be diagnosed and treated.",
+        "Date": "2022-12-16T00:00:00",
+        "Id": "{B72882E5-9797-4630-887F-B40344D9A11E}"
+    },
+    {
+        "Title": "Malaria",
+        "Pearl": "Time is of the essence in treating severe malaria. Begin treatment with IV artesunate as soon as possible. Start interim oral therapy if IV artesunate is not immediately available. ",
+        "Date": "2022-12-17T00:00:00",
+        "Id": "{41D23FD9-B669-405D-96AF-4B99D8814C55}"
+    },
+    {
+        "Title": "Seizure Disorders",
+        "Pearl": "Consider focal-onset seizures in patients with transient, unexplained, recurrent abnormalities that appear psychiatric (eg, hallucinations, complex behavioral automatisms, speech arrest, reduced responsiveness while staring). In patients who suddenly lose consciousness, consider global brain ischemia (eg, due to ventricular arrhythmia), even if observers report myoclonic jerks.",
+        "Date": "2022-12-18T00:00:00",
+        "Id": "{39386697-AA4A-4C3B-8DCD-9DB11194D607}"
+    },
+    {
+        "Title": "Alcohol Toxicity and Withdrawal",
+        "Pearl": "IV hydration does not significantly enhance ethanol clearance.",
+        "Date": "2022-12-19T00:00:00",
+        "Id": "{AD463A75-0EBC-4969-8738-74687D5DD83E}"
+    },
+    {
+        "Title": "Compartment Syndrome",
+        "Pearl": "If pain is more than expected for the severity of the apparent injury, consider compartment syndrome; check for exacerbation of pain with passive muscle stretching, and if compartments are palpable, check for tenseness.",
+        "Date": "2022-12-20T00:00:00",
+        "Id": "{CECFD08B-9388-4002-9B87-8714E7B9850E}"
+    },
+    {
+        "Title": "Tetanus",
+        "Pearl": "Tetanus toxin binds irreversibly to nerve terminals, and once bound, it cannot be neutralized.",
+        "Date": "2022-12-21T00:00:00",
+        "Id": "{94F6AB4F-EC3D-4D13-9717-5F776D3FF07C}"
+    },
+    {
+        "Title": "Hypoplastic Left Heart Syndrome",
+        "Pearl": "Metabolic acidosis that worsens when supplemental oxygen is administered is characteristic of hypoplastic left heart syndrome. Keep pulmonary vascular resistance relatively high and systemic vascular resistance low to avoid increasing pulmonary circulation at the expense of systemic perfusion. Thus, avoid hyperoxia, alkalosis, and hypocarbia (which cause pulmonary vasodilation) and minimize use of vasoconstrictors.",
+        "Date": "2022-12-22T00:00:00",
+        "Id": "{6A9CA435-077C-4C49-94D7-94E6E91D7A2B}"
+    },
+    {
+        "Title": "Necrotizing Soft Tissue Infection",
+        "Pearl": " If findings suggest necrotizing soft tissue infection, arrange for surgical treatment without delay for testing, and institute IV fluid and antibiotic therapy. The most common error is insufficient surgical intervention.",
+        "Date": "2022-12-23T00:00:00",
+        "Id": "{6AF01638-B4A6-460F-A3CB-7A9512F1B2D2}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2022-12-24T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Approach to the Patient With Suspected Immunodeficiency",
+        "Pearl": "To prevent early death, strongly consider screening all neonates for SCID using a T-cell receptor excision circle (TREC) test.",
+        "Date": "2022-12-25T00:00:00",
+        "Id": "{F083F596-2D3A-487B-850B-C06E31DC7A50}"
+    },
+    {
+        "Title": "Ischemic Stroke",
+        "Pearl": "Give systemic corticosteroids as soon as possible to patients 55 years and older who have sudden, painless loss of vision until giant cell arteritis is excluded.",
+        "Date": "2022-12-26T00:00:00",
+        "Id": "{BDE969BB-FBF1-4748-95F9-C1ED7B1BB4FA}"
+    },
+    {
+        "Title": "Human and Mammal Bites",
+        "Pearl": "For any dorsal hand wound near the metacarpophalangeal joint, consider a human bite, particularly if the history is vague.",
+        "Date": "2022-12-27T00:00:00",
+        "Id": "{6E365B3C-4115-4787-AF96-7AB20D022D9F}"
+    },
+    {
+        "Title": "Macroglobulinemia",
+        "Pearl": "Marked engorgement and localized narrowing of retinal veins, which resemble sausage links, suggest hyperviscosity syndrome.",
+        "Date": "2022-12-28T00:00:00",
+        "Id": "{6E7F976E-5014-428E-82C7-2E1ECE5DD236}"
+    },
+    {
+        "Title": "Overview of Exercise",
+        "Pearl": "Avoid overhydration during exercise because it can cause hyponatremia sometimes severe enough to cause seizures. ",
+        "Date": "2022-12-29T00:00:00",
+        "Id": "{D18B45F3-8AC2-4143-8C4F-93E0BAB06CCB}"
+    },
+    {
+        "Title": "Acute Infectious Arthritis",
+        "Pearl": "Do an arthrocentesis and culture synovial fluid to exclude joint infection in patients with joint effusion and findings compatible with bacterial infectious arthritis, even if a known joint disorder (eg, rheumatoid arthritis) seems like a more likely cause.",
+        "Date": "2022-12-30T00:00:00",
+        "Id": "{CB5E555E-BB2E-472E-B7EA-8CE320F7DD53}"
+    },
+    {
+        "Title": "Spinal Cord Compression",
+        "Pearl": "Image the spinal cord immediately if patients have sudden spinal or radicular pain with reflex, motor, or sensory deficits, particularly at a segmental level.",
+        "Date": "2022-12-31T00:00:00",
+        "Id": "{D865643F-087F-4144-9FCA-AC1100E72D5F}"
+    },
+    {
+        "Title": "Sports-Related Concussion",
+        "Pearl": "Patients may have concussion without loss of consciousness.",
+        "Date": "2023-01-01T00:00:00",
+        "Id": "{84E8CBBF-8BAD-4613-8FA6-2D5297E9822F}"
+    },
+    {
+        "Title": "Bancroftian and Brugian Lymphatic Filariasis",
+        "Pearl": "Before treatment with DEC, assess patients for coinfection with Loa loa or Onchocerca volvulus because DEC can cause serious reactions in patients with those infections.",
+        "Date": "2023-01-02T00:00:00",
+        "Id": "{1F1880A5-8E93-4205-9A53-CF4CC93DC69B}"
+    },
+    {
+        "Title": "Pneumothorax",
+        "Pearl": "Sudden hypotension in a mechanically ventilated patient should prompt consideration of tension pneumothorax. If the patient also has decreased breath sounds and hyperresonance to percussion, tension pneumothorax should be presumed and treated immediately without awaiting confirmation by chest x-ray.",
+        "Date": "2023-01-03T00:00:00",
+        "Id": "{13B1E050-5E1A-4A7F-AEC7-FD857C67E7AE}"
+    },
+    {
+        "Title": "Carbohydrate Intolerance",
+        "Pearl": "Most people with lactase deficiency can tolerate up to 250 to 375 mL (8 to 12 oz) of milk; symptoms that occur after consuming much smaller amounts may suggest another diagnosis.",
+        "Date": "2023-01-04T00:00:00",
+        "Id": "{0FAFA2D6-485A-4559-807F-E2E0FAC70D57}"
+    },
+    {
+        "Title": "Cirrhosis",
+        "Pearl": "Consider thromboembolic complications in patients with cirrhosis, even if INR is elevated.",
+        "Date": "2023-01-05T00:00:00",
+        "Id": "{9C066B0D-5272-40C0-A1DD-183A3286F174}"
+    },
+    {
+        "Title": "Ischemic Stroke",
+        "Pearl": "Give systemic corticosteroids as soon as possible to patients 55 years and older who have sudden, painless loss of vision until giant cell arteritis is excluded.",
+        "Date": "2023-01-06T00:00:00",
+        "Id": "{BDE969BB-FBF1-4748-95F9-C1ED7B1BB4FA}"
+    },
+    {
+        "Title": "Caustic Ingestion",
+        "Pearl": "Do not do gastric emptying by emesis or lavage with a caustic ingestion because it reexposes the upper GI tract to the caustic. Do not attempt to neutralize a caustic acid with an alkaline substance (and vice versa) because it will produce heat that may worsen tissue damage. ",
+        "Date": "2023-01-07T00:00:00",
+        "Id": "{9A60AF25-A87A-474C-B1BB-363045F4FBF1}"
+    },
+    {
+        "Title": "Ocular Burns",
+        "Pearl": "Chemical burns to the cornea and conjunctiva are a true emergency; treatment must begin immediately.",
+        "Date": "2023-01-08T00:00:00",
+        "Id": "{CF97E809-73FE-4676-8061-3F967D71AE85}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-01-09T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Hereditary and Acquired Angioedema",
+        "Pearl": "Antihistamines and corticosteroids are not effective for hereditary or acquired angioedema.",
+        "Date": "2023-01-10T00:00:00",
+        "Id": "{A7EA1C36-E31F-4F91-ADEC-17FF8B966FD3}"
+    },
+    {
+        "Title": "Acute Cholecystitis",
+        "Pearl": "Closely monitor patients at risk of acalculous cholecystitis (eg, critically ill, fasting, or immunocompromised patients) for subtle signs of the disorder (eg, abdominal distention, unexplained fever).",
+        "Date": "2023-01-11T00:00:00",
+        "Id": "{8BAE3C1F-4846-40ED-B03F-0A6072FEA89E}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-01-12T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Hyperthyroidism",
+        "Pearl": "Older patients with hyperthyroidism may have symptoms more akin to depression or dementia.  If agranulocytosis occurs with one of the antithyroid peroxidase drugs, avoid using another drug in the same class; use another therapy (eg, radioiodine, surgery) instead.",
+        "Date": "2023-01-13T00:00:00",
+        "Id": "{B52C4B2C-CB84-4F5F-914F-572DE4874494}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-01-14T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Unstable Angina",
+        "Pearl": "Although fibrinolytic drugs can help patients with STEMI, they are not beneficial in unstable angina",
+        "Date": "2023-01-15T00:00:00",
+        "Id": "{F5554F32-C171-4894-9A7D-5BC591853560}"
+    },
+    {
+        "Title": "Central Retinal Artery Occlusion and Branch Retinal Artery Occlusion",
+        "Pearl": "Consider immediate measures to reduce intraocular pressure in patients who have sudden, painless, severe loss of vision.",
+        "Date": "2023-01-16T00:00:00",
+        "Id": "{9ABFA558-1DB0-4802-A0FC-344E6A07292C}"
+    },
+    {
+        "Title": "Polyneuropathy",
+        "Pearl": "If findings are consistent with polyneuropathy, try to determine whether symptoms began asymmetrically (possibly suggesting multiple mononeuropathy).",
+        "Date": "2023-01-17T00:00:00",
+        "Id": "{7AD851C2-3147-4438-BF6F-8FFC01B162D9}"
+    },
+    {
+        "Title": "Epididymitis",
+        "Pearl": " In males with acute scrotal pain, exclude testicular torsion unless findings are clearly limited to the epididymis.",
+        "Date": "2023-01-18T00:00:00",
+        "Id": "{F3D778B8-3662-490A-A86C-D132DB330F49}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2023-01-19T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Unstable Angina",
+        "Pearl": "Although fibrinolytic drugs can help patients with STEMI, they are not beneficial in unstable angina",
+        "Date": "2023-01-20T00:00:00",
+        "Id": "{F5554F32-C171-4894-9A7D-5BC591853560}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-01-21T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Drug Hypersensitivity",
+        "Pearl": "Penicillin allergy does not always rule out use of cephalosporins.",
+        "Date": "2023-01-22T00:00:00",
+        "Id": "{015153DE-8F5C-4F13-A2AD-A42A71EDB67D}"
+    },
+    {
+        "Title": "Spinal Cord Compression",
+        "Pearl": "Image the spinal cord immediately if patients have sudden spinal or radicular pain with reflex, motor, or sensory deficits, particularly at a segmental level.",
+        "Date": "2023-01-23T00:00:00",
+        "Id": "{D865643F-087F-4144-9FCA-AC1100E72D5F}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-01-24T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Overview of Coma and Impaired Consciousness",
+        "Pearl": "If muscle tone, deep tendon reflexes, and the response to the doll's-eye maneuver are normal, suspect psychogenic unresponsiveness.",
+        "Date": "2023-01-25T00:00:00",
+        "Id": "{AF4131C0-9561-446A-9093-A897FD948967}"
+    },
+    {
+        "Title": "Diabetes Mellitus in Children and Adolescents",
+        "Pearl": "Despite the common misconception, DKA can occur in children with type 2 diabetes.",
+        "Date": "2023-01-26T00:00:00",
+        "Id": "{477D3E24-6B2B-4BC2-8649-F49FE2C8845D}"
+    },
+    {
+        "Title": "Gait Disorders in Older Adults",
+        "Pearl": "Gait speed, chair rise time, and the ability to do tandem stance are independent predictors of the ability to do instrumental activities of daily living and of the risk of nursing home admission and death.",
+        "Date": "2023-01-27T00:00:00",
+        "Id": "{63D0670B-2EBB-4BC6-8193-82E4164CC489}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-01-28T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2023-01-29T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Bacterial Meningitis in Infants Over 3 Months of Age",
+        "Pearl": "In children < 12 mo, the absence of nuchal rigidity must not be used to exclude meningitis. However, if present, nuchal rigidity should not be ignored.",
+        "Date": "2023-01-30T00:00:00",
+        "Id": "{982DE3C6-811E-4552-AB73-A5906F0E2A14}"
+    },
+    {
+        "Title": "Sports-Related Concussion",
+        "Pearl": "Patients may have concussion without loss of consciousness.",
+        "Date": "2023-01-31T00:00:00",
+        "Id": "{84E8CBBF-8BAD-4613-8FA6-2D5297E9822F}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-02-01T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Amenorrhea",
+        "Pearl": "If amenorrhea occurs in girls with secondary sexual characteristics or in women of reproductive age, do a pregnancy test regardless of sexual and menstrual history.",
+        "Date": "2023-02-02T00:00:00",
+        "Id": "{16B397D2-4CAB-4480-ACB2-39DE2BA2AA56}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2023-02-03T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Sports-Related Concussion",
+        "Pearl": "Patients may have concussion without loss of consciousness.",
+        "Date": "2023-02-04T00:00:00",
+        "Id": "{84E8CBBF-8BAD-4613-8FA6-2D5297E9822F}"
+    },
+    {
+        "Title": "Croup",
+        "Pearl": "Epiglottitis, retropharyngeal abscess, and bacterial tracheitis cause a more toxic appearance than croup and are not associated with a brassy, barking cough.",
+        "Date": "2023-02-05T00:00:00",
+        "Id": "{57DBF632-E838-4D0E-9AB1-D3DAC85A7468}"
+    },
+    {
+        "Title": "Bancroftian and Brugian Lymphatic Filariasis",
+        "Pearl": "Before treatment with DEC, assess patients for coinfection with Loa loa or Onchocerca volvulus because DEC can cause serious reactions in patients with those infections.",
+        "Date": "2023-02-06T00:00:00",
+        "Id": "{1F1880A5-8E93-4205-9A53-CF4CC93DC69B}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-02-07T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-02-08T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Urinary Incontinence in Adults",
+        "Pearl": "Most patients are embarrassed to mention incontinence, so ask all adults about incontinence.",
+        "Date": "2023-02-09T00:00:00",
+        "Id": "{D4A51C7B-C445-4250-8447-DE3B1B20F0E8}"
+    },
+    {
+        "Title": "Decompression Sickness",
+        "Pearl": "If decompression sickness is suspected, begin recompression immediately, without delays for diagnostic studies.",
+        "Date": "2023-02-10T00:00:00",
+        "Id": "{92DA2504-8C95-4E12-88A3-BC1118AD971A}"
+    },
+    {
+        "Title": "Rabies",
+        "Pearl": "Consider raccoons, skunks, or foxes that have bitten a person rabid. Because bat bites can be tiny and hard to detect, give the rabies vaccine and rabies immune globulin to anyone who has had contact with a bat.",
+        "Date": "2023-02-11T00:00:00",
+        "Id": "{A5DFC426-2ED1-4D9B-83D3-47676363E7AA}"
+    },
+    {
+        "Title": "Hemorrhoids",
+        "Pearl": "Rectal bleeding should be attributed to hemorrhoids only after more serious conditions are excluded.",
+        "Date": "2023-02-12T00:00:00",
+        "Id": "{6BBC7228-9D22-4CBA-A89D-335586C0946A}"
+    },
+    {
+        "Title": "Risks of Medical Radiation",
+        "Pearl": "During imaging tests that use radiation, shield the uterus in all women of child-bearing age when possible because radiation risks are highest during early (often unrecognized) pregnancy.",
+        "Date": "2023-02-13T00:00:00",
+        "Id": "{F75BE1F1-38A9-4A14-B5FF-40A516B4FC71}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-02-14T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Sepsis and Septic Shock",
+        "Pearl": "Knowledge of institution- and care unit–specific trends in infecting organisms and their antimicrobial sensitivity is an important guide to empiric antibiotic selection.",
+        "Date": "2023-02-15T00:00:00",
+        "Id": "{782B9C7A-5E19-4F74-8DFF-B01F4B34D529}"
+    },
+    {
+        "Title": "Aortic Dissection",
+        "Pearl": "Only about 20% of patients with aortic dissection have pulse deficits. To manage blood pressure in aortic dissection, do not use a vasodilator (eg, nitroprusside) without a beta-blocker or calcium channel blocker because the vasodilator causes reflex sympathetic activation, which increases aortic shear stress.",
+        "Date": "2023-02-16T00:00:00",
+        "Id": "{422E47B4-C62C-4827-A490-EEBEB937C814}"
+    },
+    {
+        "Title": "Bancroftian and Brugian Lymphatic Filariasis",
+        "Pearl": "Before treatment with DEC, assess patients for coinfection with Loa loa or Onchocerca volvulus because DEC can cause serious reactions in patients with those infections.",
+        "Date": "2023-02-17T00:00:00",
+        "Id": "{1F1880A5-8E93-4205-9A53-CF4CC93DC69B}"
+    },
+    {
+        "Title": "Distal Humeral Fractures",
+        "Pearl": "If findings in children are compatible with a distal humeral fracture, review x-rays closely for evidence of occult fracture (eg, a posterior fat pad, abnormalities in the anterior humeral or radiocapitellar line). Splint displaced supracondylar fractures in the position that they are in; do not try to reduce them.",
+        "Date": "2023-02-18T00:00:00",
+        "Id": "{3D29F072-C541-4474-A8E4-8D6FAA811635}"
+    },
+    {
+        "Title": "Knee Extensor Mechanism Injuries",
+        "Pearl": "Always test active knee extension if patients have knee swelling and pain after an injury.",
+        "Date": "2023-02-19T00:00:00",
+        "Id": "{874402D7-40FE-4F9B-9A06-76EC5A421B5A}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-02-20T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Lightning Injuries",
+        "Pearl": "Unlike high-voltage and high-current electrical injury from generated sources, lightning rarely, if ever, causes serious skin wounds and seldom causes rhabdomyolysis or serious internal tissue damage.",
+        "Date": "2023-02-21T00:00:00",
+        "Id": "{1B7BA71B-574E-415A-92D1-C5F76E412AE7}"
+    },
+    {
+        "Title": "Drowning",
+        "Pearl": "Sometimes respiratory symptoms and hypoxia are delayed for up to 6 hours after submersion. Avoid attempts to remove water from the lungs; this only delays ventilation and increases risk of vomiting.",
+        "Date": "2023-02-22T00:00:00",
+        "Id": "{BBEC34E5-781D-4FDA-96C2-2792A35DB3F2}"
+    },
+    {
+        "Title": "Knee Sprains and Meniscal Injuries",
+        "Pearl": "Immediately check for vascular injuries if patients have a large knee hemarthrosis, gross knee instability, or both.",
+        "Date": "2023-02-23T00:00:00",
+        "Id": "{C728634A-DD89-46CC-84A1-B9C7C85B6620}"
+    },
+    {
+        "Title": "Sports-Related Concussion",
+        "Pearl": "Patients may have concussion without loss of consciousness.",
+        "Date": "2023-02-24T00:00:00",
+        "Id": "{84E8CBBF-8BAD-4613-8FA6-2D5297E9822F}"
+    },
+    {
+        "Title": "Acetaminophen Poisoning",
+        "Pearl": "Consider occult acetaminophen toxicity in all patients who have ingestions.",
+        "Date": "2023-02-25T00:00:00",
+        "Id": "{2145921E-AF91-411A-B418-EA0F015A0B96}"
+    },
+    {
+        "Title": "Hip Fractures",
+        "Pearl": "If x-rays do not show a hip fracture but hip fracture is suspected clinically, do MRI.",
+        "Date": "2023-02-26T00:00:00",
+        "Id": "{94006756-ABE6-4738-97EA-4C2885DF8490}"
+    },
+    {
+        "Title": "Ichthyosis",
+        "Pearl": "Oral retinoids are contraindicated in pregnancy because of their teratogenicity, and acitretin should be avoided in women of childbearing potential because of its teratogenicity and long duration of action.",
+        "Date": "2023-02-27T00:00:00",
+        "Id": "{BC25F459-1A05-4A6B-8A13-C0F7DB9396C7}"
+    },
+    {
+        "Title": "Echinococcosis",
+        "Pearl": "Take care to avoid leakage of cyst contents during aspiration or surgery because metastatic infection can occur.",
+        "Date": "2023-02-28T00:00:00",
+        "Id": "{9A044B9F-C024-4D5B-BCC1-5888D8964E7F}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-03-01T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2023-03-02T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Genetic Evaluation",
+        "Pearl": "Measure maternal levels of alpha-fetoprotein during the 2nd trimester to check for neural tube defects regardless of other tests planned and the timing of those tests.",
+        "Date": "2023-03-03T00:00:00",
+        "Id": "{75736A70-595C-427A-AE55-6E55D104EAF3}"
+    },
+    {
+        "Title": "Clavicle Fractures",
+        "Pearl": "Refer patients who have a distal clavicle fracture with superior displacement of the proximal fragment to an orthopedic surgeon for consideration of surgical repair of the coracoclavicular ligament.",
+        "Date": "2023-03-04T00:00:00",
+        "Id": "{419151EE-7A73-4A75-88B4-1846C6BE4DF7}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-03-05T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Hypocalcemia",
+        "Pearl": "Infusions of calcium are hazardous in patients receiving digoxin and should be given slowly and with continuous ECG monitoring after checking for (and correcting) hypokalemia.",
+        "Date": "2023-03-06T00:00:00",
+        "Id": "{9F8EB1A8-0F61-46B8-9BF6-B18489204F83}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2023-03-07T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Sports-Related Concussion",
+        "Pearl": "Patients may have concussion without loss of consciousness.",
+        "Date": "2023-03-08T00:00:00",
+        "Id": "{84E8CBBF-8BAD-4613-8FA6-2D5297E9822F}"
+    },
+    {
+        "Title": "Shoulder Dislocations",
+        "Pearl": "Suspect a posterior shoulder dislocation if patients have shoulder pain, keep their arm adducted, and cannot externally rotate their arm and x-rays show no obvious abnormality.",
+        "Date": "2023-03-09T00:00:00",
+        "Id": "{C8EF2604-4FE5-413B-AB28-F3A4C2D87BAD}"
+    },
+    {
+        "Title": "Rheumatic Fever",
+        "Pearl": "Patients who have had rheumatic fever have about a 50% likelihood of having a recurrence if they have another episode of group A streptococcal pharyngitis that is untreated.",
+        "Date": "2023-03-10T00:00:00",
+        "Id": "{01768ACC-5F3A-42D1-9A7E-E8FCCFBE9EFA}"
+    },
+    {
+        "Title": "Pneumonia in Immunocompromised Patients",
+        "Pearl": "Have a high index of suspicion for pneumonia in immunocompromised patients because symptoms can be atypical or muted.",
+        "Date": "2023-03-11T00:00:00",
+        "Id": "{0F3F403E-F28D-4508-ADC6-1504C3DAB293}"
+    },
+    {
+        "Title": "Ischemic Stroke",
+        "Pearl": "Give systemic corticosteroids as soon as possible to patients 55 years and older who have sudden, painless loss of vision until giant cell arteritis is excluded.",
+        "Date": "2023-03-12T00:00:00",
+        "Id": "{BDE969BB-FBF1-4748-95F9-C1ED7B1BB4FA}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2023-03-13T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Fractures of the Mandible and Midface",
+        "Pearl": "Ensure that patients with maxillomandibular fixation always carry wire cutters.",
+        "Date": "2023-03-14T00:00:00",
+        "Id": "{02ACDF2B-46E2-44C4-8C52-CF5B85F68494}"
+    },
+    {
+        "Title": "Pleural Effusion",
+        "Pearl": "Despite common practice, chest x-ray need not be repeated after thoracentesis unless patients develop symptoms suggesting pneumothorax (dyspnea or chest pain) or unless the clinician suspects that air may have entered the pleural space during the procedure.",
+        "Date": "2023-03-15T00:00:00",
+        "Id": "{B58C6734-551E-48F9-BD3E-46833ABFB2FE}"
+    },
+    {
+        "Title": "Strongyloidiasis",
+        "Pearl": "Before treating uncomplicated strongyloidiasis with ivermectin, assess patients for coinfection with Loa loa.",
+        "Date": "2023-03-16T00:00:00",
+        "Id": "{A2EE33BE-0859-49B8-88EA-178C73042477}"
+    },
+    {
+        "Title": "Diabetes Mellitus in Pregnancy",
+        "Pearl": "All pregnant women with type 1 should have glucagon kits and be instructed (as should their family members) in giving glucagon if severe hypoglycemia occurs.",
+        "Date": "2023-03-17T00:00:00",
+        "Id": "{E8768F91-D16C-4601-986B-681604F8811A}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-03-18T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Tubulointerstitial Nephritis",
+        "Pearl": "In patients with chronic tubulointerstitial nephritis, ACE inhibitors and angiotensin II receptor blockers should not be used together because of the additive risk of hyperkalemia and acceleration of disease progression.",
+        "Date": "2023-03-19T00:00:00",
+        "Id": "{AA979B89-346C-4FC8-A532-640CE6905C7C}"
+    },
+    {
+        "Title": "Bancroftian and Brugian Lymphatic Filariasis",
+        "Pearl": "Before treatment with DEC, assess patients for coinfection with Loa loa or Onchocerca volvulus because DEC can cause serious reactions in patients with those infections.",
+        "Date": "2023-03-20T00:00:00",
+        "Id": "{1F1880A5-8E93-4205-9A53-CF4CC93DC69B}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-03-21T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-03-22T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-03-23T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-03-24T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Breast Cancer",
+        "Pearl": "Mammogram results should not alter the decision to do a biopsy if that decision is based on physical findings.",
+        "Date": "2023-03-25T00:00:00",
+        "Id": "{4B77A02C-B1B0-4B7D-88F0-EBFB91D8ADF4}"
+    },
+    {
+        "Title": "Medical Assessment of the Patient With Mental Symptoms",
+        "Pearl": "Do not assume that all mental symptoms in patients with a known mental disorder are due to that disorder. ",
+        "Date": "2023-03-26T00:00:00",
+        "Id": "{E735245D-509E-4807-A6BC-937DFD5DCEA3}"
+    },
+    {
+        "Title": "Bancroftian and Brugian Lymphatic Filariasis",
+        "Pearl": "Before treatment with DEC, assess patients for coinfection with Loa loa or Onchocerca volvulus because DEC can cause serious reactions in patients with those infections.",
+        "Date": "2023-03-27T00:00:00",
+        "Id": "{1F1880A5-8E93-4205-9A53-CF4CC93DC69B}"
+    },
+    {
+        "Title": "Ankle Fractures",
+        "Pearl": "If the medial malleolus is fractured, particularly if it is displaced and the mortise is open on the medial side, take knee x-rays to look for fracture of the proximal fibula.",
+        "Date": "2023-03-28T00:00:00",
+        "Id": "{F1B90925-F064-4D39-8726-AD8D829DDB15}"
+    },
+    {
+        "Title": "Atrial Fibrillation",
+        "Pearl": "Atrial fibrillation with a wide QRS complex may indicate Wolff-Parkinson-White syndrome; in such cases, use of AV node-blocking drugs may be fatal. AV node blockers should not be used in patients with Wolff-Parkinson-White syndrome when an accessory AV pathway is involved (indicated by wide QRS duration); these drugs increase frequency of conduction via the bypass tract, possibly causing ventricular fibrillation. When possible, give anticoagulation before attempting to convert atrial fibrillation to sinus rhythm. \r\nConversion to sinus rhythm does not eliminate the need for chronic anticoagulation in patients who meet criteria for it.",
+        "Date": "2023-03-29T00:00:00",
+        "Id": "{5D5ADB45-ADE9-45A0-9E42-288C121E0C48}"
+    },
+    {
+        "Title": "Ischemic Stroke",
+        "Pearl": "Give systemic corticosteroids as soon as possible to patients 55 years and older who have sudden, painless loss of vision until giant cell arteritis is excluded.",
+        "Date": "2023-03-30T00:00:00",
+        "Id": "{BDE969BB-FBF1-4748-95F9-C1ED7B1BB4FA}"
+    },
+    {
+        "Title": "Bancroftian and Brugian Lymphatic Filariasis",
+        "Pearl": "Before treatment with DEC, assess patients for coinfection with Loa loa or Onchocerca volvulus because DEC can cause serious reactions in patients with those infections.",
+        "Date": "2023-03-31T00:00:00",
+        "Id": "{1F1880A5-8E93-4205-9A53-CF4CC93DC69B}"
+    },
+    {
+        "Title": "Metabolic Acidosis",
+        "Pearl": "The hyperpnea triggered by metabolic acidosis does not cause a sensation of dyspnea.",
+        "Date": "2023-04-01T00:00:00",
+        "Id": "{F9732637-8AAC-4681-92B9-564EA3E84936}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2023-04-02T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Nontyphoidal Salmonella Infections",
+        "Pearl": "In uncomplicated nontyphoidal Salmonella gastroenteritis, antibiotics do not hasten resolution of symptoms, may prolong excretion of the organism, and are unwarranted.",
+        "Date": "2023-04-03T00:00:00",
+        "Id": "{6136C7C3-A72D-475E-8949-596B79FA3281}"
+    },
+    {
+        "Title": "Antifungal Drugs",
+        "Pearl": "Drug interactions are common with azole antifungals; review all concurrent drug use before prescribing them.",
+        "Date": "2023-04-04T00:00:00",
+        "Id": "{BE3F5B8B-2531-4F1E-92AE-BB4B488CE9DA}"
+    },
+    {
+        "Title": "Overview of Inflammatory Bowel Disease",
+        "Pearl": "Cigarette smoking decreases the risk of ulcerative colitis.",
+        "Date": "2023-04-05T00:00:00",
+        "Id": "{6FE6E5AA-0E7B-44DC-8AF8-8CBF7D9AB5A8}"
+    },
+    {
+        "Title": "Syphilis",
+        "Pearl": "Use only pure benzathine penicillin (Bicillin L-A) for syphilis; do not use the similarly named combination of benzathine and procaine penicillin (Bicillin C-R).",
+        "Date": "2023-04-06T00:00:00",
+        "Id": "{B3F157B3-D88F-4F47-9665-D10574A162FA}"
+    },
+    {
+        "Title": "Wheezing and Asthma in Infants and Young Children",
+        "Pearl": "Not all wheezing in infants and young children is asthma.",
+        "Date": "2023-04-07T00:00:00",
+        "Id": "{55047031-E9AD-4E58-BB3E-AC61ED8ECBE3}"
+    },
+    {
+        "Title": "Cholelithiasis",
+        "Pearl": "Fatty foods are not specific causes of biliary colic, and gas, bloating, and nausea are not specific symptoms of gallbladder disease.",
+        "Date": "2023-04-08T00:00:00",
+        "Id": "{D157BECC-0D45-4991-8E8A-3FF369C3BDD2}"
+    },
+    {
+        "Title": "Gestational Trophoblastic Disease",
+        "Pearl": "Do ultrasonography during early pregnancy if uterine size is much larger than expected for dates, if women have symptoms or signs of preeclampsia, or if beta-hCG levels are unexpectedly high.",
+        "Date": "2023-04-09T00:00:00",
+        "Id": "{D96F2C92-C470-49E6-803E-7592E4C8B04C}"
+    },
+    {
+        "Title": "Mastocytosis",
+        "Pearl": "Rule out disorders that cause symptoms similar to those of mastocytosis (eg, anaphylaxis, carcinoid syndrome, pheochromocytoma, Zollinger-Ellison syndrome).",
+        "Date": "2023-04-10T00:00:00",
+        "Id": "{4BFC0D69-9656-4B82-B2CE-A2F080A88821}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-04-11T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Overview of Heat Illness",
+        "Pearl": "Salt tablets should not be swallowed because they can cause gastric irritation. Instead, they are dissolved in water to be drunk.",
+        "Date": "2023-04-12T00:00:00",
+        "Id": "{FEAD3CEF-08F3-448A-89F9-501ACC02F5D9}"
+    },
+    {
+        "Title": "Varicose Veins",
+        "Pearl": "Varicose veins rarely lead to stasis dermatitis or stasis ulcers, but ulceration may develop following minor injury to an affected area.",
+        "Date": "2023-04-13T00:00:00",
+        "Id": "{3DF9359A-414E-4595-AC88-D4C92FA0B842}"
+    },
+    {
+        "Title": "Food Allergy",
+        "Pearl": "Consider food allergy if patients have cryptogenic subacute or chronic abdominal pain, nausea, vomiting, cramping, or diarrhea.",
+        "Date": "2023-04-14T00:00:00",
+        "Id": "{D75A86AA-9BBE-48B7-8C65-079A97A407DE}"
+    },
+    {
+        "Title": "Rocky Mountain Spotted Fever (RMSF)",
+        "Pearl": "Negative test results for RMSF do not justify withholding treatment when clinical manifestations suggest RMSF.",
+        "Date": "2023-04-15T00:00:00",
+        "Id": "{55EBAE65-C6E3-4D19-BA17-4C903C199A65}"
+    },
+    {
+        "Title": "Tubulointerstitial Nephritis",
+        "Pearl": "In patients with chronic tubulointerstitial nephritis, ACE inhibitors and angiotensin II receptor blockers should not be used together because of the additive risk of hyperkalemia and acceleration of disease progression.",
+        "Date": "2023-04-16T00:00:00",
+        "Id": "{AA979B89-346C-4FC8-A532-640CE6905C7C}"
+    },
+    {
+        "Title": "Ehrlichiosis and Anaplasmosis",
+        "Pearl": "Because Lyme disease and babesiosis have the same tick vector and endemic area as anaplasmosis, ticks (and thus the people they bite) may be infected with more than one type of organism at the same time.",
+        "Date": "2023-04-17T00:00:00",
+        "Id": "{4A20CAE4-C45B-49CA-BE3F-FF541130C903}"
+    },
+    {
+        "Title": "Approach to the Trauma Patient",
+        "Pearl": "Attending to dramatic but not deadly injuries (eg, open lower-extremity fracture, finger amputations) before evaluating immediate life threats can be a fatal mistake. Signs of hypovolemic shock in patients with apparently isolated head injury should prompt reevaluation for internal bleeding, because isolated head injury does not cause shock.",
+        "Date": "2023-04-18T00:00:00",
+        "Id": "{CD9A6F21-BAB7-43EF-A465-32A5174055B5}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-04-19T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-04-20T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Radial Head Subluxations",
+        "Pearl": "Consider radial head subluxation in toddlers if they are unwilling to move their elbow.",
+        "Date": "2023-04-21T00:00:00",
+        "Id": "{94CF9E1E-88F6-4DB2-8B85-EB06B7C03CD7}"
+    },
+    {
+        "Title": "Overview of Behavioral Problems in Children",
+        "Pearl": "Positive reinforcement for appropriate behavior is a powerful tool with no adverse effects.",
+        "Date": "2023-04-22T00:00:00",
+        "Id": "{C5E570A8-05B9-49B1-8466-686A35CCED70}"
+    },
+    {
+        "Title": "Bipolar Disorder in Children and Adolescents",
+        "Pearl": "In patients with bipolar disorder, antidepressants may trigger a switch from depression to mania, so they are usually used with a mood stabilizer.",
+        "Date": "2023-04-23T00:00:00",
+        "Id": "{236B430E-7151-463C-949A-48AA02334D4A}"
+    },
+    {
+        "Title": "Pheochromocytoma",
+        "Pearl": "Provocative tests with histamine or tyramine are hazardous and should not be done. Give alpha-blockers first before beta-blockers. Unopposed beta-2-blockade can cause paradoxical increase in blood pressure by blocking beta-mediated vasodilation.",
+        "Date": "2023-04-24T00:00:00",
+        "Id": "{723145FB-D3A8-42F4-BB1E-083767076EBD}"
+    },
+    {
+        "Title": "Idiopathic Intracranial Hypertension",
+        "Pearl": "If clinical findings suggest idiopathic intracranial hypertension, check visual fields and optic fundi, even when patients have no visual symptoms.",
+        "Date": "2023-04-25T00:00:00",
+        "Id": "{9789ADBE-097A-4B1F-AE63-99CC9B2C9004}"
+    },
+    {
+        "Title": "Viral Meningitis",
+        "Pearl": "If patients appear seriously ill, treat them for acute bacterial meningitis until it is ruled out, even if the cause is suspected to be viral.",
+        "Date": "2023-04-26T00:00:00",
+        "Id": "{2164D742-DF69-4C65-8DE6-A4E5588F3D93}"
+    },
+    {
+        "Title": "Acute Bacterial Meningitis",
+        "Pearl": "Do a lumbar puncture even if clinical findings are not specific for meningitis, particularly in infants, the elderly, alcoholics, immunocompromised patients, and patients who have had neurosurgery. If patients appear ill and acute meningitis is suspected, treat them with antibiotics and corticosteroids as soon as blood for cultures is drawn.",
+        "Date": "2023-04-27T00:00:00",
+        "Id": "{3D9F2C74-1BA6-4348-8CA3-97FAF715E936}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-04-28T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Hypothermia",
+        "Pearl": "With moderate to severe hypothermia, core temperature must be stabilized before rewarming the extremities, to prevent sudden cardiovascular collapse (rewarming collapse) when peripheral vasculature dilates.",
+        "Date": "2023-04-29T00:00:00",
+        "Id": "{92AF24FC-471E-49F4-B904-6E834CDB0B0C}"
+    },
+    {
+        "Title": "Drug Treatment of HIV Infection",
+        "Pearl": "If patients who had an adverse reaction to abacavir are reexposed to the drug, they may have a severe, potentially fatal hypersensitivity reaction, so they should not be given the drug again. Risk of an adverse reaction to abacavir is 100-fold higher in patients with HLA-B*57:01, which can be detected by genetic testing.",
+        "Date": "2023-04-30T00:00:00",
+        "Id": "{D362760C-E713-46F3-86DB-B0FA8F1B394E}"
+    },
+    {
+        "Title": "Lymphedema",
+        "Pearl": "Avoid vaccination, phlebotomy, and IV catheterization in limbs affected by lymphedema.",
+        "Date": "2023-05-01T00:00:00",
+        "Id": "{4B77A02C-B1B0-4B7D-88F0-EBFB91D8ADF4}"
+    },
+    {
+        "Title": "Warts",
+        "Pearl": "If necessary, confirm the diagnosis of a wart by shaving its surface to reveal thrombosed capillaries in the form of black dots. Take care when treating periungual and lateral finger warts because aggressive liquid nitrogen and cautery can cause permanent nail deformity and rarely nerve injury.",
+        "Date": "2023-05-02T00:00:00",
+        "Id": "{B769B5A1-DF85-478C-B9CB-223744F88FE2}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-05-03T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Tubulointerstitial Nephritis",
+        "Pearl": "In patients with chronic tubulointerstitial nephritis, ACE inhibitors and angiotensin II receptor blockers should not be used together because of the additive risk of hyperkalemia and acceleration of disease progression.",
+        "Date": "2023-05-04T00:00:00",
+        "Id": "{AA979B89-346C-4FC8-A532-640CE6905C7C}"
+    },
+    {
+        "Title": "Radial Head Fractures",
+        "Pearl": "If the radial head is tender and there is clinical or radiographic evidence of an elbow effusion, treat presumptively for radial head fracture even if the x-ray shows no fracture.",
+        "Date": "2023-05-05T00:00:00",
+        "Id": "{7C1D5446-D927-4CFC-AED1-76E72D6F9390}"
+    },
+    {
+        "Title": "Hepatitis C, Chronic",
+        "Pearl": "Interferon-based treatment regimens are no longer used to treat chronic hepatitis C, and ribavirin is used only in certain alternative regimens.",
+        "Date": "2023-05-06T00:00:00",
+        "Id": "{ACB08406-520C-4D12-A579-B5D6FE6A8B6D}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-05-07T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Retinal Detachment",
+        "Pearl": "If patients have a sudden increase or change in floaters; photopsias; a curtain or veil across the visual field; any sudden, unexplained loss of vision; or if vitreous hemorrhage obscures the retina, arrange for an ophthalmologist to do urgent indirect ophthalmoscopy to diagnose retinal detachment.",
+        "Date": "2023-05-08T00:00:00",
+        "Id": "{79938E6F-418E-4305-802B-345D43E4D5E0}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-05-09T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Overview of Sex Chromosome Anomalies",
+        "Pearl": "Because of random X-inactivation, all females are mosaics, with some cells having an active maternal X and others having an active paternal X.",
+        "Date": "2023-05-10T00:00:00",
+        "Id": "{1D32B5A3-F016-4673-B8C4-F66892CC3224}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-05-11T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Overview of Thoracic Trauma",
+        "Pearl": "In trauma patients with respiratory distress or shock and decreased breath sounds, tube thoracostomy can be done before imaging studies are obtained.",
+        "Date": "2023-05-12T00:00:00",
+        "Id": "{B64ED514-92D8-4066-9B57-AB250A54EB54}"
+    },
+    {
+        "Title": "Mitochondrial DNA Abnormalities",
+        "Pearl": "Mitochondrial disorders can be due to mitochondrial or nuclear DNA abnormalities.",
+        "Date": "2023-05-13T00:00:00",
+        "Id": "{781AF029-748B-46C4-891B-08E23D3CD787}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-05-14T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Asthma",
+        "Pearl": "Suspect carbon dioxide retention and respiratory failure in pregnant women with uncontrolled asthma and PCO2 levels near 40 mm Hg.",
+        "Date": "2023-05-15T00:00:00",
+        "Id": "{7E52EFBA-8905-43F4-9408-53B7471DEB80}"
+    },
+    {
+        "Title": "Ulcerative Colitis",
+        "Pearl": "Avoid colonoscopy and barium enema in severe exacerbations of ulcerative colitis because of risk of perforation.",
+        "Date": "2023-05-16T00:00:00",
+        "Id": "{13635698-53B6-424C-B280-6D8298ED8B26}"
+    },
+    {
+        "Title": "Herpetic Whitlow",
+        "Pearl": "Before incising a suspected felon or paronychia, consider viral infections such as herpetic whitlow, which should not be incised.",
+        "Date": "2023-05-17T00:00:00",
+        "Id": "{3B294436-A316-4419-AF56-331E2A0F4485}"
+    },
+    {
+        "Title": "Gynecomastia",
+        "Pearl": "During infancy and puberty, bilateral, symmetric, smooth, firm, and tender enlargement of breast tissue under the areola is normal.",
+        "Date": "2023-05-18T00:00:00",
+        "Id": "{70CC1BE8-BBED-421F-86A8-ACC9CE1504A1}"
+    },
+    {
+        "Title": "Placenta Previa",
+        "Pearl": "If vaginal bleeding occurs after 20 weeks gestation, exclude placenta previa by ultrasonography before doing a digital examination.",
+        "Date": "2023-05-19T00:00:00",
+        "Id": "{023A045C-484F-4128-956A-D75282B8E1E8}"
+    },
+    {
+        "Title": "Drug Treatment of Seizures",
+        "Pearl": "Determine the drug dose using clinical criteria (the lowest dose that stops seizures and has the fewest adverse effects), regardless of blood levels.",
+        "Date": "2023-05-20T00:00:00",
+        "Id": "{97357749-F77D-48EA-89CA-8CE1C5313333}"
+    },
+    {
+        "Title": "Tubulointerstitial Nephritis",
+        "Pearl": "In patients with chronic tubulointerstitial nephritis, ACE inhibitors and angiotensin II receptor blockers should not be used together because of the additive risk of hyperkalemia and acceleration of disease progression.",
+        "Date": "2023-05-21T00:00:00",
+        "Id": "{AA979B89-346C-4FC8-A532-640CE6905C7C}"
+    },
+    {
+        "Title": "Abruptio Placentae",
+        "Pearl": "Normal ultrasonographic findings do not rule out abruptio placentae.",
+        "Date": "2023-05-22T00:00:00",
+        "Id": "{03DD8F37-1D02-4471-8453-350758EA3154}"
+    },
+    {
+        "Title": "Varices",
+        "Pearl": "Nasogastric tube passage in a patient with varices has not been shown to trigger bleeding.",
+        "Date": "2023-05-23T00:00:00",
+        "Id": "{4B227675-0E77-4404-B1E6-2E337EE00753}"
+    },
+    {
+        "Title": "Pericarditis",
+        "Pearl": "Significant cardiac tamponade is a clinical diagnosis; echocardiographic findings alone are not an indication for pericardiocentesis.",
+        "Date": "2023-05-24T00:00:00",
+        "Id": "{80FFC91F-3F72-4014-905C-8B4B0BFC3D3A}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-05-25T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-05-26T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Sarcoidosis",
+        "Pearl": "The presence of chest imagining abnormalities without significant symptoms or evidence of decline in organ function is not an indication for treatment with corticosteroids.",
+        "Date": "2023-05-27T00:00:00",
+        "Id": "{285BEC0C-210A-4E80-992E-46E28833CE13}"
+    },
+    {
+        "Title": "Paget Disease of Bone",
+        "Pearl": "Consider Paget disease of bone in older adults with elevated alkaline phosphatase but normal GGT levels.",
+        "Date": "2023-05-28T00:00:00",
+        "Id": "{A744E1A4-219D-45A4-8FD1-952D5928DF0E}"
+    },
+    {
+        "Title": "Preeclampsia and Eclampsia",
+        "Pearl": "Check for swelling in the hands (eg, a ring that no longer fits) or face and hyperreflexia, which may be among the more specific findings in preeclampsia.",
+        "Date": "2023-05-29T00:00:00",
+        "Id": "{4C6196D3-5279-40A0-9020-15E4B21B0401}"
+    },
+    {
+        "Title": "Central Diabetes Insipidus",
+        "Pearl": "The water deprivation test should be done while the patient is under constant supervision because serious dehydration may occur. The duration of action of a given dose of desmopressin varies greatly among individuals and must be established for each patient.",
+        "Date": "2023-05-30T00:00:00",
+        "Id": "{F2E3DE68-62BE-42D9-805C-940710551D66}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-05-31T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Drug Efficacy and Safety",
+        "Pearl": "Calculate the number needed to treat (NNT) based on absolute, rather than relative, changes in risks.",
+        "Date": "2023-06-01T00:00:00",
+        "Id": "{D4571706-0D3D-4692-8D38-FA1F06F8E45E}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-06-02T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-06-03T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Arterial Gas Embolism",
+        "Pearl": "Any unconscious diver should be assumed to have arterial gas embolism and should be recompressed promptly. Place unconscious patients with impaired airway reflexes in the lateral decubitus position until the airway can be protected with an endotracheal tube, after which the patient can be placed supine to facilitate care. Left lateral decubitus position (Durant’s maneuver) or Trendelenburg position are no longer recommended.",
+        "Date": "2023-06-04T00:00:00",
+        "Id": "{CF4B03C8-EACE-455B-9559-EE34A81FEB37}"
+    },
+    {
+        "Title": "Sore Throat",
+        "Pearl": "If epiglottitis is considered, directly examine a child's pharynx only in the operating room to minimize the risk of complete airway obstruction.",
+        "Date": "2023-06-05T00:00:00",
+        "Id": "{D5DB30A3-E29A-47CA-9335-27CE44DC8EE5}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-06-06T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Addison Disease",
+        "Pearl": "Provocative tests with insulin are hazardous and should not be done. When adrenal crisis is suspected, give hydrocortisone treatment immediately; any delay, including for testing, may be fatal.",
+        "Date": "2023-06-07T00:00:00",
+        "Id": "{514A1668-981D-44C8-A293-A14EFA1C4095}"
+    },
+    {
+        "Title": "Behavioral Emergencies",
+        "Pearl": "Do not assume that the cause of abnormal behavior is a mental disorder or intoxication, even in patients who have a known psychiatric diagnosis or an odor of alcohol.",
+        "Date": "2023-06-08T00:00:00",
+        "Id": "{BDA5C19C-5F79-4B33-B35B-1D56BBCC3F0E}"
+    },
+    {
+        "Title": "Intestinal Obstruction",
+        "Pearl": "Strangulating obstruction can progress to infarction and gangrene in as little as 6 h.",
+        "Date": "2023-06-09T00:00:00",
+        "Id": "{3412DC1C-75A6-417E-929F-84AF738F2CD3}"
+    },
+    {
+        "Title": "Overview of Abdominal Trauma",
+        "Pearl": "Not all penetrating abdominal injuries originate from wounds on the abdominal wall; be suspicious of entrance wounds on the back, buttocks, flank, perineum, and lower chest. Because many intra-abdominal injuries heal without specific treatment, the clinician's primary goal is to identify injuries requiring intervention.",
+        "Date": "2023-06-10T00:00:00",
+        "Id": "{66B13AD1-7698-4C58-8790-078E129ED552}"
+    },
+    {
+        "Title": "Epiglottitis",
+        "Pearl": "Examination of the pharynx or larynx in children with epiglottitis and stridor may precipitate complete airway obstruction.",
+        "Date": "2023-06-11T00:00:00",
+        "Id": "{B96AA4A2-76E4-49B4-A319-2FEA2C9B1B75}"
+    },
+    {
+        "Title": "Overview of Skin Cancer",
+        "Pearl": "Biopsy any skin lesion, whether appearance is typical for cancer or atypical, that enlarges or persists longer than expected.",
+        "Date": "2023-06-12T00:00:00",
+        "Id": "{BB53EBA4-FDAD-4F24-8CD2-69CE8B13A564}"
+    },
+    {
+        "Title": "Infectious Mononucleosis",
+        "Pearl": "Primary HIV infection can resemble acute EBV infection; patients with risk factors for HIV infection should be tested using quantitative HIV RNA viral load in blood, combination antibody immunoassay, and p24 antigen testing.",
+        "Date": "2023-06-13T00:00:00",
+        "Id": "{274AD715-8707-46E8-A44E-965C373612B3}"
+    },
+    {
+        "Title": "Overview of Child Maltreatment",
+        "Pearl": "Lack of visible head lesions does not exclude traumatic brain injury.",
+        "Date": "2023-06-14T00:00:00",
+        "Id": "{1FA6BBA8-E09F-474A-813C-38B571409CD9}"
+    },
+    {
+        "Title": "Preseptal and Orbital Cellulitis",
+        "Pearl": " Suspect orbital cellulitis and consult an ophthalmologist if there is decreased ocular motility, pain with eye movements, proptosis, or decreased visual acuity.",
+        "Date": "2023-06-15T00:00:00",
+        "Id": "{83770BD0-E95A-47E1-98FD-EEF77548A2A9}"
+    },
+    {
+        "Title": "Angioedema",
+        "Pearl": "If angioedema is not accompanied by urticaria and recurs without clear cause or is present in family members, consider hereditary or acquired angioedema.",
+        "Date": "2023-06-16T00:00:00",
+        "Id": "{C0F72208-E822-4428-8006-ECB71CA60E95}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-06-17T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-06-18T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Acute Tubular Necrosis (ATN)",
+        "Pearl": "Diuretics may help maintain urinary output in patients with ATN but do not alter the course of kidney injury.",
+        "Date": "2023-06-19T00:00:00",
+        "Id": "{F0574C62-8698-48FF-B514-196FC4DE3589}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-06-20T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-06-21T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Overview of Platelet Disorders",
+        "Pearl": "Suspect platelet or vessel wall dysfunction in patients with petechiae and/or hemorrhage but with normal platelet count and coagulation test results.",
+        "Date": "2023-06-22T00:00:00",
+        "Id": "{A90A9588-61C7-43C9-8B6B-3D1737324F72}"
+    },
+    {
+        "Title": "Anthrax",
+        "Pearl": "Sputum examination and Gram stain are unlikely to identify inhalation anthrax because airspace disease is frequently absent.",
+        "Date": "2023-06-23T00:00:00",
+        "Id": "{94D91D2B-AE65-4E10-BEFF-4D2CE103A44A}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-06-24T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-06-25T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-06-26T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Red Eye",
+        "Pearl": "If pain persists despite an ocular anesthetic in a patient with a normal fluorescein examination, consider anterior uveitis, scleritis, or acute angle-closure glaucoma.",
+        "Date": "2023-06-27T00:00:00",
+        "Id": "{9B920DA6-AB56-40B7-8581-14F7F5E6B451}"
+    },
+    {
+        "Title": "Tubulointerstitial Nephritis",
+        "Pearl": "In patients with chronic tubulointerstitial nephritis, ACE inhibitors and angiotensin II receptor blockers should not be used together because of the additive risk of hyperkalemia and acceleration of disease progression.",
+        "Date": "2023-06-28T00:00:00",
+        "Id": "{AA979B89-346C-4FC8-A532-640CE6905C7C}"
+    },
+    {
+        "Title": "Burns",
+        "Pearl": "Assess the airway and prepare for intubation if patients have respiratory symptoms, carbonaceous sputum, perioral burns, singed nasal hairs, or were confined in a burning environment. The Parkland and other burn fluid resuscitation formulas are only a starting point; fluid volume and rate are adjusted based on clinical response.",
+        "Date": "2023-06-29T00:00:00",
+        "Id": "{BF374D4F-9CE7-4C47-88EA-4B1AD5C7674F}"
+    },
+    {
+        "Title": "Overview of Peripheral Nervous System Disorders",
+        "Pearl": "If clinical findings and electrodiagnostic test results are inconclusive, do a biopsy (nerve biopsy for suspected large-fiber neuropathy or skin punch biopsy for suspected small-fiber neuropathy). If all limbs are affected, consider MRI to rule out cervical spinal cord compression.",
+        "Date": "2023-06-30T00:00:00",
+        "Id": "{5F111C54-ABC2-4CD0-82B4-612ED97B8D3F}"
+    },
+    {
+        "Title": "Hemophilia",
+        "Pearl": "Because factor VIII levels may also be reduced in von Willebrand disease, measure von Willebrand factor (VWF) activity, antigen, and multimer composition in patients with newly diagnosed hemophilia A.",
+        "Date": "2023-07-01T00:00:00",
+        "Id": "{2B20455A-34CB-4FAE-BD2C-B7968BA6E60C}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-07-02T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Calcaneal Fractures",
+        "Pearl": "If patients have calcaneal swelling and tenderness after a high-energy axial load to the calcaneus, check the Bohler angle on x-ray, and check for thoracolumbar compression fracture and compartment syndrome.",
+        "Date": "2023-07-03T00:00:00",
+        "Id": "{B07D9DFD-8CFE-4F48-9A58-85E4ABD6DCD3}"
+    },
+    {
+        "Title": "Splenic Injury",
+        "Pearl": "Ask patients with unexplained left upper quadrant abdominal pain about recent trauma (including contact sports), particularly if there is hypovolemia or shock.",
+        "Date": "2023-07-04T00:00:00",
+        "Id": "{ED718F56-DB20-4D8B-A32A-D8B6EB1C2BCB}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-07-05T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Ectopic Pregnancy",
+        "Pearl": "Suspect ectopic pregnancy in any female of reproductive age with pelvic pain, vaginal bleeding, or unexplained syncope or hemorrhagic shock, regardless of sexual, contraceptive, and menstrual history and examination findings.",
+        "Date": "2023-07-06T00:00:00",
+        "Id": "{F7DB6C04-C27F-47AA-92C4-8C4DDCA72741}"
+    },
+    {
+        "Title": "Dyslipidemia",
+        "Pearl": "Total and HDL cholesterol can be measured in the nonfasting state, but most patients should have all lipids measured while fasting (usually for 12 hours) for maximum accuracy and consistency. Although higher HDL levels are associated with lower cardiovascular risk, it is not clear whether treatments to increase HDL cholesterol levels decrease risk of cardiovascular events or death.",
+        "Date": "2023-07-07T00:00:00",
+        "Id": "{47789936-4B59-4AEC-9810-C84B2BEAEB1B}"
+    },
+    {
+        "Title": "Overview of Intracranial Tumors",
+        "Pearl": "Brain metastases are about 10 times more common than primary brain tumors.",
+        "Date": "2023-07-08T00:00:00",
+        "Id": "{C2BD510C-437E-4C2C-80CE-53F446343014}"
+    },
+    {
+        "Title": "Liver Injury Caused by Drugs",
+        "Pearl": "Do not rechallenge with a drug suspected of causing liver injury.",
+        "Date": "2023-07-09T00:00:00",
+        "Id": "{2EF5DAC1-C383-4A6D-8D5F-117775EAA515}"
+    },
+    {
+        "Title": "Pneumomediastinum",
+        "Pearl": "Although pneumomediastinum may produce dramatic findings on examination and/or x-ray and may indicate a serious disorder, treatment of pneumomediastinum itself is usually unnecessary. ",
+        "Date": "2023-07-10T00:00:00",
+        "Id": "{1EAFE55F-001A-48AB-8AED-9725760F7810}"
+    },
+    {
+        "Title": "Thiamin Deficiency",
+        "Pearl": "Give thiamin 100 mg IV before giving IV glucose to alcoholics and others at risk of thiamin deficiency.",
+        "Date": "2023-07-11T00:00:00",
+        "Id": "{2AE122D8-053B-48D1-8CE7-778B610435B2}"
+    },
+    {
+        "Title": "Involuntary Weight Loss",
+        "Pearl": "When a chronic disease has been stable, do not assume that it is the cause of acute weight loss.",
+        "Date": "2023-07-12T00:00:00",
+        "Id": "{9F9EAF11-EA90-4AA3-B1B4-81C19DB493C6}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-07-13T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-07-14T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "Tubulointerstitial Nephritis",
+        "Pearl": "In patients with chronic tubulointerstitial nephritis, ACE inhibitors and angiotensin II receptor blockers should not be used together because of the additive risk of hyperkalemia and acceleration of disease progression.",
+        "Date": "2023-07-15T00:00:00",
+        "Id": "{AA979B89-346C-4FC8-A532-640CE6905C7C}"
+    },
+    {
+        "Title": "Depressive Disorders in Children and Adolescents",
+        "Pearl": "Suicide risk is always a concern in children or adolescents with depression whether they are taking antidepressants or not.",
+        "Date": "2023-07-16T00:00:00",
+        "Id": "{CCAA5083-6325-4354-B5A0-790655AC3888}"
+    },
+    {
+        "Title": "Gonorrhea",
+        "Pearl": "Due to increasing drug resistance, experts no longer recommend monotherapy for gonococcal infection.",
+        "Date": "2023-07-17T00:00:00",
+        "Id": "{468B9AAD-6040-477D-9E7C-D4730C407B6C}"
+    },
+    {
+        "Title": "Rib Fracture",
+        "Pearl": "Minor trauma (eg, due to a fall) in the elderly can cause rib fractures that may have fatal consequences.",
+        "Date": "2023-07-18T00:00:00",
+        "Id": "{693161B2-274A-4AD8-99B0-0B58A3D42D95}"
+    },
+    {
+        "Title": "Diaphragmatic Hernia",
+        "Pearl": "Avoid bag-and-mask ventilation in neonates with respiratory distress due to diaphragmatic hernia because it may further inflate the displaced intrathoracic viscera.",
+        "Date": "2023-07-19T00:00:00",
+        "Id": "{0F0A6564-3AFD-4F0A-8FA2-32FBDA87FF98}"
+    },
+    {
+        "Title": "Adverse Drug Reactions",
+        "Pearl": "Adverse drug reactions occur in 10 to 20% of hospitalizations. About 10 to 20% of these reactions are severe.",
+        "Date": "2023-07-20T00:00:00",
+        "Id": "{CB60BF6E-9351-4F0F-BA54-1DC49AE3864E}"
+    },
+    {
+        "Title": "Tuberculosis ",
+        "Pearl": "In hospitals and clinics, the highest risk of TB transmission is from patients who have undiagnosed TB or unidentified drug resistance and are receiving inadequate treatment, not from known TB patients who are receiving effective treatment.",
+        "Date": "2023-07-21T00:00:00",
+        "Id": "{1FEF1F26-C9F6-41EF-8C18-CB7450E146E0}"
+    },
+    {
+        "Title": "Snakebites",
+        "Pearl": "Suspect envenomation with all bites caused by venomous snakes, even if there are no signs of envenomation soon after the bite. Do not incise or apply tourniquets to snakebite wounds. Give children envenomated by a pit viper bite full adult doses of antivenom.",
+        "Date": "2023-07-22T00:00:00",
+        "Id": "{FD85E20C-0CC8-41AF-931A-4AF35E51BF61}"
+    },
+    {
+        "Title": "Uterine Fibroids",
+        "Pearl": "When considering using morcellation to treat fibroids, inform patients that dissemination of undiagnosed uterine cancer is a risk.",
+        "Date": "2023-07-23T00:00:00",
+        "Id": "{75ECBF73-829A-4F50-AA51-77E8909A576F}"
+    },
+    {
+        "Title": "Vulvar Cancer",
+        "Pearl": "If a vulvar lesion develops in a woman at low risk of STDs or does not respond to treatment for STDs, consider vulvar cancer.",
+        "Date": "2023-07-24T00:00:00",
+        "Id": "{30E98A63-C233-4AE2-A791-AF490AC52058}"
+    },
+    {
+        "Title": "Urinary Calculi",
+        "Pearl": "Because giving high volumes of fluid does not speed stone passage, normal volumes of IV or oral hydration should be used.",
+        "Date": "2023-07-25T00:00:00",
+        "Id": "{F8AB2070-F4EC-4925-B300-5404B52754BA}"
+    },
+    {
+        "Title": "Delirium",
+        "Pearl": "Consider delirium in any older patient who presents with impairment in memory or attention. Treatment of delirium in older patients is best managed by an interdisciplinary team.",
+        "Date": "2023-07-26T00:00:00",
+        "Id": "{5BA0B948-AA27-4077-A84B-AA0F6ED84B66}"
+    },
+    {
+        "Title": "Roseola Infantum",
+        "Pearl": "In roseola infantum, the characteristic rash occurs with defervescence.",
+        "Date": "2023-07-27T00:00:00",
+        "Id": "{31E32DA2-81A0-41ED-8A00-1ACD3CB36E67}"
+    },
+    {
+        "Title": "Pelvic Fractures",
+        "Pearl": "Wrap the pelvis (eg, in sheets) or apply an external fixator as soon as possible to stabilize an unstable pelvic fracture.",
+        "Date": "2023-07-28T00:00:00",
+        "Id": "{58CC8313-37E1-45F7-8C73-96C3E9F73745}"
+    },
+    {
+        "Title": "Ischemic Stroke",
+        "Pearl": "Give systemic corticosteroids as soon as possible to patients 55 years and older who have sudden, painless loss of vision until giant cell arteritis is excluded.",
+        "Date": "2023-07-29T00:00:00",
+        "Id": "{BDE969BB-FBF1-4748-95F9-C1ED7B1BB4FA}"
+    },
+    {
+        "Title": "Erythropoietic Protoporphyria and X-linked Protoporphyria",
+        "Pearl": "Operating room lights can cause phototoxic injury to internal organs in patients with erythropoietic protoporphyria.",
+        "Date": "2023-07-30T00:00:00",
+        "Id": "{CB378C4B-A6E2-4818-9C10-BDA91016252E}"
+    },
+    {
+        "Title": "Hirschsprung Disease",
+        "Pearl": "Barium enema for Hirschsprung disease should be done without prior bowel preparation.",
+        "Date": "2023-07-31T00:00:00",
+        "Id": "{6B5B53A6-E97B-4795-A2DA-2C20985B0085}"
+    },
+    {
+        "Title": "Lacerations",
+        "Pearl": "If decompression sickness is suspected, begin recompression immediately, without delays for diagnostic studies.",
+        "Date": "2023-08-01T00:00:00",
+        "Id": "{2956ADBF-728F-4069-8C54-B1B590393F2B}"
+    },
+    {
+        "Title": "Tuberculosis ",
+        "Pearl": "In hospitals and clinics, the highest risk of TB transmission is from patients who have undiagnosed TB or unidentified drug resistance and are receiving inadequate treatment, not from known TB patients who are receiving effective treatment.",
+        "Date": "2023-08-02T00:00:00",
+        "Id": "{1FEF1F26-C9F6-41EF-8C18-CB7450E146E0}"
+    },
+    {
+        "Title": "Pneumothorax (Tension)",
+        "Pearl": "Tension pneumothorax should be diagnosed at the bedside based on clinical findings and treated immediately with needle decompression and/or tube thoracostomy.",
+        "Date": "2023-08-03T00:00:00",
+        "Id": "{13B1E050-5E1A-4A7F-AEC7-FD857C67E7AE}"
+    },
+    {
+        "Title": "Contact Dermatitis",
+        "Pearl": "Lesion shape or pattern (linear streaks are almost always indicative of an external allergen or irritant) can help differentiate contact dermatitis from other forms of dermatitis. ",
+        "Date": "2023-08-04T00:00:00",
+        "Id": "{152B2DBF-227A-4038-8215-BE2963389DCB}"
+    },
+    {
+        "Title": "Vulvar Cancer",
+        "Pearl": "If a vulvar lesion develops in a woman at low risk of STDs or does not respond to treatment for STDs, consider vulvar cancer.",
+        "Date": "2023-08-05T00:00:00",
+        "Id": "{30E98A63-C233-4AE2-A791-AF490AC52058}"
+    },
+    {
+        "Title": "Vulvar Cancer",
+        "Pearl": "If a vulvar lesion develops in a woman at low risk of STDs or does not respond to treatment for STDs, consider vulvar cancer.",
+        "Date": "2023-08-06T00:00:00",
+        "Id": "{30E98A63-C233-4AE2-A791-AF490AC52058}"
+    },
+    {
+        "Title": "Urinary Calculi",
+        "Pearl": "Because giving high volumes of fluid does not speed stone passage, normal volumes of IV or oral hydration should be used.",
+        "Date": "2023-08-07T00:00:00",
+        "Id": "{F8AB2070-F4EC-4925-B300-5404B52754BA}"
+    },
+    {
+        "Title": "Pelvic Fractures",
+        "Pearl": "Wrap the pelvis (eg, in sheets) or apply an external fixator as soon as possible to stabilize an unstable pelvic fracture.",
+        "Date": "2023-08-08T00:00:00",
+        "Id": "{58CC8313-37E1-45F7-8C73-96C3E9F73745}"
+    },
+    {
+        "Title": "Pelvic Fractures",
+        "Pearl": "Wrap the pelvis (eg, in sheets) or apply an external fixator as soon as possible to stabilize an unstable pelvic fracture.",
+        "Date": "2023-08-09T00:00:00",
+        "Id": "{58CC8313-37E1-45F7-8C73-96C3E9F73745}"
+    },
+    {
+        "Title": "Bancroftian and Brugian Lymphatic Filariasis",
+        "Pearl": "Before treatment with DEC, assess patients for coinfection with Loa loa or Onchocerca volvulus because DEC can cause serious reactions in patients with those infections.",
+        "Date": "2023-08-10T00:00:00",
+        "Id": "{1F1880A5-8E93-4205-9A53-CF4CC93DC69B}"
+    },
+    {
+        "Title": "Ischemic Stroke",
+        "Pearl": "Give systemic corticosteroids as soon as possible to patients 55 years and older who have sudden, painless loss of vision until giant cell arteritis is excluded.",
+        "Date": "2023-08-11T00:00:00",
+        "Id": "{BDE969BB-FBF1-4748-95F9-C1ED7B1BB4FA}"
+    },
+    {
+        "Title": "Evaluation of Neck and Back Pain",
+        "Pearl": "Treat patients with nonspecific, nonradicular back pain who have no red flag findings symptomatically, without first requiring testing.",
+        "Date": "2023-08-12T00:00:00",
+        "Id": "{F4C6936F-6E72-450A-AA65-35C77CC5381A}"
+    },
+    {
+        "Title": "Celiac Disease",
+        "Pearl": "Strongly consider celiac disease in patients with iron deficiency but no apparent gastrointestinal bleeding.",
+        "Date": "2023-08-13T00:00:00",
+        "Id": "{A7A2C32F-A446-4520-9A65-CD8E39C340A3}"
+    },
+    {
+        "Title": "Erythropoietic Protoporphyria and X-linked Protoporphyria",
+        "Pearl": "Operating room lights can cause phototoxic injury to internal organs in patients with erythropoietic protoporphyria.",
+        "Date": "2023-08-14T00:00:00",
+        "Id": "{CB378C4B-A6E2-4818-9C10-BDA91016252E}"
+    },
+    {
+        "Title": "Colonic Diverticulosis",
+        "Pearl": "There is no association between consumption of nuts, seeds, corn, or popcorn and diverticulitis, diverticular hemorrhage, or uncomplicated diverticulosis, and avoidance of these foods is no longer recommended.",
+        "Date": "2023-08-15T00:00:00",
+        "Id": "{3BA589B3-E922-49FE-827B-2BDB317CB794}"
+    },
+    {
+        "Title": "Vulvar Cancer",
+        "Pearl": "If a vulvar lesion develops in a woman at low risk of STDs or does not respond to treatment for STDs, consider vulvar cancer.",
+        "Date": "2023-08-16T00:00:00",
+        "Id": "{30E98A63-C233-4AE2-A791-AF490AC52058}"
+    },
+    {
+        "Title": "Pneumocystis jirovecii Pneumonia",
+        "Pearl": "In immunosuppressed patients who have a dry, nonproductive cough and abnormal chest x-ray or pulse oximetry, pursue further testing for P. jirovecii pneumonia.",
+        "Date": "2023-08-17T00:00:00",
+        "Id": "{158ED3D8-7B77-490A-98EE-E29670D7E361}"
+    },
+    {
+        "Title": "Toxoplasmosis",
+        "Pearl": "No treatment is required for immunocompetent patients who are asymptomatic or have mild, uncomplicated acute toxoplasmosis.",
+        "Date": "2023-08-18T00:00:00",
+        "Id": "{1B76FB97-4740-4B09-BCD6-96F9FF75D841}"
+    },
+    {
+        "Title": "Erythropoietic Protoporphyria and X-linked Protoporphyria",
+        "Pearl": "Operating room lights can cause phototoxic injury to internal organs in patients with erythropoietic protoporphyria.",
+        "Date": "2023-08-19T00:00:00",
+        "Id": "{CB378C4B-A6E2-4818-9C10-BDA91016252E}"
+    },
+    {
+        "Title": "Liver Injury Caused by Drugs",
+        "Pearl": "Do not rechallenge with a drug suspected of causing liver injury.",
+        "Date": "2023-08-20T00:00:00",
+        "Id": "{2EF5DAC1-C383-4A6D-8D5F-117775EAA515}"
+    },
+    {
+        "Title": "Cataract",
+        "Pearl": "Examination of the red reflex through the dilated pupil with the ophthalmoscope held about 30 cm away can help identify early cataracts if a slit lamp is unavailable.",
+        "Date": "2023-08-21T00:00:00",
+        "Id": "{75AF3892-5B9B-43F9-B0E9-03319D4FCE52}"
+    },
+    {
+        "Title": "Phimosis and Paraphimosis",
+        "Pearl": "Always remember to reduce the foreskin after urethral catheterization.",
+        "Date": "2023-08-22T00:00:00",
+        "Id": "{5EFE17FA-A4AF-4CD7-9E1A-8A59C581F2A5}"
+    },
+    {
+        "Title": "External Ear Trauma",
+        "Pearl": "Failure to drain a subperichondrial hematoma may lead to permanent external ear deformity.",
+        "Date": "2023-08-23T00:00:00",
+        "Id": "{B4F5B8CC-E9B2-452C-8FE4-762C37DD4E78}"
+    },
+    {
+        "Title": "Overview of Arbovirus, Arenavirus, and Filovirus Infections",
+        "Pearl": "Arbovirus is not a family of viruses; the term indicates only that a virus is transmitted by certain species of arthropods—arthropod-borne virus.",
+        "Date": "2023-08-24T00:00:00",
+        "Id": "{71E8CF24-7992-411B-9969-E46A960BAD77}"
+    },
+    {
+        "Title": "Anemia in Pregnancy",
+        "Pearl": "Members of many different viral families may be arboviruses.",
+        "Date": "2023-08-25T00:00:00",
+        "Id": "{D72DA777-701E-4F48-9718-BE9F123DAF66}"
+    },
+    {
+        "Title": "Drug Treatment of Asthma",
+        "Pearl": "Prepare for possible anaphylactic or hypersensitivity reactions in patients being treated with omalizumab, mepolizumab, reslizumab, benralizumab, or dupilumab regardless of how such treatments have been tolerated previously.",
+        "Date": "2023-08-26T00:00:00",
+        "Id": "{A89FFEBF-00AC-4410-BE9B-76394DF0B7C7}"
+    },
+    {
+        "Title": "Measurement of Gas Exchange",
+        "Pearl": "Carboxyhemoglobin levels can be directly measured from venous blood—an arterial sample is unnecessary.",
+        "Date": "2023-08-27T00:00:00",
+        "Id": "{E32F7CC5-AC40-4B9A-9B4A-34B6629410A0}"
+    },
+    {
+        "Title": "Involuntary Weight Loss",
+        "Pearl": "When a chronic disease has been stable, do not assume that it is the cause of acute weight loss.",
+        "Date": "2023-08-28T00:00:00",
+        "Id": "{9F9EAF11-EA90-4AA3-B1B4-81C19DB493C6}"
+    },
+    {
+        "Title": "Reentrant Supraventricular Tachycardias (SVT) including Wolff-Parkinson-White Syndrome ",
+        "Pearl": "Although most supraventricular tachycardias have a narrow QRS complex, some have a wide QRS complex and must be distinguished from ventricular tachycardia.",
+        "Date": "2023-08-29T00:00:00",
+        "Id": "{49F03C05-4712-4DFF-AFDB-F64A4542C485}"
+    },
+    {
+        "Title": "Tetanus",
+        "Pearl": "Tetanus toxin binds irreversibly to nerve terminals, and once bound, it cannot be neutralized.",
+        "Date": "2023-08-30T00:00:00",
+        "Id": "{94F6AB4F-EC3D-4D13-9717-5F776D3FF07C}"
+    },
+    {
+        "Title": "Depressive Disorders in Children and Adolescents",
+        "Pearl": "Suicide risk is always a concern in children or adolescents with depression whether they are taking antidepressants or not.",
+        "Date": "2023-08-31T00:00:00",
+        "Id": "{CCAA5083-6325-4354-B5A0-790655AC3888}"
+    },
+    {
+        "Title": "External Ear Obstructions",
+        "Pearl": "Irrigation is not recommended for foreign body removal; hygroscopic foreign bodies (eg, beans or other vegetable matter) swell when water is added, complicating removal. ",
+        "Date": "2023-09-01T00:00:00",
+        "Id": "{FBCA6BEB-87EB-492C-B3A6-1F43FC063C32}"
+    },
+    {
+        "Title": "Endometriosis",
+        "Pearl": "Consider endometriosis if women have persistent cyclic pelvic pain, particularly if urine and/or cervical cultures are negative.",
+        "Date": "2023-09-02T00:00:00",
+        "Id": "{39E81F9E-F27C-4C69-AFEC-29B5A87FAC8E}"
+    },
+    {
+        "Title": "Compartment Syndrome",
+        "Pearl": "If pain is more than expected for the severity of the apparent injury, consider compartment syndrome; check for exacerbation of pain with passive muscle stretching, and if compartments are palpable, check for tenseness.",
+        "Date": "2023-09-03T00:00:00",
+        "Id": "{CECFD08B-9388-4002-9B87-8714E7B9850E}"
+    },
+    {
+        "Title": "Liver Injury Caused by Drugs",
+        "Pearl": "Do not rechallenge with a drug suspected of causing liver injury.",
+        "Date": "2023-09-04T00:00:00",
+        "Id": "{2EF5DAC1-C383-4A6D-8D5F-117775EAA515}"
+    },
+    {
+        "Title": "Involuntary Weight Loss",
+        "Pearl": "When a chronic disease has been stable, do not assume that it is the cause of acute weight loss.",
+        "Date": "2023-09-05T00:00:00",
+        "Id": "{9F9EAF11-EA90-4AA3-B1B4-81C19DB493C6}"
+    }
+]

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>红细胞存在下脑脊液白细胞计数调整值</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="血液学；儿科；神经学；感染, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+CSFWBCAdj_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+CSFWBCAdj_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function CSFWBCAdj_fx() {
+
+with(document.CSFWBCAdj_form){
+
+
+doCalc = true;
+param_value = parseFloat(Measured_WBCs_in_CSF_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+Measured_WBCs_in_CSF = param_value;
+param_value = parseFloat(WBCs_in_blood_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = WBCs_in_blood_unit.options[WBCs_in_blood_unit.selectedIndex].value.split('|');
+WBCs_in_blood = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(RBCs_in_CSF_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+RBCs_in_CSF = param_value;
+param_value = parseFloat(RBCs_in_blood_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = RBCs_in_blood_unit.options[RBCs_in_blood_unit.selectedIndex].value.split('|');
+RBCs_in_blood = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = decpts.options[decpts.selectedIndex].text;
+Adjusted_WBCs_in_CSF =  Measured_WBCs_in_CSF - ((WBCs_in_blood * RBCs_in_CSF) / (RBCs_in_blood * 1000000));
+
+if (doCalc) Adjusted_WBCs_in_CSF_param.value = fixDP(Adjusted_WBCs_in_CSF, dp);
+
+
+
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.CSFWBCAdj_form){
+
+if (Measured_WBCs_in_CSF_param.value && isNaN(Measured_WBCs_in_CSF_param.value)){ clrValue(Measured_WBCs_in_CSF_param); alertNaN('脑脊液中白细胞测量计数'); }
+if (WBCs_in_blood_param.value && isNaN(WBCs_in_blood_param.value)){ clrValue(WBCs_in_blood_param); alertNaN('血液中白细胞数目'); }
+if (RBCs_in_CSF_param.value && isNaN(RBCs_in_CSF_param.value)){ clrValue(RBCs_in_CSF_param); alertNaN('脑脊液中红细胞数目'); }
+if (RBCs_in_blood_param.value && isNaN(RBCs_in_blood_param.value)){ clrValue(RBCs_in_blood_param); alertNaN('血液中红细胞数目'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.CSFWBCAdj_form){
+
+Adjusted_WBCs_in_CSF_param.value = '';
+
+
+}
+
+}
+
+var Measured_WBCs_in_CSF = null,
+WBCs_in_blood = null,
+RBCs_in_CSF = null,
+RBCs_in_blood = null,
+Adjusted_WBCs_in_CSF = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="CSFWBCAdj_form" id="CSFWBCAdj_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="CSFWBCAdj_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+红细胞存在下脑脊液白细胞计数调整值
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">脑脊液中白细胞测量计数</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Measured_WBCs_in_CSF_param" size="6" value="" onblur="CSFWBCAdj_fx(); minMaxCheck();" onchange="CSFWBCAdj_fx();" /></td>
+<td align="left" valign="top"> <span style="white-space: nowrap;"><span class="medCalcFontOneBold"> #/microL</span>
+</span></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">血液中白细胞数目</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="WBCs_in_blood_param" size="6" value="" onblur="CSFWBCAdj_fx(); minMaxCheck();" onchange="CSFWBCAdj_fx();" /></td>
+<td align="left" valign="top"> <select name="WBCs_in_blood_unit" onchange="CSFWBCAdj_fx(); minMaxCheck();" style="width:125px;" class="medCalcFontSelect">
+<option value="1|0|#/microL" selected="selected">#/microL</option>
+<option value="1000|0|#x10(9)/L">#x10(9)/L</option>
+<option value="1000|0|#x1000/microL">#x1000/microL</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">脑脊液中红细胞数目</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="RBCs_in_CSF_param" size="6" value="" onblur="CSFWBCAdj_fx(); minMaxCheck();" onchange="CSFWBCAdj_fx();" /></td>
+<td align="left" valign="top"> <span style="white-space: nowrap;"><span class="medCalcFontOneBold"> #/microL</span>
+</span></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">血液中红细胞数目</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="RBCs_in_blood_param" size="6" value="" onblur="CSFWBCAdj_fx(); minMaxCheck();" onchange="CSFWBCAdj_fx();" /></td>
+<td align="left" valign="top"> <select name="RBCs_in_blood_unit" onchange="CSFWBCAdj_fx(); minMaxCheck();" style="width:125px;" class="medCalcFontSelect">
+<option value="1|0|#x10(12)/L">#x10(12)/L</option>
+<option value="1|0|#x10(6)/microL" selected="selected">#x10(6)/microL</option>
+</select></td></tr>
+
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">脑脊液中白细胞调整计数</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Adjusted_WBCs_in_CSF_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<span style="white-space: nowrap;"><span class="medCalcFontResultParam"> #/microL</span>
+</span>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontResultParam">小数点精确度 &nbsp;</span>
+<select name="decpts" onchange="CSFWBCAdj_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><b>WBCs</b>为白细胞 , <b>RBCs</b>为红细胞， <b>CSF</b> 为脑脊液。</li>
+<li>该公式应作为红细胞存在下脑脊液白细胞调整计数的校正因素。</li>
+<li>方程中，被减数为脑脊液白细胞计数预测值，适用于所有脑脊液白细胞均因血液污染而产生的情况。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">脑脊液中白细胞调整计数=脑脊液中白细胞测量值-（（血液中的白细胞计数*脑脊液中的红细胞计数）/（血液中的红细胞计数*1000000））</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">脑脊液中白细胞调整计数 = 脑脊液中白细胞测量计数 - ((血液中白细胞数目 * 脑脊液中红细胞数目) / (血液中红细胞数目 * 1000000))</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Tunkel AR. Approach to the Patient with Central Nervous System Infection. In: Mandell GL, Bennett JE, Dolin R. (Eds). <i> Principles and Practice of Infectious Diseases, 7th ed</i>. Churchill Livingstone Elsevier, Philadelphia 2010. Vol 1, p.1183. NLMN ID: 101506676 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/nlmcatalog/101506676"><img border="0" src="ncbi.gif" align="top" alt="NCBI Logo" /></a></span></li>
+<li><span class="medCalcFontRef">Bonadio WA. The cerebrospinal fluid: physiologic aspects and alterations  associated with bacterial meningitis. <i>Pediatr Infect Dis J</i>. 1992 Jun;11(6):423-31. Review. PubMed ID: 1608676 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/1608676"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471475 //-->

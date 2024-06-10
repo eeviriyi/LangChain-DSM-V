@@ -1,0 +1,1760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>综合单位换算</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="patientuse, units, fac_all, fac_uc, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+
+codes = new Array();
+codeparts = new Array();
+var dp = 1;
+var tovalue;
+var to_selected = 0;
+
+function showToValue(){
+with (document.Comp_form){
+to_param.value = fixDP(tovalue, dp);
+}}
+
+function setDecPts(){
+with (document.Comp_form){
+dp = decpts.options[decpts.selectedIndex].text;
+unitConvert();
+}}
+
+function unitLoad(){
+with (document.Comp_form){
+
+to_selected = 0;
+
+for (i = 0; i < from_unit.options.length; i++) { codes[i] = from_unit.options[i].value; }
+
+codeparts = from_unit.options[from_unit.selectedIndex].value.split('|');
+findunit = codeparts[0];
+findtype = codeparts[1];
+to_unit.options.length = 0;
+
+for (i = 0; i < codes.length; i++){
+codeparts = codes[i].split('|');
+if (codeparts[1]  == findtype) {
+	to_unit.options[to_unit.options.length] = new Option(codeparts[0],codes[i]);
+	if ((to_selected == 0) && (codeparts[0] != findunit)) { to_unit.options[to_unit.options.length - 1].selected = true; to_selected = 1; }
+	}
+}
+to_param.value = "";
+unitConvert();
+}}
+
+function unitConvert(){
+with (document.Comp_form){
+
+if (to_unit.selectedIndex + from_unit.selectedIndex == 0) return;
+
+if (from_param.value > ''){
+unitcode = from_unit.options[from_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+fromtype = codeparts[1];
+frommult = parseFloat(codeparts[2]);
+fromadd = parseFloat(codeparts[3]);
+
+unitcode = to_unit.options[to_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+totype = codeparts[1];
+tomult = parseFloat(codeparts[2]);
+toadd = parseFloat(codeparts[3]);
+
+fromvalue = parseFloat(from_param.value);
+tovalue = ((fromvalue * frommult + fromadd) - toadd) / tomult;
+showToValue();
+}}}
+
+function clrResults(){
+with (document.Comp_form){
+from_param.value = '';
+fromvalue = 0;
+to_param.value = '';
+tovalue = 0;
+}}
+
+/* ]]> */
+</script>
+
+
+
+<form name="Comp_form" id="Comp_form" action="" onsubmit="return false;" onkeydown="to_param.value='';" onkeyup="unitConvert();">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+综合单位换算
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<center>
+<div id="calc_main">
+<div id="calc_input">
+<table border="0" cellpadding="6" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right"><span class="medCalcFontOneBold">从</span></td>
+<td align="left"><input type="text" name="from_param" style="width:50px;" onchange="unitConvert();" /></td>
+<td>
+<select name="from_unit" onchange="unitLoad();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="1st Bohr radius|9|5.29177249e-11|0|">1st Bohr radius</option>
+<option value="a.u. of length|9|5.29177249e-11|0|">a.u. of length</option>
+<option value="a.u. of mass|1|9.10938970e-31|0|">a.u. of mass</option>
+<option value="abwatt (emu of power)|104|1e-8|0|">abwatt (emu of power)</option>
+<option value="acre (Cunningham)|14|5188.27746462|0|">acre (Cunningham)</option>
+<option value="acre (Ireland)|14|6527.18777806|0|">acre (Ireland)</option>
+<option value="acre (plantation)|14|5188.27746462|0|">acre (plantation)</option>
+<option value="acre (Scotland)|14|4935.19075902|0|">acre (Scotland)</option>
+<option value="acre (US, survey)|14|4046.87260987|0|">acre (US, survey)</option>
+<option value="acre-foot (US, survey)|8|1.233489238e+6|0|">acre-foot (US, survey)</option>
+<option value="acre-foot|8|1.233481838e+6|0|">acre-foot</option>
+<option value="acre-inch|8|1.027901531e+5|0|">acre-inch</option>
+<option value="acre|14|4046.85642240|0|">acre</option>
+<option value="angstrom (star)|9|1.00001482e-10|0|">angstrom (star)</option>
+<option value="angstrom|9|1e-10|0|">angstrom</option>
+<option value="anomalistic year|3|3.15584329e+7|0|">anomalistic year</option>
+<option value="arcmin|9|2.90888209e-4|0|">arcmin</option>
+<option value="are|14|100|0|">are</option>
+<option value="arpent (de Paris)|14|3418.87|0|">arpent (de Paris)</option>
+<option value="arpent (Quebec)|14|3418.894|0|">arpent (Quebec)</option>
+<option value="arpent (Quebec)|9|58.47131|0|">arpent (Quebec)</option>
+<option value="astronomic unit|9|1.4959787e+11|0|">astronomic unit</option>
+<option value="astronomical year|3|3.155787559e+7|0|">astronomical year</option>
+<option value="atomic mass unit (12C)|1|1.66054018e-27|0|">atomic mass unit (12C)</option>
+<option value="atomic mass unit (16O)|1|1.66001241e-27|0|">atomic mass unit (16O)</option>
+<option value="atomic mass unit (1H)|1|1.67353397e-27|0|">atomic mass unit (1H)</option>
+<option value="attometre|9|1e-18|0|">attometre</option>
+<option value="aune (de Paris)|9|1.880547859|0|">aune (de Paris)</option>
+<option value="bag (cement)|1|42.637682780|0|">bag (cement)</option>
+<option value="bag (UK)|8|109.106208|0|">bag (UK)</option>
+<option value="barleycorn (UK)|9|8.46666667e-3|0|">barleycorn (UK)</option>
+<option value="barn|14|1e-28|0|">barn</option>
+<option value="baromil|9|7.500626793e-4|0|">baromil</option>
+<option value="barrel (UK, alcohol)|8|227.3046|0|">barrel (UK, alcohol)</option>
+<option value="barrel (UK, beer)|8|163.659312|0|">barrel (UK, beer)</option>
+<option value="barrel (UK, cement)|1|170.550731100|0|">barrel (UK, cement)</option>
+<option value="barrel (UK, salt)|1|127.000586360|0|">barrel (UK, salt)</option>
+<option value="barrel (UK, wine)|8|143.201898|0|">barrel (UK, wine)</option>
+<option value="barrel (US, cranb.)|8|95.471|0|">barrel (US, cranb.)</option>
+<option value="barrel (US, dry)|8|115.4550594|0|">barrel (US, dry)</option>
+<option value="barrel (US, liquid) per foot|14|3.91208895e-1|0|">barrel (US, liquid) per foot</option>
+<option value="barrel (US, liquid) per inch|14|4.69450674|0|">barrel (US, liquid) per inch</option>
+<option value="barrel (US, liquid)|8|119.2404712|0|">barrel (US, liquid)</option>
+<option value="barrel (US, petrol) per foot|14|5.216118600e-1|0|">barrel (US, petrol) per foot</option>
+<option value="barrel (US, petrol) per inch|14|6.25934232|0|">barrel (US, petrol) per inch</option>
+<option value="barrel (US, petrol)|8|158.9872949|0|">barrel (US, petrol)</option>
+<option value="barrel oil equiv.|101|6.12e+9|0|">barrel oil equiv.</option>
+<option value="bicron (sigma)|9|1e-12|0|">bicron (sigma)</option>
+<option value="billion electronvolt (GeV)|101|1.60217733e-10|0|">billion electronvolt (GeV)</option>
+<option value="blink|3|0.864|0|">blink</option>
+<option value="board foot measure|8|2.359737216|0|">board foot measure</option>
+<option value="bolt (US, cloth)|9|36.576|0|">bolt (US, cloth)</option>
+<option value="British thermal unit (36&#176;F)/hour|104|2.943527778e-1|0|">British thermal unit (36&#176;F)/hour</option>
+<option value="British thermal unit (36&#176;F)/min|104|17.661166667|0|">British thermal unit (36&#176;F)/min</option>
+<option value="British thermal unit (39.2&#176;F)|101|1059.67|0|">British thermal unit (39.2&#176;F)</option>
+<option value="British thermal unit (60&#176;C)|101|1054.678|0|">British thermal unit (60&#176;C)</option>
+<option value="British thermal unit (60&#176;F)/hour|104|2.929661111e-1|0|">British thermal unit (60&#176;F)/hour</option>
+<option value="British thermal unit (60&#176;F)/min|104|17.577966667|0|">British thermal unit (60&#176;F)/min</option>
+<option value="British thermal unit (Gas ins. act reg.)|101|1054.615|0|">British thermal unit (Gas ins. act reg.)</option>
+<option value="British thermal unit (ISO)/hour|104|2.930722222e-1|0|">British thermal unit (ISO)/hour</option>
+<option value="British thermal unit (ISO)/min|104|17.584333333|0|">British thermal unit (ISO)/min</option>
+<option value="British thermal unit (ISO/TC 12)|101|1055.06|0|">British thermal unit (ISO/TC 12)</option>
+<option value="British thermal unit (IST)|101|1055.05585262|0|">British thermal unit (IST)</option>
+<option value="British thermal unit (IT)/hour|104|2.930710702e-1|0|">British thermal unit (IT)/hour</option>
+<option value="British thermal unit (IT)/min|104|17.584264210|0|">British thermal unit (IT)/min</option>
+<option value="British thermal unit (mean)/hour|104|2.932972222e-1|0|">British thermal unit (mean)/hour</option>
+<option value="British thermal unit (mean)/min|104|17.597833333|0|">British thermal unit (mean)/min</option>
+<option value="British thermal unit (mean)|101|1055.87|0|">British thermal unit (mean)</option>
+<option value="British thermal unit (therm)/hour|104|2.928750000e-1|0|">British thermal unit (therm)/hour</option>
+<option value="British thermal unit (therm)/min|104|17.5725|0|">British thermal unit (therm)/min</option>
+<option value="British thermal unit (thermochem.)|101|1054.35|0|">British thermal unit (thermochem.)</option>
+<option value="British thermal unit (UK gas)|101|1054.76|0|">British thermal unit (UK gas)</option>
+<option value="bucket (UK)|8|18.184368|0|">bucket (UK)</option>
+<option value="bushel (UK)|8|36.368736|0|">bushel (UK)</option>
+<option value="bushel (US, dry)|8|35.239072|0|">bushel (US, dry)</option>
+<option value="butt (UK)|8|490.977936|0|">butt (UK)</option>
+<option value="c&eacute;|3|86.4|0|">c&eacute;</option>
+<option value="cable length (international)|9|185.2|0|">cable length (international)</option>
+<option value="cable length (UK)|9|185.3184|0|">cable length (UK)</option>
+<option value="calibre (centinch)|9|2.54e-4|0|">calibre (centinch)</option>
+<option value="calorie (15&#176;C) per hour|104|1.162638889e-3|0|">calorie (15&#176;C) per hour</option>
+<option value="calorie (15&#176;C)|101|4.18550|0|">calorie (15&#176;C)</option>
+<option value="calorie (20&#176;C)|101|4.1819|0|">calorie (20&#176;C)</option>
+<option value="calorie (4&#176;C) per hour|104|1.167916667e-3|0|">calorie (4&#176;C) per hour</option>
+<option value="calorie (4&#176;C)|101|4.2045|0|">calorie (4&#176;C)</option>
+<option value="calorie (IST)|101|4.18674|0|">calorie (IST)</option>
+<option value="calorie (IT) per hour|104|1.162983333e-3|0|">calorie (IT) per hour</option>
+<option value="calorie (mean) per hour|104|1.163894444e-3|0|">calorie (mean) per hour</option>
+<option value="calorie (mean)|101|4.19002|0|">calorie (mean)</option>
+<option value="calorie (therm.) per hour|104|1.162222222e-3|0|">calorie (therm.) per hour</option>
+<option value="calorie (thermochem.)|101|4.184|0|">calorie (thermochem.)</option>
+<option value="carat (metric)|1|2e-04|0|">carat (metric)</option>
+<option value="carat (old)|1|2.05e-04|0|">carat (old)</option>
+<option value="Celsius heat unit (15&#176;C)|101|1899.1|0|">Celsius heat unit (15&#176;C)</option>
+<option value="Celsius heat unit|101|1899.18|0|">Celsius heat unit</option>
+<option value="cental (centner, kintal)|1|45.359237|0|">cental (centner, kintal)</option>
+<option value="centigram|1|1e-05|0|">centigram</option>
+<option value="centilitre|8|1e-2|0|">centilitre</option>
+<option value="centimetre|9|1e-2|0|">centimetre</option>
+<option value="century|3|3.15576e+9|0|">century</option>
+<option value="chain (engineer's)|9|30.48|0|">chain (engineer's)</option>
+<option value="chain (Gunter's)|9|20.1168|0|">chain (Gunter's)</option>
+<option value="chain (surveyor's)|9|20.1168|0|">chain (surveyor's)</option>
+<option value="chaldron (UK)|8|1309.274496|0|">chaldron (UK)</option>
+<option value="chopine (UK)|8|5.682615e-1|0|">chopine (UK)</option>
+<option value="chopine (US, dry)|8|5.506105e-1|0|">chopine (US, dry)</option>
+<option value="chopine (US, liquid)|8|4.731764730e-1|0|">chopine (US, liquid)</option>
+<option value="chronon|3|1e-23|0|">chronon</option>
+<option value="circular inch|14|5.067074791e-4|0|">circular inch</option>
+<option value="circular mile (int.)|14|2.034179489e+6|0|">circular mile (int.)</option>
+<option value="circular mile (int., naut.)|14|2.693840302e+6|0|">circular mile (int., naut.)</option>
+<option value="circular mile (statute, land)|14|2.034171905e+6|0|">circular mile (statute, land)</option>
+<option value="circular mile (US, naut.)|14|2.697285795e+6|0|">circular mile (US, naut.)</option>
+<option value="circular millimetre|14|7.853981634e-7|0|">circular millimetre</option>
+<option value="circular mil|14|5.06707479e-10|0|">circular mil</option>
+<option value="civil year|3|3.1536e+7|0|">civil year</option>
+<option value="clove (UK)|1|3.62873896|0|">clove (UK)</option>
+<option value="clusec|104|1.3e-3|0|">clusec</option>
+<option value="com. ton of refrigeration (UK)|104|3.922696721e+3|0|">com. ton of refrigeration (UK)</option>
+<option value="com. ton of refrigeration (US)|104|3.5168e+3|0|">com. ton of refrigeration (US)</option>
+<option value="coomb (UK)|8|145.47494|0|">coomb (UK)</option>
+<option value="cord-foot|8|453.0695455|0|">cord-foot</option>
+<option value="cord|8|3624.556364|0|">cord</option>
+<option value="coudee (de Paris)|9|0.5|0|">coudee (de Paris)</option>
+<option value="cran (mease)|8|170.47845|0|">cran (mease)</option>
+<option value="crinal|102|1e-1|0|">crinal</option>
+<option value="crith|1|8.92295583e-05|0|">crith</option>
+<option value="cron|3|3.15576e+13|0|">cron</option>
+<option value="cubic centimetre|8|1e-3|0|">cubic centimetre</option>
+<option value="cubic decimetre|8|1|0|">cubic decimetre</option>
+<option value="cubic foot|8|28.31684659|0|">cubic foot</option>
+<option value="cubic inch|8|1.638706400e-2|0|">cubic inch</option>
+<option value="cubic int. mile (cubem)|8|4.168205135e+12|0|">cubic int. mile (cubem)</option>
+<option value="cubic metre|8|1000|0|">cubic metre</option>
+<option value="cubic US int. mile|8|4.168181825e+12|0|">cubic US int. mile</option>
+<option value="cubic yard|8|764.554858|0|">cubic yard</option>
+<option value="cubit (UK)|9|0.4572|0|">cubit (UK)</option>
+<option value="cup (metric)|9|0.2|0|">cup (metric)</option>
+<option value="cup (US)|9|0.2365882|0|">cup (US)</option>
+<option value="d&eacute;miard|8|2.8413e-1|0|">d&eacute;miard</option>
+<option value="dalton|1|1.66057000e-27|0|">dalton</option>
+<option value="day (24 hours)|3|86400|0|">day (24 hours)</option>
+<option value="decast&egrave;re|8|10000|0|">decast&egrave;re</option>
+<option value="decilitre|8|1e-1|0|">decilitre</option>
+<option value="decist&egrave;re|8|100|0|">decist&egrave;re</option>
+<option value="denier (de Paris)|1|1.27476563e-03|0|">denier (de Paris)</option>
+<option value="denier|103|1.111e-7|0|">denier</option>
+<option value="donkey|104|250|0|">donkey</option>
+<option value="drachm (apothecary)|1|3.88793460e-03|0|">drachm (apothecary)</option>
+<option value="dram (avoirdupois)|1|1.77184520e-03|0|">dram (avoirdupois)</option>
+<option value="dram (troy)|1|3.88793460e-03|0|">dram (troy)</option>
+<option value="drex|103|1e-7|0|">drex</option>
+<option value="dyne|102|1e-5|0|">dyne</option>
+<option value="electron radius|9|2.81794092e-15|0|">electron radius</option>
+<option value="electronvolt|101|1.60217733e-19|0|">electronvolt</option>
+<option value="ell|9|1.143|0|">ell</option>
+<option value="encablure|9|220|0|">encablure</option>
+<option value="eon|3|3.15576e+16|0|">eon</option>
+<option value="erg per second|104|1e-7|0|">erg per second</option>
+<option value="erg|101|1e-7|0|">erg</option>
+<option value="fathom|9|1.8288|0|">fathom</option>
+<option value="femtometre|9|1e-15|0|">femtometre</option>
+<option value="fermi|9|1e-15|0|">fermi</option>
+<option value="firkin (UK)|8|40.914828|0|">firkin (UK)</option>
+<option value="firkin (US, liquid)|8|34.06870606|0|">firkin (US, liquid)</option>
+<option value="fluid drachm (UK)|8|3.551634375e-3|0|">fluid drachm (UK)</option>
+<option value="fluid dram (US)|8|3.696691195e-3|0|">fluid dram (US)</option>
+<option value="fluid ounce (UK)|8|2.841307500e-2|0|">fluid ounce (UK)</option>
+<option value="fluid ounce (US)|8|2.957352956e-2|0|">fluid ounce (US)</option>
+<option value="fluid scruple (UK)|8|1.18387812e-3|0|">fluid scruple (UK)</option>
+<option value="foot (1963)|9|0.3048|0|">foot (1963)</option>
+<option value="foot (old)|9|0.3048799700|0|">foot (old)</option>
+<option value="foot (US, survey)|9|0.3048006096|0|">foot (US, survey)</option>
+<option value="foot pound-force per hour|104|3.704420624e-4|0|">foot pound-force per hour</option>
+<option value="foot pound-force per minute|104|2.259696581e-2|0|">foot pound-force per minute</option>
+<option value="foot pound-force per second|104|1.355817948|0|">foot pound-force per second</option>
+<option value="foot poundal per second|104|4.214011009e-2|0|">foot poundal per second</option>
+<option value="foot-pound-force (duty)|101|1.355817948|0|">foot-pound-force (duty)</option>
+<option value="foot-poundal|101|4.214011009e-2|0|">foot-poundal</option>
+<option value="forty feet equiv. unit|8|7.249112728e+4|0|">forty feet equiv. unit</option>
+<option value="frigorie|101|-4.1855e+3|0|">frigorie</option>
+<option value="funal|102|1000|0|">funal</option>
+<option value="furlong (UK)|9|201.168|0|">furlong (UK)</option>
+<option value="gallon (Canadian, liquid)|8|4.546092|0|">gallon (Canadian, liquid)</option>
+<option value="gallon (imperial, UK)|8|4.546092|0|">gallon (imperial, UK)</option>
+<option value="gallon (UK) per foot|14|1.4915e-2|0|">gallon (UK) per foot</option>
+<option value="gallon (UK) per inch|14|1.7898e-1|0|">gallon (UK) per inch</option>
+<option value="gallon (UK) per mile (int.)|14|2.82480534e-6|0|">gallon (UK) per mile (int.)</option>
+<option value="gallon (US) per foot|14|1.241933e-2|0|">gallon (US) per foot</option>
+<option value="gallon (US) per inch|14|1.4903196e-1|0|">gallon (US) per inch</option>
+<option value="gallon (US) per mile (int.)|14|2.352141449e-6|0|">gallon (US) per mile (int.)</option>
+<option value="gallon (US, dry)|8|4.404884|0|">gallon (US, dry)</option>
+<option value="gallon (US, liquid)|8|3.785411784|0|">gallon (US, liquid)</option>
+<option value="gamma|1|1e-09|0|">gamma</option>
+<option value="Gaussian year|3|3.1558368787e+7|0|">Gaussian year</option>
+<option value="gigan|3|3.15576e+16|0|">gigan</option>
+<option value="gill, roquille (UK)|8|1.420653750e-1|0|">gill, roquille (UK)</option>
+<option value="gill, roquille (US)|8|1.182941183e-1|0|">gill, roquille (US)</option>
+<option value="glug|1|1e-03|0|">glug</option>
+<option value="grain (av.) per 100 yards|103|7.0864950e-12|0|">grain (av.) per 100 yards</option>
+<option value="grain (av.) per 120 yards|103|5.9054125e-12|0|">grain (av.) per 120 yards</option>
+<option value="grain (avoir.) per cubic foot|100|2.288351911e-3|0|">grain (avoir.) per cubic foot</option>
+<option value="grain (avoir.) per UK gallon|100|1.425376125e-2|0|">grain (avoir.) per UK gallon</option>
+<option value="grain (avoir.) per US gallon|100|1.711806097e-2|0|">grain (avoir.) per US gallon</option>
+<option value="grain (avoirdupois, troy, apoth.)|1|6.47989100e-05|0|">grain (avoirdupois, troy, apoth.)</option>
+<option value="grain (de Paris)|1|5.31152344e-05|0|">grain (de Paris)</option>
+<option value="grain (jeweller's)|1|5e-05|0|">grain (jeweller's)</option>
+<option value="gram per cubic centimetre|100|1000|0|">gram per cubic centimetre</option>
+<option value="gram per cubic decimetre|100|1|0|">gram per cubic decimetre</option>
+<option value="gram per cubic metre|100|1e-3|0|">gram per cubic metre</option>
+<option value="gram per cubic millimetre|100|1e+6|0|">gram per cubic millimetre</option>
+<option value="gram per square centimetre|105|10|0|">gram per square centimetre</option>
+<option value="gram per square metre|105|1e-3|0|">gram per square metre</option>
+<option value="gram|1|1e-03|0|">gram</option>
+<option value="Gregorian year|3|3.15576e+7|0|">Gregorian year</option>
+<option value="gros (de Paris)|1|3.82429688e-03|0|">gros (de Paris)</option>
+<option value="hand (UK)|9|1.016e-1|0|">hand (UK)</option>
+<option value="hartree (u.a. of energy)|101|4.3597482e-18|0|">hartree (u.a. of energy)</option>
+<option value="hectare|14|1e+4|0|">hectare</option>
+<option value="hectogram|1|0.1|0|">hectogram</option>
+<option value="hogshead (US, liquid)|8|238.4809424|0|">hogshead (US, liquid)</option>
+<option value="horsepower (550 ft.lbf/s)|104|745.699871582|0|">horsepower (550 ft.lbf/s)</option>
+<option value="horsepower (boiler)|104|9.8095e+5|0|">horsepower (boiler)</option>
+<option value="horsepower (cheval vapeur)|104|735.49875|0|">horsepower (cheval vapeur)</option>
+<option value="horsepower (electric)|104|746|0|">horsepower (electric)</option>
+<option value="horsepower (metric)|104|735.49875|0|">horsepower (metric)</option>
+<option value="horsepower (UK)|104|745.7|0|">horsepower (UK)</option>
+<option value="horsepower (water)|104|746.043|0|">horsepower (water)</option>
+<option value="hour (60 minutes)|3|3600|0|">hour (60 minutes)</option>
+<option value="hubble|9|9.4605297e+24|0|">hubble</option>
+<option value="hundredweight (gross or long)|1|50.80235|0|">hundredweight (gross or long)</option>
+<option value="hundredweight (net or short)|1|45.359237|0|">hundredweight (net or short)</option>
+<option value="hyl (techma, UdM, mug, par)|1|9.80665|0|">hyl (techma, UdM, mug, par)</option>
+<option value="inch (old)|9|2.53999800e-2|0|">inch (old)</option>
+<option value="inch (US, survey)|9|2.54000508e-2|0|">inch (US, survey)</option>
+<option value="inch ounce-force per second|104|9.415402419e-3|0|">inch ounce-force per second</option>
+<option value="inch|9|2.54e-2|0|">inch</option>
+<option value="iron|9|5.3e-4|0|">iron</option>
+<option value="joule (int.)|101|1.000165|0|">joule (int.)</option>
+<option value="joule|101|1|0|">joule</option>
+<option value="Julian year|3|3.1556952e+7|0|">Julian year</option>
+<option value="kilderkin (UK)|8|81.829656|0|">kilderkin (UK)</option>
+<option value="kilocalorie (therm.)|101|4184|0|">kilocalorie (therm.)</option>
+<option value="kilogram per centimetre|103|100|0|">kilogram per centimetre</option>
+<option value="kilogram per cubic decimetre|100|1000|0|">kilogram per cubic decimetre</option>
+<option value="kilogram per cubic metre|100|1|0|">kilogram per cubic metre</option>
+<option value="kilogram per decimetre|103|10|0|">kilogram per decimetre</option>
+<option value="kilogram per hectare|105|1e-4|0|">kilogram per hectare</option>
+<option value="kilogram per metre|103|1|0|">kilogram per metre</option>
+<option value="kilogram per metre|103|1|0|">kilogram per metre</option>
+<option value="kilogram per square metre|105|1|0|">kilogram per square metre</option>
+<option value="kilogram-force metre per second|104|9.80665|0|">kilogram-force metre per second</option>
+<option value="kilogram-force-metre|101|9.80665|0|">kilogram-force-metre</option>
+<option value="kilogram-force|102|9.80665|0|">kilogram-force</option>
+<option value="kilogram|1|1|0|">kilogram</option>
+<option value="kilometre|14|1e+6|0|">kilometre</option>
+<option value="kilometre|9|1000|0|">kilometre</option>
+<option value="kiloton (TNT)|101|4.18e+18|0|">kiloton (TNT)</option>
+<option value="kilowatt-hour|101|3.6e+6|0|">kilowatt-hour</option>
+<option value="kilowatt|104|1000|0|">kilowatt</option>
+<option value="kip (kilopound)|1|453.59237|0|">kip (kilopound)</option>
+<option value="kip-force|102|4448.221615261|0|">kip-force</option>
+<option value="lambda|8|1e-6|0|">lambda</option>
+<option value="last|8|2909.498|0|">last</option>
+<option value="league (Canadian)|9|4827|0|">league (Canadian)</option>
+<option value="league (international, nautical)|9|5556|0|">league (international, nautical)</option>
+<option value="league (telegr., nautical)|9|1855.3176|0|">league (telegr., nautical)</option>
+<option value="league (UK, nautical)|9|5559.552|0|">league (UK, nautical)</option>
+<option value="league (US, statute)|9|4828.032|0|">league (US, statute)</option>
+<option value="lieue (de Poste)|9|3898|0|">lieue (de Poste)</option>
+<option value="lieue (metric)|9|4000|0|">lieue (metric)</option>
+<option value="ligne (de Paris)|9|2.55830000e-3|0|">ligne (de Paris)</option>
+<option value="ligne (metric)|9|2.30e-3|0|">ligne (metric)</option>
+<option value="line (UK), button|9|2.11666667e-3|0|">line (UK), button</option>
+<option value="line (US)|9|6.35e-4|0|">line (US)</option>
+<option value="link (engineer's)|9|0.3048|0|">link (engineer's)</option>
+<option value="link (surveyor's)|9|2.011680e-1|0|">link (surveyor's)</option>
+<option value="litre (1964)|8|1|0|">litre (1964)</option>
+<option value="litre-atmosphere|101|101.625|0|">litre-atmosphere</option>
+<option value="livre (de Paris)|1|0.489510000|0|">livre (de Paris)</option>
+<option value="load (UK)|1|587.855711520|0|">load (UK)</option>
+<option value="lot (de Paris)|1|1.52971875e-02|0|">lot (de Paris)</option>
+<option value="marc (de Paris)|1|0.244755000|0|">marc (de Paris)</option>
+<option value="mean solar day|3|86400|0|">mean solar day</option>
+<option value="megaton (TNT)|101|4.18e+21|0|">megaton (TNT)</option>
+<option value="megawatt|104|1e+6|0|">megawatt</option>
+<option value="megayear|3|3.15576e+13|0|">megayear</option>
+<option value="metre|9|1|0|">metre</option>
+<option value="microgamma|1|1e-15|0|">microgamma</option>
+<option value="microgram|1|1e-09|0|">microgram</option>
+<option value="microinch|9|2.54e-8|0|">microinch</option>
+<option value="microlitre|8|1e-6|0|">microlitre</option>
+<option value="micrometre|9|1e-6|0|">micrometre</option>
+<option value="micron|9|1e-6|0|">micron</option>
+<option value="mile (geographical)|9|7.421591e+3|0|">mile (geographical)</option>
+<option value="mile (international, nautical)|9|1852|0|">mile (international, nautical)</option>
+<option value="mile (international, statute)|9|1609.347|0|">mile (international, statute)</option>
+<option value="mile (UK, nautical)|9|1853.184|0|">mile (UK, nautical)</option>
+<option value="mile (US, nautical)|9|1853.184|0|">mile (US, nautical)</option>
+<option value="mile (US, statute)|9|1609.344|0|">mile (US, statute)</option>
+<option value="mile (US, survey)|9|1609.3472187|0|">mile (US, survey)</option>
+<option value="millennium|3|3.15576e+10|0|">millennium</option>
+<option value="milligamma|1|1e-12|0|">milligamma</option>
+<option value="milligram per square centimetre|105|1e-2|0|">milligram per square centimetre</option>
+<option value="milligram|1|1e-06|0|">milligram</option>
+<option value="millilitre|8|1e-3|0|">millilitre</option>
+<option value="millimetre|9|1e-3|0|">millimetre</option>
+<option value="millimicron|9|1e-9|0|">millimicron</option>
+<option value="mil|9|2.54e-5|0|">mil</option>
+<option value="minim (UK)|8|5.919390625e-5|0|">minim (UK)</option>
+<option value="minim (US, liquid)|8|6.161151992e-5|0|">minim (US, liquid)</option>
+<option value="minute (60 seconds)|3|60|0|">minute (60 seconds)</option>
+<option value="Mohr centicube|8|1.00238e-3|0|">Mohr centicube</option>
+<option value="momme (Japan, pearl)|1|3.75e-03|0|">momme (Japan, pearl)</option>
+<option value="month (30 days)|3|2.592e+6|0|">month (30 days)</option>
+<option value="muid (de Paris)|8|274|0|">muid (de Paris)</option>
+<option value="myriagram|1|10|0|">myriagram</option>
+<option value="myriametre|9|1e+4|0|">myriametre</option>
+<option value="nail (UK)|9|2.29e-1|0|">nail (UK)</option>
+<option value="nanometre|9|1e-9|0|">nanometre</option>
+<option value="newton|102|1|0|">newton</option>
+<option value="noggin (UK)|8|1.420653750e-1|0|">noggin (UK)</option>
+<option value="once (de Paris)|1|3.04943750e-02|0|">once (de Paris)</option>
+<option value="ounce (apothecary, troy)|1|0.0311034768|0|">ounce (apothecary, troy)</option>
+<option value="ounce (avoir.) per UK gallon|100|6.236020520|0|">ounce (avoir.) per UK gallon</option>
+<option value="ounce (avoir.) per US gallon|100|7.489151643|0|">ounce (avoir.) per US gallon</option>
+<option value="ounce (avoirdupois)|1|2.83495231e-02|0|">ounce (avoirdupois)</option>
+<option value="ounce (UK) per square foot|105|3.051517259e-1|0|">ounce (UK) per square foot</option>
+<option value="ounce (UK) per square inch|105|43.941848534|0|">ounce (UK) per square inch</option>
+<option value="ounce (UK) per square yard|105|3.390574733e-2|0|">ounce (UK) per square yard</option>
+<option value="ounce-force|102|2.780138510e-1|0|">ounce-force</option>
+<option value="pace (UK)|9|0.762|0|">pace (UK)</option>
+<option value="palm (UK)|9|7.62e-2|0|">palm (UK)</option>
+<option value="parsec|9|3.0856780e+16|0|">parsec</option>
+<option value="pas (de Paris)|9|0.6240000000|0|">pas (de Paris)</option>
+<option value="peck (UK)|8|9.092184|0|">peck (UK)</option>
+<option value="peck (US, dry)|8|8.809768|0|">peck (US, dry)</option>
+<option value="pennyweight (troy)|1|1.55517384e-03|0|">pennyweight (troy)</option>
+<option value="perch (masonry)|8|700.8419532|0|">perch (masonry)</option>
+<option value="perch (pole, rod)|9|5.0292|0|">perch (pole, rod)</option>
+<option value="perche (de Paris)|14|34.1887|0|">perche (de Paris)</option>
+<option value="perche (de Paris)|9|5.847|0|">perche (de Paris)</option>
+<option value="picometre|9|1e-12|0|">picometre</option>
+<option value="pied (de Paris)|9|0.3248394000|0|">pied (de Paris)</option>
+<option value="pied (metric)|9|0.333|0|">pied (metric)</option>
+<option value="pint (UK)|8|5.682615e-1|0|">pint (UK)</option>
+<option value="pint (US, dry)|8|5.506105e-1|0|">pint (US, dry)</option>
+<option value="pint (US, liquid)|8|4.731764730e-1|0|">pint (US, liquid)</option>
+<option value="poncelet|104|980.665|0|">poncelet</option>
+<option value="pond|102|9.80655e-3|0|">pond</option>
+<option value="pood (Russian)|1|16.380500000|0|">pood (Russian)</option>
+<option value="pottle (UK)|8|2.273046|0|">pottle (UK)</option>
+<option value="pouce (de Paris)|9|2.706995e-2|0|">pouce (de Paris)</option>
+<option value="pouce (metric)|9|2.75e-2|0|">pouce (metric)</option>
+<option value="poumar|103|4.9605465e-7|0|">poumar</option>
+<option value="pound (apothecary, troy)|1|0.373241722|0|">pound (apothecary, troy)</option>
+<option value="pound (avoir.) per cubic foot|100|16.018463374|0|">pound (avoir.) per cubic foot</option>
+<option value="pound (avoir.) per UK gallon|100|99.776328768|0|">pound (avoir.) per UK gallon</option>
+<option value="pound (avoir.) per US gallon|100|119.826426810|0|">pound (avoir.) per US gallon</option>
+<option value="pound (avoirdupois)|1|0.453592428|0|">pound (avoirdupois)</option>
+<option value="pound (imperial standard)|1|0.453592338|0|">pound (imperial standard)</option>
+<option value="pound (US)|1|0.453592243|0|">pound (US)</option>
+<option value="pound (WMA, 1963)|1|0.45359237|0|">pound (WMA, 1963)</option>
+<option value="pound centigrade unit (15&#176;C)|101|1899.1|0|">pound centigrade unit (15&#176;C)</option>
+<option value="pound per acre|105|1.120851156e-4|0|">pound per acre</option>
+<option value="pound per cubic inch|100|2.767990471e+4|0|">pound per cubic inch</option>
+<option value="pound per foot|103|1.488163944|0|">pound per foot</option>
+<option value="pound per inch|103|17.85796732|0|">pound per inch</option>
+<option value="pound per square foot|105|4.882427636|0|">pound per square foot</option>
+<option value="pound per square inch|105|703.069579639|0|">pound per square inch</option>
+<option value="pound per square yard|105|5.424919596e-1|0|">pound per square yard</option>
+<option value="pound per yard|103|4.9605465e-1|0|">pound per yard</option>
+<option value="pound-force|102|4.448221615|0|">pound-force</option>
+<option value="poundal|102|1.382549544e-1|0|">poundal</option>
+<option value="prony|104|98.0665|0|">prony</option>
+<option value="prout|101|2.9638e-14|0|">prout</option>
+<option value="puncheon (UK)|8|318.22644|0|">puncheon (UK)</option>
+<option value="Q unit|101|1.055e+21|0|">Q unit</option>
+<option value="quad (quadrillion, Btu)|101|1.055055853e+18|0|">quad (quadrillion, Btu)</option>
+<option value="quart (UK)|8|1.136523|0|">quart (UK)</option>
+<option value="quart (US, dry)|8|1.101221|0|">quart (US, dry)</option>
+<option value="quart (US, liquid)|8|9.463529460e-1|0|">quart (US, liquid)</option>
+<option value="quarter (UK)|1|12.700586360|0|">quarter (UK)</option>
+<option value="quarter (UK)|8|290.949888|0|">quarter (UK)</option>
+<option value="quarter (US, long)|1|254.011727200|0|">quarter (US, long)</option>
+<option value="quarter (US, short)|1|226.796185000|0|">quarter (US, short)</option>
+<option value="quarter section|14|6.474970276e+5|0|">quarter section</option>
+<option value="quarteron (de Paris)|1|0.122377500|0|">quarteron (de Paris)</option>
+<option value="quinital (metric)|1|100|0|">quinital (metric)</option>
+<option value="quintal (US)|1|45.359237|0|">quintal (US)</option>
+<option value="register ton (UK)|8|2831.68466|0|">register ton (UK)</option>
+<option value="rood (UK)|14|1011.71410560|0|">rood (UK)</option>
+<option value="rope (UK)|9|6.096|0|">rope (UK)</option>
+<option value="rydberg|101|2.1798741e-18|0|">rydberg</option>
+<option value="sack (UK)|8|109.106208|0|">sack (UK)</option>
+<option value="scruple (avoirdupois)|1|1.57497351e-03|0|">scruple (avoirdupois)</option>
+<option value="seam (UK)|8|290.949888|0|">seam (UK)</option>
+<option value="second|3|1|0|">second</option>
+<option value="shacles (UK)|9|27.432|0|">shacles (UK)</option>
+<option value="shake|3|1e-8|0|">shake</option>
+<option value="shed|14|1e-52|0|">shed</option>
+<option value="sidereal day|3|86164.0905|0|">sidereal day</option>
+<option value="sidereal year|3|3.15581495e+7|0|">sidereal year</option>
+<option value="siriometre|9|1.4959787e+17|0|">siriometre</option>
+<option value="siriusweit|9|1.54283900e+17|0|">siriusweit</option>
+<option value="skein (UK)|14|109.728|0|">skein (UK)</option>
+<option value="skein (UK)|9|109.728|0|">skein (UK)</option>
+<option value="slug (geepound)|1|14.593902940|0|">slug (geepound)</option>
+<option value="slug-force|102|143.117305000|0|">slug-force</option>
+<option value="span (UK)|9|2.2860e-1|0|">span (UK)</option>
+<option value="spat|9|1e+12|0|">spat</option>
+<option value="square angstrom|14|1e-20|0|">square angstrom</option>
+<option value="square attometre|14|1e-36|0|">square attometre</option>
+<option value="square bohr (a.u.)|14|2.800285609e-21|0|">square bohr (a.u.)</option>
+<option value="square centimetre|14|1e-4|0|">square centimetre</option>
+<option value="square chain (Eng.)|14|929.0304|0|">square chain (Eng.)</option>
+<option value="square chain (Gunter's)|14|404.68564224|0|">square chain (Gunter's)</option>
+<option value="square chain (Ramsden's)|14|929.0304|0|">square chain (Ramsden's)</option>
+<option value="square chain (surv.)|14|404.68564224|0|">square chain (surv.)</option>
+<option value="square decimetre|14|1e-2|0|">square decimetre</option>
+<option value="square femtometre|14|1e-30|0|">square femtometre</option>
+<option value="square fermi|14|1e-30|0|">square fermi</option>
+<option value="square foot (US, survey)|14|9.290341161e-2|0|">square foot (US, survey)</option>
+<option value="square foot|14|9.290304e-2|0|">square foot</option>
+<option value="square inch|14|6.4516e-4|0|">square inch</option>
+<option value="square league (Canadian)|14|2.329992900e+7|0|">square league (Canadian)</option>
+<option value="square league (int., naut.)|14|3.086913600e+7|0|">square league (int., naut.)</option>
+<option value="square league (metric)|14|1.6e+7|0|">square league (metric)</option>
+<option value="square league (statute)|14|2.330989299e+7|0|">square league (statute)</option>
+<option value="square league (UK, naut.)|14|3.090861844e+7|0|">square league (UK, naut.)</option>
+<option value="square league (US, naut.)|14|3.090861844e+7|0|">square league (US, naut.)</option>
+<option value="square metre|14|1|0|">square metre</option>
+<option value="square micron|14|1e-12|0|">square micron</option>
+<option value="square mile (geog.)|14|5.508001297e+7|0|">square mile (geog.)</option>
+<option value="square mile (int.)|14|2.589997766e+6|0|">square mile (int.)</option>
+<option value="square mile (int., naut.)|14|3.429904000e+6|0|">square mile (int., naut.)</option>
+<option value="square mile (tele., naut.)|14|3.442203397e+6|0|">square mile (tele., naut.)</option>
+<option value="square mile (UK, naut.)|14|3.434290938e+6|0|">square mile (UK, naut.)</option>
+<option value="square mile (US, naut.)|14|3.434290938e+6|0|">square mile (US, naut.)</option>
+<option value="square mile (US, statute)|14|2.589988110e+6|0|">square mile (US, statute)</option>
+<option value="square mile (US, survey)|14|2.589998470e+6|0|">square mile (US, survey)</option>
+<option value="square millimetre|14|1e-6|0|">square millimetre</option>
+<option value="square nanometre|14|1e-18|0|">square nanometre</option>
+<option value="square picometre|14|1e-24|0|">square picometre</option>
+<option value="square rod/perch/pole|14|25.2928526400|0|">square rod/perch/pole</option>
+<option value="square yard (old)|14|8.361257141e-1|0|">square yard (old)</option>
+<option value="square yard (US)|14|8.361307045e-1|0|">square yard (US)</option>
+<option value="square yard (WMA, 1963)|14|8.3612736e-1|0|">square yard (WMA, 1963)</option>
+<option value="st&egrave;re|8|1000|0|">st&egrave;re</option>
+<option value="standart (Petrograd)|8|4627.279688|0|">standart (Petrograd)</option>
+<option value="stellar day|3|86164.0989|0|">stellar day</option>
+<option value="sthene|102|1000|0|">sthene</option>
+<option value="stone (UK)|1|6.350293180|0|">stone (UK)</option>
+<option value="stone (UK, wool)|1|5.669904625|0|">stone (UK, wool)</option>
+<option value="tablespoon (metric)|8|1.50e-2|0|">tablespoon (metric)</option>
+<option value="tablespoon (US)|8|1.478677e-2|0|">tablespoon (US)</option>
+<option value="teaspoon (metric)|8|5e-3|0|">teaspoon (metric)</option>
+<option value="teaspoon (US)|8|4.928922e-3|0|">teaspoon (US)</option>
+<option value="tempon|3|1e-23|0|">tempon</option>
+<option value="tex|103|1e-6|0|">tex</option>
+<option value="therm (EEG)|101|1.055055853e+8|0|">therm (EEG)</option>
+<option value="therm (US)|101|1.054804000e+8|0|">therm (US)</option>
+<option value="thermie (15&#176;C)|101|4.1855e+6|0|">thermie (15&#176;C)</option>
+<option value="thou (millinch)|9|2.54e-5|0|">thou (millinch)</option>
+<option value="toise (de Paris)|9|1.949036600|0|">toise (de Paris)</option>
+<option value="toise (metric)|9|2|0|">toise (metric)</option>
+<option value="ton (assay UK)|1|0.0326666700|0|">ton (assay UK)</option>
+<option value="ton (assay US)|1|2.91666700e-02|0|">ton (assay US)</option>
+<option value="ton (metric) per cubic metre|100|1000|0|">ton (metric) per cubic metre</option>
+<option value="ton (metric) per kilometre|103|1|0|">ton (metric) per kilometre</option>
+<option value="ton (metric) per metre|103|1000|0|">ton (metric) per metre</option>
+<option value="ton (metric)|1|1000|0|">ton (metric)</option>
+<option value="ton (UK) per square mile (int.)|105|3.922979047e-4|0|">ton (UK) per square mile (int.)</option>
+<option value="ton (UK, shipping)|1|1169.698141000|0|">ton (UK, shipping)</option>
+<option value="ton (UK, short)|1|1016.046908800|0|">ton (UK, short)</option>
+<option value="ton (US, long)|1|1016.046908800|0|">ton (US, long)</option>
+<option value="ton (US, short)|1|907.184740000|0|">ton (US, short)</option>
+<option value="ton coal equiv.|101|2.929e+8|0|">ton coal equiv.</option>
+<option value="ton oil equiv.|101|4.187e+8|0|">ton oil equiv.</option>
+<option value="ton-force (long)|102|9964.016418184|0|">ton-force (long)</option>
+<option value="ton-force (metric)|102|9806.65|0|">ton-force (metric)</option>
+<option value="ton-force (short)|102|8896.443230521|0|">ton-force (short)</option>
+<option value="tonneau de jauge|8|2831.68466|0|">tonneau de jauge</option>
+<option value="township (US)|14|9.323957197e+7|0|">township (US)</option>
+<option value="tropical year|3|3.1556925975e+7|0|">tropical year</option>
+<option value="truss (UK)|1|16.329325320|0|">truss (UK)</option>
+<option value="tun (US)|8|953.9237696|0|">tun (US)</option>
+<option value="twenty feet equiv. unit|8|3.624556364e+4|0|">twenty feet equiv. unit</option>
+<option value="u.a. of force|102|8.238729530e-8|0|">u.a. of force</option>
+<option value="u.a. of time|3|2.418884338e-17|0|">u.a. of time</option>
+<option value="UK ton per 1000 yards|103|1.111162411|0|">UK ton per 1000 yards</option>
+<option value="UK ton per cubic yard|100|1.328939184e+3|0|">UK ton per cubic yard</option>
+<option value="UK ton per mile|103|6.3134228e-1|0|">UK ton per mile</option>
+<option value="vergees (Guernsey)|14|1541.65958949|0|">vergees (Guernsey)</option>
+<option value="vergees (Jersey)|14|1798.60285440|0|">vergees (Jersey)</option>
+<option value="volt-ampere|104|1|0|">volt-ampere</option>
+<option value="watt (international mean)|104|1.00019|0|">watt (international mean)</option>
+<option value="watt (international US)|104|1.000165|0|">watt (international US)</option>
+<option value="watt|104|1|0|">watt</option>
+<option value="wey (UK)|1|114.305277240|0|">wey (UK)</option>
+<option value="wey (UK, capacity)|8|1454.74944|0|">wey (UK, capacity)</option>
+<option value="Winchester bushel|8|35.239072|0|">Winchester bushel</option>
+<option value="wink|3|3.333333333e-12|0|">wink</option>
+<option value="X unit|9|1.00020779e-10|0|">X unit</option>
+<option value="yard (1963)|9|0.9144|0|">yard (1963)</option>
+<option value="yard (old)|9|0.9143992000|0|">yard (old)</option>
+<option value="yard (US)|9|0.91440183|0|">yard (US)</option>
+<option value="year (365.25 days)|3|3.15576e+7|0|">year (365.25 days)</option>
+<option value="0|0|1|0"></option>
+</select></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">至</span></td>
+<td align="left"><input type="text" name="to_param" style="width:50px;" onfocus="blur();" /></td>
+<td align="left">
+<select name="to_unit" onchange="unitConvert();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="1st Bohr radius|9|5.29177249e-11|0|">1st Bohr radius</option>
+<option value="a.u. of length|9|5.29177249e-11|0|">a.u. of length</option>
+<option value="a.u. of mass|1|9.10938970e-31|0|">a.u. of mass</option>
+<option value="abwatt (emu of power)|104|1e-8|0|">abwatt (emu of power)</option>
+<option value="acre (Cunningham)|14|5188.27746462|0|">acre (Cunningham)</option>
+<option value="acre (Ireland)|14|6527.18777806|0|">acre (Ireland)</option>
+<option value="acre (plantation)|14|5188.27746462|0|">acre (plantation)</option>
+<option value="acre (Scotland)|14|4935.19075902|0|">acre (Scotland)</option>
+<option value="acre (US, survey)|14|4046.87260987|0|">acre (US, survey)</option>
+<option value="acre-foot (US, survey)|8|1.233489238e+6|0|">acre-foot (US, survey)</option>
+<option value="acre-foot|8|1.233481838e+6|0|">acre-foot</option>
+<option value="acre-inch|8|1.027901531e+5|0|">acre-inch</option>
+<option value="acre|14|4046.85642240|0|">acre</option>
+<option value="angstrom (star)|9|1.00001482e-10|0|">angstrom (star)</option>
+<option value="angstrom|9|1e-10|0|">angstrom</option>
+<option value="anomalistic year|3|3.15584329e+7|0|">anomalistic year</option>
+<option value="arcmin|9|2.90888209e-4|0|">arcmin</option>
+<option value="are|14|100|0|">are</option>
+<option value="arpent (de Paris)|14|3418.87|0|">arpent (de Paris)</option>
+<option value="arpent (Quebec)|14|3418.894|0|">arpent (Quebec)</option>
+<option value="arpent (Quebec)|9|58.47131|0|">arpent (Quebec)</option>
+<option value="astronomic unit|9|1.4959787e+11|0|">astronomic unit</option>
+<option value="astronomical year|3|3.155787559e+7|0|">astronomical year</option>
+<option value="atomic mass unit (12C)|1|1.66054018e-27|0|">atomic mass unit (12C)</option>
+<option value="atomic mass unit (16O)|1|1.66001241e-27|0|">atomic mass unit (16O)</option>
+<option value="atomic mass unit (1H)|1|1.67353397e-27|0|">atomic mass unit (1H)</option>
+<option value="attometre|9|1e-18|0|">attometre</option>
+<option value="aune (de Paris)|9|1.880547859|0|">aune (de Paris)</option>
+<option value="bag (cement)|1|42.637682780|0|">bag (cement)</option>
+<option value="bag (UK)|8|109.106208|0|">bag (UK)</option>
+<option value="barleycorn (UK)|9|8.46666667e-3|0|">barleycorn (UK)</option>
+<option value="barn|14|1e-28|0|">barn</option>
+<option value="baromil|9|7.500626793e-4|0|">baromil</option>
+<option value="barrel (UK, alcohol)|8|227.3046|0|">barrel (UK, alcohol)</option>
+<option value="barrel (UK, beer)|8|163.659312|0|">barrel (UK, beer)</option>
+<option value="barrel (UK, cement)|1|170.550731100|0|">barrel (UK, cement)</option>
+<option value="barrel (UK, salt)|1|127.000586360|0|">barrel (UK, salt)</option>
+<option value="barrel (UK, wine)|8|143.201898|0|">barrel (UK, wine)</option>
+<option value="barrel (US, cranb.)|8|95.471|0|">barrel (US, cranb.)</option>
+<option value="barrel (US, dry)|8|115.4550594|0|">barrel (US, dry)</option>
+<option value="barrel (US, liquid) per foot|14|3.91208895e-1|0|">barrel (US, liquid) per foot</option>
+<option value="barrel (US, liquid) per inch|14|4.69450674|0|">barrel (US, liquid) per inch</option>
+<option value="barrel (US, liquid)|8|119.2404712|0|">barrel (US, liquid)</option>
+<option value="barrel (US, petrol) per foot|14|5.216118600e-1|0|">barrel (US, petrol) per foot</option>
+<option value="barrel (US, petrol) per inch|14|6.25934232|0|">barrel (US, petrol) per inch</option>
+<option value="barrel (US, petrol)|8|158.9872949|0|">barrel (US, petrol)</option>
+<option value="barrel oil equiv.|101|6.12e+9|0|">barrel oil equiv.</option>
+<option value="bicron (sigma)|9|1e-12|0|">bicron (sigma)</option>
+<option value="billion electronvolt (GeV)|101|1.60217733e-10|0|">billion electronvolt (GeV)</option>
+<option value="blink|3|0.864|0|">blink</option>
+<option value="board foot measure|8|2.359737216|0|">board foot measure</option>
+<option value="bolt (US, cloth)|9|36.576|0|">bolt (US, cloth)</option>
+<option value="British thermal unit (36&#176;F)/hour|104|2.943527778e-1|0|">British thermal unit (36&#176;F)/hour</option>
+<option value="British thermal unit (36&#176;F)/min|104|17.661166667|0|">British thermal unit (36&#176;F)/min</option>
+<option value="British thermal unit (39.2&#176;F)|101|1059.67|0|">British thermal unit (39.2&#176;F)</option>
+<option value="British thermal unit (60&#176;C)|101|1054.678|0|">British thermal unit (60&#176;C)</option>
+<option value="British thermal unit (60&#176;F)/hour|104|2.929661111e-1|0|">British thermal unit (60&#176;F)/hour</option>
+<option value="British thermal unit (60&#176;F)/min|104|17.577966667|0|">British thermal unit (60&#176;F)/min</option>
+<option value="British thermal unit (Gas ins. act reg.)|101|1054.615|0|">British thermal unit (Gas ins. act reg.)</option>
+<option value="British thermal unit (ISO)/hour|104|2.930722222e-1|0|">British thermal unit (ISO)/hour</option>
+<option value="British thermal unit (ISO)/min|104|17.584333333|0|">British thermal unit (ISO)/min</option>
+<option value="British thermal unit (ISO/TC 12)|101|1055.06|0|">British thermal unit (ISO/TC 12)</option>
+<option value="British thermal unit (IST)|101|1055.05585262|0|">British thermal unit (IST)</option>
+<option value="British thermal unit (IT)/hour|104|2.930710702e-1|0|">British thermal unit (IT)/hour</option>
+<option value="British thermal unit (IT)/min|104|17.584264210|0|">British thermal unit (IT)/min</option>
+<option value="British thermal unit (mean)/hour|104|2.932972222e-1|0|">British thermal unit (mean)/hour</option>
+<option value="British thermal unit (mean)/min|104|17.597833333|0|">British thermal unit (mean)/min</option>
+<option value="British thermal unit (mean)|101|1055.87|0|">British thermal unit (mean)</option>
+<option value="British thermal unit (therm)/hour|104|2.928750000e-1|0|">British thermal unit (therm)/hour</option>
+<option value="British thermal unit (therm)/min|104|17.5725|0|">British thermal unit (therm)/min</option>
+<option value="British thermal unit (thermochem.)|101|1054.35|0|">British thermal unit (thermochem.)</option>
+<option value="British thermal unit (UK gas)|101|1054.76|0|">British thermal unit (UK gas)</option>
+<option value="bucket (UK)|8|18.184368|0|">bucket (UK)</option>
+<option value="bushel (UK)|8|36.368736|0|">bushel (UK)</option>
+<option value="bushel (US, dry)|8|35.239072|0|">bushel (US, dry)</option>
+<option value="butt (UK)|8|490.977936|0|">butt (UK)</option>
+<option value="c&eacute;|3|86.4|0|">c&eacute;</option>
+<option value="cable length (international)|9|185.2|0|">cable length (international)</option>
+<option value="cable length (UK)|9|185.3184|0|">cable length (UK)</option>
+<option value="calibre (centinch)|9|2.54e-4|0|">calibre (centinch)</option>
+<option value="calorie (15&#176;C) per hour|104|1.162638889e-3|0|">calorie (15&#176;C) per hour</option>
+<option value="calorie (15&#176;C)|101|4.18550|0|">calorie (15&#176;C)</option>
+<option value="calorie (20&#176;C)|101|4.1819|0|">calorie (20&#176;C)</option>
+<option value="calorie (4&#176;C) per hour|104|1.167916667e-3|0|">calorie (4&#176;C) per hour</option>
+<option value="calorie (4&#176;C)|101|4.2045|0|">calorie (4&#176;C)</option>
+<option value="calorie (IST)|101|4.18674|0|">calorie (IST)</option>
+<option value="calorie (IT) per hour|104|1.162983333e-3|0|">calorie (IT) per hour</option>
+<option value="calorie (mean) per hour|104|1.163894444e-3|0|">calorie (mean) per hour</option>
+<option value="calorie (mean)|101|4.19002|0|">calorie (mean)</option>
+<option value="calorie (therm.) per hour|104|1.162222222e-3|0|">calorie (therm.) per hour</option>
+<option value="calorie (thermochem.)|101|4.184|0|">calorie (thermochem.)</option>
+<option value="carat (metric)|1|2e-04|0|">carat (metric)</option>
+<option value="carat (old)|1|2.05e-04|0|">carat (old)</option>
+<option value="Celsius heat unit (15&#176;C)|101|1899.1|0|">Celsius heat unit (15&#176;C)</option>
+<option value="Celsius heat unit|101|1899.18|0|">Celsius heat unit</option>
+<option value="cental (centner, kintal)|1|45.359237|0|">cental (centner, kintal)</option>
+<option value="centigram|1|1e-05|0|">centigram</option>
+<option value="centilitre|8|1e-2|0|">centilitre</option>
+<option value="centimetre|9|1e-2|0|">centimetre</option>
+<option value="century|3|3.15576e+9|0|">century</option>
+<option value="chain (engineer's)|9|30.48|0|">chain (engineer's)</option>
+<option value="chain (Gunter's)|9|20.1168|0|">chain (Gunter's)</option>
+<option value="chain (surveyor's)|9|20.1168|0|">chain (surveyor's)</option>
+<option value="chaldron (UK)|8|1309.274496|0|">chaldron (UK)</option>
+<option value="chopine (UK)|8|5.682615e-1|0|">chopine (UK)</option>
+<option value="chopine (US, dry)|8|5.506105e-1|0|">chopine (US, dry)</option>
+<option value="chopine (US, liquid)|8|4.731764730e-1|0|">chopine (US, liquid)</option>
+<option value="chronon|3|1e-23|0|">chronon</option>
+<option value="circular inch|14|5.067074791e-4|0|">circular inch</option>
+<option value="circular mile (int.)|14|2.034179489e+6|0|">circular mile (int.)</option>
+<option value="circular mile (int., naut.)|14|2.693840302e+6|0|">circular mile (int., naut.)</option>
+<option value="circular mile (statute, land)|14|2.034171905e+6|0|">circular mile (statute, land)</option>
+<option value="circular mile (US, naut.)|14|2.697285795e+6|0|">circular mile (US, naut.)</option>
+<option value="circular millimetre|14|7.853981634e-7|0|">circular millimetre</option>
+<option value="circular mil|14|5.06707479e-10|0|">circular mil</option>
+<option value="civil year|3|3.1536e+7|0|">civil year</option>
+<option value="clove (UK)|1|3.62873896|0|">clove (UK)</option>
+<option value="clusec|104|1.3e-3|0|">clusec</option>
+<option value="com. ton of refrigeration (UK)|104|3.922696721e+3|0|">com. ton of refrigeration (UK)</option>
+<option value="com. ton of refrigeration (US)|104|3.5168e+3|0|">com. ton of refrigeration (US)</option>
+<option value="coomb (UK)|8|145.47494|0|">coomb (UK)</option>
+<option value="cord-foot|8|453.0695455|0|">cord-foot</option>
+<option value="cord|8|3624.556364|0|">cord</option>
+<option value="coudee (de Paris)|9|0.5|0|">coudee (de Paris)</option>
+<option value="cran (mease)|8|170.47845|0|">cran (mease)</option>
+<option value="crinal|102|1e-1|0|">crinal</option>
+<option value="crith|1|8.92295583e-05|0|">crith</option>
+<option value="cron|3|3.15576e+13|0|">cron</option>
+<option value="cubic centimetre|8|1e-3|0|">cubic centimetre</option>
+<option value="cubic decimetre|8|1|0|">cubic decimetre</option>
+<option value="cubic foot|8|28.31684659|0|">cubic foot</option>
+<option value="cubic inch|8|1.638706400e-2|0|">cubic inch</option>
+<option value="cubic int. mile (cubem)|8|4.168205135e+12|0|">cubic int. mile (cubem)</option>
+<option value="cubic metre|8|1000|0|">cubic metre</option>
+<option value="cubic US int. mile|8|4.168181825e+12|0|">cubic US int. mile</option>
+<option value="cubic yard|8|764.554858|0|">cubic yard</option>
+<option value="cubit (UK)|9|0.4572|0|">cubit (UK)</option>
+<option value="cup (metric)|9|0.2|0|">cup (metric)</option>
+<option value="cup (US)|9|0.2365882|0|">cup (US)</option>
+<option value="d&eacute;miard|8|2.8413e-1|0|">d&eacute;miard</option>
+<option value="dalton|1|1.66057000e-27|0|">dalton</option>
+<option value="day (24 hours)|3|86400|0|">day (24 hours)</option>
+<option value="decast&egrave;re|8|10000|0|">decast&egrave;re</option>
+<option value="decilitre|8|1e-1|0|">decilitre</option>
+<option value="decist&egrave;re|8|100|0|">decist&egrave;re</option>
+<option value="denier (de Paris)|1|1.27476563e-03|0|">denier (de Paris)</option>
+<option value="denier|103|1.111e-7|0|">denier</option>
+<option value="donkey|104|250|0|">donkey</option>
+<option value="drachm (apothecary)|1|3.88793460e-03|0|">drachm (apothecary)</option>
+<option value="dram (avoirdupois)|1|1.77184520e-03|0|">dram (avoirdupois)</option>
+<option value="dram (troy)|1|3.88793460e-03|0|">dram (troy)</option>
+<option value="drex|103|1e-7|0|">drex</option>
+<option value="dyne|102|1e-5|0|">dyne</option>
+<option value="electron radius|9|2.81794092e-15|0|">electron radius</option>
+<option value="electronvolt|101|1.60217733e-19|0|">electronvolt</option>
+<option value="ell|9|1.143|0|">ell</option>
+<option value="encablure|9|220|0|">encablure</option>
+<option value="eon|3|3.15576e+16|0|">eon</option>
+<option value="erg per second|104|1e-7|0|">erg per second</option>
+<option value="erg|101|1e-7|0|">erg</option>
+<option value="fathom|9|1.8288|0|">fathom</option>
+<option value="femtometre|9|1e-15|0|">femtometre</option>
+<option value="fermi|9|1e-15|0|">fermi</option>
+<option value="firkin (UK)|8|40.914828|0|">firkin (UK)</option>
+<option value="firkin (US, liquid)|8|34.06870606|0|">firkin (US, liquid)</option>
+<option value="fluid drachm (UK)|8|3.551634375e-3|0|">fluid drachm (UK)</option>
+<option value="fluid dram (US)|8|3.696691195e-3|0|">fluid dram (US)</option>
+<option value="fluid ounce (UK)|8|2.841307500e-2|0|">fluid ounce (UK)</option>
+<option value="fluid ounce (US)|8|2.957352956e-2|0|">fluid ounce (US)</option>
+<option value="fluid scruple (UK)|8|1.18387812e-3|0|">fluid scruple (UK)</option>
+<option value="foot (1963)|9|0.3048|0|">foot (1963)</option>
+<option value="foot (old)|9|0.3048799700|0|">foot (old)</option>
+<option value="foot (US, survey)|9|0.3048006096|0|">foot (US, survey)</option>
+<option value="foot pound-force per hour|104|3.704420624e-4|0|">foot pound-force per hour</option>
+<option value="foot pound-force per minute|104|2.259696581e-2|0|">foot pound-force per minute</option>
+<option value="foot pound-force per second|104|1.355817948|0|">foot pound-force per second</option>
+<option value="foot poundal per second|104|4.214011009e-2|0|">foot poundal per second</option>
+<option value="foot-pound-force (duty)|101|1.355817948|0|">foot-pound-force (duty)</option>
+<option value="foot-poundal|101|4.214011009e-2|0|">foot-poundal</option>
+<option value="forty feet equiv. unit|8|7.249112728e+4|0|">forty feet equiv. unit</option>
+<option value="frigorie|101|-4.1855e+3|0|">frigorie</option>
+<option value="funal|102|1000|0|">funal</option>
+<option value="furlong (UK)|9|201.168|0|">furlong (UK)</option>
+<option value="gallon (Canadian, liquid)|8|4.546092|0|">gallon (Canadian, liquid)</option>
+<option value="gallon (imperial, UK)|8|4.546092|0|">gallon (imperial, UK)</option>
+<option value="gallon (UK) per foot|14|1.4915e-2|0|">gallon (UK) per foot</option>
+<option value="gallon (UK) per inch|14|1.7898e-1|0|">gallon (UK) per inch</option>
+<option value="gallon (UK) per mile (int.)|14|2.82480534e-6|0|">gallon (UK) per mile (int.)</option>
+<option value="gallon (US) per foot|14|1.241933e-2|0|">gallon (US) per foot</option>
+<option value="gallon (US) per inch|14|1.4903196e-1|0|">gallon (US) per inch</option>
+<option value="gallon (US) per mile (int.)|14|2.352141449e-6|0|">gallon (US) per mile (int.)</option>
+<option value="gallon (US, dry)|8|4.404884|0|">gallon (US, dry)</option>
+<option value="gallon (US, liquid)|8|3.785411784|0|">gallon (US, liquid)</option>
+<option value="gamma|1|1e-09|0|">gamma</option>
+<option value="Gaussian year|3|3.1558368787e+7|0|">Gaussian year</option>
+<option value="gigan|3|3.15576e+16|0|">gigan</option>
+<option value="gill, roquille (UK)|8|1.420653750e-1|0|">gill, roquille (UK)</option>
+<option value="gill, roquille (US)|8|1.182941183e-1|0|">gill, roquille (US)</option>
+<option value="glug|1|1e-03|0|">glug</option>
+<option value="grain (av.) per 100 yards|103|7.0864950e-12|0|">grain (av.) per 100 yards</option>
+<option value="grain (av.) per 120 yards|103|5.9054125e-12|0|">grain (av.) per 120 yards</option>
+<option value="grain (avoir.) per cubic foot|100|2.288351911e-3|0|">grain (avoir.) per cubic foot</option>
+<option value="grain (avoir.) per UK gallon|100|1.425376125e-2|0|">grain (avoir.) per UK gallon</option>
+<option value="grain (avoir.) per US gallon|100|1.711806097e-2|0|">grain (avoir.) per US gallon</option>
+<option value="grain (avoirdupois, troy, apoth.)|1|6.47989100e-05|0|">grain (avoirdupois, troy, apoth.)</option>
+<option value="grain (de Paris)|1|5.31152344e-05|0|">grain (de Paris)</option>
+<option value="grain (jeweller's)|1|5e-05|0|">grain (jeweller's)</option>
+<option value="gram per cubic centimetre|100|1000|0|">gram per cubic centimetre</option>
+<option value="gram per cubic decimetre|100|1|0|">gram per cubic decimetre</option>
+<option value="gram per cubic metre|100|1e-3|0|">gram per cubic metre</option>
+<option value="gram per cubic millimetre|100|1e+6|0|">gram per cubic millimetre</option>
+<option value="gram per square centimetre|105|10|0|">gram per square centimetre</option>
+<option value="gram per square metre|105|1e-3|0|">gram per square metre</option>
+<option value="gram|1|1e-03|0|">gram</option>
+<option value="Gregorian year|3|3.15576e+7|0|">Gregorian year</option>
+<option value="gros (de Paris)|1|3.82429688e-03|0|">gros (de Paris)</option>
+<option value="hand (UK)|9|1.016e-1|0|">hand (UK)</option>
+<option value="hartree (u.a. of energy)|101|4.3597482e-18|0|">hartree (u.a. of energy)</option>
+<option value="hectare|14|1e+4|0|">hectare</option>
+<option value="hectogram|1|0.1|0|">hectogram</option>
+<option value="hogshead (US, liquid)|8|238.4809424|0|">hogshead (US, liquid)</option>
+<option value="horsepower (550 ft.lbf/s)|104|745.699871582|0|">horsepower (550 ft.lbf/s)</option>
+<option value="horsepower (boiler)|104|9.8095e+5|0|">horsepower (boiler)</option>
+<option value="horsepower (cheval vapeur)|104|735.49875|0|">horsepower (cheval vapeur)</option>
+<option value="horsepower (electric)|104|746|0|">horsepower (electric)</option>
+<option value="horsepower (metric)|104|735.49875|0|">horsepower (metric)</option>
+<option value="horsepower (UK)|104|745.7|0|">horsepower (UK)</option>
+<option value="horsepower (water)|104|746.043|0|">horsepower (water)</option>
+<option value="hour (60 minutes)|3|3600|0|">hour (60 minutes)</option>
+<option value="hubble|9|9.4605297e+24|0|">hubble</option>
+<option value="hundredweight (gross or long)|1|50.80235|0|">hundredweight (gross or long)</option>
+<option value="hundredweight (net or short)|1|45.359237|0|">hundredweight (net or short)</option>
+<option value="hyl (techma, UdM, mug, par)|1|9.80665|0|">hyl (techma, UdM, mug, par)</option>
+<option value="inch (old)|9|2.53999800e-2|0|">inch (old)</option>
+<option value="inch (US, survey)|9|2.54000508e-2|0|">inch (US, survey)</option>
+<option value="inch ounce-force per second|104|9.415402419e-3|0|">inch ounce-force per second</option>
+<option value="inch|9|2.54e-2|0|">inch</option>
+<option value="iron|9|5.3e-4|0|">iron</option>
+<option value="joule (int.)|101|1.000165|0|">joule (int.)</option>
+<option value="joule|101|1|0|">joule</option>
+<option value="Julian year|3|3.1556952e+7|0|">Julian year</option>
+<option value="kilderkin (UK)|8|81.829656|0|">kilderkin (UK)</option>
+<option value="kilocalorie (therm.)|101|4184|0|">kilocalorie (therm.)</option>
+<option value="kilogram per centimetre|103|100|0|">kilogram per centimetre</option>
+<option value="kilogram per cubic decimetre|100|1000|0|">kilogram per cubic decimetre</option>
+<option value="kilogram per cubic metre|100|1|0|">kilogram per cubic metre</option>
+<option value="kilogram per decimetre|103|10|0|">kilogram per decimetre</option>
+<option value="kilogram per hectare|105|1e-4|0|">kilogram per hectare</option>
+<option value="kilogram per metre|103|1|0|">kilogram per metre</option>
+<option value="kilogram per metre|103|1|0|">kilogram per metre</option>
+<option value="kilogram per square metre|105|1|0|">kilogram per square metre</option>
+<option value="kilogram-force metre per second|104|9.80665|0|">kilogram-force metre per second</option>
+<option value="kilogram-force-metre|101|9.80665|0|">kilogram-force-metre</option>
+<option value="kilogram-force|102|9.80665|0|">kilogram-force</option>
+<option value="kilogram|1|1|0|">kilogram</option>
+<option value="kilometre|14|1e+6|0|">kilometre</option>
+<option value="kilometre|9|1000|0|">kilometre</option>
+<option value="kiloton (TNT)|101|4.18e+18|0|">kiloton (TNT)</option>
+<option value="kilowatt-hour|101|3.6e+6|0|">kilowatt-hour</option>
+<option value="kilowatt|104|1000|0|">kilowatt</option>
+<option value="kip (kilopound)|1|453.59237|0|">kip (kilopound)</option>
+<option value="kip-force|102|4448.221615261|0|">kip-force</option>
+<option value="lambda|8|1e-6|0|">lambda</option>
+<option value="last|8|2909.498|0|">last</option>
+<option value="league (Canadian)|9|4827|0|">league (Canadian)</option>
+<option value="league (international, nautical)|9|5556|0|">league (international, nautical)</option>
+<option value="league (telegr., nautical)|9|1855.3176|0|">league (telegr., nautical)</option>
+<option value="league (UK, nautical)|9|5559.552|0|">league (UK, nautical)</option>
+<option value="league (US, statute)|9|4828.032|0|">league (US, statute)</option>
+<option value="lieue (de Poste)|9|3898|0|">lieue (de Poste)</option>
+<option value="lieue (metric)|9|4000|0|">lieue (metric)</option>
+<option value="ligne (de Paris)|9|2.55830000e-3|0|">ligne (de Paris)</option>
+<option value="ligne (metric)|9|2.30e-3|0|">ligne (metric)</option>
+<option value="line (UK), button|9|2.11666667e-3|0|">line (UK), button</option>
+<option value="line (US)|9|6.35e-4|0|">line (US)</option>
+<option value="link (engineer's)|9|0.3048|0|">link (engineer's)</option>
+<option value="link (surveyor's)|9|2.011680e-1|0|">link (surveyor's)</option>
+<option value="litre (1964)|8|1|0|">litre (1964)</option>
+<option value="litre-atmosphere|101|101.625|0|">litre-atmosphere</option>
+<option value="livre (de Paris)|1|0.489510000|0|">livre (de Paris)</option>
+<option value="load (UK)|1|587.855711520|0|">load (UK)</option>
+<option value="lot (de Paris)|1|1.52971875e-02|0|">lot (de Paris)</option>
+<option value="marc (de Paris)|1|0.244755000|0|">marc (de Paris)</option>
+<option value="mean solar day|3|86400|0|">mean solar day</option>
+<option value="megaton (TNT)|101|4.18e+21|0|">megaton (TNT)</option>
+<option value="megawatt|104|1e+6|0|">megawatt</option>
+<option value="megayear|3|3.15576e+13|0|">megayear</option>
+<option value="metre|9|1|0|">metre</option>
+<option value="microgamma|1|1e-15|0|">microgamma</option>
+<option value="microgram|1|1e-09|0|">microgram</option>
+<option value="microinch|9|2.54e-8|0|">microinch</option>
+<option value="microlitre|8|1e-6|0|">microlitre</option>
+<option value="micrometre|9|1e-6|0|">micrometre</option>
+<option value="micron|9|1e-6|0|">micron</option>
+<option value="mile (geographical)|9|7.421591e+3|0|">mile (geographical)</option>
+<option value="mile (international, nautical)|9|1852|0|">mile (international, nautical)</option>
+<option value="mile (international, statute)|9|1609.347|0|">mile (international, statute)</option>
+<option value="mile (UK, nautical)|9|1853.184|0|">mile (UK, nautical)</option>
+<option value="mile (US, nautical)|9|1853.184|0|">mile (US, nautical)</option>
+<option value="mile (US, statute)|9|1609.344|0|">mile (US, statute)</option>
+<option value="mile (US, survey)|9|1609.3472187|0|">mile (US, survey)</option>
+<option value="millennium|3|3.15576e+10|0|">millennium</option>
+<option value="milligamma|1|1e-12|0|">milligamma</option>
+<option value="milligram per square centimetre|105|1e-2|0|">milligram per square centimetre</option>
+<option value="milligram|1|1e-06|0|">milligram</option>
+<option value="millilitre|8|1e-3|0|">millilitre</option>
+<option value="millimetre|9|1e-3|0|">millimetre</option>
+<option value="millimicron|9|1e-9|0|">millimicron</option>
+<option value="mil|9|2.54e-5|0|">mil</option>
+<option value="minim (UK)|8|5.919390625e-5|0|">minim (UK)</option>
+<option value="minim (US, liquid)|8|6.161151992e-5|0|">minim (US, liquid)</option>
+<option value="minute (60 seconds)|3|60|0|">minute (60 seconds)</option>
+<option value="Mohr centicube|8|1.00238e-3|0|">Mohr centicube</option>
+<option value="momme (Japan, pearl)|1|3.75e-03|0|">momme (Japan, pearl)</option>
+<option value="month (30 days)|3|2.592e+6|0|">month (30 days)</option>
+<option value="muid (de Paris)|8|274|0|">muid (de Paris)</option>
+<option value="myriagram|1|10|0|">myriagram</option>
+<option value="myriametre|9|1e+4|0|">myriametre</option>
+<option value="nail (UK)|9|2.29e-1|0|">nail (UK)</option>
+<option value="nanometre|9|1e-9|0|">nanometre</option>
+<option value="newton|102|1|0|">newton</option>
+<option value="noggin (UK)|8|1.420653750e-1|0|">noggin (UK)</option>
+<option value="once (de Paris)|1|3.04943750e-02|0|">once (de Paris)</option>
+<option value="ounce (apothecary, troy)|1|0.0311034768|0|">ounce (apothecary, troy)</option>
+<option value="ounce (avoir.) per UK gallon|100|6.236020520|0|">ounce (avoir.) per UK gallon</option>
+<option value="ounce (avoir.) per US gallon|100|7.489151643|0|">ounce (avoir.) per US gallon</option>
+<option value="ounce (avoirdupois)|1|2.83495231e-02|0|">ounce (avoirdupois)</option>
+<option value="ounce (UK) per square foot|105|3.051517259e-1|0|">ounce (UK) per square foot</option>
+<option value="ounce (UK) per square inch|105|43.941848534|0|">ounce (UK) per square inch</option>
+<option value="ounce (UK) per square yard|105|3.390574733e-2|0|">ounce (UK) per square yard</option>
+<option value="ounce-force|102|2.780138510e-1|0|">ounce-force</option>
+<option value="pace (UK)|9|0.762|0|">pace (UK)</option>
+<option value="palm (UK)|9|7.62e-2|0|">palm (UK)</option>
+<option value="parsec|9|3.0856780e+16|0|">parsec</option>
+<option value="pas (de Paris)|9|0.6240000000|0|">pas (de Paris)</option>
+<option value="peck (UK)|8|9.092184|0|">peck (UK)</option>
+<option value="peck (US, dry)|8|8.809768|0|">peck (US, dry)</option>
+<option value="pennyweight (troy)|1|1.55517384e-03|0|">pennyweight (troy)</option>
+<option value="perch (masonry)|8|700.8419532|0|">perch (masonry)</option>
+<option value="perch (pole, rod)|9|5.0292|0|">perch (pole, rod)</option>
+<option value="perche (de Paris)|14|34.1887|0|">perche (de Paris)</option>
+<option value="perche (de Paris)|9|5.847|0|">perche (de Paris)</option>
+<option value="picometre|9|1e-12|0|">picometre</option>
+<option value="pied (de Paris)|9|0.3248394000|0|">pied (de Paris)</option>
+<option value="pied (metric)|9|0.333|0|">pied (metric)</option>
+<option value="pint (UK)|8|5.682615e-1|0|">pint (UK)</option>
+<option value="pint (US, dry)|8|5.506105e-1|0|">pint (US, dry)</option>
+<option value="pint (US, liquid)|8|4.731764730e-1|0|">pint (US, liquid)</option>
+<option value="poncelet|104|980.665|0|">poncelet</option>
+<option value="pond|102|9.80655e-3|0|">pond</option>
+<option value="pood (Russian)|1|16.380500000|0|">pood (Russian)</option>
+<option value="pottle (UK)|8|2.273046|0|">pottle (UK)</option>
+<option value="pouce (de Paris)|9|2.706995e-2|0|">pouce (de Paris)</option>
+<option value="pouce (metric)|9|2.75e-2|0|">pouce (metric)</option>
+<option value="poumar|103|4.9605465e-7|0|">poumar</option>
+<option value="pound (apothecary, troy)|1|0.373241722|0|">pound (apothecary, troy)</option>
+<option value="pound (avoir.) per cubic foot|100|16.018463374|0|">pound (avoir.) per cubic foot</option>
+<option value="pound (avoir.) per UK gallon|100|99.776328768|0|">pound (avoir.) per UK gallon</option>
+<option value="pound (avoir.) per US gallon|100|119.826426810|0|">pound (avoir.) per US gallon</option>
+<option value="pound (avoirdupois)|1|0.453592428|0|">pound (avoirdupois)</option>
+<option value="pound (imperial standard)|1|0.453592338|0|">pound (imperial standard)</option>
+<option value="pound (US)|1|0.453592243|0|">pound (US)</option>
+<option value="pound (WMA, 1963)|1|0.45359237|0|">pound (WMA, 1963)</option>
+<option value="pound centigrade unit (15&#176;C)|101|1899.1|0|">pound centigrade unit (15&#176;C)</option>
+<option value="pound per acre|105|1.120851156e-4|0|">pound per acre</option>
+<option value="pound per cubic inch|100|2.767990471e+4|0|">pound per cubic inch</option>
+<option value="pound per foot|103|1.488163944|0|">pound per foot</option>
+<option value="pound per inch|103|17.85796732|0|">pound per inch</option>
+<option value="pound per square foot|105|4.882427636|0|">pound per square foot</option>
+<option value="pound per square inch|105|703.069579639|0|">pound per square inch</option>
+<option value="pound per square yard|105|5.424919596e-1|0|">pound per square yard</option>
+<option value="pound per yard|103|4.9605465e-1|0|">pound per yard</option>
+<option value="pound-force|102|4.448221615|0|">pound-force</option>
+<option value="poundal|102|1.382549544e-1|0|">poundal</option>
+<option value="prony|104|98.0665|0|">prony</option>
+<option value="prout|101|2.9638e-14|0|">prout</option>
+<option value="puncheon (UK)|8|318.22644|0|">puncheon (UK)</option>
+<option value="Q unit|101|1.055e+21|0|">Q unit</option>
+<option value="quad (quadrillion, Btu)|101|1.055055853e+18|0|">quad (quadrillion, Btu)</option>
+<option value="quart (UK)|8|1.136523|0|">quart (UK)</option>
+<option value="quart (US, dry)|8|1.101221|0|">quart (US, dry)</option>
+<option value="quart (US, liquid)|8|9.463529460e-1|0|">quart (US, liquid)</option>
+<option value="quarter (UK)|1|12.700586360|0|">quarter (UK)</option>
+<option value="quarter (UK)|8|290.949888|0|">quarter (UK)</option>
+<option value="quarter (US, long)|1|254.011727200|0|">quarter (US, long)</option>
+<option value="quarter (US, short)|1|226.796185000|0|">quarter (US, short)</option>
+<option value="quarter section|14|6.474970276e+5|0|">quarter section</option>
+<option value="quarteron (de Paris)|1|0.122377500|0|">quarteron (de Paris)</option>
+<option value="quinital (metric)|1|100|0|">quinital (metric)</option>
+<option value="quintal (US)|1|45.359237|0|">quintal (US)</option>
+<option value="register ton (UK)|8|2831.68466|0|">register ton (UK)</option>
+<option value="rood (UK)|14|1011.71410560|0|">rood (UK)</option>
+<option value="rope (UK)|9|6.096|0|">rope (UK)</option>
+<option value="rydberg|101|2.1798741e-18|0|">rydberg</option>
+<option value="sack (UK)|8|109.106208|0|">sack (UK)</option>
+<option value="scruple (avoirdupois)|1|1.57497351e-03|0|">scruple (avoirdupois)</option>
+<option value="seam (UK)|8|290.949888|0|">seam (UK)</option>
+<option value="second|3|1|0|">second</option>
+<option value="shacles (UK)|9|27.432|0|">shacles (UK)</option>
+<option value="shake|3|1e-8|0|">shake</option>
+<option value="shed|14|1e-52|0|">shed</option>
+<option value="sidereal day|3|86164.0905|0|">sidereal day</option>
+<option value="sidereal year|3|3.15581495e+7|0|">sidereal year</option>
+<option value="siriometre|9|1.4959787e+17|0|">siriometre</option>
+<option value="siriusweit|9|1.54283900e+17|0|">siriusweit</option>
+<option value="skein (UK)|14|109.728|0|">skein (UK)</option>
+<option value="skein (UK)|9|109.728|0|">skein (UK)</option>
+<option value="slug (geepound)|1|14.593902940|0|">slug (geepound)</option>
+<option value="slug-force|102|143.117305000|0|">slug-force</option>
+<option value="span (UK)|9|2.2860e-1|0|">span (UK)</option>
+<option value="spat|9|1e+12|0|">spat</option>
+<option value="square angstrom|14|1e-20|0|">square angstrom</option>
+<option value="square attometre|14|1e-36|0|">square attometre</option>
+<option value="square bohr (a.u.)|14|2.800285609e-21|0|">square bohr (a.u.)</option>
+<option value="square centimetre|14|1e-4|0|">square centimetre</option>
+<option value="square chain (Eng.)|14|929.0304|0|">square chain (Eng.)</option>
+<option value="square chain (Gunter's)|14|404.68564224|0|">square chain (Gunter's)</option>
+<option value="square chain (Ramsden's)|14|929.0304|0|">square chain (Ramsden's)</option>
+<option value="square chain (surv.)|14|404.68564224|0|">square chain (surv.)</option>
+<option value="square decimetre|14|1e-2|0|">square decimetre</option>
+<option value="square femtometre|14|1e-30|0|">square femtometre</option>
+<option value="square fermi|14|1e-30|0|">square fermi</option>
+<option value="square foot (US, survey)|14|9.290341161e-2|0|">square foot (US, survey)</option>
+<option value="square foot|14|9.290304e-2|0|">square foot</option>
+<option value="square inch|14|6.4516e-4|0|">square inch</option>
+<option value="square league (Canadian)|14|2.329992900e+7|0|">square league (Canadian)</option>
+<option value="square league (int., naut.)|14|3.086913600e+7|0|">square league (int., naut.)</option>
+<option value="square league (metric)|14|1.6e+7|0|">square league (metric)</option>
+<option value="square league (statute)|14|2.330989299e+7|0|">square league (statute)</option>
+<option value="square league (UK, naut.)|14|3.090861844e+7|0|">square league (UK, naut.)</option>
+<option value="square league (US, naut.)|14|3.090861844e+7|0|">square league (US, naut.)</option>
+<option value="square metre|14|1|0|">square metre</option>
+<option value="square micron|14|1e-12|0|">square micron</option>
+<option value="square mile (geog.)|14|5.508001297e+7|0|">square mile (geog.)</option>
+<option value="square mile (int.)|14|2.589997766e+6|0|">square mile (int.)</option>
+<option value="square mile (int., naut.)|14|3.429904000e+6|0|">square mile (int., naut.)</option>
+<option value="square mile (tele., naut.)|14|3.442203397e+6|0|">square mile (tele., naut.)</option>
+<option value="square mile (UK, naut.)|14|3.434290938e+6|0|">square mile (UK, naut.)</option>
+<option value="square mile (US, naut.)|14|3.434290938e+6|0|">square mile (US, naut.)</option>
+<option value="square mile (US, statute)|14|2.589988110e+6|0|">square mile (US, statute)</option>
+<option value="square mile (US, survey)|14|2.589998470e+6|0|">square mile (US, survey)</option>
+<option value="square millimetre|14|1e-6|0|">square millimetre</option>
+<option value="square nanometre|14|1e-18|0|">square nanometre</option>
+<option value="square picometre|14|1e-24|0|">square picometre</option>
+<option value="square rod/perch/pole|14|25.2928526400|0|">square rod/perch/pole</option>
+<option value="square yard (old)|14|8.361257141e-1|0|">square yard (old)</option>
+<option value="square yard (US)|14|8.361307045e-1|0|">square yard (US)</option>
+<option value="square yard (WMA, 1963)|14|8.3612736e-1|0|">square yard (WMA, 1963)</option>
+<option value="st&egrave;re|8|1000|0|">st&egrave;re</option>
+<option value="standart (Petrograd)|8|4627.279688|0|">standart (Petrograd)</option>
+<option value="stellar day|3|86164.0989|0|">stellar day</option>
+<option value="sthene|102|1000|0|">sthene</option>
+<option value="stone (UK)|1|6.350293180|0|">stone (UK)</option>
+<option value="stone (UK, wool)|1|5.669904625|0|">stone (UK, wool)</option>
+<option value="tablespoon (metric)|8|1.50e-2|0|">tablespoon (metric)</option>
+<option value="tablespoon (US)|8|1.478677e-2|0|">tablespoon (US)</option>
+<option value="teaspoon (metric)|8|5e-3|0|">teaspoon (metric)</option>
+<option value="teaspoon (US)|8|4.928922e-3|0|">teaspoon (US)</option>
+<option value="tempon|3|1e-23|0|">tempon</option>
+<option value="tex|103|1e-6|0|">tex</option>
+<option value="therm (EEG)|101|1.055055853e+8|0|">therm (EEG)</option>
+<option value="therm (US)|101|1.054804000e+8|0|">therm (US)</option>
+<option value="thermie (15&#176;C)|101|4.1855e+6|0|">thermie (15&#176;C)</option>
+<option value="thou (millinch)|9|2.54e-5|0|">thou (millinch)</option>
+<option value="toise (de Paris)|9|1.949036600|0|">toise (de Paris)</option>
+<option value="toise (metric)|9|2|0|">toise (metric)</option>
+<option value="ton (assay UK)|1|0.0326666700|0|">ton (assay UK)</option>
+<option value="ton (assay US)|1|2.91666700e-02|0|">ton (assay US)</option>
+<option value="ton (metric) per cubic metre|100|1000|0|">ton (metric) per cubic metre</option>
+<option value="ton (metric) per kilometre|103|1|0|">ton (metric) per kilometre</option>
+<option value="ton (metric) per metre|103|1000|0|">ton (metric) per metre</option>
+<option value="ton (metric)|1|1000|0|">ton (metric)</option>
+<option value="ton (UK) per square mile (int.)|105|3.922979047e-4|0|">ton (UK) per square mile (int.)</option>
+<option value="ton (UK, shipping)|1|1169.698141000|0|">ton (UK, shipping)</option>
+<option value="ton (UK, short)|1|1016.046908800|0|">ton (UK, short)</option>
+<option value="ton (US, long)|1|1016.046908800|0|">ton (US, long)</option>
+<option value="ton (US, short)|1|907.184740000|0|">ton (US, short)</option>
+<option value="ton coal equiv.|101|2.929e+8|0|">ton coal equiv.</option>
+<option value="ton oil equiv.|101|4.187e+8|0|">ton oil equiv.</option>
+<option value="ton-force (long)|102|9964.016418184|0|">ton-force (long)</option>
+<option value="ton-force (metric)|102|9806.65|0|">ton-force (metric)</option>
+<option value="ton-force (short)|102|8896.443230521|0|">ton-force (short)</option>
+<option value="tonneau de jauge|8|2831.68466|0|">tonneau de jauge</option>
+<option value="township (US)|14|9.323957197e+7|0|">township (US)</option>
+<option value="tropical year|3|3.1556925975e+7|0|">tropical year</option>
+<option value="truss (UK)|1|16.329325320|0|">truss (UK)</option>
+<option value="tun (US)|8|953.9237696|0|">tun (US)</option>
+<option value="twenty feet equiv. unit|8|3.624556364e+4|0|">twenty feet equiv. unit</option>
+<option value="u.a. of force|102|8.238729530e-8|0|">u.a. of force</option>
+<option value="u.a. of time|3|2.418884338e-17|0|">u.a. of time</option>
+<option value="UK ton per 1000 yards|103|1.111162411|0|">UK ton per 1000 yards</option>
+<option value="UK ton per cubic yard|100|1.328939184e+3|0|">UK ton per cubic yard</option>
+<option value="UK ton per mile|103|6.3134228e-1|0|">UK ton per mile</option>
+<option value="vergees (Guernsey)|14|1541.65958949|0|">vergees (Guernsey)</option>
+<option value="vergees (Jersey)|14|1798.60285440|0|">vergees (Jersey)</option>
+<option value="volt-ampere|104|1|0|">volt-ampere</option>
+<option value="watt (international mean)|104|1.00019|0|">watt (international mean)</option>
+<option value="watt (international US)|104|1.000165|0|">watt (international US)</option>
+<option value="watt|104|1|0|">watt</option>
+<option value="wey (UK)|1|114.305277240|0|">wey (UK)</option>
+<option value="wey (UK, capacity)|8|1454.74944|0|">wey (UK, capacity)</option>
+<option value="Winchester bushel|8|35.239072|0|">Winchester bushel</option>
+<option value="wink|3|3.333333333e-12|0|">wink</option>
+<option value="X unit|9|1.00020779e-10|0|">X unit</option>
+<option value="yard (1963)|9|0.9144|0|">yard (1963)</option>
+<option value="yard (old)|9|0.9143992000|0|">yard (old)</option>
+<option value="yard (US)|9|0.91440183|0|">yard (US)</option>
+<option value="year (365.25 days)|3|3.15576e+7|0|">year (365.25 days)</option>
+<option value="0|0|1|0"></option>
+</select></td></tr></table>
+
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">
+设定小数点的最大显示精确度:
+</span>
+<select name="decpts" onchange="setDecPts();" class="medCalcFontSelect">
+<option>0</option>
+<option selected="selected">1</option>
+<option>2</option>
+<option>3</option>
+</select>
+</div>
+</div>
+</center>
+</form>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>要进行简单的单位换算，在右侧的下拉选择器中输入起始单位。然后在顶部的<b>从</b>输入方格中输入起始值。要得到换算值，在右下方的选择器中选择新单位。 换算值应即刻出现<b>至</b>方格中。
+</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">使用下列转换系数，
+通过简单的系数相乘进行数据转换。
+</span></li>
+
+</ol>
+</div>
+
+<div class="calc_tables_supp">
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">转换系数</span>
+<br />&nbsp;<br />
+<table border="1" cellpadding="4" cellspacing="0" summary="EBMcalc Table" class="medCalcFontOne">
+
+<tr><td align="left">1st Bohr radius</td><td>X</td><td align="center">5.29177249e-11</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">a.u. of length</td><td>X</td><td align="center">5.29177249e-11</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">a.u. of mass</td><td>X</td><td align="center">9.10938970e-31</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">abwatt (emu of power)</td><td>X</td><td align="center">1e-8</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre (Cunningham)</td><td>X</td><td align="center">5188.27746462</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre (Ireland)</td><td>X</td><td align="center">6527.18777806</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre (plantation)</td><td>X</td><td align="center">5188.27746462</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre (Scotland)</td><td>X</td><td align="center">4935.19075902</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre (US, survey)</td><td>X</td><td align="center">4046.87260987</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre-foot (US, survey)</td><td>X</td><td align="center">1.233489238e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre-foot</td><td>X</td><td align="center">1.233481838e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre-inch</td><td>X</td><td align="center">1.027901531e+5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">acre</td><td>X</td><td align="center">4046.85642240</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">angstrom (star)</td><td>X</td><td align="center">1.00001482e-10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">angstrom</td><td>X</td><td align="center">1e-10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">anomalistic year</td><td>X</td><td align="center">3.15584329e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">arcmin</td><td>X</td><td align="center">2.90888209e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">are</td><td>X</td><td align="center">100</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">arpent (de Paris)</td><td>X</td><td align="center">3418.87</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">arpent (Quebec)</td><td>X</td><td align="center">3418.894</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">arpent (Quebec)</td><td>X</td><td align="center">58.47131</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">astronomic unit</td><td>X</td><td align="center">1.4959787e+11</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">astronomical year</td><td>X</td><td align="center">3.155787559e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">atomic mass unit (12C)</td><td>X</td><td align="center">1.66054018e-27</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">atomic mass unit (16O)</td><td>X</td><td align="center">1.66001241e-27</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">atomic mass unit (1H)</td><td>X</td><td align="center">1.67353397e-27</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">attometre</td><td>X</td><td align="center">1e-18</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">aune (de Paris)</td><td>X</td><td align="center">1.880547859</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">bag (cement)</td><td>X</td><td align="center">42.637682780</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">bag (UK)</td><td>X</td><td align="center">109.106208</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barleycorn (UK)</td><td>X</td><td align="center">8.46666667e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barn</td><td>X</td><td align="center">1e-28</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">baromil</td><td>X</td><td align="center">7.500626793e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (UK, alcohol)</td><td>X</td><td align="center">227.3046</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (UK, beer)</td><td>X</td><td align="center">163.659312</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (UK, cement)</td><td>X</td><td align="center">170.550731100</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (UK, salt)</td><td>X</td><td align="center">127.000586360</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (UK, wine)</td><td>X</td><td align="center">143.201898</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (US, cranb.)</td><td>X</td><td align="center">95.471</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (US, dry)</td><td>X</td><td align="center">115.4550594</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (US, liquid) per foot</td><td>X</td><td align="center">3.91208895e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (US, liquid) per inch</td><td>X</td><td align="center">4.69450674</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (US, liquid)</td><td>X</td><td align="center">119.2404712</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (US, petrol) per foot</td><td>X</td><td align="center">5.216118600e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (US, petrol) per inch</td><td>X</td><td align="center">6.25934232</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel (US, petrol)</td><td>X</td><td align="center">158.9872949</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">barrel oil equiv.</td><td>X</td><td align="center">6.12e+9</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">bicron (sigma)</td><td>X</td><td align="center">1e-12</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">billion electronvolt (GeV)</td><td>X</td><td align="center">1.60217733e-10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">blink</td><td>X</td><td align="center">0.864</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">board foot measure</td><td>X</td><td align="center">2.359737216</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">bolt (US, cloth)</td><td>X</td><td align="center">36.576</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (36&#176;F)/hour</td><td>X</td><td align="center">2.943527778e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (36&#176;F)/min</td><td>X</td><td align="center">17.661166667</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (39.2&#176;F)</td><td>X</td><td align="center">1059.67</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (60&#176;C)</td><td>X</td><td align="center">1054.678</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (60&#176;F)/hour</td><td>X</td><td align="center">2.929661111e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (60&#176;F)/min</td><td>X</td><td align="center">17.577966667</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (Gas ins. act reg.)</td><td>X</td><td align="center">1054.615</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (ISO)/hour</td><td>X</td><td align="center">2.930722222e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (ISO)/min</td><td>X</td><td align="center">17.584333333</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (ISO/TC 12)</td><td>X</td><td align="center">1055.06</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (IST)</td><td>X</td><td align="center">1055.05585262</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (IT)/hour</td><td>X</td><td align="center">2.930710702e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (IT)/min</td><td>X</td><td align="center">17.584264210</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (mean)/hour</td><td>X</td><td align="center">2.932972222e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (mean)/min</td><td>X</td><td align="center">17.597833333</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (mean)</td><td>X</td><td align="center">1055.87</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (therm)/hour</td><td>X</td><td align="center">2.928750000e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (therm)/min</td><td>X</td><td align="center">17.5725</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (thermochem.)</td><td>X</td><td align="center">1054.35</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">British thermal unit (UK gas)</td><td>X</td><td align="center">1054.76</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">bucket (UK)</td><td>X</td><td align="center">18.184368</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">bushel (UK)</td><td>X</td><td align="center">36.368736</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">bushel (US, dry)</td><td>X</td><td align="center">35.239072</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">butt (UK)</td><td>X</td><td align="center">490.977936</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">c&eacute;</td><td>X</td><td align="center">86.4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cable length (international)</td><td>X</td><td align="center">185.2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cable length (UK)</td><td>X</td><td align="center">185.3184</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calibre (centinch)</td><td>X</td><td align="center">2.54e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (15&#176;C) per hour</td><td>X</td><td align="center">1.162638889e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (15&#176;C)</td><td>X</td><td align="center">4.18550</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (20&#176;C)</td><td>X</td><td align="center">4.1819</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (4&#176;C) per hour</td><td>X</td><td align="center">1.167916667e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (4&#176;C)</td><td>X</td><td align="center">4.2045</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (IST)</td><td>X</td><td align="center">4.18674</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (IT) per hour</td><td>X</td><td align="center">1.162983333e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (mean) per hour</td><td>X</td><td align="center">1.163894444e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (mean)</td><td>X</td><td align="center">4.19002</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (therm.) per hour</td><td>X</td><td align="center">1.162222222e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">calorie (thermochem.)</td><td>X</td><td align="center">4.184</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">carat (metric)</td><td>X</td><td align="center">2e-04</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">carat (old)</td><td>X</td><td align="center">2.05e-04</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Celsius heat unit (15&#176;C)</td><td>X</td><td align="center">1899.1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Celsius heat unit</td><td>X</td><td align="center">1899.18</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cental (centner, kintal)</td><td>X</td><td align="center">45.359237</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">centigram</td><td>X</td><td align="center">1e-05</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">centilitre</td><td>X</td><td align="center">1e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">centimetre</td><td>X</td><td align="center">1e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">century</td><td>X</td><td align="center">3.15576e+9</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">chain (engineer's)</td><td>X</td><td align="center">30.48</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">chain (Gunter's)</td><td>X</td><td align="center">20.1168</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">chain (surveyor's)</td><td>X</td><td align="center">20.1168</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">chaldron (UK)</td><td>X</td><td align="center">1309.274496</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">chopine (UK)</td><td>X</td><td align="center">5.682615e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">chopine (US, dry)</td><td>X</td><td align="center">5.506105e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">chopine (US, liquid)</td><td>X</td><td align="center">4.731764730e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">chronon</td><td>X</td><td align="center">1e-23</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">circular inch</td><td>X</td><td align="center">5.067074791e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">circular mile (int.)</td><td>X</td><td align="center">2.034179489e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">circular mile (int., naut.)</td><td>X</td><td align="center">2.693840302e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">circular mile (statute, land)</td><td>X</td><td align="center">2.034171905e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">circular mile (US, naut.)</td><td>X</td><td align="center">2.697285795e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">circular millimetre</td><td>X</td><td align="center">7.853981634e-7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">circular mil</td><td>X</td><td align="center">5.06707479e-10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">civil year</td><td>X</td><td align="center">3.1536e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">clove (UK)</td><td>X</td><td align="center">3.62873896</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">clusec</td><td>X</td><td align="center">1.3e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">com. ton of refrigeration (UK)</td><td>X</td><td align="center">3.922696721e+3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">com. ton of refrigeration (US)</td><td>X</td><td align="center">3.5168e+3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">coomb (UK)</td><td>X</td><td align="center">145.47494</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cord-foot</td><td>X</td><td align="center">453.0695455</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cord</td><td>X</td><td align="center">3624.556364</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">coudee (de Paris)</td><td>X</td><td align="center">0.5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cran (mease)</td><td>X</td><td align="center">170.47845</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">crinal</td><td>X</td><td align="center">1e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">crith</td><td>X</td><td align="center">8.92295583e-05</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cron</td><td>X</td><td align="center">3.15576e+13</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cubic centimetre</td><td>X</td><td align="center">1e-3</td><td>=</td><td align="left">cubic decimetre</td></tr>
+<tr><td align="left">cubic foot</td><td>X</td><td align="center">28.31684659</td><td>=</td><td align="left">cubic decimetre</td></tr>
+<tr><td align="left">cubic inch</td><td>X</td><td align="center">1.638706400e-2</td><td>=</td><td align="left">cubic decimetre</td></tr>
+<tr><td align="left">cubic int. mile (cubem)</td><td>X</td><td align="center">4.168205135e+12</td><td>=</td><td align="left">cubic decimetre</td></tr>
+<tr><td align="left">cubic metre</td><td>X</td><td align="center">1000</td><td>=</td><td align="left">cubic decimetre</td></tr>
+<tr><td align="left">cubic US int. mile</td><td>X</td><td align="center">4.168181825e+12</td><td>=</td><td align="left">cubic decimetre</td></tr>
+<tr><td align="left">cubic yard</td><td>X</td><td align="center">764.554858</td><td>=</td><td align="left">cubic decimetre</td></tr>
+<tr><td align="left">cubit (UK)</td><td>X</td><td align="center">0.4572</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cup (metric)</td><td>X</td><td align="center">0.2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">cup (US)</td><td>X</td><td align="center">0.2365882</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">d&eacute;miard</td><td>X</td><td align="center">2.8413e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">dalton</td><td>X</td><td align="center">1.66057000e-27</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">day (24 hours)</td><td>X</td><td align="center">86400</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">decast&egrave;re</td><td>X</td><td align="center">10000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">decilitre</td><td>X</td><td align="center">1e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">decist&egrave;re</td><td>X</td><td align="center">100</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">denier (de Paris)</td><td>X</td><td align="center">1.27476563e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">denier</td><td>X</td><td align="center">1.111e-7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">donkey</td><td>X</td><td align="center">250</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">drachm (apothecary)</td><td>X</td><td align="center">3.88793460e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">dram (avoirdupois)</td><td>X</td><td align="center">1.77184520e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">dram (troy)</td><td>X</td><td align="center">3.88793460e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">drex</td><td>X</td><td align="center">1e-7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">dyne</td><td>X</td><td align="center">1e-5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">electron radius</td><td>X</td><td align="center">2.81794092e-15</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">electronvolt</td><td>X</td><td align="center">1.60217733e-19</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ell</td><td>X</td><td align="center">1.143</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">encablure</td><td>X</td><td align="center">220</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">eon</td><td>X</td><td align="center">3.15576e+16</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">erg per second</td><td>X</td><td align="center">1e-7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">erg</td><td>X</td><td align="center">1e-7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">fathom</td><td>X</td><td align="center">1.8288</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">femtometre</td><td>X</td><td align="center">1e-15</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">fermi</td><td>X</td><td align="center">1e-15</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">firkin (UK)</td><td>X</td><td align="center">40.914828</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">firkin (US, liquid)</td><td>X</td><td align="center">34.06870606</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">fluid drachm (UK)</td><td>X</td><td align="center">3.551634375e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">fluid dram (US)</td><td>X</td><td align="center">3.696691195e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">fluid ounce (UK)</td><td>X</td><td align="center">2.841307500e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">fluid ounce (US)</td><td>X</td><td align="center">2.957352956e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">fluid scruple (UK)</td><td>X</td><td align="center">1.18387812e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot (1963)</td><td>X</td><td align="center">0.3048</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot (old)</td><td>X</td><td align="center">0.3048799700</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot (US, survey)</td><td>X</td><td align="center">0.3048006096</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot pound-force per hour</td><td>X</td><td align="center">3.704420624e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot pound-force per minute</td><td>X</td><td align="center">2.259696581e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot pound-force per second</td><td>X</td><td align="center">1.355817948</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot poundal per second</td><td>X</td><td align="center">4.214011009e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot-pound-force (duty)</td><td>X</td><td align="center">1.355817948</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">foot-poundal</td><td>X</td><td align="center">4.214011009e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">forty feet equiv. unit</td><td>X</td><td align="center">7.249112728e+4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">frigorie</td><td>X</td><td align="center">-4.1855e+3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">funal</td><td>X</td><td align="center">1000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">furlong (UK)</td><td>X</td><td align="center">201.168</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (Canadian, liquid)</td><td>X</td><td align="center">4.546092</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (imperial, UK)</td><td>X</td><td align="center">4.546092</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (UK) per foot</td><td>X</td><td align="center">1.4915e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (UK) per inch</td><td>X</td><td align="center">1.7898e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (UK) per mile (int.)</td><td>X</td><td align="center">2.82480534e-6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (US) per foot</td><td>X</td><td align="center">1.241933e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (US) per inch</td><td>X</td><td align="center">1.4903196e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (US) per mile (int.)</td><td>X</td><td align="center">2.352141449e-6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (US, dry)</td><td>X</td><td align="center">4.404884</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gallon (US, liquid)</td><td>X</td><td align="center">3.785411784</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gamma</td><td>X</td><td align="center">1e-09</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Gaussian year</td><td>X</td><td align="center">3.1558368787e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gigan</td><td>X</td><td align="center">3.15576e+16</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gill, roquille (UK)</td><td>X</td><td align="center">1.420653750e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gill, roquille (US)</td><td>X</td><td align="center">1.182941183e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">glug</td><td>X</td><td align="center">1e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">grain (av.) per 100 yards</td><td>X</td><td align="center">7.0864950e-12</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">grain (av.) per 120 yards</td><td>X</td><td align="center">5.9054125e-12</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">grain (avoir.) per cubic foot</td><td>X</td><td align="center">2.288351911e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">grain (avoir.) per UK gallon</td><td>X</td><td align="center">1.425376125e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">grain (avoir.) per US gallon</td><td>X</td><td align="center">1.711806097e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">grain (avoirdupois, troy, apoth.)</td><td>X</td><td align="center">6.47989100e-05</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">grain (de Paris)</td><td>X</td><td align="center">5.31152344e-05</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">grain (jeweller's)</td><td>X</td><td align="center">5e-05</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gram per cubic centimetre</td><td>X</td><td align="center">1000</td><td>=</td><td align="left">gram per cubic decimetre</td></tr>
+<tr><td align="left">gram per cubic metre</td><td>X</td><td align="center">1e-3</td><td>=</td><td align="left">gram per cubic decimetre</td></tr>
+<tr><td align="left">gram per cubic millimetre</td><td>X</td><td align="center">1e+6</td><td>=</td><td align="left">gram per cubic decimetre</td></tr>
+<tr><td align="left">gram per square centimetre</td><td>X</td><td align="center">10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gram per square metre</td><td>X</td><td align="center">1e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gram</td><td>X</td><td align="center">1e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Gregorian year</td><td>X</td><td align="center">3.15576e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">gros (de Paris)</td><td>X</td><td align="center">3.82429688e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hand (UK)</td><td>X</td><td align="center">1.016e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hartree (u.a. of energy)</td><td>X</td><td align="center">4.3597482e-18</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hectare</td><td>X</td><td align="center">1e+4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hectogram</td><td>X</td><td align="center">0.1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hogshead (US, liquid)</td><td>X</td><td align="center">238.4809424</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">horsepower (550 ft.lbf/s)</td><td>X</td><td align="center">745.699871582</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">horsepower (boiler)</td><td>X</td><td align="center">9.8095e+5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">horsepower (cheval vapeur)</td><td>X</td><td align="center">735.49875</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">horsepower (electric)</td><td>X</td><td align="center">746</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">horsepower (metric)</td><td>X</td><td align="center">735.49875</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">horsepower (UK)</td><td>X</td><td align="center">745.7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">horsepower (water)</td><td>X</td><td align="center">746.043</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hour (60 minutes)</td><td>X</td><td align="center">3600</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hubble</td><td>X</td><td align="center">9.4605297e+24</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hundredweight (gross or long)</td><td>X</td><td align="center">50.80235</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hundredweight (net or short)</td><td>X</td><td align="center">45.359237</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">hyl (techma, UdM, mug, par)</td><td>X</td><td align="center">9.80665</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">inch (old)</td><td>X</td><td align="center">2.53999800e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">inch (US, survey)</td><td>X</td><td align="center">2.54000508e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">inch ounce-force per second</td><td>X</td><td align="center">9.415402419e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">inch</td><td>X</td><td align="center">2.54e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">iron</td><td>X</td><td align="center">5.3e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">joule (int.)</td><td>X</td><td align="center">1.000165</td><td>=</td><td align="left">joule</td></tr>
+<tr><td align="left">Julian year</td><td>X</td><td align="center">3.1556952e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilderkin (UK)</td><td>X</td><td align="center">81.829656</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilocalorie (therm.)</td><td>X</td><td align="center">4184</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilogram per centimetre</td><td>X</td><td align="center">100</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilogram per cubic decimetre</td><td>X</td><td align="center">1000</td><td>=</td><td align="left">kilogram per cubic metre</td></tr>
+<tr><td align="left">kilogram per decimetre</td><td>X</td><td align="center">10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilogram per hectare</td><td>X</td><td align="center">1e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilogram-force metre per second</td><td>X</td><td align="center">9.80665</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilogram-force-metre</td><td>X</td><td align="center">9.80665</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilogram-force</td><td>X</td><td align="center">9.80665</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilometre</td><td>X</td><td align="center">1e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilometre</td><td>X</td><td align="center">1000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kiloton (TNT)</td><td>X</td><td align="center">4.18e+18</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilowatt-hour</td><td>X</td><td align="center">3.6e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kilowatt</td><td>X</td><td align="center">1000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kip (kilopound)</td><td>X</td><td align="center">453.59237</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">kip-force</td><td>X</td><td align="center">4448.221615261</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">lambda</td><td>X</td><td align="center">1e-6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">last</td><td>X</td><td align="center">2909.498</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">league (Canadian)</td><td>X</td><td align="center">4827</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">league (international, nautical)</td><td>X</td><td align="center">5556</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">league (telegr., nautical)</td><td>X</td><td align="center">1855.3176</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">league (UK, nautical)</td><td>X</td><td align="center">5559.552</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">league (US, statute)</td><td>X</td><td align="center">4828.032</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">lieue (de Poste)</td><td>X</td><td align="center">3898</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">lieue (metric)</td><td>X</td><td align="center">4000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ligne (de Paris)</td><td>X</td><td align="center">2.55830000e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ligne (metric)</td><td>X</td><td align="center">2.30e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">line (UK), button</td><td>X</td><td align="center">2.11666667e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">line (US)</td><td>X</td><td align="center">6.35e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">link (engineer's)</td><td>X</td><td align="center">0.3048</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">link (surveyor's)</td><td>X</td><td align="center">2.011680e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">litre-atmosphere</td><td>X</td><td align="center">101.625</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">livre (de Paris)</td><td>X</td><td align="center">0.489510000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">load (UK)</td><td>X</td><td align="center">587.855711520</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">lot (de Paris)</td><td>X</td><td align="center">1.52971875e-02</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">marc (de Paris)</td><td>X</td><td align="center">0.244755000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mean solar day</td><td>X</td><td align="center">86400</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">megaton (TNT)</td><td>X</td><td align="center">4.18e+21</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">megawatt</td><td>X</td><td align="center">1e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">megayear</td><td>X</td><td align="center">3.15576e+13</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">microgamma</td><td>X</td><td align="center">1e-15</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">microgram</td><td>X</td><td align="center">1e-09</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">microinch</td><td>X</td><td align="center">2.54e-8</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">microlitre</td><td>X</td><td align="center">1e-6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">micrometre</td><td>X</td><td align="center">1e-6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">micron</td><td>X</td><td align="center">1e-6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mile (geographical)</td><td>X</td><td align="center">7.421591e+3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mile (international, nautical)</td><td>X</td><td align="center">1852</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mile (international, statute)</td><td>X</td><td align="center">1609.347</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mile (UK, nautical)</td><td>X</td><td align="center">1853.184</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mile (US, nautical)</td><td>X</td><td align="center">1853.184</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mile (US, statute)</td><td>X</td><td align="center">1609.344</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mile (US, survey)</td><td>X</td><td align="center">1609.3472187</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">millennium</td><td>X</td><td align="center">3.15576e+10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">milligamma</td><td>X</td><td align="center">1e-12</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">milligram per square centimetre</td><td>X</td><td align="center">1e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">milligram</td><td>X</td><td align="center">1e-06</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">millilitre</td><td>X</td><td align="center">1e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">millimetre</td><td>X</td><td align="center">1e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">millimicron</td><td>X</td><td align="center">1e-9</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">mil</td><td>X</td><td align="center">2.54e-5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">minim (UK)</td><td>X</td><td align="center">5.919390625e-5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">minim (US, liquid)</td><td>X</td><td align="center">6.161151992e-5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">minute (60 seconds)</td><td>X</td><td align="center">60</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Mohr centicube</td><td>X</td><td align="center">1.00238e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">momme (Japan, pearl)</td><td>X</td><td align="center">3.75e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">month (30 days)</td><td>X</td><td align="center">2.592e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">muid (de Paris)</td><td>X</td><td align="center">274</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">myriagram</td><td>X</td><td align="center">10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">myriametre</td><td>X</td><td align="center">1e+4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">nail (UK)</td><td>X</td><td align="center">2.29e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">nanometre</td><td>X</td><td align="center">1e-9</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">noggin (UK)</td><td>X</td><td align="center">1.420653750e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">once (de Paris)</td><td>X</td><td align="center">3.04943750e-02</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ounce (apothecary, troy)</td><td>X</td><td align="center">0.0311034768</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ounce (avoir.) per UK gallon</td><td>X</td><td align="center">6.236020520</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ounce (avoir.) per US gallon</td><td>X</td><td align="center">7.489151643</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ounce (avoirdupois)</td><td>X</td><td align="center">2.83495231e-02</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ounce (UK) per square foot</td><td>X</td><td align="center">3.051517259e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ounce (UK) per square inch</td><td>X</td><td align="center">43.941848534</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ounce (UK) per square yard</td><td>X</td><td align="center">3.390574733e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ounce-force</td><td>X</td><td align="center">2.780138510e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pace (UK)</td><td>X</td><td align="center">0.762</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">palm (UK)</td><td>X</td><td align="center">7.62e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">parsec</td><td>X</td><td align="center">3.0856780e+16</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pas (de Paris)</td><td>X</td><td align="center">0.6240000000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">peck (UK)</td><td>X</td><td align="center">9.092184</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">peck (US, dry)</td><td>X</td><td align="center">8.809768</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pennyweight (troy)</td><td>X</td><td align="center">1.55517384e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">perch (masonry)</td><td>X</td><td align="center">700.8419532</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">perch (pole, rod)</td><td>X</td><td align="center">5.0292</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">perche (de Paris)</td><td>X</td><td align="center">34.1887</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">perche (de Paris)</td><td>X</td><td align="center">5.847</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">picometre</td><td>X</td><td align="center">1e-12</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pied (de Paris)</td><td>X</td><td align="center">0.3248394000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pied (metric)</td><td>X</td><td align="center">0.333</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pint (UK)</td><td>X</td><td align="center">5.682615e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pint (US, dry)</td><td>X</td><td align="center">5.506105e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pint (US, liquid)</td><td>X</td><td align="center">4.731764730e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">poncelet</td><td>X</td><td align="center">980.665</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pond</td><td>X</td><td align="center">9.80655e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pood (Russian)</td><td>X</td><td align="center">16.380500000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pottle (UK)</td><td>X</td><td align="center">2.273046</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pouce (de Paris)</td><td>X</td><td align="center">2.706995e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pouce (metric)</td><td>X</td><td align="center">2.75e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">poumar</td><td>X</td><td align="center">4.9605465e-7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound (apothecary, troy)</td><td>X</td><td align="center">0.373241722</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound (avoir.) per cubic foot</td><td>X</td><td align="center">16.018463374</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound (avoir.) per UK gallon</td><td>X</td><td align="center">99.776328768</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound (avoir.) per US gallon</td><td>X</td><td align="center">119.826426810</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound (avoirdupois)</td><td>X</td><td align="center">0.453592428</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound (imperial standard)</td><td>X</td><td align="center">0.453592338</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound (US)</td><td>X</td><td align="center">0.453592243</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound (WMA, 1963)</td><td>X</td><td align="center">0.45359237</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound centigrade unit (15&#176;C)</td><td>X</td><td align="center">1899.1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound per acre</td><td>X</td><td align="center">1.120851156e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound per cubic inch</td><td>X</td><td align="center">2.767990471e+4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound per foot</td><td>X</td><td align="center">1.488163944</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound per inch</td><td>X</td><td align="center">17.85796732</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound per square foot</td><td>X</td><td align="center">4.882427636</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound per square inch</td><td>X</td><td align="center">703.069579639</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound per square yard</td><td>X</td><td align="center">5.424919596e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound per yard</td><td>X</td><td align="center">4.9605465e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">pound-force</td><td>X</td><td align="center">4.448221615</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">poundal</td><td>X</td><td align="center">1.382549544e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">prony</td><td>X</td><td align="center">98.0665</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">prout</td><td>X</td><td align="center">2.9638e-14</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">puncheon (UK)</td><td>X</td><td align="center">318.22644</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Q unit</td><td>X</td><td align="center">1.055e+21</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quad (quadrillion, Btu)</td><td>X</td><td align="center">1.055055853e+18</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quart (UK)</td><td>X</td><td align="center">1.136523</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quart (US, dry)</td><td>X</td><td align="center">1.101221</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quart (US, liquid)</td><td>X</td><td align="center">9.463529460e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quarter (UK)</td><td>X</td><td align="center">12.700586360</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quarter (UK)</td><td>X</td><td align="center">290.949888</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quarter (US, long)</td><td>X</td><td align="center">254.011727200</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quarter (US, short)</td><td>X</td><td align="center">226.796185000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quarter section</td><td>X</td><td align="center">6.474970276e+5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quarteron (de Paris)</td><td>X</td><td align="center">0.122377500</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quinital (metric)</td><td>X</td><td align="center">100</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">quintal (US)</td><td>X</td><td align="center">45.359237</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">register ton (UK)</td><td>X</td><td align="center">2831.68466</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">rood (UK)</td><td>X</td><td align="center">1011.71410560</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">rope (UK)</td><td>X</td><td align="center">6.096</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">rydberg</td><td>X</td><td align="center">2.1798741e-18</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">sack (UK)</td><td>X</td><td align="center">109.106208</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">scruple (avoirdupois)</td><td>X</td><td align="center">1.57497351e-03</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">seam (UK)</td><td>X</td><td align="center">290.949888</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">shacles (UK)</td><td>X</td><td align="center">27.432</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">shake</td><td>X</td><td align="center">1e-8</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">shed</td><td>X</td><td align="center">1e-52</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">sidereal day</td><td>X</td><td align="center">86164.0905</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">sidereal year</td><td>X</td><td align="center">3.15581495e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">siriometre</td><td>X</td><td align="center">1.4959787e+17</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">siriusweit</td><td>X</td><td align="center">1.54283900e+17</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">skein (UK)</td><td>X</td><td align="center">109.728</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">skein (UK)</td><td>X</td><td align="center">109.728</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">slug (geepound)</td><td>X</td><td align="center">14.593902940</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">slug-force</td><td>X</td><td align="center">143.117305000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">span (UK)</td><td>X</td><td align="center">2.2860e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">spat</td><td>X</td><td align="center">1e+12</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">square angstrom</td><td>X</td><td align="center">1e-20</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square attometre</td><td>X</td><td align="center">1e-36</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square bohr (a.u.)</td><td>X</td><td align="center">2.800285609e-21</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square centimetre</td><td>X</td><td align="center">1e-4</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square chain (Eng.)</td><td>X</td><td align="center">929.0304</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square chain (Gunter's)</td><td>X</td><td align="center">404.68564224</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square chain (Ramsden's)</td><td>X</td><td align="center">929.0304</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square chain (surv.)</td><td>X</td><td align="center">404.68564224</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square decimetre</td><td>X</td><td align="center">1e-2</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square femtometre</td><td>X</td><td align="center">1e-30</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square fermi</td><td>X</td><td align="center">1e-30</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square foot (US, survey)</td><td>X</td><td align="center">9.290341161e-2</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square foot</td><td>X</td><td align="center">9.290304e-2</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square inch</td><td>X</td><td align="center">6.4516e-4</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (Canadian)</td><td>X</td><td align="center">2.329992900e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (int., naut.)</td><td>X</td><td align="center">3.086913600e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (metric)</td><td>X</td><td align="center">1.6e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (statute)</td><td>X</td><td align="center">2.330989299e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (UK, naut.)</td><td>X</td><td align="center">3.090861844e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square league (US, naut.)</td><td>X</td><td align="center">3.090861844e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square micron</td><td>X</td><td align="center">1e-12</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (geog.)</td><td>X</td><td align="center">5.508001297e+7</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (int.)</td><td>X</td><td align="center">2.589997766e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (int., naut.)</td><td>X</td><td align="center">3.429904000e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (tele., naut.)</td><td>X</td><td align="center">3.442203397e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (UK, naut.)</td><td>X</td><td align="center">3.434290938e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (US, naut.)</td><td>X</td><td align="center">3.434290938e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (US, statute)</td><td>X</td><td align="center">2.589988110e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square mile (US, survey)</td><td>X</td><td align="center">2.589998470e+6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square millimetre</td><td>X</td><td align="center">1e-6</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square nanometre</td><td>X</td><td align="center">1e-18</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square picometre</td><td>X</td><td align="center">1e-24</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square rod/perch/pole</td><td>X</td><td align="center">25.2928526400</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square yard (old)</td><td>X</td><td align="center">8.361257141e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square yard (US)</td><td>X</td><td align="center">8.361307045e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">square yard (WMA, 1963)</td><td>X</td><td align="center">8.3612736e-1</td><td>=</td><td align="left">square metre</td></tr>
+<tr><td align="left">st&egrave;re</td><td>X</td><td align="center">1000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">standart (Petrograd)</td><td>X</td><td align="center">4627.279688</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">stellar day</td><td>X</td><td align="center">86164.0989</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">sthene</td><td>X</td><td align="center">1000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">stone (UK)</td><td>X</td><td align="center">6.350293180</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">stone (UK, wool)</td><td>X</td><td align="center">5.669904625</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">tablespoon (metric)</td><td>X</td><td align="center">1.50e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">tablespoon (US)</td><td>X</td><td align="center">1.478677e-2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">teaspoon (metric)</td><td>X</td><td align="center">5e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">teaspoon (US)</td><td>X</td><td align="center">4.928922e-3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">tempon</td><td>X</td><td align="center">1e-23</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">tex</td><td>X</td><td align="center">1e-6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">therm (EEG)</td><td>X</td><td align="center">1.055055853e+8</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">therm (US)</td><td>X</td><td align="center">1.054804000e+8</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">thermie (15&#176;C)</td><td>X</td><td align="center">4.1855e+6</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">thou (millinch)</td><td>X</td><td align="center">2.54e-5</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">toise (de Paris)</td><td>X</td><td align="center">1.949036600</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">toise (metric)</td><td>X</td><td align="center">2</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (assay UK)</td><td>X</td><td align="center">0.0326666700</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (assay US)</td><td>X</td><td align="center">2.91666700e-02</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (metric) per cubic metre</td><td>X</td><td align="center">1000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (metric) per metre</td><td>X</td><td align="center">1000</td><td>=</td><td align="left">ton (metric) per kilometre</td></tr>
+<tr><td align="left">ton (metric)</td><td>X</td><td align="center">1000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (UK) per square mile (int.)</td><td>X</td><td align="center">3.922979047e-4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (UK, shipping)</td><td>X</td><td align="center">1169.698141000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (UK, short)</td><td>X</td><td align="center">1016.046908800</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (US, long)</td><td>X</td><td align="center">1016.046908800</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton (US, short)</td><td>X</td><td align="center">907.184740000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton coal equiv.</td><td>X</td><td align="center">2.929e+8</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton oil equiv.</td><td>X</td><td align="center">4.187e+8</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton-force (long)</td><td>X</td><td align="center">9964.016418184</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton-force (metric)</td><td>X</td><td align="center">9806.65</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">ton-force (short)</td><td>X</td><td align="center">8896.443230521</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">tonneau de jauge</td><td>X</td><td align="center">2831.68466</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">township (US)</td><td>X</td><td align="center">9.323957197e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">tropical year</td><td>X</td><td align="center">3.1556925975e+7</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">truss (UK)</td><td>X</td><td align="center">16.329325320</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">tun (US)</td><td>X</td><td align="center">953.9237696</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">twenty feet equiv. unit</td><td>X</td><td align="center">3.624556364e+4</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">u.a. of force</td><td>X</td><td align="center">8.238729530e-8</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">u.a. of time</td><td>X</td><td align="center">2.418884338e-17</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">UK ton per 1000 yards</td><td>X</td><td align="center">1.111162411</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">UK ton per cubic yard</td><td>X</td><td align="center">1.328939184e+3</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">UK ton per mile</td><td>X</td><td align="center">6.3134228e-1</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">vergees (Guernsey)</td><td>X</td><td align="center">1541.65958949</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">vergees (Jersey)</td><td>X</td><td align="center">1798.60285440</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">watt (international mean)</td><td>X</td><td align="center">1.00019</td><td>=</td><td align="left">volt-ampere</td></tr>
+<tr><td align="left">watt (international US)</td><td>X</td><td align="center">1.000165</td><td>=</td><td align="left">volt-ampere</td></tr>
+<tr><td align="left">watt</td><td>X</td><td align="center">1</td><td>=</td><td align="left">volt-ampere</td></tr>
+<tr><td align="left">wey (UK)</td><td>X</td><td align="center">114.305277240</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">wey (UK, capacity)</td><td>X</td><td align="center">1454.74944</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">Winchester bushel</td><td>X</td><td align="center">35.239072</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">wink</td><td>X</td><td align="center">3.333333333e-12</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">X unit</td><td>X</td><td align="center">1.00020779e-10</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">yard (1963)</td><td>X</td><td align="center">0.9144</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">yard (old)</td><td>X</td><td align="center">0.9143992000</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">yard (US)</td><td>X</td><td align="center">0.91440183</td><td>=</td><td align="left"></td></tr>
+<tr><td align="left">year (365.25 days)</td><td>X</td><td align="center">3.15576e+7</td><td>=</td><td align="left"></td></tr>
+
+</table>
+</div>
+<br />&nbsp;<br /><div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div></div>
+</body>
+</html>
+
+<!-- 1662471481 //-->

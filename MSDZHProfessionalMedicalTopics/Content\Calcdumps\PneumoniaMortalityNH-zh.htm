@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>疗养院患者肺炎死亡率预测</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="pulmonary, infectious disease, geriatrics, prognosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+PneumoniaMortalityNH_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+PneumoniaMortalityNH_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function PneumoniaMortalityNH_fx() {
+with(document.PneumoniaMortalityNH_form){
+
+Score = 0.0;
+doCalc = true;
+
+Score = Score + parseFloat(cc1.options[cc1.selectedIndex].value);
+Score = Score + parseFloat(cc2.options[cc2.selectedIndex].value);
+rbchk = false;
+if (cc3[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc3[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (!rbchk) doCalc = false;
+Score = Score + parseFloat(cc4.options[cc4.selectedIndex].value);
+Score = Score + parseFloat(cc5.options[cc5.selectedIndex].value);
+Score = Score + parseFloat(cc6.options[cc6.selectedIndex].value);
+Score = Score + parseFloat(cc7.options[cc7.selectedIndex].value);
+rbchk = false;
+if (cc8[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc8[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (!rbchk) doCalc = false;
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.PneumoniaMortalityNH_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 4)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 5) && (Score <= 6)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 7) && (Score <= 8)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 9) && (Score <= 10)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+if ((Score >= 11) && (Score <= 21)){ document.getElementById('rr1_5').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+document.getElementById('rr1_5').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="PneumoniaMortalityNH_form" id="PneumoniaMortalityNH_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+疗养院患者肺炎死亡率预测
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">血尿素氮</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc1" onchange="PneumoniaMortalityNH_fx();" class="medCalcFontSelect">
+<option value="0">&le;16 mg/dL (0 分)</option>
+<option value="1">16.1-27 (1 分)</option>
+<option value="2">27.1-38 (2 分)</option>
+<option value="3">38.1-49 (3 分)</option>
+<option value="4">49.1-60 (4 分)</option>
+<option value="5">60.1-70 (5 分)</option>
+<option value="6">&gt;71 (6 分)</option>
+<option value="">________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">白细胞计数</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc2" onchange="PneumoniaMortalityNH_fx();" class="medCalcFontSelect">
+<option value="0">&le;14 (0 分)</option>
+<option value="1">14.1-24 (1 分)</option>
+<option value="2">&gt;24 (2 分)</option>
+<option value="">________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">绝对淋巴细胞 (每mcL)～绝对淋巴细胞计数.方程～绝对淋巴细胞计数_指标～绝对淋巴细胞计数 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel1" name="cc3" onclick="PneumoniaMortalityNH_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');">800-200000 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel2" name="cc3" onclick="PneumoniaMortalityNH_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">0-800 (1 分)</span></td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">脉搏</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc4" onchange="PneumoniaMortalityNH_fx();" class="medCalcFontSelect">
+<option value="0">&le;72 / 分钟 (0 分)</option>
+<option value="1">73-102 (1 分)</option>
+<option value="2">103-132 (2 分)</option>
+<option value="3">&gt;132 (3 分)</option>
+<option value="">________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">性别</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc5" onchange="PneumoniaMortalityNH_fx();" class="medCalcFontSelect">
+<option value="0">女 (0 分)</option>
+<option value="1">男 (1 分)</option>
+<option value="">________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">BMI～身体质量指数.方程～BMI_指标～BMI</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc6" onchange="PneumoniaMortalityNH_fx();" class="medCalcFontSelect">
+<option value="0">31-100 (0 分)</option>
+<option value="1">25.1-31 (1 分)</option>
+<option value="2">19.1-25 (2 分)</option>
+<option value="3">13.1-19 (3 分)</option>
+<option value="4">0-13 (4 分)</option>
+<option value="">________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">活动度评分～活动度评分.cc～总cc～评分</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc7" onchange="PneumoniaMortalityNH_fx();" class="medCalcFontSelect">
+<option value="0">0-0 (0 分)</option>
+<option value="1">1-2 (1 分)</option>
+<option value="2">3-4 (2 分)</option>
+<option value="">________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">情绪变坏超过三个月 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc8" onclick="PneumoniaMortalityNH_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">否 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc8" onclick="PneumoniaMortalityNH_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">是 (2 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+30日死亡率估值
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 4 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">2.2-2.4%</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">5 - 6 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">6.2-6.9%</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">7 - 8 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">15.6-15.8%</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">9 - 10 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">34.5-35.9%</span></td></tr>
+<tr id="rr1_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">11 - 21 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">60-61.6%</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Mehr DR, Binder EF, Kruse RL, et al. Predicting mortality in nursing home residents with lower respiratory tract infection: The Missouri LRI Study. <i>JAMA</i>. 2001; 286: 2427-36. PubMed ID: 11712938 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/11712938"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471512 //-->

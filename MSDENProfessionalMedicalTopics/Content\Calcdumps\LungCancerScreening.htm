@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Lung Cancer Risk Estimation in Current and Past Smokers (6-year)</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="pulm, onc, epidem, smoke, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' is improperly formatted. You may only input the digits 0-9 and a decimal point.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+LungCancerScreening_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+LungCancerScreening_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function LungCancerScreening_fx() {
+
+with(document.LungCancerScreening_form){
+
+
+doCalc = true;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+rbchk = false;
+if (Race_radio[0].checked){ rbchk = true; Race = 0;  }
+if (Race_radio[1].checked){ rbchk = true; Race = 0.3944778;  }
+if (Race_radio[2].checked){ rbchk = true; Race = -0.7434744;  }
+if (Race_radio[3].checked){ rbchk = true; Race = -0.466585;  }
+if (Race_radio[4].checked){ rbchk = true; Race = 0;  }
+if (Race_radio[5].checked){ rbchk = true; Race = 1.027152;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Education_radio[0].checked){ rbchk = true; Education = 1;  }
+if (Education_radio[1].checked){ rbchk = true; Education = 2;  }
+if (Education_radio[2].checked){ rbchk = true; Education = 3;  }
+if (Education_radio[3].checked){ rbchk = true; Education = 4;  }
+if (Education_radio[4].checked){ rbchk = true; Education = 5;  }
+if (Education_radio[5].checked){ rbchk = true; Education = 6;  }
+if (!rbchk) doCalc = false;
+param_value = parseFloat(Body_Mass_Index_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+Body_Mass_Index = param_value;
+if (COPD_checkbox.checked){ COPD = 0.3553063;
+} else { COPD = 0; }
+if (HxCa_checkbox.checked){ HxCa = 0.4589971;
+} else { HxCa = 0; }
+if (FMHCa_checkbox.checked){ FMHCa = 0.587185;
+} else { FMHCa = 0; }
+if (Smoker_checkbox.checked){ Smoker = 0.2597431;
+} else { Smoker = 0; }
+param_value = parseFloat(Cigarettes_per_day_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Cigarettes_per_day_unit.options[Cigarettes_per_day_unit.selectedIndex].value.split('|');
+Cigarettes_per_day = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Years_smoking_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Years_smoking_unit.options[Years_smoking_unit.selectedIndex].value.split('|');
+Years_smoking = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Years_since_quitting_smoking_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Years_since_quitting_smoking_unit.options[Years_since_quitting_smoking_unit.selectedIndex].value.split('|');
+Years_since_quitting_smoking = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = decpts.options[decpts.selectedIndex].text;
+if(Smoker_checkbox.checked){Years_since_quitting_smoking_param.value = '0'; Years_since_quitting_smoking = 0 }
+Log_odds =  (0.0778868 * (Age - 62)) + Race - (0.0812744 * (Education - 4)) - (0.0274194 * (Body_Mass_Index - 27)) + COPD +  HxCa + FMHCa + Smoker - (1.822606 * ((10 / Cigarettes_per_day) - 0.4021541613)) + (0.0317321 * (Years_smoking - 27)) -  (0.0308572 * (Years_since_quitting_smoking - 10)) - 4.532506;
+
+if (doCalc) Log_odds_param.value = fixDP(Log_odds, dp);
+
+
+
+Risk =  100 * (eTo(Log_odds) / (1 + eTo(Log_odds)));
+
+unit_parts = Risk_unit.options[Risk_unit.selectedIndex].value.split('|');
+if (doCalc) Risk_param.value = fixDP((Risk - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.LungCancerScreening_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('Age'); }
+if (Age_param.value && (Age < (55 - 0.00001))) {
+Age = 0;
+clrValue(Age_param);
+clrResults();
+doCalc = false;
+ alert("The minimum value for Age is 55 yr.\nIf you are specifying a value with a different unit, change the unit selector first.");
+}
+if (Age_param.value && Age > 74) {
+clrValue(Age_param);
+clrResults();
+Age = 0;
+doCalc = false;
+ alert("The maximum value for Age is 74 yr.\nIf you are specifying a value with a different unit, change the unit selector first.");
+}
+if (Body_Mass_Index_param.value && isNaN(Body_Mass_Index_param.value)){ clrValue(Body_Mass_Index_param); alertNaN('Body Mass Index'); }
+if (Cigarettes_per_day_param.value && isNaN(Cigarettes_per_day_param.value)){ clrValue(Cigarettes_per_day_param); alertNaN('Cigarettes per day'); }
+if (Cigarettes_per_day_param.value && (Cigarettes_per_day < (1 - 0.00001))) {
+Cigarettes_per_day = 0;
+clrValue(Cigarettes_per_day_param);
+clrResults();
+doCalc = false;
+ alert("The minimum value for Cigarettes per day is 1 #.\nIf you are specifying a value with a different unit, change the unit selector first.");
+}
+if (Years_smoking_param.value && isNaN(Years_smoking_param.value)){ clrValue(Years_smoking_param); alertNaN('Years smoking'); }
+if (Years_since_quitting_smoking_param.value && isNaN(Years_since_quitting_smoking_param.value)){ clrValue(Years_since_quitting_smoking_param); alertNaN('Years since quitting smoking'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.LungCancerScreening_form){
+
+Log_odds_param.value = '';
+Risk_param.value = '';
+
+
+}
+
+}
+
+var Age = null,
+Race = null,
+Education = null,
+Body_Mass_Index = null,
+COPD = null,
+HxCa = null,
+FMHCa = null,
+Smoker = null,
+Cigarettes_per_day = null,
+Years_smoking = null,
+Years_since_quitting_smoking = null,
+Log_odds = null,
+Risk = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="LungCancerScreening_form" id="LungCancerScreening_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="LungCancerScreening_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+Lung Cancer Risk Estimation in Current and Past Smokers (6-year)
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+Input
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Age</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="LungCancerScreening_fx(); minMaxCheck();" onchange="LungCancerScreening_fx();" aria-label="Use this input box to enter the value Age" /></td>
+<td align="left" valign="top"> <select name="Age_unit" onchange="LungCancerScreening_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect" aria-label="Use this pulldown selector to set the unit of measure for the value Age">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">Race</span></td>
+<td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel1" value="White|0" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Race. The variable option is White. The value for this variable is 0" /><span class="medCalcFontOneClick" onclick="setRB('togel1');"> White (0)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel2" value="Black|0.3944778" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Race. The variable option is Black. The value for this variable is 0.3944778" /><span class="medCalcFontOneClick" onclick="setRB('togel2');"> Black (0.3944778)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel3" value="Hispanic|-0.7434744" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Race. The variable option is Hispanic. The value for this variable is -0.7434744" /><span class="medCalcFontOneClick" onclick="setRB('togel3');"> Hispanic <span style="white-space: nowrap;">(-0.7434744)</span></span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel4" value="Asian|-0.466585" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Race. The variable option is Asian. The value for this variable is -0.466585" /><span class="medCalcFontOneClick" onclick="setRB('togel4');"> Asian <span style="white-space: nowrap;">(-0.466585)</span></span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel5" value="Native American/Alaskan|0" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Race. The variable option is Native American/Alaskan. The value for this variable is 0" /><span class="medCalcFontOneClick" onclick="setRB('togel5');"> Native American/Alaskan (0)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Race_radio" id="togel6" value="Native Pacific islander/Hawaiian|1.027152" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Race. The variable option is Native Pacific islander/Hawaiian. The value for this variable is 1.027152" /><span class="medCalcFontOneClick" onclick="setRB('togel6');"> Native Pacific islander/Hawaiian (1.027152)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">Education</span></td>
+<td colspan="2" align="left"><input type="radio" name="Education_radio" id="togel7" value="Less than high school|1" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Education. The variable option is Less than high school. The value for this variable is 1" /><span class="medCalcFontOneClick" onclick="setRB('togel7');"> Less than high school (1)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Education_radio" id="togel8" value="High School graduate|2" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Education. The variable option is High School graduate. The value for this variable is 2" /><span class="medCalcFontOneClick" onclick="setRB('togel8');"> High School graduate (2)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Education_radio" id="togel9" value="Training after high school|3" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Education. The variable option is Training after high school. The value for this variable is 3" /><span class="medCalcFontOneClick" onclick="setRB('togel9');"> Training after high school (3)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Education_radio" id="togel10" value="Some college|4" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Education. The variable option is Some college. The value for this variable is 4" /><span class="medCalcFontOneClick" onclick="setRB('togel10');"> Some college (4)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Education_radio" id="togel11" value="College graduate|5" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Education. The variable option is College graduate. The value for this variable is 5" /><span class="medCalcFontOneClick" onclick="setRB('togel11');"> College graduate (5)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Education_radio" id="togel12" value="Postgraduate training|6" onclick="LungCancerScreening_fx();" aria-label="This button selects an option for the variable: Education. The variable option is Postgraduate training. The value for this variable is 6" /><span class="medCalcFontOneClick" onclick="setRB('togel12');"> Postgraduate training (6)</span></td></tr>
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Body Mass Index</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Body_Mass_Index_param" size="6" value="" onblur="LungCancerScreening_fx(); minMaxCheck();" onchange="LungCancerScreening_fx();" aria-label="Use this input box to enter the value Body Mass Index" /></td>
+<td align="left" valign="top"> <span style="white-space: nowrap;"><span class="medCalcFontOneBold">kg/m^2</span>
+</span></td></tr>
+
+<tr><td align="right"><span class="medCalcFontOneBoldClick" onclick="togCB('togel13');">COPD</span></td>
+<td align="left" colspan="2"><input type="checkbox" id="togel13" name="COPD_checkbox" onclick="LungCancerScreening_fx();" aria-label="Check this box to indicate: COPD. The value for the associated variable is 0.3553063" />
+<span class="medCalcFontOne">(0.3553063)</span></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBoldClick" onclick="togCB('togel14');">History of cancer</span></td>
+<td align="left" colspan="2"><input type="checkbox" id="togel14" name="HxCa_checkbox" onclick="LungCancerScreening_fx();" aria-label="Check this box to indicate: History of cancer. The value for the associated variable is 0.4589971" />
+<span class="medCalcFontOne">(0.4589971)</span></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBoldClick" onclick="togCB('togel15');">Family history of lung cancer</span></td>
+<td align="left" colspan="2"><input type="checkbox" id="togel15" name="FMHCa_checkbox" onclick="LungCancerScreening_fx();" aria-label="Check this box to indicate: Family history of lung cancer. The value for the associated variable is 0.587185" />
+<span class="medCalcFontOne">(0.587185)</span></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBoldClick" onclick="togCB('togel16');">Current smoker</span></td>
+<td align="left" colspan="2"><input type="checkbox" id="togel16" name="Smoker_checkbox" onclick="LungCancerScreening_fx();" aria-label="Check this box to indicate: Current smoker. The value for the associated variable is 0.2597431" />
+<span class="medCalcFontOne">(0.2597431)</span></td></tr>
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Cigarettes per day</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Cigarettes_per_day_param" size="6" value="" onblur="LungCancerScreening_fx(); minMaxCheck();" onchange="LungCancerScreening_fx();" aria-label="Use this input box to enter the value Cigarettes per day" /></td>
+<td align="left" valign="top"> <select name="Cigarettes_per_day_unit" onchange="LungCancerScreening_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect" aria-label="Use this pulldown selector to set the unit of measure for the value Cigarettes per day">
+<option value="1|0|#" selected="selected">#</option>
+<option value="1|0|index">index</option>
+<option value="1|0|none">none</option>
+<option value="1|0|number">number</option>
+<option value="1|0|points">points</option>
+<option value="1|0|score">score</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Years smoking</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Years_smoking_param" size="6" value="" onblur="LungCancerScreening_fx(); minMaxCheck();" onchange="LungCancerScreening_fx();" aria-label="Use this input box to enter the value Years smoking" /></td>
+<td align="left" valign="top"> <select name="Years_smoking_unit" onchange="LungCancerScreening_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect" aria-label="Use this pulldown selector to set the unit of measure for the value Years smoking">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Years since quitting smoking</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Years_since_quitting_smoking_param" size="6" value="" onblur="LungCancerScreening_fx(); minMaxCheck();" onchange="LungCancerScreening_fx();" aria-label="Use this input box to enter the value Years since quitting smoking" /></td>
+<td align="left" valign="top"> <select name="Years_since_quitting_smoking_unit" onchange="LungCancerScreening_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect" aria-label="Use this pulldown selector to set the unit of measure for the value Years since quitting smoking">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">Results</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">Log odds</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Log_odds_param" size="6" aria-readonly="true" aria-label="This output box will display the calculated value Log odds" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<span style="white-space: nowrap;"><span class="medCalcFontResultParam">logit</span>
+</span>
+</span></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">Risk</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Risk_param" size="6" aria-readonly="true" aria-label="This output box will display the calculated value Risk" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Risk_unit" onchange="LungCancerScreening_fx();" style="width:115px;" class="medCalcFontSelect" aria-label="Use this pulldown selector to set the unit of measure for the result value Risk">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|ratio">ratio</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontResultParam">Decimal Precision &nbsp;</span>
+<select name="decpts" onchange="LungCancerScreening_fx();" class="medCalcFontSelect" aria-label="Use this pulldown selector to set the decimal precision of calculations">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">Notes</span>
+<ul class="medCalcFontOne">
+<li>This calculator is based on study-group subjects between the ages of 55 and 74.  It is not appropriate for subjects outside this age range or for subjects who have never smoked.</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>Equations used</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">Logodds = (0.0778868 * (Age - 62)) + Race - (0.0812744 * (Education - 4)) - (0.0274194 * (BodyMassIndex - 27)) + COPD +  HxCa + FMHCa + Smoker - (1.822606 * ((10 / Cigarettesperday) - 0.4021541613)) + (0.0317321 * (Yearssmoking - 27)) -  (0.0308572 * (Yearssincequittingsmoking - 10)) - 4.532506</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">Risk = 100 * (e<sup>(Logodds)</sup> / (1 + e<sup>(Logodds)</sup>))</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+<br />&nbsp;<br />
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">Calculation Details and Variables</span>
+<ul class="medCalcFontOne">
+<li>Equation parameters such as <b>Race</b>, have two or more discrete values that may be used in the calculation. The numbers in the parentheses, e.g.  (0), represent the values that will be used.</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Tammemagi MC, Katki HA, Hocking WG, et al. Selection criteria for lung-cancer screening. <i> N Engl J Med</i>. 2013 Feb 21;368(8):728-36. doi: 10.1056/NEJMoa1211776. PubMed ID: 23425165 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/23425165"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662473282 //-->

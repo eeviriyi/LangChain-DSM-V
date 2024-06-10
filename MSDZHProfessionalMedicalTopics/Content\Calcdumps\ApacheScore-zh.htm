@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>APACHE II 评分系统和死亡率评估（急性生理学和慢性疾病分类系统 II）</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Renal, Pulmonary, Metabolism, Cardivascular, Hematology, Geriatrics, critical, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+ApacheScore_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+ApacheScore_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function ApacheScore_fx() {
+with(document.ApacheScore_form){
+
+Score = 0.0;
+doCalc = true;
+
+Score = Score + parseFloat(cc1.options[cc1.selectedIndex].value);
+Score = Score + parseFloat(cc2.options[cc2.selectedIndex].value);
+Score = Score + parseFloat(cc3.options[cc3.selectedIndex].value);
+Score = Score + parseFloat(cc4.options[cc4.selectedIndex].value);
+Score = Score + parseFloat(cc5.options[cc5.selectedIndex].value);
+Score = Score + parseFloat(cc6.options[cc6.selectedIndex].value);
+Score = Score + parseFloat(cc7.options[cc7.selectedIndex].value);
+Score = Score + parseFloat(cc8.options[cc8.selectedIndex].value);
+Score = Score + parseFloat(cc9.options[cc9.selectedIndex].value);
+Score = Score + parseFloat(cc10.options[cc10.selectedIndex].value);
+Score = Score + parseFloat(cc11.options[cc11.selectedIndex].value);
+Score = Score + parseFloat(cc12.options[cc12.selectedIndex].value);
+Score = Score + parseFloat(cc13.options[cc13.selectedIndex].value);
+rbchk = false;
+if (cc14[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc14[1].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc14[2].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc14[3].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (!rbchk) doCalc = false;
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.ApacheScore_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 4)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 5) && (Score <= 9)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 10) && (Score <= 14)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 15) && (Score <= 19)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+if ((Score >= 20) && (Score <= 24)){ document.getElementById('rr1_5').bgColor = '#8ab2be';
+}
+if ((Score >= 25) && (Score <= 29)){ document.getElementById('rr1_6').bgColor = '#8ab2be';
+}
+if ((Score >= 30) && (Score <= 34)){ document.getElementById('rr1_7').bgColor = '#8ab2be';
+}
+if ((Score >= 35) && (Score <= 100)){ document.getElementById('rr1_8').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+document.getElementById('rr1_5').bgColor = '';
+document.getElementById('rr1_6').bgColor = '';
+document.getElementById('rr1_7').bgColor = '';
+document.getElementById('rr1_8').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="ApacheScore_form" id="ApacheScore_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+APACHE II 评分系统和死亡率评估（急性生理学和慢性疾病分类系统 II）
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">温度（摄氏度）</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc1" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 41 (4 分)</option>
+<option value="3">39-40.9 (3 分)</option>
+<option value="1">38.5-38.9 (1 分)</option>
+<option value="0" selected="selected">36-38.4 (0 分)</option>
+<option value="1">34-35.9 (1 分)</option>
+<option value="2">32-33.9 (2 分)</option>
+<option value="3">30-31.9 (3 分)</option>
+<option value="4">&lt;= 29.9 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">平均动脉压（毫米水银柱）</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc2" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 160 (4 分)</option>
+<option value="3">130-159 (3 分)</option>
+<option value="2">110-129 (2 分)</option>
+<option value="0" selected="selected">70-109 (0 分)</option>
+<option value="2">50-69 (2 分)</option>
+<option value="4">&lt;= 49 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">心率</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc3" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 180 (4 分)</option>
+<option value="3">140-179 (3 分)</option>
+<option value="2">110-139 (2 分)</option>
+<option value="0" selected="selected">70-109 (0 分)</option>
+<option value="2">55-69 (2 分)</option>
+<option value="3">40-54 (3 分)</option>
+<option value="4">&lt;= 39 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">呼吸率</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc4" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 50 (4 分)</option>
+<option value="3">35-49 (3 分)</option>
+<option value="1">25-34 (1 分)</option>
+<option value="0" selected="selected">12-24 (0 分)</option>
+<option value="1">10-11 (1 分)</option>
+<option value="2">6-9 (2 分)</option>
+<option value="4">&lt;= 5 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">A-aPO2(FiO2&gt;50%) 或 PaO2(FiO2&lt;50%)</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc5" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 500 (4 分)</option>
+<option value="3">350-499 (3 分)</option>
+<option value="2">200-349 (2 分)</option>
+<option value="0" selected="selected">&lt; 200 或 PaO2 &gt; 70 (0 分)</option>
+<option value="1">PaO2 61-70 (1 分)</option>
+<option value="3">PaO2 55-60 (3 分)</option>
+<option value="4">PaO2 &lt; 55 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">动脉 pH 值或 HCO3</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc6" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 7.7; &gt;= 52 (4 分)</option>
+<option value="3">7.6-7.69 ; 41-51.9 (3 分)</option>
+<option value="1">7.5-7.59 ; 32-40.9 (1 分)</option>
+<option value="0" selected="selected">7.33-7.49 ; 22-31.9 (0 分)</option>
+<option value="2">7.25-7.32 ; 18-21.9 (2 分)</option>
+<option value="3">7.15-7.24 ; 15-17.9 (3 分)</option>
+<option value="4">&lt; 7.15 ; &lt; 15 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">血清 Na+（毫当量/升）</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc7" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 180 (4 分)</option>
+<option value="3">160-179 (3 分)</option>
+<option value="2">155-159 (2 分)</option>
+<option value="1">150-154 (1 分)</option>
+<option value="0" selected="selected">130-149 (0 分)</option>
+<option value="2">120-129 (2 分)</option>
+<option value="3">111-119 (3 分)</option>
+<option value="4">&lt;= 110 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">血清 K+（毫当量/升）</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc8" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 7 (4 分)</option>
+<option value="3">6-6.9 (3 分)</option>
+<option value="1">5.5-5.9 (1 分)</option>
+<option value="0" selected="selected">3.5-5.4 (0 分)</option>
+<option value="1">3-3.4 (1 分)</option>
+<option value="2">2.5-2.9 (2 分)</option>
+<option value="4">&lt; 2.5 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">血清肌酐（ARF 是指急性肾衰竭）</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc9" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 3.5 (4 分)</option>
+<option value="8">&gt; ARF 时为 3.5 (8 分)</option>
+<option value="3">2-3.4 (3 分)</option>
+<option value="6">ARF 时为 2-3.4 (6 分)</option>
+<option value="2">1.5-1.9 (2 分)</option>
+<option value="4">ARF 时为 1.5-1.9 (4 分)</option>
+<option value="0" selected="selected">0.6-1.4 (0 分)</option>
+<option value="2">&lt; 0.6 (2 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">血细胞比容</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc10" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 60 (4 分)</option>
+<option value="2">50-59.9 (2 分)</option>
+<option value="1">46-49.9 (1 分)</option>
+<option value="0" selected="selected">30-45.9 (0 分)</option>
+<option value="2">20-29.9 (2 分)</option>
+<option value="4">&lt; 20 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">白细胞计数（10^9/升）</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc11" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="4">&gt;= 40 (4 分)</option>
+<option value="2">20-39.9 (2 分)</option>
+<option value="1">15-19.9 (1 分)</option>
+<option value="0" selected="selected">3-14.9 (0 分)</option>
+<option value="2">1-2.9 (2 分)</option>
+<option value="4">&lt; 1 (4 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">格拉斯哥昏迷评分</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc12" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="0" selected="selected">15 (0 分)</option>
+<option value="1">14 (1 分)</option>
+<option value="2">13 (2 分)</option>
+<option value="3">12 (3 分)</option>
+<option value="4">11 (4 分)</option>
+<option value="5">10 (5 分)</option>
+<option value="6">9 (6 分)</option>
+<option value="7">8 (7 分)</option>
+<option value="8">7 (8 分)</option>
+<option value="9">6 (9 分)</option>
+<option value="10">5 (10 分)</option>
+<option value="11">4 (11 分)</option>
+<option value="12">&lt;=3 (12 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">年龄（岁）</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc13" onchange="ApacheScore_fx();" class="medCalcFontSelect">
+<option value="6">&gt;= 75 (6 分)</option>
+<option value="5">65-74 (5 分)</option>
+<option value="3">55-64 (3 分)</option>
+<option value="2">45-54 (2 分)</option>
+<option value="0" selected="selected">&lt;= 44 (0 分)</option>
+<option value="">___________________________</option>
+</select> &nbsp; </td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">慢性健康问题： 1) 活组织检查确定的肝硬化 2) 纽约心脏协会第 IV 类 3) 严重 COPD（慢性阻塞性肺病） -  血碳酸过多症、在家氧疗或肺高压 4) 接受定期透析治疗或 5) 免疫受损 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel1" name="cc14" onclick="ApacheScore_fx();" checked="checked" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');">无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel2" name="cc14" onclick="ApacheScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">非手术 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc14" onclick="ApacheScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">急诊手术 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc14" onclick="ApacheScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">选择性手术 (2 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+Apache II 评分/大致死亡率
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 4 分:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">4% 非手术，1% 手术后 </span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">5 - 9 分:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">8% 非手术，3% 手术后</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">10 - 14 分:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">15% 非手术，7% 手术后</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">15 - 19 分:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">24% 非手术，12% 手术后 </span></td></tr>
+<tr id="rr1_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">20 - 24 分:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">40% 非手术，30% 手术后</span></td></tr>
+<tr id="rr1_6"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">25 - 29 分:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">55% 非手术，35% 手术后</span></td></tr>
+<tr id="rr1_7"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">30 - 34 分:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">二者均为约 73%</span></td></tr>
+<tr id="rr1_8"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">35 - 100 分:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 85% 非手术，88% 手术后</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Knaus WA, et al. APACHE II: a severity of disease classification system. <i>Crit Care Med</i>. 1985 Oct;13(10):818-29. PubMed ID: 3928249 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/3928249"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471463 //-->

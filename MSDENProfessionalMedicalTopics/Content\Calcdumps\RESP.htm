@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>RESP Score for ECMO Survival Prediction</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="pulm, critical, emergency, covid, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"de0c4a553f","applicationID":"583216205","transactionName":"NVMBMEBQXxAEWkNQXAwZNhZbHlwGAVBUWF9PVQIIUURdAhFWRUocMHMwNBxZRQ4=","queueTime":0,"applicationTime":59,"agent":"","atts":""}</script><script type="text/javascript">(window.NREUM||(NREUM={})).init={ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={licenseKey:"de0c4a553f",applicationID:"583216205"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(){}function i(t,e,n){return function(){return o(t,[u.now()].concat(f(arguments)),e?null:this,n),e?void 0:this}}var o=t("handle"),a=t(8),f=t(9),c=t("ee").get("tracer"),u=t("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){s[e]=i(p+e,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),e.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(l+"tracer",[u.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),o("err",[t,u.now(),!1,e])}},{}],2:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],3:[function(t,e,n){function r(){return f.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,f=t(10);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],4:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],5:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?d("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&d("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||d("cls",[t])})}function a(t){if(t instanceof m&&!g){var e=Math.round(t.timeStamp),n={type:t.type};e<=p.now()?n.fid=p.now()-e:e>p.offset&&e<=Date.now()?(e-=p.offset,n.fid=p.now()-e):e=p.now(),g=!0,d("timing",["fi",e,n])}}function f(t){"hidden"===t&&d("pageHide",[p.now()])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var c,u,s,d=t("handle"),p=t("loader"),l=t(7),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){c=new PerformanceObserver(r);try{c.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,h=["click","keydown","mousedown","pointerdown","touchstart"];h.forEach(function(t){document.addEventListener(t,a,!1)})}l(f)}},{}],6:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var f=navigator.userAgent,c=f.match(a);c&&f.indexOf("Chrome")===-1&&f.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],7:[function(t,e,n){function r(t){function e(){t(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,e,!1)}e.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],8:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],9:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],10:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?u(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){t&&a&&t(n,r,i);for(var f=e(i),c=v(n),u=c.length,s=0;s<u;s++)c[s].apply(f,r);var p=d[w[n]];return p&&p.push([b,n,r,f]),f}}function o(t,e){y[t]=v(t).concat(e)}function m(t,e){var n=y[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function v(t){return y[t]||[]}function g(t){return p[t]=p[t]||i(n)}function h(t,e){l.aborted||s(t,function(t,n){e=e||"feature",w[n]=e,e in d||(d[e]=[])})}var y={},w={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:e,buffer:h,abort:f,aborted:!1};return b}function o(t){return u(t,c,a)}function a(){return new r}function f(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",u=t("gos"),s=t(8),d={},p={},l=e.exports=i();e.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!R++){var t=M.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();c(E,function(e,n){t[e]||(t[e]=n)});var n=a();f("mark",["onload",n+M.offset],null,"api"),f("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=l+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){f("mark",["domContent",a()+M.offset],null,"api")}var a=t(3),f=t("handle"),c=t(8),u=t("ee"),s=t(6),d=t(4),p=t(2),l=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,g="addEventListener",h="attachEvent",y=m.XMLHttpRequest,w=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var x=""+location,E={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1211.min.js"},O=y&&w&&w[g]&&!/CriOS/.test(navigator.userAgent),M=e.exports={offset:a.getLastTimestamp(),now:a,origin:x,features:{},xhrWrappable:O,userAgent:s,disabled:b};if(!b){t(1),t(5),v[g]?(v[g]("DOMContentLoaded",o,!1),m[g]("load",r,!1)):(v[h]("onreadystatechange",i),m[h]("onload",r)),f("mark",["firstbyte",a.getLastTimestamp()],null,"api");var R=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,c],s],t)}f(n+"start",[o,a,c],s,u);try{return p=e.apply(a,o)}catch(m){throw f(n+"err",[o,a,m],s,u),m}finally{f(n+"end",[o,a,p],s,u)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var f,c,u,s="-"===r.charAt(0);for(u=0;u<e.length;u++)c=e[u],f=t[c],a(f)||(t[c]=n(f,s?c+r:r,i,c,o))}function f(n,r,o,a){if(!m||e){var f=m;m=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}m=f}}return t||(t=s),n.inPlace=r,n.flag=p,n}function i(t,e){e||(e=s);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function f(t,e){var n=e(t);return n[p]=t,o(t,n,s),n}function c(t,e,n){var r=t[e];t[e]=f(r,n)}function u(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var s=t("ee"),d=t(9),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;e.exports=r,e.exports.wrapFunction=f,e.exports.wrapInPlace=c,e.exports.argsToArray=u},{}]},{},["loader"]);</script>
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+return msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+}
+
+function OneDecimalPoint(x){
+return fixDP(x,1);
+}
+
+function TwoDecimalPoints(x){
+return fixDP(x,2);
+}
+
+
+function alertNaN(thisparam){
+ alert(thisparam + ' is improperly formatted. You may only input the digits 0-9 and a decimal point.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+RESP_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+RESP_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+
+function RESP_fx() {
+
+with(document.RESP_form){
+
+
+doCalc = true;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(PaCO2_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = PaCO2_unit.options[PaCO2_unit.selectedIndex].value.split('|');
+PaCO2 = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Peak_Inspiratory_Pressure_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Peak_Inspiratory_Pressure_unit.options[Peak_Inspiratory_Pressure_unit.selectedIndex].value.split('|');
+Peak_Inspiratory_Pressure = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+if (Immunocomp_checkbox.checked){ Immunocomp = -2;
+} else { Immunocomp = 0; }
+if (CNS_checkbox.checked){ CNS = -7;
+} else { CNS = 0; }
+if (Non_Pulm_Infection_checkbox.checked){ Non_Pulm_Infection = -3;
+} else { Non_Pulm_Infection = 0; }
+if (Neuromusc_Block_checkbox.checked){ Neuromusc_Block = 1;
+} else { Neuromusc_Block = 0; }
+if (Nitric_Oxide_checkbox.checked){ Nitric_Oxide = -1;
+} else { Nitric_Oxide = 0; }
+if (Bicarb_Use_checkbox.checked){ Bicarb_Use = -2;
+} else { Bicarb_Use = 0; }
+if (Cardiac_Arrest_checkbox.checked){ Cardiac_Arrest = -2;
+} else { Cardiac_Arrest = 0; }
+rbchk = false;
+if (On_Ventilator_Prior_To_ECMO_radio[0].checked){ rbchk = true; On_Ventilator_Prior_To_ECMO = 3;  }
+if (On_Ventilator_Prior_To_ECMO_radio[1].checked){ rbchk = true; On_Ventilator_Prior_To_ECMO = 1;  }
+if (On_Ventilator_Prior_To_ECMO_radio[2].checked){ rbchk = true; On_Ventilator_Prior_To_ECMO = 0;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Acute_Pulmonary_Disease_radio[0].checked){ rbchk = true; Acute_Pulmonary_Disease = 3;  }
+if (Acute_Pulmonary_Disease_radio[1].checked){ rbchk = true; Acute_Pulmonary_Disease = 11;  }
+if (Acute_Pulmonary_Disease_radio[2].checked){ rbchk = true; Acute_Pulmonary_Disease = 3;  }
+if (Acute_Pulmonary_Disease_radio[3].checked){ rbchk = true; Acute_Pulmonary_Disease = 5;  }
+if (Acute_Pulmonary_Disease_radio[4].checked){ rbchk = true; Acute_Pulmonary_Disease = 1;  }
+if (Acute_Pulmonary_Disease_radio[5].checked){ rbchk = true; Acute_Pulmonary_Disease = 0;  }
+if (!rbchk) doCalc = false;
+dp = 0;
+
+if (Age>=60){
+Age_Factor = -3;
+}
+else 
+if (Age>=50){
+Age_Factor = -2;
+}
+else{ Age_Factor = 0;
+}
+if (PaCO2>=75){
+PaCO2_Factor = -1;
+}
+else{ PaCO2_Factor = 0;
+}
+if (Peak_Inspiratory_Pressure>=42){
+Peak_Inspiratory_Pressure_Factor = -1;
+}
+else{ Peak_Inspiratory_Pressure_Factor = 0;
+}RESP_Score =  Age_Factor + PaCO2_Factor + Peak_Inspiratory_Pressure_Factor + Immunocomp + On_Ventilator_Prior_To_ECMO +  Acute_Pulmonary_Disease + CNS + Non_Pulm_Infection + Neuromusc_Block + Nitric_Oxide + Bicarb_Use + Cardiac_Arrest;
+
+unit_parts = RESP_Score_unit.options[RESP_Score_unit.selectedIndex].value.split('|');
+if (doCalc) RESP_Score_param.value = fixDP((RESP_Score - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+if (doCalc){
+rrclr();
+if ((RESP_Score >= 6) && (RESP_Score <= 15)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((RESP_Score >= 3) && (RESP_Score <= 5)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((RESP_Score >= -1) && (RESP_Score <= 2)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((RESP_Score >= -5) && (RESP_Score <= -2)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+if ((RESP_Score >= -22) && (RESP_Score <= -6)){ document.getElementById('rr1_5').bgColor = '#8ab2be';
+}
+
+
+}
+
+
+}
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.RESP_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('Age'); }
+if (Age_param.value && (Age < (18 - 0.00001))) {
+Age = 0;
+clrValue(Age_param);
+clrResults();
+doCalc = false;
+ alert("The minimum value for Age is 18 yr.\nIf you are specifying a value with a different unit, change the unit selector first.");
+}
+if (Age_param.value && Age > 110) {
+clrValue(Age_param);
+clrResults();
+Age = 0;
+doCalc = false;
+ alert("The maximum value for Age is 110 yr.\nIf you are specifying a value with a different unit, change the unit selector first.");
+}
+if (PaCO2_param.value && isNaN(PaCO2_param.value)){ clrValue(PaCO2_param); alertNaN('PaCO<sub>2</sub>'); }
+if (Peak_Inspiratory_Pressure_param.value && isNaN(Peak_Inspiratory_Pressure_param.value)){ clrValue(Peak_Inspiratory_Pressure_param); alertNaN('Peak Inspiratory Pressure'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.RESP_form){
+
+RESP_Score_param.value = '';
+
+rrclr();
+
+}
+
+}
+
+var Age = null,
+PaCO2 = null,
+Peak_Inspiratory_Pressure = null,
+Immunocomp = null,
+CNS = null,
+Non_Pulm_Infection = null,
+Neuromusc_Block = null,
+Nitric_Oxide = null,
+Bicarb_Use = null,
+Cardiac_Arrest = null,
+On_Ventilator_Prior_To_ECMO = null,
+Acute_Pulmonary_Disease = null,
+RESP_Score = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+document.getElementById('rr1_5').bgColor = '';
+}
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="RESP_form" id="RESP_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="RESP_fx();" onreset="rrclr();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+RESP Score for ECMO Survival Prediction
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+Input
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Age</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="minMaxCheck(); RESP_fx();" onchange="RESP_fx();" /></td>
+<td align="left" valign="top"> <select name="Age_unit" onchange="RESP_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">PaCO<sub>2</sub></span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="PaCO2_param" size="6" value="" onblur="minMaxCheck(); RESP_fx();" onchange="RESP_fx();" /></td>
+<td align="left" valign="top"> <select name="PaCO2_unit" onchange="RESP_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">Peak Inspiratory Pressure</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Peak_Inspiratory_Pressure_param" size="6" value="" onblur="minMaxCheck(); RESP_fx();" onchange="RESP_fx();" /></td>
+<td align="left" valign="top"> <select name="Peak_Inspiratory_Pressure_unit" onchange="RESP_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0101971584453749|0|Pascal">Pascal</option>
+<option value="1033.22707947762|0|atm">atm</option>
+<option value="1019.71584453749|0|bar">bar</option>
+<option value="1|0|cmH2O" selected="selected">cmH2O</option>
+<option value="13.5950555825428|0|cmHg">cmHg</option>
+<option value="30.48|0|ftH2O">ftH2O</option>
+<option value="1|0|gm/sqcm">gm/sqcm</option>
+<option value="2.54|0|inH2O">inH2O</option>
+<option value="34.5315553878333|0|inHg">inHg</option>
+<option value="10.1971584453749|0|kPa">kPa</option>
+<option value="1.01971584453749|0|mbar">mbar</option>
+<option value="1.35950555825428|0|mmHg">mmHg</option>
+<option value="70.3069601628334|0|psi">psi</option>
+<option value="1.35950555825428|0|torr">torr</option>
+</select></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Immunocomp_checkbox" id="togel1" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel1');">Immunocompromised (-2)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="CNS_checkbox" id="togel2" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel2');">CNS dysfunction (-7)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Non_Pulm_Infection_checkbox" id="togel3" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel3');">Acute nonpulmonary infection (-3)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Neuromusc_Block_checkbox" id="togel4" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel4');">Neuromuscular block used before ECMO (1)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Nitric_Oxide_checkbox" id="togel5" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel5');">Nitric oxide use before ECMO (-1)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Bicarb_Use_checkbox" id="togel6" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel6');">Bicarbonate infusion before ECMO (-2)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Cardiac_Arrest_checkbox" id="togel7" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel7');">Cardiac arrest before ECMO (-2)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">On Ventilator Prior To ECMO</span></td>
+<td colspan="2" align="left"><input type="radio" name="On_Ventilator_Prior_To_ECMO_radio" id="togel8" value="&lt; 48 hours|3" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel8');"> &lt; 48 hours (3)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="On_Ventilator_Prior_To_ECMO_radio" id="togel9" value="48 hours to 7 days|1" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel9');"> 48 hours to 7 days (1)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="On_Ventilator_Prior_To_ECMO_radio" id="togel10" value="&gt;7 days|0" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel10');"> &gt;7 days (0)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">Acute Pulmonary Disease</span></td>
+<td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel11" value="Viral or bacterial pneumonia|3" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel11');"> Viral or bacterial pneumonia (3)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel12" value="Asthma|11" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel12');"> Asthma (11)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel13" value="Trauma/burn|3" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel13');"> Trauma/burn (3)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel14" value="Aspiration pneumonia|5" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel14');"> Aspiration pneumonia (5)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel15" value="Other acute pulmonary disease|1" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel15');"> Other acute pulmonary disease (1)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel16" value="Chronic pulmonary or nonpulmonary disease|0" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel16');"> Chronic pulmonary or nonpulmonary disease (0)</span></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">Result</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">RESP Score</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="RESP_Score_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="RESP_Score_unit" onchange="RESP_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|#">#</option>
+<option value="1|0|index">index</option>
+<option value="1|0|none">none</option>
+<option value="1|0|number">number</option>
+<option value="1|0|points" selected="selected">points</option>
+<option value="1|0|score">score</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ RESP Score Interpretation
+</span></td></tr></table><br />&nbsp;<br />
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">6 to 15 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Risk class I with 92% survival</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">3 to 5 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Risk class II with 76% survival</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">-1 to 2 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> Risk class III with 57% survival</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">-5 to -2 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Risk class IV with 33% survival</span></td></tr>
+<tr id="rr1_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">-22 to -6 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Risk class V with 18% survival</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">Notes</span>
+<ul class="medCalcFontOne">
+<li><b>RESP</b>: Respiratory ECMO Survival Prediction; <b>ECMO</b>: extracorporeal membrane oxygenation; <b>CNS</b>: central nervous system.</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>Equations used</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">RESPScore = AgeFactor + PaCO<sub>2</sub>Factor + PeakInspiratoryPressureFactor + Immunocomp + OnVentilatorPriorToECMO +  AcutePulmonaryDisease + CNS + NonPulmInfection + NeuromuscBlock + NitricOxide + BicarbUse + CardiacArrest</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">Calculation Details and Variables</span>
+<ul class="medCalcFontOne">
+<li><b>AgeFactor</b> is assigned values by this ordered logic: <ul><li><span style="white-space: nowrap;">If <b>Age</b> &ge;60 yr <b>AgeFactor</b> = -3</span></li><li><span style="white-space: nowrap;">Else if <b>Age</b> &ge;50 yr <b>AgeFactor</b> = -2</span></li><li><span style="white-space: nowrap;">Else <b>AgeFactor</b> = 0.</span></li></ul></li><li><b>PaCO2Factor</b> is assigned values by this ordered logic: <ul><li><span style="white-space: nowrap;">If <b>PaCO<sub>2</sub></b> &ge;75 mmHg <b>PaCO2Factor</b> = -1</span></li><li><span style="white-space: nowrap;">Else <b>PaCO2Factor</b> = 0.</span></li></ul></li><li><b>PeakInspiratoryPressureFactor</b> is assigned values by this ordered logic: <ul><li><span style="white-space: nowrap;">If <b>Peak Inspiratory Pressure</b> &ge;42 cmH2O <b>PeakInspiratoryPressureFactor</b> = -1</span></li><li><span style="white-space: nowrap;">Else <b>PeakInspiratoryPressureFactor</b> = 0.</span></li></ul></li><li>Equation parameters such as <b>On Ventilator Prior To ECMO</b>, have two or more discrete values that may be used in the calculation. The numbers in the parentheses, e.g.  (3), represent the values that will be used.</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Schmidt M, Bailey M, Sheldrake J, et al. Predicting survival after extracorporeal membrane  oxygenation for severe acute respiratory failure. The Respiratory Extracorporeal Membrane  Oxygenation Survival Prediction (RESP) score. <i>Am J Respir Crit Care Med</i>. 2014 Jun 1;189(11):1374-82. PubMed ID: 24693864 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/24693864"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2020 Foundation Internet Services &nbsp;&nbsp; [Build 261279 v20.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+with(document.RESP_form){
+var Age_Factor = 0;
+var PaCO2_Factor = 0;
+var Peak_Inspiratory_Pressure_Factor = 0;
+
+}
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- 1594912158 //-->

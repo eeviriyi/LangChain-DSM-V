@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>用于预测病毒性肺炎中的死亡的 MuLBSTA 评分</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="pulmonary, covid, critical, emergency, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+MuLBSTA_Score_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+MuLBSTA_Score_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function MuLBSTA_Score_fx() {
+
+with(document.MuLBSTA_Score_form){
+
+
+doCalc = true;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Lymphocyte_Count_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Lymphocyte_Count_unit.options[Lymphocyte_Count_unit.selectedIndex].value.split('|');
+Lymphocyte_Count = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+rbchk = false;
+if (Smoker_radio[0].checked){ rbchk = true; Smoker = 0;  }
+if (Smoker_radio[1].checked){ rbchk = true; Smoker = 3;  }
+if (Smoker_radio[2].checked){ rbchk = true; Smoker = 2;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (HTN_radio[0].checked){ rbchk = true; HTN = 0;  }
+if (HTN_radio[1].checked){ rbchk = true; HTN = 2;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Multilobar_Infiltrates_radio[0].checked){ rbchk = true; Multilobar_Infiltrates = 0;  }
+if (Multilobar_Infiltrates_radio[1].checked){ rbchk = true; Multilobar_Infiltrates = 5;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Bacterial_Infection_radio[0].checked){ rbchk = true; Bacterial_Infection = 0;  }
+if (Bacterial_Infection_radio[1].checked){ rbchk = true; Bacterial_Infection = 4;  }
+if (!rbchk) doCalc = false;
+dp = 0;
+
+if (Age>=60){
+Age_Factor = 2;
+}
+else{ Age_Factor = 0;
+}
+if (Lymphocyte_Count<=0.8){
+Lymphocyte_Factor = 4;
+}
+else{ Lymphocyte_Factor = 0;
+}MuLBSTA_Score =  Age_Factor + Lymphocyte_Factor + Smoker + HTN + Multilobar_Infiltrates + Bacterial_Infection;
+
+unit_parts = MuLBSTA_Score_unit.options[MuLBSTA_Score_unit.selectedIndex].value.split('|');
+if (doCalc) MuLBSTA_Score_param.value = fixDP((MuLBSTA_Score - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+if (doCalc){
+rrclr();
+if ((MuLBSTA_Score >= 0) && (MuLBSTA_Score <= 5)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((MuLBSTA_Score >= 6) && (MuLBSTA_Score <= 10)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((MuLBSTA_Score >= 11) && (MuLBSTA_Score <= 15)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((MuLBSTA_Score >= 16) && (MuLBSTA_Score <= 20)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+if ((MuLBSTA_Score >= 21) && (MuLBSTA_Score <= 22)){ document.getElementById('rr1_5').bgColor = '#8ab2be';
+}
+
+
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.MuLBSTA_Score_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('年龄'); }
+if (Lymphocyte_Count_param.value && isNaN(Lymphocyte_Count_param.value)){ clrValue(Lymphocyte_Count_param); alertNaN('淋巴细胞计数'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.MuLBSTA_Score_form){
+
+MuLBSTA_Score_param.value = '';
+
+rrclr();
+
+}
+
+}
+
+var Age = null,
+Lymphocyte_Count = null,
+Smoker = null,
+HTN = null,
+Multilobar_Infiltrates = null,
+Bacterial_Infection = null,
+MuLBSTA_Score = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+document.getElementById('rr1_5').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="MuLBSTA_Score_form" id="MuLBSTA_Score_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="MuLBSTA_Score_fx();" onreset="rrclr();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+用于预测病毒性肺炎中的死亡的 MuLBSTA 评分
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">年龄</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="MuLBSTA_Score_fx(); minMaxCheck();" onchange="MuLBSTA_Score_fx();" /></td>
+<td align="left" valign="top"> <select name="Age_unit" onchange="MuLBSTA_Score_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">淋巴细胞计数</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Lymphocyte_Count_param" size="6" value="" onblur="MuLBSTA_Score_fx(); minMaxCheck();" onchange="MuLBSTA_Score_fx();" /></td>
+<td align="left" valign="top"> <select name="Lymphocyte_Count_unit" onchange="MuLBSTA_Score_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.001|0|#/mcL">#/mcL</option>
+<option value="0.001|0|#/microL">#/microL</option>
+<option value="0.001|0|/mcL">/mcL</option>
+<option value="0.001|0|/microL">/microL</option>
+<option value="1|0|10E+9/L">10E+9/L</option>
+<option value="1000|0|Mill/mcl">Mill/mcl</option>
+<option value="1|0|Thous/mcL">Thous/mcL</option>
+<option value="1|0|X10E+09/L">X10E+09/L</option>
+<option value="0.001|0|cells/mcL">cells/mcL</option>
+<option value="0.001|0|cells/microL">cells/microL</option>
+<option value="1|0|x10(3)/mcL">x10(3)/mcL</option>
+<option value="1|0|x10(3)/microL">x10(3)/microL</option>
+<option value="0.001|0|x10(6)/L">x10(6)/L</option>
+<option value="1000|0|x10(6)/mcL">x10(6)/mcL</option>
+<option value="1000|0|x10(6)/microL">x10(6)/microL</option>
+<option value="1|0|x10(9)/L" selected="selected">x10(9)/L</option>
+<option value="1|0|x1000/mm3">x1000/mm3</option>
+<option value="1|0|x10^3/mcL">x10^3/mcL</option>
+<option value="1|0|x10^3/microL">x10^3/microL</option>
+<option value="0.001|0|x10^6/L">x10^6/L</option>
+<option value="1000|0|x10^6/mcL">x10^6/mcL</option>
+<option value="1000|0|x10^6/microL">x10^6/microL</option>
+<option value="1|0|x10^9/L">x10^9/L</option>
+</select></td></tr>
+
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">吸烟者</span></td>
+<td colspan="2" align="left"><input type="radio" name="Smoker_radio" id="togel1" value="否|0" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel1');"> 否 (0)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Smoker_radio" id="togel2" value="是|3" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel2');"> 是 (3)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Smoker_radio" id="togel3" value="曾经|2" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel3');"> 曾经 (2)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">高血压</span></td>
+<td colspan="2" align="left"><input type="radio" name="HTN_radio" id="togel4" value="否|0" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel4');"> 否 (0)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="HTN_radio" id="togel5" value="是|2" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel5');"> 是 (2)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">多叶浸润</span></td>
+<td colspan="2" align="left"><input type="radio" name="Multilobar_Infiltrates_radio" id="togel6" value="否|0" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel6');"> 否 (0)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Multilobar_Infiltrates_radio" id="togel7" value="是|5" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel7');"> 是 (5)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">细菌感染</span></td>
+<td colspan="2" align="left"><input type="radio" name="Bacterial_Infection_radio" id="togel8" value="否|0" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel8');"> 否 (0)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Bacterial_Infection_radio" id="togel9" value="是|4" onclick="MuLBSTA_Score_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel9');"> 是 (4)</span></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">MuLBSTA 评分</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="MuLBSTA_Score_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="MuLBSTA_Score_unit" onchange="MuLBSTA_Score_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|#">#</option>
+<option value="1|0|index">index</option>
+<option value="1|0|none">none</option>
+<option value="1|0|number">number</option>
+<option value="1|0|points" selected="selected">points</option>
+<option value="1|0|score">score</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+MuLBSTA 评分解释
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 5 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">0.47 至 2.17% 死亡</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">6 - 10 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">2.92 至 9.33% 死亡</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">11 - 15 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 12.27 至 32.36% 死亡</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">16 - 20 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">39.42 至 68.99% 死亡</span></td></tr>
+<tr id="rr1_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">21 - 22 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">无研究患者</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>在 Guo 的文章<sup>[1]</sup>中，作者们认为 0 到 11 分的 MuLBSTA 评分 为低风险，≥ 12 分为高风险。</li>
+<li>根据中国的 COVID-19 爆发经验，Chen 等<sup>[2]</sup> 报告说， <b>MuLBSTA 评分</b>似乎与 COVID-19 感染的死亡率相关。</li>
+<li><b>MuLBSTA</b>：多叶浸润、低淋巴细胞计数、细菌混合感染、 吸烟史、高血压和年龄。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">MuLBSTA评分 = 年龄系数 + 淋巴细胞系数 + 吸烟者 + 高血压 + 多叶浸润 + 细菌感染</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+<br />&nbsp;<br />
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">计算详情和变量</span>
+<ul class="medCalcFontOne">
+<li><b>年龄系数</b> 是通过此有序逻辑分配的数值: <ul><li><span style="white-space: nowrap;">如果 <b>年龄</b> &ge;60 yr <b>年龄系数</b> = 2</span></li><li><span style="white-space: nowrap;">否则 <b>年龄系数</b> = 0.</span></li></ul></li><li><b>淋巴细胞系数</b> 是通过此有序逻辑分配的数值: <ul><li><span style="white-space: nowrap;">如果 <b>淋巴细胞计数</b> &le;0.8 x10(9)/L <b>淋巴细胞系数</b> = 4</span></li><li><span style="white-space: nowrap;">否则 <b>淋巴细胞系数</b> = 0.</span></li></ul></li><li>等式参数，例如 <b>吸烟者</b>, 有两个或更多可能用于计算的离散值。括号中的数字，例如  (0), 代表将要使用的数值.</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Guo L, Wei D, Zhang X, et al. Clinical Features Predicting  Mortality Risk in Patients  With Viral Pneumonia: The MuLBSTA Score. <i>Front Microbiol</i>. 2019 Dec 3;10:2752. PubMed ID: 31849894 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/31849894"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Chen N, Zhou M, Dong X, et al. Epidemiological and clinical characteristics of 99  cases of 2019 novel coronavirus pneumonia in Wuhan, China: a descriptive study. <i> Lancet</i>. 2020 Feb 15;395(10223):507-513. PubMed ID: 32007143 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/32007143"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+with(document.MuLBSTA_Score_form){
+var Age_Factor = 0;
+var Lymphocyte_Factor = 0;
+
+}
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- 1662471505 //-->

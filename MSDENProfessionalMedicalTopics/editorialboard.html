@@ -1,0 +1,1458 @@
+﻿
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+ 
+<!-- OneTrust Cookies Consent Notice start --> 
+<script src="" type="text/javascript" charset="UTF-8" data-domain-script="7a4eae6f-1f57-4f7c-8a64-5aa159ee745e"></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"de0c4a553f","applicationID":"585966304","transactionName":"NVMBMEBQXxAEWkNQXAwZLjJxHmIKEVxUVkEHdQwKRkNeDwlcRRZ6DFIGHA==","queueTime":0,"applicationTime":268,"agent":"","atts":""}</script><script type="text/javascript">(window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:["bam.nr-data.net"]}};(window.NREUM||(NREUM={})).loader_config={xpid:"XQICUFRRGwYIUVhUAQIHUg==",licenseKey:"de0c4a553f",applicationID:"585966304"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var i=e[n]={exports:{}};t[n][0].call(i.exports,function(e){var i=t[n][1][e];return r(i||e)},i,i.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var i,o=t("ee"),a=t(28),s={};try{i=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,i.indexOf("dev")!==-1&&(s.dev=!0),i.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&o.on("internal-error",function(t){r(t.stack)}),s.dev&&o.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{p?p-=1:i(s||new UncaughtException(t,e,n),!0)}catch(f){try{o("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function i(t,e){var n=e?null:c.now();o("err",[t,n])}var o=t("handle"),a=t(29),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError";if(!c.disabled){var p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(10),t(9),"addEventListener"in window&&t(6),c.xhrWrappable&&t(11),d=!0)}s.on("fn-start",function(t,e,n){d&&(p+=1)}),s.on("fn-err",function(t,e,n){d&&!n[l]&&(f(n,l,function(){return!0}),this.thrown=!0,i(n))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){o("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function i(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+l])try{window.performance[h](m,i,!1)}catch(t){}else try{window.performance[h]("webkit"+m,i,!1)}catch(t){}}function o(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(10),f=t(9),u=t(5),d=t(19),l="learResourceTimings",p="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",S=t("loader");if(!S.disabled){S.features.stn=!0,t(8),"addEventListener"in window&&t(6);var O=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof O&&(this.bstStart=S.now())}),a.on(b,function(t,e){var n=t[0];n instanceof O&&s("bst",[n,e,this.bstStart,S.now()])}),c.on(x,function(t,e,n){this.bstStart=S.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),this.bstType])}),f.on(x,function(){this.bstStart=S.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,S.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=S.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):p in window.performance&&(window.performance["c"+l]?window.performance[p](m,i,d(!1)):window.performance[p]("webkit"+m,i,d(!1))),document[p]("scroll",o,d(!1)),document[p]("keypress",o,d(!1)),document[p]("click",o,d(!1))}}},{}],5:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&i(e)}function i(t){s.inPlace(t,[u,d],"-",o)}function o(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(i(window),i(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=o(arguments),e={};i.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return i.emit(n+"start",[t,a],s),s.then(function(t){return i.emit(n+"end",[null,t],s),t},function(t){throw i.emit(n+"end",[t],s),t})})}var i=t("ee").get("fetch"),o=t(29),a=t(28);e.exports=i;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,l=s.Response,p=s.fetch,h="prototype",m="nr@context";d&&l&&p&&(a(u,function(t,e){r(d[h],e,f),r(l[h],e,f)}),r(s,"fetch",c),i.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),i.emit(c+"done",[null,e],n)}else i.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),i=t("wrap-function")(r);e.exports=r;var o=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;o&&o.pushState&&o.replaceState&&(a=o),i.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){var r=t("ee").get("raf"),i=t("wrap-function")(r),o="equestAnimationFrame";e.exports=r,i.inPlace(window,["r"+o,"mozR"+o,"webkitR"+o,"msR"+o],"raf-"),r.on("raf-start",function(t){t[0]=i(t[0],"fn-")})},{}],10:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function i(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var o=t("ee").get("timer"),a=t("wrap-function")(o),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=o,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),o.on(c+u,r),o.on(s+u,i)},{}],11:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function i(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function o(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,S.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),l=t(19),p=NREUM.o,h=p.XHR,m=p.MO,v=p.PR,w=p.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,i,l(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),o(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,S=document.createTextNode(R);new m(a).observe(S,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],12:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=p.generateSpanId(),m=p.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&l())&&(w.traceContextParentHeader=i(h,m),w.traceContextStateHeader=o(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function i(t,e){return"00-"+e+"-"+t+"-01"}function o(t,e,n,r,i){var o=0,a="",s=1,c="",f="";return i+"@nr="+o+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,i,o){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:i,id:t,tr:e,ti:n}};return o&&r!==o&&(s.d.tk=o),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var i=h(n.allowed_origins[r]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function l(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var p=t(25),h=t(14);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],13:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<l;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):o(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function i(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function o(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(14),f=t(12).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],l=d.length,p=t("id"),h=t(20),m=t(18),v=t(15),w=t(19),g=t(21).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(11),t(7),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){o(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],i=this;if(n&&r){var o=m(r);o&&(n.txSize=o)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||i.loadCaptureCalled||(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<l;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+p(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var i=f(this.parsedOrigin);if(i&&(i.newrelicHeader||i.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var o={};for(var a in r)o[a]=r[a];o.headers=new Headers(r.headers||{}),e(o.headers,i)&&(this.dt=i),t.length>1?t[1]=o:t.push(o)}else t[0]&&t[0].headers&&e(t[0].headers,i)&&(this.dt=i)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},o=this.target;if("string"==typeof o?n=o:"object"==typeof o&&o instanceof y?n=o.url:window.URL&&"object"==typeof o&&o instanceof URL&&(n=o.href),i(this,n),"data"!==this.params.protocol){var s=(""+(o&&o instanceof y&&o.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],14:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,i={};e.href=t,i.port=e.port;var o=e.href.split("://");!i.port&&o[1]&&(i.port=o[1].split("/")[0].split("@").pop().split(":")[1]),i.port&&"0"!==i.port||(i.port="https"===o[0]?"443":"80"),i.hostname=e.hostname||n.hostname,i.pathname=e.pathname,i.protocol=o[0],"/"!==i.pathname.charAt(0)&&(i.pathname="/"+i.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return i.sameOrigin=a&&(!e.hostname||s),"/"===i.pathname&&(r[t]=i),i}},{}],15:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?i(t.response):"text"===n||""===n||void 0===n?i(t.responseText):void 0}var i=t(18);e.exports=r},{}],16:[function(t,e,n){function r(){}function i(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),o(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var o=t("handle"),a=t(28),s=t(29),c=t("ee").get("tracer"),f=t("loader"),u=t(21),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var l=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",h=p+"ixn-";a(l,function(t,e){d[e]=i(p,e,!0,"api")}),d.addPageAction=i(p,"addPageAction",!0),d.setCurrentRouteName=i(p,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,i="function"==typeof e;return o(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((i?"":"no-")+"fn-start",[f.now(),r,i],n),i)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=i(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),o("err",[t,f.now(),!1,e])}},{}],17:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],18:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],19:[function(t,e,n){var r=!1;try{var i=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,i),window.removeEventListener("testPassive",null,i)}catch(o){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],20:[function(t,e,n){var r=0,i=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);i&&(r=+i[1]),e.exports=r},{}],21:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return o("storeMetric",n,null,"api"),n}function i(t,e){var n=[s,t,{name:t},e];return o("storeEventMetrics",n,null,"api"),n}var o=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:i}},{}],22:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,s=t(30);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=i},{}],23:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],24:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?p("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&p("timing",["fcp",Math.floor(t.startTime)])})}function i(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var i=[r],o=a({});o&&i.push(o),p("lcp",i)}}function o(t){t.getEntries().forEach(function(t){t.hadRecentInput||p("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,p("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),p("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,l,p=t("handle"),h=t("loader"),m=t(27),v=t(19),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(i);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}l=new PerformanceObserver(o);try{l.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],25:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var i,o="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<o.length;s++)i=o[s],"x"===i?a+=t().toString(16):"y"===i?(i=3&t()|8,a+=i.toString(16)):a+=i;return a}function i(){return a(16)}function o(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,i=window.crypto||window.msCrypto;i&&i.getRandomValues&&Uint8Array&&(n=i.getRandomValues(new Uint8Array(31)));for(var o=[],a=0;a<t;a++)o.push(e().toString(16));return o.join("")}e.exports={generateUuid:r,generateSpanId:i,generateTraceId:o}},{}],26:[function(t,e,n){function r(t,e){if(!i)return!1;if(t!==i)return!1;if(!e)return!0;if(!o)return!1;for(var n=o.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(i="Safari",o=c[1])}e.exports={agent:i,version:o,match:r}},{}],27:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[o]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,i(!1))}var i=t(19);e.exports=r;var o,a,s;"undefined"!=typeof document.hidden?(o="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(o="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(o="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],28:[function(t,e,n){function r(t,e){var n=[],r="",o=0;for(r in t)i.call(t,r)&&(n[o]=e(r,t[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],29:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,i=n-e||0,o=Array(i<0?0:i);++r<i;)o[r]=t[e+r];return o}e.exports=r},{}],30:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function i(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!p.aborted||o){t&&a&&t(n,r,i);for(var s=e(i),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var l=d[y[n]];return l&&l.push([x,n,r,s]),s}}function o(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return l[t]=l[t]||i(n)}function w(t,e){p.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:o,addEventListener:o,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function o(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(p.aborted=!0,d=p.backlog={})}var c="nr@context",f=t("gos"),u=t(28),d={},l={},p=e.exports=i();e.exports.getOrSetContext=o,p.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(i.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return t[e]=r,r}var i=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){i.buffer([t],r),i.emit(t,e,n)}var i=t("ee").get("handle");e.exports=r,r.ee=i},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,o,function(){return i++})}var i=1,o="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!T++){var t=O.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(R,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+O.offset],null,"api"),s("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=h+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function i(){"complete"===v.readyState&&o()}function o(){s("mark",["domContent",a()+O.offset],null,"api")}var a=t(22),s=t("handle"),c=t(28),f=t("ee"),u=t(26),d=t(23),l=t(17),p=t(19),h=l.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,w="addEventListener",g="attachEvent",y=m.XMLHttpRequest,x=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var E=""+location,R={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1215.min.js"},S=y&&x&&x[w]&&!/CriOS/.test(navigator.userAgent),O=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:S,userAgent:u,disabled:b};if(!b){t(16),t(24),v[w]?(v[w]("DOMContentLoaded",o,p(!1)),m[w]("load",r,p(!1))):(v[g]("onreadystatechange",i),m[g]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var T=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var o,a,u,l;try{a=this,o=d(arguments),u="function"==typeof r?r(o,a):r||{}}catch(p){i([p,"",[o,a,c],u],t)}s(n+"start",[o,a,c],u,f);try{return l=e.apply(a,o)}catch(h){throw s(n+"err",[o,a,h],u,f),h}finally{s(n+"end",[o,a,l],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[l]=e,o(e,nrWrapper,t),nrWrapper)}function r(t,e,r,i,o){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,i,c,o))}function s(n,r,o,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,o,e,a)}catch(c){i([c,n,r,o],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=l,n}function i(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function o(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(o){i([o],n)}for(var a in t)p.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[l])}function s(t,e){var n=e(t);return n[l]=t,o(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(29),l="nr@original",p=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,13,4,3]);</script>
+<meta lang="en">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="content-language" content="en">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=1">
+ <!-- Title and Description -->
+ <title>Editorial Board - MSD Manual Professional Edition</title>
+ 
+ <!-- Schema.org/Additional markup -->
+ 
+ 
+ 
+ 
+ 
+<!-- Twitter Card data -->
+<!-- Open Graph data -->
+<!---->
+<!-- Google Tag Manager --> <script></script> <!-- End Google Tag Manager -->
+<link rel="preconnect" href="https://ajax.aspnetcdn.com">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<script type="text/javascript">
+ // Way froward settings. Strongly typed for Typescript code.
+ // Typescript definition file is in \src\Foundation\Presentation\code\Scripts\typings\Settings.d.ts
+ MManual = window.MManual || {};
+ MManual.Foundation = MManual.Foundation || {};
+ MManual.Feature = MManual.Feature || {};
+ MManual.Foundation.Logging = {
+ Level : "WARN"
+ }
+ MManual.Foundation.Context = {
+ Language: {
+ Name: "en",
+ Code: "en"
+ },
+ Edition: "Professional"
+ }
+ MManual.Foundation.Context.Item = {}
+ 
+ MManual.Foundation.Context.Item.SitecoreId = "e46aa3a3-0412-4ee3-8ee0-090fec109ffe";
+ MManual.Foundation.Context.Item.MediaId = "";
+ MManual.Foundation.Context.Item.VasontId = "";
+ MManual.Foundation.Context.Item.TemplateId = "19c2fc71-3fec-4d9d-b5d5-4d98bfd0fe76";
+ 
+ MManual.Foundation.TemplateIds = {
+ Topic : "9fe4ab09-1603-40e4-91f9-0ac01a474c58"
+ }
+ MManual.deferredScripts = [];
+ // Below settings are obsolete. Please use MManual.Foundation.Context
+ //////////////////
+ // OBSOLETE START
+ ///////////////////
+ MManual.settings = MManual.settings || {};
+ MManual.settings.edition = "Professional";
+ MManual.settings.language = "en";
+ MManual.settings.languageCode = "en";
+ MManual.settings.displayDateFormat = "dd/MM/yy";
+ MManual.settings.dateFormat = "dd/MM/yy";
+ MManual.settings.loadLocationsGlobal = true;
+ MManual.settings.LexicompEnabled = false;
+ MManual.settings.topic = MManual.settings.topic || {};
+ MManual.settings.topic.getTopicsForResourceUrl = "/Redesign/Topic/GetTopicsForResource";
+ MManual.settings.topic.getTopicHelpfulUrl = "/Redesign/Topic/GetTopicHelpful";
+ MManual.settings.topic.wasThisTopicHelpfulUrl = "/Redesign/Topic/WasThisTopicHelpful";
+ MManual.settings.topic.getTableBodyUrl = "/Redesign/Topic/GetTableBody";
+ MManual.settings.socialMedia = MManual.settings.socialMedia || {};
+ MManual.settings.socialMedia.enableMultimediaPopupShareButton = true;
+ MManual.CommonLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+ MManual.CommonNumbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+ MManual.Context = MManual.settings;
+ MManual.Context.Item = MManual.Foundation.Context.Item;
+ /////////////////
+ // OBSOLETE END
+ /////////////////
+</script>
+ <script src="./ajax/jQuery/jquery-3.5.1.min.js" type="text/javascript"></script>
+ <script type="text/javascript">
+ window.jQuery || document.write("<script src='/Content/Scripts/Redesign/Lib/jquery-3.5.1.min.js'><\/script>");
+ </script>
+ <script src="./ajax/jquery.ui/1.13.1/jquery-ui.min.js" type="text/javascript"></script>
+ <script type="text/javascript">
+ window.jQuery.ui || document.write("<script src='/Content/Scripts/Redesign/Lib/jquery-ui-1.13.1.custom/jquery-ui.js'><\/script>");
+ </script>
+ <script src="./ajax/libs/knockout/3.5.1/knockout-latest.js" type="text/javascript"></script>
+ <script type="text/javascript">
+ window.ko || document.write("<script src='/Content/Scripts/Foundation/Presentation/Library/Knockout/knockout-3.5.1.js'><\/script>");
+ </script>
+ <script src="./ajax/libs/hammer.js/2.0.7/hammer.min.js" type="text/javascript"></script>
+ <script type="text/javascript">
+ window.Hammer || document.write("<script src='/Content/Scripts/Redesign/Lib/hammer.2.0.7.min.js'><\/script>");
+ </script>
+ <script src="./ajax/libs/es5-shim/4.5.13/es5-shim.min.js" type="text/javascript"></script>
+ <script type="text/javascript">
+ 'create' in Object && 'isArray' in Array && 'x'[0] === 'x' || document.write("<script src='/Content/Scripts/Redesign/Lib/polyfills/es5-shim.4.5.13.min.js'><\/script>");
+ </script>
+ <script src="./ajax/libs/es6-shim/0.35.5/es6-shim.min.js" type="text/javascript"></script>
+ <script type="text/javascript">
+ Array.prototype.find || document.write("<script src='/Content/Scripts/Redesign/Lib/polyfills/es6-shim.0.35.4.min.js'><\/script>");
+ </script>
+ <script src="./ajax/libs/slick-carousel/1.8.0/slick.min.js" type="text/javascript"></script>
+ <script type="text/javascript">
+ window.jQuery.fn.slick || document.write("<script src='/Content/Scripts/Redesign/Lib/slick-1.8.0/slick.1.8.0.min.js'><\/script>");
+ </script>
+<!--[if (gte IE 9)|!(IE)]><!-->
+ <script src="./bundles/redesign/libsjsv3.5.0.0-082e76f898.js?v=9oeWsccS0AXvU_mpLneFQpk81D2qyviYAadBAspEdRc1"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+ <script src="/bundles/redesign/ie8libsjsv3.5.0.0-082e76f898.js?v=NYMKNIKPtdByxJkp3-a4OoxrVMsYmUh3Th334huO0BY1"></script>
+<![endif]-->
+<!-- Add custom class to categorize all cookies as functional. -->
+<script src='./bundles/redesign/mmanualjsv3.5.0.0-082e76f898.js?v=fak064tWA0FdTN4I9SacuJLK5ACQh7oVHj7b8cPpYw01' class='optanon-category-C0002'></script>
+<!--Region information -->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<link rel="preload" href="/Content/Fonts/Redesign/oldrambla/Rambla-Latin-webfont.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/Content/Fonts/Redesign/OpenSans/OpenSans-700-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/Content/Fonts/Redesign/OpenSans/OpenSans-700-Bold-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/Content/Fonts/Redesign/OpenSans/OpenSans-400-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/Content/Fonts/Redesign/OpenSans/OpenSans-400-Regular-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/Content/Fonts/Redesign/OpenSans/OpenSans-300-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="/Content/Fonts/Redesign/OpenSans/OpenSans-600-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link href="./bundles/redesign/mmanualcssv3.5.0.0-082e76f898.css?v=zIOwY1BNFdAR2SUuOL1Fwd3Z7pcIg7B8FgRUsv7Rpww1" rel="stylesheet" type="text/css" media="screen">
+<link href="./bundles/redesign/jqueryuicssv3.5.0.0-082e76f898.css?v=3k6hV5TZDiil7_Jv0lADrVVLB9hJfoX2PenhijDq_d81" rel="stylesheet" type="text/css" media="screen">
+<link href="./bundles/redesign/mmanualprofessionalcssv3.5.0.0-082e76f898.css?v=uj1YRd_zeZNkYvxz5L-SqzyFEJhMrXVZCHZ9O3Q3Rec1" rel="stylesheet">
+<!--[if lt IE 9]><link href="/bundles/redesign/ie8cssv3.5.0.0-082e76f898.css?v=" rel="stylesheet"/>
+<![endif]-->
+<link href="./bundles/redesign/mmanualcssprintv3.5.0.0-082e76f898.css?v=n7sr22_Evsqc7Vn6o_s8EGmkvySLu560W8ATrqfrTPY1" rel="stylesheet" type="text/css" media="print">
+<link href="./bundles/redesign/mmanualcsshybridv3.5.0.0-082e76f898.css?v=lvH6pFnkF0AR178HRC6ElzITCXgmDPLaKs0PkRncdVM1" rel="stylesheet" type="text/css" media="hybrid">
+<!--[if lt IE 9]>
+ <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script type="text/javascript">
+ function msieversion() {
+ var ua = window.navigator.userAgent;
+ var msie = ua.indexOf("MSIE ");
+ if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./) || msie == NaN)
+ var test = $('li.no-children');
+ test.addClass("noSpace"); 
+ return false;
+ };
+ //msieversion();
+</script>
+<div style="display: none">
+ <div class="confirmationpopup__container" id="access-confirmation-popup" style="z-index: 10000;">
+ <div>
+ <div>
+ <div>
+ <div class="confirmationpopup__container">
+ <span class="confirmationpopup__logo"></span>
+ <div class="confirmationpopup__title">
+ <span class="confirmationpopup__text">MSD Manual</span>
+ </div>
+ <div class="confirmationpopup__description">
+ <p>Please confirm that you are a health care professional</p>
+ </div>
+ <div class="confirmationpopup__answer">
+ <a class="confirmationpopup__button confirmationpopup__button--yes">Yes</a>
+ <a class="confirmationpopup__button confirmationpopup__button--no">No</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+<div style="display: none">
+ <div class="confirmationpopup__container" id="external-link-confirmation-popup" style="z-index: 10000;">
+ <div>
+ <div>
+ <div>
+ <div class="confirmationpopup__container">
+ <span class="confirmationpopup__logo"></span>
+ <div class="confirmationpopup__title">
+ <span class="confirmationpopup__text">Leave this Site?</span>
+ </div>
+ <div class="confirmationpopup__description">
+ <p>The link you have selected will take you to a third-party website. We do not control or have responsibility for the content of any third-party site.</p>
+ </div>
+ <div class="confirmationpopup__answer">
+ <a class="confirmationpopup__button confirmationpopup__button--yes">Continue </a>
+ <a class="confirmationpopup__button confirmationpopup__button--no">Cancel</a>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+ <script> 
+ var externalUrls = JSON.parse(atob('WyJ3d3cuY2RjLmdvdi9tbXdyL3ByZXZpZXcvbW13cmh0bWwvcnI1OGUzMjRhMS5odG0iLCJ3d3cuY2RjLmdvdi9tbXdyL3ByZXZpZXcvbW13cmh0bWwvcnI2NDAzYTEuaHRtIiwid3d3LmNkYy5nb3YvdmFjY2luZXMvdnBkL2hlcGIvaGNwL2ZhcXMtaGNwLXBlZGlhcml4Lmh0bWwiLCJjaWQub3hmb3Jkam91cm5hbHMub3JnL2NvbnRlbnQvNTMvNy9lMjUuZnVsbC5wZGYgaHRtbD9zaWQ9NjcxODM4NjAtMGQ4YS00ZDU0LTlkNTctZmQxMmQ1NjgyNDIxIiwid3d3Lm5jYmkubmxtLm5paC5nb3YvcG1jL2FydGljbGVzL1BNQzQwMjgzNzgiLCJ3d3cuZHJ1Z3MtcG9ycGh5cmlhLm9yZyIsInBvcnBoeXJpYWZvdW5kYXRpb24ub3JnL2RydWdkYXRhYmFzZSIsImFhc2xkdjIwMTlzdGcuYWFzbGQub3JnL3NpdGVzL2RlZmF1bHQvZmlsZXMvMjAxOS0wNi9OQUZMRCBHdWlkYW5jZSAyMDE4LnBkZiIsImFhc2xkcHVicy5vbmxpbmVsaWJyYXJ5LndpbGV5LmNvbS9kb2kvcGRmLzEwLjEwMDIvaGVwLjMxMDYwIiwiYWNhZGVtaWMub3VwLmNvbS9jaWQvYXJ0aWNsZS81OC8xL2UxLzM3NDAwNyIsInd3dy5jZGMuZ292L2hlcGF0aXRpcy9oYXYvaGF2ZmFxLmh0bSIsImpvdXJuYWxzLmx3dy5jb20vYWpnL0Z1bGx0ZXh0LzIwMTgvMDIwMDAvQUNHX0NsaW5pY2FsX0d1aWRlbGluZV9fQWxjb2hvbGljX0xpdmVyX0Rpc2Vhc2UuOS5hc3B4Iiwid3d3LmNkYy5nb3YvbW13ci9wcmV2aWV3L21td3JodG1sL3JyNjAwN2ExLmh0bSIsImphbWEuamFtYW5ldHdvcmsuY29tL2FydGljbGUuYXNweD9hcnRpY2xlaWQ9MjQ5Mjg4MSIsInd3dy5uaGxiaS5uaWguZ292L2hlYWx0aC1wcm8vZ3VpZGVsaW5lcy9jdXJyZW50L2NhcmRpb3Zhc2N1bGFyLWhlYWx0aC1wZWRpYXRyaWMtZ3VpZGVsaW5lcyIsImdpLm9yZy9ndWlkZWxpbmUvZ2VuZXRpYy10ZXN0aW5nLWFuZC1tYW5hZ2VtZW50LW9mLWhlcmVkaXRhcnktZ2FzdHJvaW50ZXN0aW5hbC1jYW5jZXItc3luZHJvbWVzIiwicmhldW1hdG9sb2d5Lm94Zm9yZGpvdXJuYWxzLm9yZy9jb250ZW50LzQyLzIvMjM1LmZ1bGwucGRmIiwib25saW5lbGlicmFyeS53aWxleS5jb20vZG9pLzEwLjEwMDIvMTQ2NTE4NTguQ0QwMDM0NDgucHViNC9hYnN0cmFjdD9zeXN0ZW1NZXNzYWdlPVdpbGV5IE9ubGluZSBMaWJyYXJ5IHdpbGwgYmUgdW5hdmFpbGFibGUgb24gU2F0dXJkYXkgMTd0aCBEZWNlbWJlciAyMDE2IGF0IDA5OjAwIEdNVC8gMDQ6MDAgRVNULyAxNzowMCBTR1QgZm9yIDRocnMgZHVlIHRvIGVzc2VudGlhbCBtYWludGVuYW5jZS5BcG9sb2dpZXMgZm9yIHRoZSBpbmNvbnZlbmllbmNlIiwiY2lkLm94Zm9yZGpvdXJuYWxzLm9yZy9jb250ZW50L2Vhcmx5LzIwMTYvMTEvMDMvY2lkLmNpdzY3MC5mdWxsIiwid3d3Lm5obGJpLm5paC5nb3YvZ3VpZGVsaW5lcy9hc3RobWEvYXN0aGdkbG4uaHRtIiwib25saW5lbGlicmFyeS53aWxleS5jb20vZG9pLzEwLjExMTEvYXB0LjEzMTQ4L2Fic3RyYWN0Iiwib25saW5lbGlicmFyeS53aWxleS5jb20vZG9pLzEwLjEzNTkvamJtci4wNnMyMDQvYWJzdHJhY3QiLCJvbmxpbmVsaWJyYXJ5LndpbGV5LmNvbS9kb2kvMTAuMTAwMi9qYm1yLjQzOC9hYnN0cmFjdCIsImpvdXJuYWxzLmx3dy5jb20vaW5mZWN0ZGlzL0Z1bGx0ZXh0LzIwMTMvMDUwMDAvTmV3X0d1aWRlbGluZXNfZm9yX0FudGltaWNyb2JpYWxfUHJvcGh5bGF4aXNfaW4uMTAuYXNweCIsImphbWEuamFtYW5ldHdvcmsuY29tL2FydGljbGUuYXNweD9hcnRpY2xlaWQ9MTQ4NzQ5OCIsImNpZC5veGZvcmRqb3VybmFscy5vcmcvY29udGVudC80Ni8xMi8xODAxLmZ1bGwiLCJ3d3cuY2RjLmdvdi9tbXdyL3ZvbHVtZXMvNjcvd3IvbW02NzAzYTUuaHRtIiwid3d3LmNkYy5nb3YvbW13ci92b2x1bWVzLzY4L3dyL21tNjgzMmEzLmh0bSIsInd3dy5vbmxpbmVqYWNjLm9yZy9jb250ZW50LzY0LzIyL2U3NyIsImphbWFuZXR3b3JrLmNvbS9qb3VybmFscy9qYW1hc3VyZ2VyeS9mdWxsYXJ0aWNsZS8yNjIzNzI1Iiwid3d3LmNkYy5nb3YvdmFjY2luZXMvaGNwL2FjaXAtcmVjcy9nZW5lcmFsLXJlY3MvdGltaW5nLmh0bWwjdC0wMSIsInd3dy5jZGMuZ292L21td3IvcHJldmlldy9tbXdyaHRtbC9ycjU5MTFhMS5odG0iLCJ3d3cuY2RjLmdvdi9tbXdyL3ByZXZpZXcvbW13cmh0bWwvcnI1NjA0YTEuaHRtIiwid3d3LmNkYy5nb3YvdmFjY2luZXMvaGNwL2FjaXAtcmVjcy9nZW5lcmFsLXJlY3MvYWRtaW5pc3RyYXRpb24uaHRtbCIsInd3dy5jZGMuZ292L21td3Ivdm9sdW1lcy82NS9yci9ycjY1MDNhMS5odG0iLCJ3d3cub25saW5lamFjYy5vcmcvY29udGVudC81Ni8yMi8xODY0Iiwid3d3Lmlkc29jaWV0eS5vcmcvcHJhY3RpY2UtZ3VpZGVsaW5lL2hhcF92YXAiLCJhY2FkZW1pYy5vdXAuY29tL2NpZC9hcnRpY2xlLWxvb2t1cC9kb2kvMTAuMTA4Ni82NDk4NTgiLCJhY3Auc2lsdmVyY2hhaXItY2RuLmNvbS9hY3AvY29udGVudF9wdWJsaWMvam91cm5hbC9haW0vOTM3ODE0L20xODM2MDBmZjNfcGFuZWxfMi5qcGVnP0V4cGlyZXM9MTU1Njc0NDk5OCZhbXA7U2lnbmF0dXJlPU9jN2FPOFB6R3JoNHRzYkp6aFd3U1R2d3N+V0hJa05+QmFOcXljSENoMVREdWZkdXFwYmpnb2pkdVBVLThxNU93djJ0eW0weDNIZWtyRVhqZWd0VWlaMkMxNVFhZzVjTnVoZHhHdTg0Sk1iNW5MbWVmZ35vZlNRZmhUQWRSV3I5RUNySnQ0YTFudTBSbDJjclF3bFRkRGNMNFE4azlNR0xnZWc2eXFHSHpKR21sdWwyRThmRVd4aVAxaXZsUjlHeXBCWUxqUS1CM2VVSDRoaS1TWVZDRGZpdHYyempXMDFoRnpVbFpNNk9TWGI1eUVHVGhzaW1WOHlRU0N4Y1NMd2FhWX5DblpaOTZscmNycjg3bmtQbXR5dk05aVBVVXMtaXgzQmU1bFhUSURXdUlSclkzeG1XWFRucE51N2Z4Uk9TZW1aWW01RVNUWGJwR2RKSDZnTXl1QV9fJmFtcDtLZXktUGFpci1JZD1BUEtBSUU1RzVDUkRLNlJEM1BHQSIsInd3dy5jZGMuZ292L21td3IvcHJldmlldy9tbXdyaHRtbC9tbTYyMDNhMy5odG0iLCJ3d3cuY2RjLmdvdi9tbXdyL3ZvbHVtZXMvNjgvd3IvbW02ODMyYTMuaHRtIiwid3d3Lm5jYmkubmxtLm5paC5nb3YvcHVibWVkP3Rlcm09Q3JpdCBDYXJlIE1lZFtKb3VyXSBBTkQgNDJbdm9sdW1lXSBBTkQgMTE1N1twYWdlXSBBTkQgMjAxNFtwZGF0XSBBTkQgS2FydmVsbGFzIENKW2ZpcnN0IGF1dGhvcl0gQU5EIE91dGNvbWVzIGFuZCBjb21wbGljYXRpb25zIG9mIGludHJhY3JhbmlhbCBwcmVzc3VyZSBtb25pdG9yaW5nIGluIGFjdXRlIGxpdmVyIGZhaWx1cmUmYW1wO1RyYW5zU2NoZW1hPXRpdGxlJmFtcDtjbWQ9ZGV0YWlsc3NlYXJjaCIsInd3dy5uY2JpLm5sbS5uaWguZ292L3B1Ym1lZD90ZXJtPVwiSGVwYXRvbG9neSAoQmFsdGltb3JlLCBNZC4pXCJbSm91cl0gQU5EIDY2W3ZvbHVtZV0gQU5EIDEyMTlbcGFnZV0gQU5EIDIwMTdbcGRhdF0gQU5EIEFsYmlsbG9zIEFbYXV0aG9yXSBBTkQgU3RyYXRpZnlpbmcgcmlzayBpbiB0aGUgcHJldmVudGlvbiBvZiByZWN1cnJlbnQgdmFyaWNlYWwgaGVtb3JyaGFnZTogUmVzdWx0cyBvZiBhbiBpbmRpdmlkdWFsIHBhdGllbnQgbWV0YS1hbmFseXNpcy4gJmFtcDtUcmFuc1NjaGVtYT10aXRsZSZhbXA7Y21kPWRldGFpbHNzZWFyY2giLCJmYXNjcnMub3JnL2FzY3JzL21lZGlhL2ZpbGVzL2Rvd25sb2Fkcy9DbGluaWNhbCBQcmFjdGljZSBHdWlkZWxpbmVzL3RoZS1hbWVyaWNhbi1zb2NpZXR5LW9mLWNvbG9uLXByYWN0aWNhbC1ndWlkZWxpbmUtc2ludXMtcGlsb25pZGFsaXMucGRmIiwiZmFzY3JzLm9yZy9hc2Nycy9tZWRpYS9maWxlcy9kb3dubG9hZHMvQ2xpbmljYWwgUHJhY3RpY2UgR3VpZGVsaW5lcy9wcmFjdGljZV9wYXJhbWV0ZXJzX2Zvcl90aGVfbWFuYWdlbWVudF9vZl9oZW1vcnJob2lkcy5wZGZcIiIsInd3dy5jZGMuZ292L21td3IvcHJldmlldy9tbXdyaHRtbC9tbTU4MDNhNC5odG0iLCJ3d3cuY2RjLmdvdi9tbXdyL3ZvbHVtZXMvNjcvd3IvbW02NzIyYTUuaHRtIiwicHVibWVkLm5jYmkubmxtLm5paC5nb3YvMjE5NTY3MjAtZXZpZGVuY2UtcmVwb3J0LWdlbmV0aWMtYW5kLW1ldGFib2xpYy10ZXN0aW5nLW9uLWNoaWxkcmVuLXdpdGgtZ2xvYmFsLWRldmVsb3BtZW50YWwtZGVsYXktcmVwb3J0LW9mLXRoZS1xdWFsaXR5LXN0YW5kYXJkcy1zdWJjb21taXR0ZWUtb2YtdGhlLWFtZXJpY2FuLWFjYWRlbXktb2YtbmV1cm9sb2d5LWFuZC10aGUtcHJhY3RpY2UtY29tbWl0dGVlLW9mLXRoZS1jaGlsZC1uZXVyb2xvZ3ktc29jaWV0eT9mcm9tX3Rlcm09XCJOZXVyb2xvZ3lcIltKb3VyXSBBTkQgMjAxMVtwZGF0XSZhbXA7ZnJvbV9wb3M9NyIsInd3dy5uYWwudXNkYS5nb3YvZm5pYy92aXRhbWlucy1hbmQtbWluZXJhbHMiLCJ3d3cuaWRzb2NpZXR5Lm9yZy9wcmFjdGljZS1ndWlkZWxpbmUvY292aWQtMTktZ3VpZGVsaW5lLXRyZWF0bWVudC1hbmQtbWFuYWdlbWVudCIsInd3dy53aWxsc2V5ZS5vcmcvZG9jdG9yL21lbHZpbi1yb2F0LW1kLWZhY3MiLCJmYWN1bHR5Lm1kYW5kZXJzb24ub3JnL3Byb2ZpbGVzL3BlZHJvX3JhbWlyZXouaHRtbCIsInBoYXJtYWN5LnVjc2YuZWR1L3NoYWxpbmktbHluY2giLCJ3ZWlsbGNvcm5lbGwub3JnL2p3YmFybmhpbGwiLCJwcm9maWxlcy5zdGFuZm9yZC5lZHUvZGF2aWQtc3BpZWdlbCIsInd3dy51bWMuZWR1L2RvY3RvcnMvSHVhbmdfSnVlYmluIiwid3d3LmNob3AuZWR1L2RvY3RvcnMvbW9sZGVuaGF1ZXItanVsaWUtcyIsInd3dy51cm1jLnJvY2hlc3Rlci5lZHUvcGVvcGxlLzIwOTk2NzM0LXN0ZXBoZW4tYnJpYW4tc3Vsa2VzIiwicG9kaWF0cnkudGVtcGxlLmVkdS9rZW5kcmljay13aGl0bmV5Iiwid3d3Lm1lZC51cGVubi5lZHUvYXBwcy9mYWN1bHR5L2luZGV4LnBocC9nMjc1L3A4MTc4NTQxIiwid3d3LnVybWMucm9jaGVzdGVyLmVkdS9wZW9wbGUvMjExMzY2Mjctcm9uYWxkLXJhYmlub3dpdHoiLCJwc3ljaGlhdHJ5LnViYy5jYS9wZXJzb24vcm9zZW1hcnktYmFzc29uIiwicHJvZmlsZXMudXRzb3V0aHdlc3Rlcm4uZWR1L3Byb2ZpbGUvNDgwODIvcmF2aW5kcmEtc2Fyb2RlLmh0bWwiLCJzb3Aud2FzaGluZ3Rvbi5lZHUvcGVvcGxlL2JyaWFuLXdlcnRoIiwicGhhcm1hY3kudWNzZC5lZHUvZmFjdWx0eS9sZSIsInd3dy5jaG9wLmVkdS9kb2N0b3JzL2NhbGFicmlhLWFuZHJldy1jIiwibWVkaWNpbmUudWlvd2EuZWR1L3BzeWNoaWF0cnkvcHJvZmlsZS93aWxsaWFtLWNvcnllbGwiLCJ3d3cuY2hvcC5lZHUvZG9jdG9ycy9tZWh0YS1qYXkiLCJ3d3cuYWRlbHBoaS5lZHUvZmFjdWx0eS9wcm9maWxlcy9wcm9maWxlLnBocD9QSUQ9MDY0OSIsInd3dy5vdC53dXN0bC5lZHUvYWJvdXQvb3VyLXBlb3BsZS9wZWdneS1iYXJjby04Iiwid3d3LnVybWMucm9jaGVzdGVyLmVkdS9wZW9wbGUvMjE0MTE3MTctamltZW5hLWN1YmlsbG9zIiwid3d3Lm1sYW5ldC5vcmcvcmVzb3VyY2VzL3VzZXJndWlkZS5odG1sIiwid3d3LmNhbmNlci5nb3YvYWJvdXQtY2FuY2VyL2NhdXNlcy1wcmV2ZW50aW9uL3Jpc2svaW5mZWN0aW91cy1hZ2VudHMvaHB2LXZhY2NpbmUtZmFjdC1zaGVldCNob3ctZWZmZWN0aXZlLWFyZS1ocHYtdmFjY2luZXMiLCJ3d3cubmNiaS5ubG0ubmloLmdvdi9ib29rcy9OQksyNTM0OSIsInd3dy5uaWNoZC5uaWguZ292L3NpdGVzL2RlZmF1bHQvZmlsZXMvMjAxOC0wOS9QUkdMQUNfUmVwb3J0LnBkZiIsImFjYWRlbWljLm91cC5jb20vY2lkL2FydGljbGUvNDUvNy85NDEvNTQ0MzU5IiwiYWNhZGVtaWMub3VwLmNvbS9jaWQvYXJ0aWNsZS81NS8xMC9lODYvMzIxMTgzIiwiYWFzbGRwdWJzLm9ubGluZWxpYnJhcnkud2lsZXkuY29tL2RvaS8xMC4xMDAyL2hlcC4yOTgwMCIsImFhc2xkdjIwMTlzdGcuYWFzbGQub3JnL3NpdGVzL2RlZmF1bHQvZmlsZXMvMjAxOS0wNi9OQUZMRCBHdWlkYW5jZSAyMDE4LnBkZiIsInd3dy5jZGMuZ292L2hlcGF0aXRpcy9oYXYvaGF2ZmFxLmh0bSIsInd3dy5uZWptLm9yZy9kb2kvMTAuMTA1Ni9ORUpNb2ExNjEzNTEyP3VybF92ZXI9WjM5Ljg4LTIwMDMmcmZyX2lkPW9yaTpyaWQ6Y3Jvc3NyZWYub3JnJnJmcl9kYXQ9Y3JfcHViICAwd3d3Lm5jYmkubmxtLm5paC5nb3YiLCJ3d3cubmNiaS5ubG0ubmloLmdvdi9wbWMvYXJ0aWNsZXMvUE1DNTg0ODIzOSIsInB1Ym1lZC5uY2JpLm5sbS5uaWguZ292LzI5MjYwMjI1IiwiYWFzbGR2MjAxOXN0Zy5hYXNsZC5vcmcvc2l0ZXMvZGVmYXVsdC9maWxlcy8yMDE5LTA2L05BRkxEIEd1aWRhbmNlIDIwMTgucGRmIiwid3d3LmNkYy5nb3YvaGVwYXRpdGlzL2hhdi9oYXZmYXEuaHRtIiwiYWFzbGRwdWJzLm9ubGluZWxpYnJhcnkud2lsZXkuY29tL2RvaS8xMC4xMDAyL2hlcC4yOTgwMCIsImphbWFuZXR3b3JrLmNvbS9hcnRpY2xlLmFzcHg/YXJ0aWNsZWlkPTE0ODc0OTgiLCJ3d3cubmVqbS5vcmcvZG9pLzEwLjEwNTYvTkVKTW9hMTYxMzUxMj91cmxfdmVyPVozOS44OC0yMDAzJnJmcl9pZD1vcmk6cmlkOmNyb3NzcmVmLm9yZyZyZnJfZGF0PWNyX3B1YiAgMHd3dy5uY2JpLm5sbS5uaWguZ292IiwiY2lyYy5haGFqb3VybmFscy5vcmcvY29udGVudC8xMzIvMTUvMTQzNS5sb25nIiwid3d3LnBvcnBoeXJpYWZvdW5kYXRpb24uY29tIiwicG9ycGh5cmlhZm91bmRhdGlvbi5vcmcvZm9yLWhlYWx0aGNhcmUtcHJvZmVzc2lvbmFscy9kcnVnLXNhZmV0eSIsInd3dy5wb3JwaHlyaWEtZXVyb3BlLmNvbSIsInd3dy5kcnVncy1wb3JwaHlyaWEub3JnIiwicHJvZmlsZXMuc3RhbmZvcmQuZWR1L2p1ZGl0aC1wcm9jaGFza2EiLCJjaXJjLmFoYWpvdXJuYWxzLm9yZy9jb250ZW50LzEzMi8xNS8xNDM1LmxvbmciLCJhYXNsZC5vcmcvcHVibGljYXRpb25zL3ByYWN0aWNlLWd1aWRlbGluZXMiLCJ3d3cudXNwcmV2ZW50aXZlc2VydmljZXN0YXNrZm9yY2Uub3JnL1BhZ2UvVG9waWMvcmVjb21tZW5kYXRpb24tc3VtbWFyeS9oZXBhdGl0aXMtYy1zY3JlZW5pbmciLCJhYXNsZHB1YnMub25saW5lbGlicmFyeS53aWxleS5jb20vZG9pLzEwLjEwMDIvaGVwLjMxMDY1Iiwid3d3Lm5jYmkubmxtLm5paC5nb3YvcHVibWVkLzIyOTcyMDU5IiwiYWFzbGR2MjAxOXN0Zy5hYXNsZC5vcmcvc2l0ZXMvZGVmYXVsdC9maWxlcy8yMDE5LTA2L05BRkxEIEd1aWRhbmNlIDIwMTgucGRmIiwiYWNhZGVtaWMub3VwLmNvbS9jaWQvYXJ0aWNsZS81My83L2UyNS80MjQyODYiLCJ3d3cuaWRzb2NpZXR5Lm9yZy9wcmFjdGljZS1ndWlkZWxpbmUvY29tbXVuaXR5LWFjcXVpcmVkLXBuZXVtb25pYS1jYXAtaW4tYWR1bHRzIiwid3d3Lmlkc29jaWV0eS5vcmcvcHJhY3RpY2UtZ3VpZGVsaW5lL2hhcF92YXAiLCJ3d3cuY2RjLmdvdi92YWNjaW5lcy9oY3AvYWNpcC1yZWNzL3ZhY2Mtc3BlY2lmaWMvcG5ldW1vLmh0bWwiLCJwb3JwaHlyaWFmb3VuZGF0aW9uLm9yZyIsInd3dy5uY2JpLm5sbS5uaWguZ292L3BtYy9hcnRpY2xlcy9QTUM0Njk1OTg2Iiwid3d3Lmxhamgub3JnL2Fib3V0L3RoZS1qZXdpc2gtaG9tZS10ZWFtL21lZXQtb3VyLWNsaW5pY2lhbnMiLCJ3d3cubnl0aW1lcy5jb20vaW50ZXJhY3RpdmUvMjAyMC9zY2llbmNlL2Nvcm9uYXZpcnVzLXZhY2NpbmUtdHJhY2tlci5odG1sIiwid3d3Lm5jYmkubmxtLm5paC5nb3YvcG1jL2FydGljbGVzL1BNQzc0MzE5NjYiLCJ3d3cudGhlLXNjaWVudGlzdC5jb20vbmV3cy1vcGluaW9uL3ZlY3Rvci1iYXNlZC12YWNjaW5lcy1jb21lLXRvLXRoZS1mb3JlLWluLXRoZS1jb3ZpZC0xOS1wYW5kZW1pYy02NzkxNSIsInd3dy50aGVsYW5jZXQuY29tL2pvdXJuYWxzL2xhbmNldC9hcnRpY2xlL1BJSVMwMTQwLTY3MzYoMjApMzI2NjEtMS9mdWxsdGV4dCIsInd3dy5tZWQudXBlbm4uZWR1L2FwcHMvZmFjdWx0eS9pbmRleC5waHAvZzI3NS9wODg0MTQ0MCIsInd3dy5jZGMuZ292L21td3Ivdm9sdW1lcy83MC9yci9ycjcwMDFhMS5odG0iLCJ3d3cuZXNzZW50aWFsYWNjZXNzaWJpbGl0eS5jb20vbWVyY2siLCJ3d3cubWVub3BhdXNlLm9yZy9kb2NzL2RlZmF1bHQtc291cmNlLzIwMTcvbmFtcy0yMDE3LWhvcm1vbmUtdGhlcmFweS1wb3NpdGlvbi1zdGF0ZW1lbnQucGRmIiwid3d3Lm5jYmkubmxtLm5paC5nb3YvcG1jL2FydGljbGVzL1BNQzQwMjgzNzgiLCJ3d3cubmVqbS5vcmcvZG9pLzEwLjEwNTYvTkVKTW9hMjExMjQzNT91cmxfdmVyPVozOS44OC0yMDAzJnJmcl9pZD1vcmk6cmlkOmNyb3NzcmVmLm9yZyZyZnJfZGF0PWNyX3B1YiAgMHB1Ym1lZCIsInd3dy5ham9nLm9yZy9hcnRpY2xlL1MwMDAyLTkzNzgoMjEpMDA5NjMtNy9mdWxsdGV4dCIsInd3dy5ham9nLm9yZy9hcnRpY2xlL1MwMDAyLTkzNzgoMjApMzA4NjEtOS9mdWxsdGV4dCIsImFzY29wdWJzLm9yZy9kb2kvZnVsbC8xMC4xMjAwL0pDTy4yMS4wMDAwNiJd'));
+ $(document).ready(function () {
+ $("a").click(function() {
+ var href = $(this).attr('href');
+ if (MManual.Foundation.Url.IsAbsoluteUrl(href)) {
+ var hrefWithoutProtocol = MManual.Foundation.Url.RemoveProtocol(href);
+ var match = externalUrls.some(function(url) {
+ return url.length > 0 && hrefWithoutProtocol.startsWith(url);
+ });
+ if (match) {
+ externalLinkConfirmation.showConfirmationModal(href);
+ } else {
+ return true;
+ }
+ } else {
+ return true;
+ }
+ return false;
+ });
+ });
+ </script>
+ <!-- AddToAny script remove-->
+<script></script>
+ 
+<script type="text/html" id="audio-player-template">
+ <div class="multimedia multimedia--withdescription" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__audio hide-on-print">
+ <div class="multimedia__audio--wrapper">
+ <audio>
+ <source data-bind="attr: { src: AudioUrl, type: MimeType }" />
+ </audio>
+ </div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <div class="multimedia__description--wrapper">
+ <!-- ko if: $data.Description -->
+ <div class="multimedia__description--content">
+ <p data-bind="html: Description"></p>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: $data.Credits -->
+ <div class="multimedia__description--credits">
+ <p data-bind="html: Credits"></p>
+ </div>
+ <!-- /ko -->
+ </div>
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script>
+<script type="text/html" id="inlinemedia-audio-template">
+ <!-- ko if: isSideline-->
+ <div class="inlinebox inlinebox--right inlinebox--clickable" data-bind="attr: {id: ItemId}, css: {'inlinebox--right': !IsInCarousel(), 'inlinebox--full': IsInCarousel}">
+ <div class="inlinebox__wrapper">
+ <!-- ko ifnot: IsInCarousel-->
+ <div class="inlinebox__header">Audio</div>
+ <!-- /ko -->
+ <div class="inlinebox__content">
+ <div class="multimedia__link" data-bind="component: { name: 'multimedia-link-text', params: multimediaLinkModel }"></div>
+ <div class="inlinebox__button">
+ <img loading="lazy" alt="icon" data-bind="attr: {src: ThumbnailUrl}">
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isInline -->
+ <div data-bind="css: componentClasses(), attr: {id: ItemId}">
+ <div class="inlinemedia__wrapper">
+ <div class="inlinemedia__header">
+ <div class="inlinemedia__title" data-bind="html: Title"></div>
+ </div>
+ <div class="inlinemedia__content">
+ <audio>
+ <source data-bind="attr: { src: AudioUrl, type: MimeType }" />
+ </audio>
+ <!-- ko if: detailsAvailable -->
+ <div class="inlinemedia__more">
+ <div class="inlinemedia__action inlinemedia__action--show" data-bind="click: toggleDetailsFunction">
+ <i class="inlinemedia__eye"></i>
+ <span class="inlinemedia__details hide" role="button" tabindex="0">
+ Show Details
+ </span>
+ <span class="inlinemedia__details show" role="button" tabindex="0">
+ Hide Details
+ </span>
+ <div class="inlinemedia__information" data-bind="html: Description"></div>
+ <div class="inlinemedia__credits" data-bind="html: Credits"></div>
+ </div>
+ </div>
+ <!-- /ko -->
+ </div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isText -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ <!-- /ko -->
+</script>
+<script type="text/html" id="biodigital-player-template">
+ <div class="multimedia" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__iframe">
+ <div class="multimedia__iframe--spacer"></div>
+ <div class="multimedia__iframe--wrapper">
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no" frameBorder="0" data-bind="attr: { src: IframeSrcComputed, title: Title }, iOSresizeIframeToParent : attachResizeCallback, swipe: {next: parentContext.showNext, prev: parentContext.showPrev}" sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
+ </div>
+ <div class="multimedia__iframe--spacer"></div>
+ </div>
+ <div class="multimedia__description" data-bind="getDivRef : $parent.descriptionDivRef">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <!-- ko ifnot: parentContext.displaySingle -->
+ <div class="multimedia__pager hide-on-print">
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showFirst">«</a>
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showPrev">‹</a>
+ <span class="multimedia__pager--number" data-bind="text: $parent.activeEntry().index + 1"></span>/<span class="multimedia__pager--number" data-bind="text: $parent.activeList().length"></span>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showNext">›</a>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showLast">»</a>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script><script type="text/html" id="inlinemedia-biodigital-template">
+ <!-- ko ifnot: isText-->
+ <div data-bind="css: componentClasses()">
+ <div class="inlinemedia__wrapper">
+ <div class="inlinemedia__header">
+ <div class="inlinemedia__title" data-bind="html: Title"></div>
+ <!-- ko if: isSideline() && !IsInCarousel() -->
+ <div class="inlinemedia__open hide-on-print">
+ <i class="inlinemedia__icon--open"></i>
+ </div>
+ <!-- /ko -->
+ </div>
+ <div class="inlinemedia__content">
+ <!-- ko if: isSideline -->
+ <figure class="box__figure">
+ <img oncontextmenu="return false;" loading="lazy" class="box__picture" data-bind="attr: {src: ThumbnailUrl, alt: Title, width:ImageWidth, height:ImageHeight}" />
+ <div class="box__action"></div>
+ <div class="box__label">3D MODEL</div>
+ </figure>
+ <!-- /ko -->
+ <!-- ko if: isInline -->
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrc, title: Title }"></iframe>
+ <!-- /ko -->
+ </div>
+ <!-- ko ifnot: isInline -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ <!-- /ko -->
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isText -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ <!-- /ko -->
+</script>
+ 
+<script type="text/javascript">
+ (function (MManual) {
+ var deferredScripts = [];
+ 
+ deferredScripts.push("/bundles/redesign/eastereggv3.5.0.0-082e76f898.js?v=ZqOHtR3rxB_PkXIoGiSbqJrBzhLG2RE_mkFAdliyeDw1");
+ 
+ MManual.EasterEggPlayerScripts = deferredScripts;
+ }(window.MManual = window.MManual || {}));
+</script>
+<script type="text/html" id="image-player-template">
+ <div class="multimedia multimedia--withdescription" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__image" data-bind="css: zoomClass">
+ <div class="multimedia__image--spacer hide-on-print"></div>
+ <div class="multimedia__image--wrapper">
+ <img oncontextmenu="return false;" loading="lazy" data-bind="attr: { src: ImageUrl, alt: Alt}, getImageDimensions: imageDimensions, pinchZoom: { pinchZoomActive: pinchZoomActive, isZoomed: isZoomed}">
+ </div>
+ <!-- ko if: zoomEnabled -->
+ 
+ <!-- /ko -->
+ <div class="multimedia__image--spacer hide-on-print"></div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <!-- ko ifnot: parentContext.displaySingle -->
+ <div class="multimedia__pager hide-on-print">
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showFirst">«</a>
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showPrev">‹</a>
+ <span class="multimedia__pager--number" data-bind="text: $parent.activeEntry().index + 1"></span>/<span class="multimedia__pager--number" data-bind="text: $parent.activeList().length"></span>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showNext">›</a>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showLast">»</a>
+ </div>
+ <!-- /ko -->
+ <div class="multimedia__description--wrapper">
+ <!-- ko if: $data.Description -->
+ <div class="multimedia__description--content" data-bind="html: Description"> </div>
+ <!-- /ko -->
+ <!-- ko if: $data.Credits -->
+ <div class="multimedia__description--credits" data-bind="html: Credits"> </div>
+ <!-- /ko -->
+ </div>
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations" data-bind="modalLocations: topicsWithResource().length">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script>
+<script type="text/javascript">
+ (function (MManual) {
+ var deferredScripts = [];
+ 
+ deferredScripts.push("/bundles/redesign/imageplayerv3.5.0.0-082e76f898.js?v=sWgoLvG7zFKbYfkOiaTYY5tBk5gefAsRS0qs0ENFdUc1");
+ 
+ MManual.ImagePlayerScripts = deferredScripts;
+ }(window.MManual = window.MManual || {}));
+</script>
+<script type="text/html" id="inlinemedia-photo-template">
+ <!-- ko ifnot: isText-->
+ <div data-bind="css: componentClasses()">
+ <div class="inlinemedia__wrapper">
+ <div class="inlinemedia__innerwrapper">
+ <div class="inlinemedia__header">
+ <div class="inlinemedia__title" data-bind="html: Title"></div>
+ <div class="inlinemedia__open hide-on-print">
+ <i class="inlinemedia__icon--open"></i>
+ </div>
+ </div>
+ <div class="inlinemedia__content">
+ <div class="inlinemedia__image--container">
+ <img class="h-nocopy" loading="lazy" oncontextmenu="return false;" data-bind="attr: { src: ThumbnailUrl, alt: Alt, width:ImageWidth, height:ImageHeight }" />
+ </div>
+ <!-- ko if: isSideline -->
+ <div class="inlinemedia__subtitle" data-bind="html: Credits"></div>
+ <!-- /ko -->
+ </div>
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ </div>
+ <div class="inlinemedia__content">
+ <!-- ko if: isInline() && detailsAvailable() -->
+ <div class="inlinemedia__more">
+ <div class="inlinemedia__action inlinemedia__action--show" data-bind="click: toggleDetailsFunction">
+ <i class="inlinemedia__eye"></i>
+ <span class="inlinemedia__details hide" role="button" tabindex="0">
+ Show Details
+ </span>
+ <span class="inlinemedia__details show" role="button" tabindex="0">
+ Hide Details
+ </span>
+ <div class="inlinemedia__information" data-bind="html: Description"></div>
+ <div class="inlinemedia__credits" data-bind="html: Credits"></div>
+ </div>
+ </div>
+ <!-- /ko -->
+ </div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isText -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ <!-- /ko -->
+</script>
+<script type="text/html" id="infographic-player-template">
+ <div class="multimedia" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__image" data-bind="css: zoomClass">
+ <div class="multimedia__image--spacer hide-on-print"></div>
+ <div class="multimedia__image--wrapper h-nocopy">
+ <img oncontextmenu="return false;" loading="lazy" data-bind="attr: { src: ImageUrl, alt: Title}, getImageDimensions: imageDimensions, pinchZoom: { pinchZoomActive: pinchZoomActive, isZoomed: isZoomed}">
+ </div>
+ <!-- ko if: zoomEnabled -->
+ <div class="multimedia__image--actions hide-on-print">
+ <div class="multimedia__image--actionzoom" data-bind="click: toggleZoom"></div>
+ </div>
+ <!-- /ko -->
+ <div class="multimedia__image--spacer hide-on-print"></div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <div class="multimedia__description--wrapper">
+ <!-- ko if: CitationLink -->
+ <div class="multimedia__description--source">
+ <span class="multimedia__description--sourcetitle">Source:</span>
+ <!-- ko if: CitationText -->
+ <a href="#" class="multimedia__description--citation" data-bind="text: CitationText, attr: { href: CitationLink }"></a>
+ <!-- /ko -->
+ <!-- ko ifnot: CitationText -->
+ <a href="#" class="multimedia__description--citation" data-bind="text: CitationLink, attr: { href: CitationLink }"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ </div>
+ </div>
+ </div>
+</script>
+<script type="text/html" id="inlinemedia-labtest-template">
+ <!-- ko if: isSideline -->
+ <div class="inlinebox inlinebox--clickable" data-bind="css: {'inlinebox--right': !IsInCarousel(), 'inlinebox--full': IsInCarousel}">
+ <div class="inlinebox__wrapper">
+ <!-- ko ifnot: IsInCarousel-->
+ <div class="inlinebox__header">Lab Test</div>
+ <!-- /ko -->
+ <div class="inlinebox__content">
+ <div class="multimedia__link" data-bind="component: { name: 'multimedia-link-text', params: multimediaLinkModel }"></div>
+ <div class="inlinebox__button">
+ <img class="labtest-icon" loading="lazy" alt="icon" data-bind="attr: {src: ThumbnailUrl }" width="55" height="55" />
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isInline -->
+ <div data-bind="css: componentClasses()">
+ <div class="inlinemedia__wrapper">
+ <div class="inlinemedia__header">
+ <div class="inlinemedia__title" data-bind="html: Title"></div>
+ </div>
+ <div class="inlinemedia__content">
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="yes" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrc, title: Title }"></iframe>
+ </div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isText -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ <!-- /ko -->
+</script><script type="text/html" id="labtest-player-template">
+ <div class="multimedia" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__iframe">
+ <div class="multimedia__iframe--spacer"></div>
+ <div class="multimedia__iframe--wrapper h-ios-iframe-scroll">
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="auto" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrcComputed, title: Title }, setIframePrintTarget: setIframePrintTarget" sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
+ </div>
+ <div class="multimedia__iframe--spacer"></div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <!-- ko ifnot: parentContext.displaySingle -->
+ <div class="multimedia__pager hide-on-print">
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showFirst">Â«</a>
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showPrev">â€¹</a>
+ <span class="multimedia__pager--number" data-bind="text: $parent.activeEntry().index + 1"></span>/<span class="multimedia__pager--number" data-bind="text: $parent.activeList().length"></span>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showNext">â€º</a>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showLast">Â»</a>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations" data-bind="modalLocations: topicsWithResource().length">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script>
+<script type="text/html" id="mediawidget-labtest-template">
+ <!-- ko component: {name: 'multimedia-link-text', params: { item: ko.mapping.fromJS({
+ ItemId: ItemId,
+ IframeSrc: MediaUrl,
+ Title: Title,
+ ShareUrlTitle: ShareUrlTitle,
+ Description: Description,
+ ThumbnailUrl: ThumbnailUrl,
+ Credits: Credits,
+ MediaType: 'labest',
+ MediaNameTranslated: 'Lab Test' ,
+ UniqueId: UniqueId
+ }),
+ linkText: Title,
+ showTooltip: false,
+ listName: 'LabTestResources' + $parent.key
+ } } -->
+ <!-- /ko -->
+</script>
+<script type="text/html" id="mediawidget-labtest-list-template">
+ <!-- ko component: {name: 'multimedia-link-text', params: { item: ko.mapping.fromJS({
+ ItemId: ItemId,
+ IframeSrc: MediaUrl,
+ Title: Title,
+ ShareUrlTitle: ShareUrlTitle,
+ Description: Description,
+ ThumbnailUrl: ThumbnailUrl,
+ Credits: Credits,
+ MediaType: 'labtest',
+ MediaNameTranslated: 'Lab Test',
+ UniqueId: UniqueId
+ }),
+ linkText: Title,
+ showTooltip: false,
+ listName: 'LabTestResources' + $parent.key
+ } } -->
+ <!-- /ko -->
+</script><script type="text/html" id="inlinemedia-featuredlink-template">
+ <!-- ko ifnot: isText-->
+ <!-- ko ifnot: isModal -->
+ <a data-bind="attr: {href: IframeSrcComputed, target: Target}">
+ <div data-bind="css: componentClasses()">
+ <div class="inlinemedia__wrapper">
+ <div class="inlinemedia__header">
+ <div class="inlinemedia__title" data-bind="html: Title"></div>
+ <!-- ko if: isSideline() && !IsInCarousel() -->
+ <div class="inlinemedia__open hide-on-print">
+ <i class="inlinemedia__icon--open"></i>
+ </div>
+ <!-- /ko -->
+ </div>
+ <div class="inlinemedia__content">
+ <!-- ko if: isSideline -->
+ <figure class="box__figure">
+ <img oncontextmenu="return false;" loading="lazy" class="box__picture" data-bind="attr: {src: ThumbnailUrl, alt: Title}" />
+ <div class="box__action"></div>
+ <div class="box__label" data-bind="text:MediaNameTranslated"></div>
+ </figure>
+ <!-- /ko -->
+ <!-- ko if: isInline -->
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrcComputed, title: Title }"></iframe>
+ <!-- /ko -->
+ </div>
+ </div>
+ </div>
+ </a>
+ <!-- /ko -->
+ <!-- /ko -->
+ <!-- ko if: isModal -->
+ <div data-bind="css: componentClasses()">
+ <div class="inlinemedia__wrapper">
+ <div class="inlinemedia__header">
+ <div class="inlinemedia__title" data-bind="html: Title"></div>
+ <!-- ko if: isSideline() && !IsInCarousel() -->
+ <div class="inlinemedia__open hide-on-print">
+ <i class="inlinemedia__icon--open"></i>
+ </div>
+ <!-- /ko -->
+ </div>
+ <div class="inlinemedia__content">
+ <!-- ko if: isSideline -->
+ <figure class="box__figure">
+ <img oncontextmenu="return false;" loading="lazy" class="box__picture" data-bind="attr: {src: ThumbnailUrl, alt: Title}" />
+ <div class="box__action"></div>
+ <div class="box__label" data-bind="text:MediaNameTranslated"></div>
+ </figure>
+ <!-- /ko -->
+ <!-- ko if: isInline -->
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrcComputed, title: Title }"></iframe>
+ <!-- /ko -->
+ </div>
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isText -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }">
+ </div>
+ <!-- /ko -->
+</script><script type="text/html" id="featuredlink-player-template">
+ <div class="multimedia" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__iframe">
+ <div class="multimedia__iframe--spacer"></div>
+ <div class="multimedia__iframe--wrapper">
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="yes" frameBorder="0" data-bind="attr: { src: IframeSrcComputed, title: Title }, iOSresizeIframeToParent : attachResizeCallback" sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
+ </div>
+ <div class="multimedia__iframe--spacer"></div>
+ </div>
+ <div class="multimedia__description" data-bind="getDivRef : $parent.descriptionDivRef">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ </div>
+ </div>
+</script><script type="text/html" id="iframe-player-template">
+ <div class="multimedia" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__iframe">
+ <div class="multimedia__iframe--spacer"></div>
+ <div class="multimedia__iframe--wrapper">
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="auto" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrcComputed, title: Title }" sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
+ </div>
+ <div class="multimedia__iframe--spacer"></div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <!-- ko ifnot: parentContext.displaySingle -->
+ <div class="multimedia__pager hide-on-print">
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showFirst">«</a>
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showPrev">‹</a>
+ <span class="multimedia__pager--number" data-bind="text: $parent.activeEntry().index + 1"></span>/<span class="multimedia__pager--number" data-bind="text: $parent.activeList().length"></span>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showNext">›</a>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showLast">»</a>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script><script type="text/html" id="multimedia-thumbnail-template">
+ <div class="modalcarousel__item" data-bind="event:{click: $parentContext.$parent.navToClick.bind($index()), keypress: $parentContext.$parent.navToClickKeyPress.bind($index())}, css: {'modalcarousel__item--active' : $parentContext.$parent.activeIndex() == $index()}, attr: { title: item.Title}, modalCarousel, css-static: 'modalcarousel__item--' + item.MediaType()" tabindex="0" role="button">
+ <div class="modalcarousel__item--wrapper">
+ <div class="modalcarousel__item--imagewrapper h-nocopy">
+ <img oncontextmenu="return false;" data-bind="lazyload: {src: item.ThumbnailUrl, options: {loadOnlyInViewport: true} , updateTick: $parentContext.$parent.carouselScrollTick}, attr: {alt: item.Title }, scrollIntoView:$parentContext.$parent.activeIndex() == $index()" />
+ </div>
+ <div class="modalcarousel__item--text" data-bind="html: item.Title, ellipsis: item.Title"> </div>
+ </div>
+ <div class="modalcarousel__item--number" data-bind="text: ($index() + 1)"></div>
+ </div>
+</script>
+<script type="text/html" id="text-player-template">
+ <div class="multimedia">
+ <div class="multimedia__text" data-bind="html: Text"> </div>
+ </div>
+</script>
+<script type="text/html" id="multimedia-link-block-template">
+ <i class="inlinemedia__icon--open"
+ data-bind="hoverVisible: enableHover, hoverTargetId: '.multimedia__link'"></i>
+ <button class="multimedia__link--block" data-bind="shortClick: showPlayer" aria-label="Show Popup"></button>
+</script>
+<script type="text/html" id="multimedia-link-text-template">
+ <a class="multimedia__link--text" tabindex="0" data-bind="shortClick: showPlayer, html: linkText, css: cssClass"></a>
+</script><div class="multimedia__popup l-viewport" data-bind="component: { name: 'multimedia-popup'}">
+ <!-- Placeholder for media players. -->
+</div>
+<script type="text/html" id="multimedia-popup-template">
+ <!-- ko if: playerVisible -->
+ <div class="modal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel">
+ <div class="modal--shade" data-bind="click: hidePopup"></div>
+ <div class="modaldialog" data-bind=" arrowKeys: {left: showPrev, right: showNext}, css : {'h-expanded' : expanded }">
+ <div class="modaldialog__header hide-on-print">
+ <div class="modaldialog__header--wrapper">
+ <div class="modaldialog__header--title modaldialog__header--element" data-bind="html: popupTitle(), scaleText: popupTitle"></div>
+ <div tabindex="0" role="button" class="modaldialog__header--close modaldialog__header--element" data-bind="event: { click: hidePopup, keypress: hidePopupKeyPress }">
+ Close
+ </div>
+ </div>
+ </div>
+ <div class="modaldialog__content">
+ <div class="modaldialog__content--wrapper" data-bind="swipe: {next: showNext, prev: showPrev, canSwipe: canSwipe}">
+ <div class="modaldialog__media" data-bind="css :{ 'modaldialog__media--withcarousel': !(displaySingle() || hideCarousel()), 'modaldialog__media--single': displaySingle }">
+ <!-- ko ifnot: displaySingle -->
+ <div class="modaldialog__media--sidemargin hide-on-print">
+ <div class="modaldialog__media--nav modaldialog__media--prev" tabindex="0" role="button" aria-label="Previous" data-bind="event: { click: showPrev, keypress: showPrevKeyPress }">
+ <div class="mm-icon" data-bind="css : showPrevClass()"></div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <div class="modaldialog__media--wrapper">
+ 
+ <!-- ko component: {name: activeEntry().item.MediaType() + '-player', params: activeEntry} -->
+ <!-- /ko -->
+ 
+ </div>
+ <!-- ko ifnot: displaySingle -->
+ <div class="modaldialog__media--sidemargin hide-on-print">
+ <div class="modaldialog__media--nav modaldialog__media--next" tabindex="0" role="button" aria-label="Next" data-bind="event: { click: showNext, keypress: showNextKeyPress }">
+ <div class="mm-icon" data-bind="css: showNextClass()"></div>
+ </div>
+ </div>
+ <!-- /ko -->
+ </div>
+ <!-- ko ifnot: (displaySingle() || hideCarousel()) -->
+ <div class="modaldialog__carousel hide-on-print">
+ <div class="modaldialog__carousel--sidemargin modaldialog__carousel--prev" tabindex="0" role="button" data-bind="event:{click: carouselShowPrev, keypress:carouselShowPrevKeyPress}, css : { 'modaldialog__carousel--sidemargin--disabled' : isCarouselShowPrevDisabled() } "></div>
+ <div class="modaldialog__carousel--wrapper">
+ <div class="modalcarousel" data-bind="scrollTick : carouselScrollTick, scroll : carouselIsScrolled ">
+ <!-- ko foreach: {data: activeList, as: 'entry'} -->
+ <!-- ko template: {name: 'multimedia-thumbnail-template', data: entry} -->
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+ <div class="modaldialog__carousel--sidemargin modaldialog__carousel--next" tabindex="0" role="button" data-bind="event:{click: carouselShowNext, keypress:carouselShowNextKeyPress}, css : { 'modaldialog__carousel--sidemargin--disabled' : isCarouselShowNextDisabled() }"></div>
+ </div>
+ <!-- /ko -->
+ <div class="modaldialog__toolbar hide-on-print">
+ <!-- ko ifnot: displaySingle -->
+ <div class="modaldialog__pager">
+ <a class="modaldialog__pager--nav modaldialog__pager--navfirst" data-bind="click: showFirst">«</a>
+ <a class="modaldialog__pager--nav modaldialog__pager--navleft" data-bind="click: showPrev">‹</a>
+ <span class="modaldialog__pager--number" data-bind="text: activeEntry().index + 1"></span>/<span class="modaldialog__pager--number" data-bind="text: activeList().length"></span>
+ <a class="modaldialog__pager--nav modaldialog__pager--navright" data-bind="click: showNext">›</a>
+ <a class="modaldialog__pager--nav modaldialog__pager--navlast" data-bind="click: showLast">»</a>
+ </div>
+ <!-- /ko -->
+ <div class="modaldialog__actions">
+ <!-- ko if: detailsAvailable -->
+ <div class="modaldialog__action modaldialog__action--description modaldialog__action--description-show" data-bind="click: toggleExpanded">
+ <i class="modaldialog__icon--show"></i>
+ <span class="modaldialog__action--text">
+ Show Details
+ </span>
+ </div>
+ <div class="modaldialog__action modaldialog__action--description modaldialog__action--description-hide" data-bind="click: toggleExpanded">
+ <i class="modaldialog__icon--hide"></i>
+ <span class="modaldialog__action--text">
+ Hide Details
+ </span>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: MManual.settings.socialMedia.enableMultimediaPopupShareButton -->
+ <div class="modaldialog__action modaldialog__action--share a2a_kit" data-a2a-icon-color="transparent,transparent" data-bind="attr:{'data-a2a-url': shareUrl}">
+ <a class="modaldialog__icon--share a2a_dd" href="https://www.addtoany.com/share" data-a2a-icon-color="transparent,transparent"></a>
+ </div>
+ <!-- /ko -->
+ <div class="modaldialog__action modaldialog__action--print" data-bind="event:{click: printPopupContent, keypress:printPopupContentKeyPress}" tabindex="0" role="button" aria-label="print">
+ <div class="modaldialog__icon--print"></div>
+ </div>
+ </div>
+ </div>
+ <div class="modaldialog__copyright-print">
+ <div class="modaldialog__copyright-print--logo">
+<img src="/Content/Images/msd_foot_logo.png" alt=MManual class="badge msd" loading="lazy" width="240" height="71" />
+ </div>
+ <div class="modaldialog__copyright-print--text">
+ © 2022 Merck Sharp & Dohme Corp., a subsidiary of Merck & Co., Inc., Kenilworth, NJ, USA
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- /ko -->
+</script>
+<script type="text/html" id="podcast-player-template">
+ <div class="multimedia multimedia--withdescription" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__audio hide-on-print">
+ <div class="multimedia__audio--wrapper">
+ <audio>
+ <source data-bind="attr: { src: AudioUrl, type: MimeType }" />
+ </audio>
+ </div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <!-- ko ifnot: parentContext.displaySingle -->
+ <div class="multimedia__pager hide-on-print">
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showFirst">«</a>
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showPrev">‹</a>
+ <span class="multimedia__pager--number" data-bind="text: $parent.activeEntry().index + 1"></span>/<span class="multimedia__pager--number" data-bind="text: $parent.activeList().length"></span>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showNext">›</a>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showLast">»</a>
+ </div>
+ <!-- /ko -->
+ <div class="multimedia__description--wrapper">
+ <!-- ko if: $data.Description -->
+ <div class="multimedia__description--content">
+ <p data-bind="html: Description"></p>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: $data.Credits -->
+ <div class="multimedia__description--credits">
+ <p data-bind="html: Credits"></p>
+ </div>
+ <!-- /ko -->
+ </div>
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations" data-bind="modalLocations: topicsWithResource().length">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script>
+ <script type="text/html" id="quiz-player-template">
+ <div class="multimedia" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__iframe">
+ <div class="multimedia__iframe--spacer"></div>
+ <div class="multimedia__iframe--wrapper h-ios-iframe-scroll">
+ <iframe frameBorder="0" scrolling="auto" data-bind="attr: { src: IframeSrcComputed, title: Title }" sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation, swipe: {left: parentContext.showNext, right: parentContext.showPrev}"></iframe>
+ </div>
+ <div class="multimedia__iframe--spacer"></div>
+ </div>
+ </div>
+</script>
+<script type="text/html" id="table-player-template">
+ <div class="multimedia" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__table">
+ <div class="multimedia__table--wrapper">
+ <div data-bind="html: tableBody, stickyHeaderTable: tableBody, lexicompDrugsOnClick: tableBody" class="modaltable"> </div>
+ </div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations" data-bind="modalLocations: topicsWithResource().length">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script><script type="text/html" id="m-link-text-template">
+ <a class="multimedia__link--text" tabindex="0" role="button" data-bind="shortClick: showPlayer, html: linkText, css: cssClass, attr: { title: item.Title }, mlinkToolTip: { thumbnail: item.ThumbnailUrl, title: item.Title, show: showTooltip}"></a>
+</script>
+<script type="text/html" id="clinicalcalculator-player-template">
+ <div class="multimedia" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__iframe">
+ <div class="multimedia__iframe--spacer"></div>
+ <div class="multimedia__iframe--wrapper h-ios-iframe-scroll">
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="auto" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrcComputed, title: Title }, setIframePrintTarget: setIframePrintTarget" sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
+ </div>
+ <div class="multimedia__iframe--spacer"></div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <!-- ko ifnot: parentContext.displaySingle -->
+ <div class="multimedia__pager hide-on-print">
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showFirst">«</a>
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showPrev">‹</a>
+ <span class="multimedia__pager--number" data-bind="text: $parent.activeEntry().index + 1"></span>/<span class="multimedia__pager--number" data-bind="text: $parent.activeList().length"></span>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showNext">›</a>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showLast">»</a>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script><script type="text/html" id="inlinemedia-calculator-template">
+ <!-- ko if: isSideline -->
+ <div class="inlinebox inlinebox--clickable" data-bind="css: {'inlinebox--right': !IsInCarousel(), 'inlinebox--full': IsInCarousel}">
+ <div class="inlinebox__wrapper">
+ <!-- ko ifnot: IsInCarousel-->
+ <div class="inlinebox__header">Clinical Calculator:</div>
+ <!-- /ko -->
+ <div class="inlinebox__content">
+ <div class="multimedia__link" data-bind="component: { name: 'multimedia-link-text', params: multimediaLinkModel }"></div>
+ <div class="inlinebox__button">
+ <img class="labtest-icon" loading="lazy" alt="icon" data-bind="attr: {src: ThumbnailUrl }" width="48" height="48" />
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isInline -->
+ <div data-bind="css: componentClasses()">
+ <div class="inlinemedia__wrapper">
+ <div class="inlinemedia__header">
+ <div class="inlinemedia__title" data-bind="html: Title"></div>
+ </div>
+ <div class="inlinemedia__content">
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrc, title: Title }"></iframe>
+ </div>
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isText -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ <!-- /ko -->
+</script>
+<script type="text/html" id="inlinemedia-video-template">
+ <!-- ko ifnot: isText-->
+ <div data-bind="css: componentClasses()">
+ <div class="inlinemedia__wrapper">
+ <div class="inlinemedia__header">
+ <div class="inlinemedia__title" data-bind="html: Title"></div>
+ <!-- ko if: isSideline -->
+ <div class="inlinemedia__open hide-on-print">
+ <i class="inlinemedia__icon--open"></i>
+ </div>
+ <!-- /ko -->
+ </div>
+ <div class="inlinemedia__content">
+ <div class="inlinemedia__image--container">
+ <!-- ko if: isSideline() || isPrint() -->
+ <figure class="inlinemedia__figure">
+ <img oncontextmenu="return false;" loading="lazy" data-bind="attr: {src: ThumbnailUrl, alt: Title}" width="267" height="150" />
+ <div class="inlinemedia__overlay">
+ <div class="inlinemedia__play"></div>
+ </div>
+ <div class="box__label">VIDEO</div>
+ </figure>
+ <!-- /ko -->
+ <!-- ko if: isInline() && !isPrint() -->
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrc, title: Title }"></iframe>
+ <!-- /ko -->
+ </div>
+ <!-- ko if: isInline() && detailsAvailable() -->
+ <div class="inlinemedia__more">
+ <div class="inlinemedia__action inlinemedia__action--show" data-bind="click: toggleDetailsFunction">
+ <i class="inlinemedia__eye"></i>
+ <span class="inlinemedia__details hide" role="button" tabindex="0">
+ Show Details
+ </span>
+ <span class="inlinemedia__details show" role="button" tabindex="0">
+ Hide Details
+ </span>
+ <div class="inlinemedia__information" data-bind="html: Description"></div>
+ <div class="inlinemedia__credits" data-bind="html: Credits"></div>
+ </div>
+ </div>
+ <!-- /ko -->
+ </div>
+ <!-- ko ifnot: isInline -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ <!-- /ko -->
+ </div>
+ </div>
+ <!-- /ko -->
+ <!-- ko if: isText -->
+ <div class="multimedia__link" data-bind="component: { name: multimediaLinkComponentName, params: multimediaLinkModel }"></div>
+ <!-- /ko -->
+</script>
+<script type="text/html" id="video-player-template">
+ <div class="multimedia multimedia--withdescription" data-bind="css: {'multimedia--single': parentContext.displaySingle}">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__title" data-bind="html: Title"> </div>
+ <!-- /ko -->
+ <div class="multimedia__video">
+ <div class="multimedia__video--spacer"></div>
+ <div class="multimedia__video--wrapper">
+ <iframe allowfullscreen webkitallowfullscreen mozallowfullscreen scrolling="no" seamless="seamless" frameBorder="0" data-bind="attr: { src: IframeSrcComputed, title: Title }"></iframe>
+ <div class="multimedia__video--print" onclick="$(this).hide(); return true;">
+ <img loading="lazy" data-bind="attr: { src: ThumbnailUrl, alt: Title }">
+ </div>
+ </div>
+ <div class="multimedia__video--spacer"></div>
+ </div>
+ <div class="multimedia__description">
+ <!-- ko ifnot: hideTitle -->
+ <div class="multimedia__description--title" data-bind="html: Title"></div>
+ <!-- /ko -->
+ <!-- ko ifnot: parentContext.displaySingle -->
+ <div class="multimedia__pager hide-on-print">
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showFirst">Â«</a>
+ <a class="multimedia__pager--nav multimedia__pager--navleft" data-bind="click: parentContext.showPrev">â€¹</a>
+ <span class="multimedia__pager--number" data-bind="text: $parent.activeEntry().index + 1"></span>/<span class="multimedia__pager--number" data-bind="text: $parent.activeList().length"></span>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showNext">â€º</a>
+ <a class="multimedia__pager--nav multimedia__pager--navright" data-bind="click: parentContext.showLast">Â»</a>
+ </div>
+ <!-- /ko -->
+ <div class="multimedia__description--wrapper">
+ <!-- ko if: $data.Description -->
+ <div class="multimedia__description--content" data-bind="html: Description"> </div>
+ <!-- /ko -->
+ <!-- ko if: $data.Credits -->
+ <div class="multimedia__description--credits" data-bind="html: Credits"> </div>
+ <!-- /ko -->
+ </div>
+ <!-- ko if: loadLocations -->
+ <!-- ko ifnot: topicsWithResource().length == 0 -->
+ <div id="multimedia__locations" class="multimedia__description--locations" data-bind="modalLocations: topicsWithResource().length">
+ <div class="multimedia__description--readmore">In these topics</div>
+ <!-- ko foreach: topicsWithResource-->
+ <a class="multimedia__description--location" data-bind="attr: { href: PublicUrl }, html: Title"></a>
+ <!-- /ko -->
+ </div>
+ <!-- /ko -->
+ <!-- /ko -->
+ </div>
+ </div>
+</script>
+<link rel="stylesheet" href="./Content/Styles/fa/fonts/font-awesome.css" type="text/css" media="screen"><link rel="stylesheet" href="./CustomCss/custom_mobile_styles.css"><script type="text/javascript" src="./customscript/videodetail.js?v=j6lqWQ_gaVddXSzk8oBfSqpw8iTwpNFAslFpddsSyrM1"></script><script type="text/javascript" src="./customscript/VideoPath.js?v=j6lqWQ_gaVddXSzk8oBfSqpw8iTwpNFAslFpddsSyrM1"></script><script type="text/javascript" src="./customscript/Appdetail.js?v=j6lqWQ_gaVddXSzk8oBfSqpw8iTwpNFAslFpddsSyrM1"></script><script type="text/javascript" src="./customscript/customscript.js?v=j6lqWQ_gaVddXSzk8oBfSqpw8iTwpNFAslFpddsSyrM1"></script></head>
+<body class="professional msd ">
+ <a href="/n3wbr@nds" rel="nofollow" style="display:none" arial-hidden="true">honeypot link</a>
+ <!-- Google Tag Manager (noscript) --> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MKXR9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <!-- End Google Tag Manager (noscript) --> 
+ <div class="l-viewport">
+ 
+<input type="hidden" id="currentSitecoreItemId" value="e46aa3a3-0412-4ee3-8ee0-090fec109ffe">
+<input type="hidden" id="wasThisTopicHelpfulUrl" value="/Custom/Topic/WasThisTopicHelpful">
+<input type="hidden" id="getTopicHelpfulUrl" value="/Custom/Topic/GetTopicHelpful">
+<input type="hidden" id="languageSwitchUrl" value="/professional/LanguageSwitch">
+<input type="hidden" id="resourceServiceUrl" value="/custom/Topic/GetTopicsForResource">
+<input type="hidden" id="tableBodyServiceUrl" value="/custom/Topic/GetTableBody">
+<input type="hidden" id="lexicompMonographUrl" value="/Redesign/LexicompMonograph/MonographByName">
+<input type="hidden" id="getAlphabetUrl" value="/Redesign/Widgets/GetAlphabet">
+<input type="hidden" id="landingPageUrl" value="https://www.msdmanuals.com/">
+<input type="hidden" id="standaloneMultimediaBaseUrl" value="/professional/multimedia">
+<input type="hidden" id="currentEdition" value="Professional">
+<input type="hidden" id="currentLanguage" value="en">
+<input type="hidden" id="currentLanguage2LetterISO" value="en">
+<input type="hidden" id="oldRestrictedBrightcovePlayer" value="3851244774001">
+<input type="hidden" id="restrictedBrightcovePlayer" value="H1xmEWTatg_default">
+<input type="hidden" id="shareableBrightcovePlayer" value="SyAEZ6ptl_default">
+<input type="hidden" id="selectLanguageLabel" value="Select Language">
+ 
+ <!-- New div groups for LetterSpine and Header has been created
+ due to problems with existing styling
+ ToDo rewrite whole header and letter spine as one component -->
+ <div id="l-group--header-letterpine" class="main-header sticky-header">
+ 
+ 
+<script>
+ MManual.Feature = MManual.Feature || {};
+ MManual.Feature.LetterSpine = MManual.Feature.LetterSpine || {};
+ MManual.Feature.LetterSpine.Id = 'dec38a3f-6f98-4e3b-a82c-37758b345d16';
+</script>
+ </div>
+ <!-- <div id="l-group--header-letterpine--fixed" class="main-header l-group--header-letterpine-fixed l-group--header-letterpine-fixed--hidden l-group--header-letterpine-fixed--animate">
+ 
+ <div class="l-group l-group--letterspinefixed"></div>
+ </div>
+ -->
+ 
+ 
+ <div class="l-layer l-layer--actiontoolbar">
+ 
+ <div class="l-layer__content">
+ <div class="actiontoolbar hide-on-print">
+ <!--<a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--bookmark" onclick="bookmarkPage(this);" href="#"></a>-->
+ <a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--download" style="display: none" href="#"></a>
+ <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-icon-color="transparent,transparent">
+ <a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--share a2a_dd" href="https://www.addtoany.com/share" rel="noopener" aria-label="Share in"></a>
+ </div>
+ <a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--print" href="#" onclick="window.print(); MManual.analytics.notifyOpenModal(MManual.analytics.eventPrintAnArticle);" role="button" title="print"></a>
+ <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-icon-color="transparent,transparent">
+ <a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--email a2a_button_email" href="#" title="Mail"></a>
+ </div>
+</div>
+<div class="actiontoolbar hide-on-print">
+ <!--<a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--bookmark" onclick="bookmarkPage(this);" href="#"></a>-->
+ <a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--download" style="display: none" href="#"></a>
+ <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-icon-color="transparent,transparent">
+ <a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--share a2a_dd" href="https://www.addtoany.com/share" rel="noopener" aria-label="Share in"></a>
+ </div>
+ <a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--print" href="#" onclick="window.print(); MManual.analytics.notifyOpenModal(MManual.analytics.eventPrintAnArticle);" role="button" title="print"></a>
+ <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-icon-color="transparent,transparent">
+ <a class="actiontoolbar__button actiontoolbar__icon actiontoolbar__icon--email a2a_button_email" href="#" title="Mail"></a>
+ </div>
+</div>
+ </div>
+ 
+ </div>
+ <div class="l-layer l-layer--main">
+ 
+ <section class="l-layer__content main">
+ 
+<div class="main__content about">
+ <header class="about__header">
+ <section class="about__header--picture-container">
+ <img oncontextmenu="return false;" class="about__header--picture" loading="lazy" width="0" height="0">
+ </section>
+ </header>
+ <main class="about__main">
+ 
+ <section class="about__article">
+ <h1 class="about__article--title"> Editorial Board</h1>
+ <p class="about__article--paragraph aboutlastreview">
+ <span class="lastmodified"> Content last modified Jan 2022</span>
+ </p>
+ <p class="about__article--paragraph">We gratefully acknowledge the expertise of our Editorial Board. Their names and affiliations appear separately below.</p>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://profiles.ucdenver.edu/display/226621" target="_blank">Richard K. Albert</a>, MD</h3>
+<p class="about__article--paragraph">Professor, Department of Medicine, University of Colorado Health Sciences Center Chief of Medicine, Denver Health Medical Center</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading">Diane Birnbaumer, MD</h3>
+<p class="about__article--paragraph">Professor of Clinical Medicine, David Geffen School of Medicine at University of California, Los Angeles; Associate Program Director, Department of Emergency Medicine, Harbor-UCLA Medical Center </p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading">Glenn D. Braunstein, MD</h3>
+<p class="about__article--paragraph">Professor of Medicine, David Geffen School of Medicine at University of California, Los Angeles Chairman, Department of Medicine, Cedars-Sinai Medical Center</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://teaching.temple.edu/staff/ina-calligaro" target="_blank">Ina Lee Calligaro</a></h3>
+<p class="about__article--paragraph">Assistant Dean for Education and Associate Professor of Pharmacy Practice, Temple University School of Pharmacy</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://hospitals.jefferson.edu/find-a-doctor/c/cellucci-michael-f.html" target="_blank">Michael F. Cellucci</a>, MD</h3>
+<p class="about__article--paragraph">Assistant Professor of Pediatrics, Jefferson Medical College; Attending Physician, Diagnostic Referral Division, Alfred I. DuPont Hospital for Children</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://findaprovider.nemours.org/details/157/deborah-consolini-diagnostic_pediatric_referral-philadelphia-wilmington" target="_blank">Deborah M. Consolini</a>, MD</h3>
+<p class="about__article--paragraph">Assistant Professor of Pediatrics, Jefferson Medical College; Staff Physician, Diagnostic Referral Division, Alfred I. DuPont Hospital for Children </p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://www.willseye.org/doctor/sunir-j-garg-md/" target="_blank">Sunir J. Garg</a>, MD</h3>
+<p class="about__article--paragraph">Professor of Ophthalmology, The Retina Service of Wills Eye Hospital, Sidney Kimmel Medical College at Thomas Jefferson University; Partner, MidAtlantic Retina </p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://hospitals.jefferson.edu/find-a-doctor/g/gomella-leonard.html" target="_blank">Leonard G. Gomella</a>, MD</h3>
+<p class="about__article--paragraph">The Bernard W. Goldwin Professor of Prostate Cancer and Chair, Department of Urology, Jefferson Medical College; Associate Director of Clinical Affairs, Jefferson Kimmel Cancer Center, Thomas Jefferson University </p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="http://www.stjoeshealth.org/body.cfm?id=4871&action=detail&ref=20631" target="_blank">Susan L. Hendrix</a>, DO</h3>
+<p class="about__article--paragraph">Professor, Department of Obstetrics and Gynecology, Wayne State University School of Medicine, Hutzel Women's Hospital Director of Women's Health Initiative, Wayne State University School of Medicine</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://weillcornell.org/rhirschfeld" target="_blank">Robert M.A. Hirschfeld</a>, MD</h3>
+<p class="about__article--paragraph">Professor of Psychiatry, Weill Cornell Medical College, DeWitt Wallace Senior Scholar, Weill Cornell Medical College</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://libin.ucalgary.ca/content/dr-jonathan-g-howlett" target="_blank">Jonathan G. Howlett</a>, MD</h3>
+<p class="about__article--paragraph">Clinical Professor of Medicine, University of Calgary; President, Canadian Heart Failure Society </p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://www.uthsc.edu/neuroscience/faculty/M_Jacewicz.php" target="_blank">Michael Jacewicz</a>, MD</h3>
+<p class="about__article--paragraph">Professor of Neurology, University of Tennessee Health Science Center and Veterans Administration Medical Center, Memphis</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://home.llu.edu/education/faculty/jaipaul-navin/education" target="_blank"> Navin Jaipaul</a>, MD, MHS </h3>
+<p class="about__article--paragraph"> Professor of Medicine, Loma Linda University School of Medicine; Health Sciences Clinical Professor, University of California Riverside School of Medicine; Chief of Medicine, VA Loma Linda Healthcare System </p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading">Matthew E. Levison, MD</h3>
+<p class="about__article--paragraph">Professor, School of Public Health, Drexel University; Adjunct Professor of Medicine, Drexel University College of Medicine</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://hospitals.jefferson.edu/find-a-doctor/m/malatack-jeffrey-j.html" target="_blank">James Jeffrey Malatack</a>, MD</h3>
+<p class="about__article--paragraph">Professor of Pediatrics, Thomas Jefferson University School of Medicine; Division Chief of Diagnostic Referral Service and Medical Liver Transplantation, Alfred I. DuPont Hospital for Children</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://my.clevelandclinic.org/staff/445-brian-mandell" target="_blank">Brian F. Mandell</a>, MD</h3>
+<p class="about__article--paragraph">Professor and Vice Chairman of Medicine, Department of Rheumatic and Immunologic Diseases, Cleveland Clinic Lerner College of Medicine at Case Western Reserve University</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://physicians.lahey.org/details/3953/karen-mckoy-dermatology-burlington" target="_blank">Karen C. McKoy</a>, MD, MPH</h3>
+<p class="about__article--paragraph">Senior Staff, Department of Dermatology, Lahey Clinic Medical Center </p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://profiles.utdallas.edu/david.murchison" target="_blank">David F. Murchison</a>, DDS, MMS</h3>
+<p class="about__article--paragraph">Clinical Professor, Department of Biological Sciences, The University of Texas at Dallas; Clinical Professor Texas A&M University Baylor College of Dentistry</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://hospitals.jefferson.edu/find-a-doctor/r/raab-christopher.html" target="_blank">Christopher P. Raab</a>, MD</h3>
+<p class="about__article--paragraph">Clinical Instructor of Pediatrics, Jefferson Medical College; Staff Physician, Diagnostic Referral Division, Alfred I. DuPont Hospital for Children </p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="http://www.einstein.yu.edu/faculty/2862/robert-ruben/" target="_blank">Robert J. Ruben</a>, MD</h3>
+<p class="about__article--paragraph">Distinguished University Professor, Department of Otolaryngology—Head and Neck Surgery, Albert Einstein College of Medicine and Montefiore Medical Center</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://stanfordhealthcare.org/doctors/s/david-spain.html" target="_blank">David A. Spain</a>, MD</h3>
+<p class="about__article--paragraph">Professor of Surgery and Chief of Trauma/Surgical Critical Care, Stanford University</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://www.hopkinsmedicine.org/profiles/results/directory/profile/0009746/jerry-spivak" target="_blank">Jerry L. Spivak</a>, MD</h3>
+<p class="about__article--paragraph">Professor of Medicine and Oncology, Johns Hopkins University School of Medicine</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://apps.pharmacy.wisc.edu/sopdir/eva_vivian/" target="_blank">Eva M. Vivian, PharmD</a>, MS</h3>
+<p class="about__article--paragraph">Clinical Associate Professor, University of Wisconsin School of Pharmacy</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading">Michael R. Wasserman, MD</h3>
+<p>Medical Director, Los Angeles Jewish Home</p>
+</div>
+<div class="about__article--container">
+<h3 class="about__article--heading"><a rel="noopener noreferrer" href="https://www.foxchase.org/david-weinberg" target="_blank">David S. Weinberg</a>, MD, MSc</h3>
+<p class="about__article--paragraph">Chairman, Department of Medicine, Audrey Weg Schaus and Geoffrey Alan Weg Chair in Medical Science, Fox Chase Cancer Center</p>
+</div>
+ 
+ </section>
+ </main>
+</div>
+ </section>
+ 
+ </div>
+ 
+ <div class="l-layer l-layer--topscroll">
+ 
+ </div>
+ </div>
+ 
+ <div class="flyout hide-on-print" tabindex="0">
+ <nav class="flyout__menu">
+ </nav>
+ </div>
+ <div class="print">
+ <div id="print__content">
+ </div>
+ </div>
+ <div class="multimedia__popup l-viewport" data-bind="component: { name: 'multimedia-popup'}">
+ <!-- Placeholder for media players. -->
+</div>
+ <script type="text/javascript">
+ //global value for translating the 'Read More' value
+ var MMReadMore = "read more";
+ var MMMaxTeaseCount = 250;
+ </script>
+ <script type="text/javascript"></script>
+ 
+ 
+ 
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script type="text/javascript">
+ function downloadJSAtOnload() {
+ 
+ MManual.deferredScripts.push("/bundles/redesign/libsdeferredjsv3.5.0.0-082e76f898.js?v=0HKp-yFnKaDEueCLP27J6D4rHb3-AAxm6cmzEE3Gmb41");
+ 
+ 
+ MManual.deferredScripts.push("/bundles/redesign/mmanualdeferredjsv3.5.0.0-082e76f898.js?v=KPb-LGdHjflPQ6xyZrEeuALUL-8ZIlLBr3umFPPXkgA1");
+ 
+ 
+ MManual.deferredScripts.push("/bundles/redesign/mmanualMaindeferredjsv3.5.0.0-082e76f898.js?v=fSq8epuPVC0pxvDw-VDcRv5ToBbHpaRcqnNqXVcgZQo1");
+ 
+ MManual.utils.loadScripts(MManual.deferredScripts);
+ }
+ $(document).ready(downloadJSAtOnload);
+</script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+ 
+ <script src="/Content/Scripts/Lib/mediaelement-and-player.min.js?v3.5.0.0-082e76f898" type="text/javascript"></script>
+ <script src="/Content/Scripts/Lib/zoomerang.js?v3.5.0.0-082e76f898" type="text/javascript"></script>
+ <script type="text/javascript">
+ function downloadJSAtOnload() {
+ 
+ MManual.deferredScripts.push("/bundles/redesign/mmanualdeferredjsv3.5.0.0-082e76f898.js?v=KPb-LGdHjflPQ6xyZrEeuALUL-8ZIlLBr3umFPPXkgA1");
+ 
+ 
+ MManual.deferredScripts.push("/bundles/redesign/ie8libsdeferredjsv3.5.0.0-082e76f898.js?v=0HKp-yFnKaDEueCLP27J6D4rHb3-AAxm6cmzEE3Gmb41");
+ 
+ 
+ MManual.deferredScripts.push("/bundles/redesign/mmanualMaindeferredjsv3.5.0.0-082e76f898.js?v=fSq8epuPVC0pxvDw-VDcRv5ToBbHpaRcqnNqXVcgZQo1");
+ 
+ for (var i = 0; i < MManual.deferredScripts.length; i++) {
+ var element = document.createElement("script");
+ element.src = MManual.deferredScripts[i];
+ element.classList.add("optanon-category-C0002");
+ document.body.appendChild(element);
+ }
+ }
+ $(document).ready(downloadJSAtOnload);
+ </script>
+<![endif]-->
+ <!-- Current instance name : uw-p-sc-cd03
+ Current application version : 3.5.0.0-082e76f898
+ -->
+ <!--[if (gte IE 9)|!(IE)]><!-->
+<script src="./bundles/redesign/libsEndjsv3.5.0.0-082e76f898.js?v=NWrOPHpqntlKhYlvryw8nEPZpRaWQrScEY3i127KnfI1"></script>
+<!--<![endif]-->
+<input id="MediaFramework_ItemId" name="MediaFramework_ItemId" type="hidden" value="E46AA3A304124EE38EE0090FEC109FFE">
+</body>
+</html>

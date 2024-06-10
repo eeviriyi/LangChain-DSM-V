@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>黑人妇女乳腺癌 5 年风险 Gail 模型（2007）</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="patientuse, Nurse, Hematology, Oncology, Epidemiology, women, screening, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+Gail07_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+Gail07_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function Gail07_fx() {
+
+with(document.Gail07_form){
+
+
+doCalc = true;
+rbchk = false;
+if (Menarche_radio[0].checked){ rbchk = true; Menarche = 1.00;  }
+if (Menarche_radio[1].checked){ rbchk = true; Menarche = 1.31;  }
+if (!rbchk) doCalc = false;
+if (Num_Biops_pulldown.options[Num_Biops_pulldown.selectedIndex].value != ''){
+Num_Biops = parseFloat(Num_Biops_pulldown.options[Num_Biops_pulldown.selectedIndex].value); }
+else { doCalc = false; clrResults(); };
+if (Age_FLB_Num_Rels_pulldown.options[Age_FLB_Num_Rels_pulldown.selectedIndex].value != ''){
+Age_FLB_Num_Rels = parseFloat(Age_FLB_Num_Rels_pulldown.options[Age_FLB_Num_Rels_pulldown.selectedIndex].value); }
+else { doCalc = false; clrResults(); };
+rbchk = false;
+if (Atyp_Hyper_radio[0].checked){ rbchk = true; Atyp_Hyper = 1.00;  }
+if (Atyp_Hyper_radio[1].checked){ rbchk = true; Atyp_Hyper = 0.93;  }
+if (Atyp_Hyper_radio[2].checked){ rbchk = true; Atyp_Hyper = 1.00;  }
+if (Atyp_Hyper_radio[3].checked){ rbchk = true; Atyp_Hyper = 1.82;  }
+if (!rbchk) doCalc = false;
+if (Baseline_Risk_For_Age_pulldown.options[Baseline_Risk_For_Age_pulldown.selectedIndex].value != ''){
+Baseline_Risk_For_Age = parseFloat(Baseline_Risk_For_Age_pulldown.options[Baseline_Risk_For_Age_pulldown.selectedIndex].value); }
+else { doCalc = false; clrResults(); };
+dp = decpts.options[decpts.selectedIndex].text;
+Rel_Risk =  Menarche * Num_Biops * Age_FLB_Num_Rels * Atyp_Hyper;
+
+if (doCalc) Rel_Risk_param.value = fixDP(Rel_Risk, dp);
+
+
+
+Five_Year_Risk =  Rel_Risk * Baseline_Risk_For_Age;
+
+unit_parts = Five_Year_Risk_unit.options[Five_Year_Risk_unit.selectedIndex].value.split('|');
+if (doCalc) Five_Year_Risk_param.value = fixDP((Five_Year_Risk - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.Gail07_form){
+
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.Gail07_form){
+
+Rel_Risk_param.value = '';
+Five_Year_Risk_param.value = '';
+
+
+}
+
+}
+
+var Menarche = null,
+Num_Biops = null,
+Age_FLB_Num_Rels = null,
+Atyp_Hyper = null,
+Baseline_Risk_For_Age = null,
+Rel_Risk = null,
+Five_Year_Risk = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="Gail07_form" id="Gail07_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="Gail07_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+黑人妇女乳腺癌 5 年风险 Gail 模型（2007）
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">初潮</span></td>
+<td colspan="2" align="left"><input type="radio" name="Menarche_radio" id="togel1" value="初潮年龄 &ge;14 周岁|1.00" onclick="Gail07_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel1');"> 初潮年龄 &ge;14 周岁 (1.00)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Menarche_radio" id="togel2" value="初潮年龄 &lt;14 周岁|1.31" onclick="Gail07_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel2');"> 初潮年龄 &lt;14 周岁 (1.31)</span></td></tr>
+<tr><td colspan="3"><span class="medCalcFontOneBold">活检次数</span><br />
+<select name="Num_Biops_pulldown" onchange="Gail07_fx();" class="medCalcFontSelect">
+<option value="">咨询年龄&lt;50 周岁：</option>
+<option value="1.00"> 无活检 (1.00)</option>
+<option value="1.20"> 1 次活检 (1.20)</option>
+<option value="1.44"> &ge;2 次活检 (1.44)</option>
+<option value="">&nbsp;</option>
+<option value=""> 咨询年龄&ge;50 周岁：</option>
+<option value="1.00"> 无活检 (1.00)</option>
+<option value="1.07"> 1 次活检 (1.07)</option>
+<option value="1.15"> &ge;2 次活检 (1.15)</option>
+<option value="">_______________________________________</option>
+</select></td></tr>
+<tr><td colspan="3"><span class="medCalcFontOneBold">一胎活产年龄及患乳腺癌的一级亲属数量</span><br />
+<select name="Age_FLB_Num_Rels_pulldown" onchange="Gail07_fx();" class="medCalcFontSelect">
+<option value=""> 一胎活产年龄&lt;20 周岁：</option>
+<option value="1.00"> 无直系亲属患乳腺癌 (1.00)</option>
+<option value="1.61"> 1位直系新属患乳腺癌 (1.61)</option>
+<option value="2.59"> &ge;2 位直系新属患乳腺癌 (2.59)</option>
+<option value="">&nbsp;</option>
+<option value=""> 一胎活产年龄 20-24 周岁：</option>
+<option value="1.00"> 无直系亲属患乳腺癌 (1.00)</option>
+<option value="1.61"> 1 位直系新属患乳腺癌 (1.61)</option>
+<option value="2.59"> &ge;2 位直系新属患乳腺癌 (2.59)</option>
+<option value="">&nbsp;</option>
+<option value=""> 一胎活产年龄 25-29 周岁或未生育过：</option>
+<option value="1.00"> 无直系亲属患乳腺癌 (1.00)</option>
+<option value="1.61"> 1 位直系新属患乳腺癌 (1.61)</option>
+<option value="2.59"> &ge;2 位直系新属患乳腺癌 (2.59)</option>
+<option value="">&nbsp;</option>
+<option value=""> 一胎活产年龄&ge;30 周岁：</option>
+<option value="1.00"> 无直系亲属患乳腺癌 (1.00)</option>
+<option value="1.61"> 1 位直系新属患乳腺癌 (1.61)</option>
+<option value="2.59"> &ge;2 位直系新属患乳腺癌 (2.59)</option>
+<option value="">_______________________________________</option>
+</select></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">非典型性高血压</span></td>
+<td colspan="2" align="left"><input type="radio" name="Atyp_Hyper_radio" id="togel3" value=" 无活检|1.00" onclick="Gail07_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel3');">  无活检 (1.00)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Atyp_Hyper_radio" id="togel4" value=" 至少一次活检标本，且活检标本无非典型性增生|0.93" onclick="Gail07_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel4');">  至少一次活检标本，且活检标本无非典型性增生 (0.93)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Atyp_Hyper_radio" id="togel5" value=" 无非典型性增生，且至少一例活检标本增生与否不明|1.00" onclick="Gail07_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel5');">  无非典型性增生，且至少一例活检标本增生与否不明 (1.00)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Atyp_Hyper_radio" id="togel6" value=" 至少一例活检标本显示非典型性增生|1.82" onclick="Gail07_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel6');">  至少一例活检标本显示非典型性增生 (1.82)</span></td></tr>
+<tr><td colspan="3"><span class="medCalcFontOneBold">年龄相关的基准风险</span><br />
+<select name="Baseline_Risk_For_Age_pulldown" onchange="Gail07_fx();" class="medCalcFontSelect">
+<option value="0.010"> 20-24 (0.010)</option>
+<option value="0.041"> 25-29 (0.041)</option>
+<option value="0.113"> 30-34 (0.113)</option>
+<option value="0.245"> 35-39 (0.245)</option>
+<option value="0.431"> 40-44 (0.431)</option>
+<option value="0.674"> 45-49 (0.674)</option>
+<option value="0.880"> 50-54 (0.880)</option>
+<option value="1.052"> 55-59 (1.052)</option>
+<option value="1.106"> 60-64 (1.106)</option>
+<option value="1.285"> 65-69 (1.285)</option>
+<option value="1.340"> 70-74 (1.340)</option>
+<option value="1.350"> 75-79 (1.350)</option>
+<option value="1.242"> 80-84 (1.242)</option>
+<option value="">_______________________________________</option>
+</select></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">相对风险</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Rel_Risk_param" size="6" onfocus="blur();" /></td>
+</tr>
+
+<tr>
+<td align="right"><span class="medCalcFontResultParam">五年风险</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Five_Year_Risk_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Five_Year_Risk_unit" onchange="Gail07_fx();" style="width:60;" class="medCalcFontSelect">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|ratio">ratio</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontResultParam">小数点精确度 &nbsp;</span>
+<select name="decpts" onchange="Gail07_fx();" class="medCalcFontSelect">
+<option>0</option>
+<option>1</option>
+<option selected="selected">2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>确保查看所有的下拉选项。部分选择多项关联风险因素（如下）</li>
+<li><b>活检次数（Num Biops）</b>指既往乳腺活检次数。与<b>咨询年龄</b>相关。</li>
+<li><b>一胎活产年龄及患乳腺癌的一级亲属数量 （Age FLB Num Rels）</b>指受试者一胎活产时的年龄。同被诊断为乳腺癌的亲属数量相关。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">相对风险 = 初潮 * 活检次数 * 一胎活产年龄及患乳腺癌的一级亲属数量 * 非典型性高血压</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">五年风险 = 相对风险 * 年龄相关的基准风险</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+<br />&nbsp;<br />
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">计算详情和变量</span>
+<ul class="medCalcFontOne">
+<li>等式参数，例如 <b>初潮</b>, 有两个或更多可能用于计算的离散值。括号中的数字，例如  (1.00), 代表将要使用的数值.</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Gail MH, Costantino JP, Pee D, et al. Projecting individualized absolute invasive breast cancer risk in  African American women. <i>J Natl Cancer Inst</i>. 2007 Dec 5;99(23):1782-92. Epub 2007 Nov 27. PubMed ID: 18042936 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/18042936"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Gail MH, Constantino JP, Bryant J, et al. Weighing the Risks and Benefits of Tamoxifen Treatment for Preventing Breast Cancer. <i>J. National Cancer Institute</i>. 1999; V91, #21, pages 1829-1846. PubMed ID: 10547390 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10547390"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Costantino JP, Gail MH, Pee D, et al. Validation studies for models projecting the risk of invasive and total breast cancer incidence. <i> J Natl Cancer Inst</i>. 1999 Sep 15;91(18):1541-8. PubMed ID: 10491430 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/10491430"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471493 //-->

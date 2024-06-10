@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>饮酒情况筛查审计调查问卷</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="patient use, psychiatry, nutrition, alcohol, internat, screening, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+AlcoholScreen_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+AlcoholScreen_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function AlcoholScreen_fx() {
+with(document.AlcoholScreen_form){
+
+Score = 0.0;
+doCalc = true;
+
+rbchk = false;
+if (cc1[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc1[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc1[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc1[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc1[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc2[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc2[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc2[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc2[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc2[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc3[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc3[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc3[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc3[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc3[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc4[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc4[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc4[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc4[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc4[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc5[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc5[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc5[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc5[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc5[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc6[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc6[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc6[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc6[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc6[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc7[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc7[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc7[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc7[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc7[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc8[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc8[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc8[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc8[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc8[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc9[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc9[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc9[2].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc10[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc10[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc10[2].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.AlcoholScreen_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 7)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 8) && (Score <= 15)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 16) && (Score <= 19)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 20) && (Score <= 40)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="AlcoholScreen_form" id="AlcoholScreen_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+饮酒情况筛查审计调查问卷
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">1) 您多久饮用一次含酒精的饮品？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel1" name="cc1" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');">从不 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel2" name="cc1" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">每月 1 次或更少 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc1" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');"> 每月 2-4 次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc1" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">每周 2-3 次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel5" name="cc1" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');">每周 4 次或以上 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">2) 通常一天中您会饮用多少杯含酒精的饮品？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel6" name="cc2" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel6');">1 杯或 2 杯 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel7" name="cc2" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel7');">3 杯或 4 杯 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel8" name="cc2" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel8');">5 杯或 6 杯 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel9" name="cc2" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');"> 7 杯至 9 杯 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel10" name="cc2" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');">10 杯或更多 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">3) 一次饮 5 杯或以上的情况会多久出现一次？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel11" name="cc3" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel11');"> 从不 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel12" name="cc3" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel12');">少于每月 1 次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel13" name="cc3" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel13');">每月 1 次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel14" name="cc3" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel14');">每周 1 次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel15" name="cc3" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel15');">每天或几乎每天 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">4) 在去年，您开始饮酒后便无法停止的情况多久出现一次？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel16" name="cc4" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel16');"> 从不 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel17" name="cc4" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel17');">少于每月 1 次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel18" name="cc4" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel18');">每月 1 次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel19" name="cc4" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel19');">每周 1 次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel20" name="cc4" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel20');">每天或几乎每天 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">5) 在去年，您由于饮酒而无法完成正常预期的事情的情况多久出现一次？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel21" name="cc5" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel21');"> 从不 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel22" name="cc5" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel22');">少于每月 1 次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel23" name="cc5" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel23');">每月 1 次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel24" name="cc5" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel24');">每周 1 次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel25" name="cc5" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel25');">每天或几乎每天 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">6) 在去年，当您在晚上大量饮酒后，次日早上需要再饮一杯才能正常做事情的情况多久出现一次？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel26" name="cc6" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel26');"> 从不 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel27" name="cc6" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel27');">少于每月 1 次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel28" name="cc6" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel28');">每月 1 次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel29" name="cc6" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel29');">每周 1 次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel30" name="cc6" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel30');">每天或几乎每天 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">7) 在去年，您在饮酒后感觉内疚或懊悔的情况多久出现一次？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel31" name="cc7" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel31');"> 从不 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel32" name="cc7" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel32');">少于每月 1 次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel33" name="cc7" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel33');">每月 1 次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel34" name="cc7" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel34');">每周 1 次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel35" name="cc7" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel35');">每天或几乎每天 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">8) 在去年，您由于饮酒而不记得前一晚发生的事情的情况多久出现一次？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel36" name="cc8" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel36');"> 从不 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel37" name="cc8" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel37');">少于每月 1 次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel38" name="cc8" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel38');">每月 1 次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel39" name="cc8" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel39');">每周 1 次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel40" name="cc8" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel40');">每天或几乎每天 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">9) 您或他人是否曾经因为您饮酒而受伤？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel41" name="cc9" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel41');"> 否 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel42" name="cc9" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel42');">是，但不是在去年 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel43" name="cc9" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel43');">是，在去年 (4 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">10) 是否有亲戚、朋友或医护人员曾经为您的饮酒问题感到担忧，或者建议您减少饮酒？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel44" name="cc10" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel44');"> 否 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel45" name="cc10" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel45');">是，但不是在去年 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel46" name="cc10" onclick="AlcoholScreen_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel46');">是，在去年 (4 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+酒精筛查分数
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 7 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">低风险</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">8 - 15 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">中等风险</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">16 - 19 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">高风险</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">20 - 40 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">有可能成瘾</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><b>低风险</b>（0-7 分）您可能没有饮酒问题。继续适度饮酒或不饮。</li>
+<li><b>中等风险</b>（8-15 分）您可能偶尔饮酒过量。这可能会为您或他人带来风险。请尝试减少饮酒或戒酒。</li>
+<li><b>高风险</b>（16-19 分）您的饮酒问题可能会带来伤害（如果目前还没有）。减少饮酒或戒酒对您来说非常重要。请咨询您的医生或护士，了解减少饮酒的最佳方式。</li>
+<li><b>有可能成瘾</b>（超过 20 分）您的饮酒问题可能已经造成了伤害。请咨询您的医生或护士，或者戒瘾专家。了解能帮助您戒酒的药物以及心理咨询。如果您依赖酒精，请勿在向医疗专业人士寻求帮助之前戒酒。</li>
+
+
+</ul>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471461 //-->

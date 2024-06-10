@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>依据原麻醉性镇痛药剂量估算芬太尼贴剂起始剂量</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="pain, anesth, PMR, Nurse, pharmacology, pain, heme onc, geriatrics, rheumatology, fac_all, fac_gp, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+FentanylDosing_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+FentanylDosing_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function FentanylDosing_fx() {
+
+with(document.FentanylDosing_form){
+
+
+doCalc = true;
+param_value = parseFloat(Daily_Dosage_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Daily_Dosage_unit.options[Daily_Dosage_unit.selectedIndex].value.split('|');
+Daily_Dosage = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+if (Medicine_Potency_pulldown.options[Medicine_Potency_pulldown.selectedIndex].value != ''){
+Medicine_Potency = parseFloat(Medicine_Potency_pulldown.options[Medicine_Potency_pulldown.selectedIndex].value); }
+else { doCalc = false; clrResults(); };
+dp = decpts.options[decpts.selectedIndex].text;
+Oral_Morphine_Equiv =  60 * Daily_Dosage / Medicine_Potency;
+
+unit_parts = Oral_Morphine_Equiv_unit.options[Oral_Morphine_Equiv_unit.selectedIndex].value.split('|');
+if (doCalc) Oral_Morphine_Equiv_param.value = fixDP((Oral_Morphine_Equiv - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Oral_Morphine_Equiv >= 60) && (Oral_Morphine_Equiv <= 134)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 135) && (Oral_Morphine_Equiv <= 224)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 225) && (Oral_Morphine_Equiv <= 314)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 315) && (Oral_Morphine_Equiv <= 404)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 405) && (Oral_Morphine_Equiv <= 494)){ document.getElementById('rr1_5').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 495) && (Oral_Morphine_Equiv <= 584)){ document.getElementById('rr1_6').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 585) && (Oral_Morphine_Equiv <= 674)){ document.getElementById('rr1_7').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 675) && (Oral_Morphine_Equiv <= 764)){ document.getElementById('rr1_8').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 765) && (Oral_Morphine_Equiv <= 854)){ document.getElementById('rr1_9').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 855) && (Oral_Morphine_Equiv <= 944)){ document.getElementById('rr1_10').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 945) && (Oral_Morphine_Equiv <= 1034)){ document.getElementById('rr1_11').bgColor = '#8ab2be';
+}
+if ((Oral_Morphine_Equiv >= 1035) && (Oral_Morphine_Equiv <= 1124)){ document.getElementById('rr1_12').bgColor = '#8ab2be';
+}
+
+
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.FentanylDosing_form){
+
+if (Daily_Dosage_param.value && isNaN(Daily_Dosage_param.value)){ clrValue(Daily_Dosage_param); alertNaN('每日剂量'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.FentanylDosing_form){
+
+Oral_Morphine_Equiv_param.value = '';
+
+rrclr();
+
+}
+
+}
+
+var Daily_Dosage = null,
+Medicine_Potency = null,
+Oral_Morphine_Equiv = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+document.getElementById('rr1_5').bgColor = '';
+document.getElementById('rr1_6').bgColor = '';
+document.getElementById('rr1_7').bgColor = '';
+document.getElementById('rr1_8').bgColor = '';
+document.getElementById('rr1_9').bgColor = '';
+document.getElementById('rr1_10').bgColor = '';
+document.getElementById('rr1_11').bgColor = '';
+document.getElementById('rr1_12').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="FentanylDosing_form" id="FentanylDosing_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="FentanylDosing_fx();" onreset="rrclr();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+依据原麻醉性镇痛药剂量估算芬太尼贴剂起始剂量
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">每日剂量</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Daily_Dosage_param" size="6" value="" onblur="FentanylDosing_fx(); minMaxCheck();" onchange="FentanylDosing_fx();" /></td>
+<td align="left" valign="top"> <select name="Daily_Dosage_unit" onchange="FentanylDosing_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1000|0|gm/day">gm/day</option>
+<option value="1|0|mg/day" selected="selected">mg/day</option>
+</select></td></tr>
+
+<tr><td align="right"><span class="medCalcFontOneBold">所用药物相对强度</span></td>
+<td colspan="2" align="left"> &nbsp;
+<select name="Medicine_Potency_pulldown" onchange="FentanylDosing_fx();" class="medCalcFontSelect">
+<option value="10">吗啡肌注 (10)</option>
+<option value="60">吗啡口服 (60)</option>
+<option value="1.5">氢化吗啡酮肌注 (1.5)</option>
+<option value="7.5">氢化吗啡酮口服 (7.5)</option>
+<option value="10"> 美沙酮肌注 (10)</option>
+<option value="20">美沙酮口服 (20)</option>
+<option value="15">羟考酮肌注 (15)</option>
+<option value="30">羟考酮口服 (30)</option>
+<option value="2">左啡诺肌注 (2)</option>
+<option value="4">左啡诺口服 (4)</option>
+<option value="1"> 羟吗啡酮肌注 (1)</option>
+<option value="10">羟吗啡酮注射 (10)</option>
+<option value="75">哌替啶肌注 (75)</option>
+<option value="130">可待因肌注 (130)</option>
+<option value="200">可待因口服 (200)</option>
+</select></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">口服吗啡等同剂量</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="Oral_Morphine_Equiv_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="Oral_Morphine_Equiv_unit" onchange="FentanylDosing_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1000|0|gm/day">gm/day</option>
+<option value="1|0|mg/day" selected="selected">mg/day</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr><td colspan="3" align="center"><span class="medCalcFontResultParam">小数点精确度 &nbsp;</span>
+<select name="decpts" onchange="FentanylDosing_fx();" class="medCalcFontSelect">
+<option selected="selected">0</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+
+</select></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+依据口服吗啡等同剂量估算芬太尼贴剂起始剂量
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">60 - 134 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 25 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">135 - 224 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 50 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">225 - 314 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 75 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">315 - 404 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 100 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">405 - 494 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 125 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_6"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">495 - 584 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 150 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_7"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">585 - 674 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 175 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_8"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">675 - 764 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 200 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_9"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">765 - 854 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 225 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_10"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">855 - 944 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 250 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_11"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">945 - 1034 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 275 mcgm/hr 贴剂</span></td></tr>
+<tr id="rr1_12"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">1035 - 1124 mg/day:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> 300 mcgm/hr 贴剂</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>对芬太尼贴剂剂量的估计仅适用于考虑从口服/静脉药物转换为贴剂的情况。</li>
+<li><b><font color="#cc0000"> 上述转换不可用于依据贴剂剂量估算非贴剂剂量, 因为有可能导致估算剂量过高。</font></b></li>
+<li>上述剂量信息和等同剂量估算是依据医学文献和芬太尼贴剂（Duragesic）药物说明书进行总结和改编的。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">口服吗啡等同剂量 = 60 * 每日剂量 / 所用药物相对强度</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Foley KM. The treatment of cancer pain. <i>N Engl J Med</i>. 1985 Jul 11;313(2):84-95. Review. PubMed ID: 2582259 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/2582259"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Ashburn MA, Lipman AG. Management of pain in the cancer patient. <i>Anesth Analg</i>. 1993 Feb;76(2):402-16. Review. PubMed ID: 8424523 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8424523"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471489 //-->

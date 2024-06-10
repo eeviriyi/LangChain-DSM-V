@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>前列腺病症状评分</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="patientuse, Nurse, Urology, Renal, Geriatrics, prognosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+ProstatismSymptomScore_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+ProstatismSymptomScore_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function ProstatismSymptomScore_fx() {
+with(document.ProstatismSymptomScore_form){
+
+Score = 0.0;
+doCalc = true;
+
+rbchk = false;
+if (cc1[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc1[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc1[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc1[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc1[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc1[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc2[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc2[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc2[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc2[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc2[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc2[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc3[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc3[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc3[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc3[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc3[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc3[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc4[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc4[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc4[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc4[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc4[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc4[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc5[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc5[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc5[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc5[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc5[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc5[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc6[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc6[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc6[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc6[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc6[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc6[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc7[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc7[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc7[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc7[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc7[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc7[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (!rbchk) doCalc = false;
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.ProstatismSymptomScore_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 7)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 8) && (Score <= 19)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 20) && (Score <= 35)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="ProstatismSymptomScore_form" id="ProstatismSymptomScore_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+前列腺病症状评分
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">过去的一个月里，您是否有以下症状？</span></td></tr>
+
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">过去的一个月里，您是否有尿不尽的感觉？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel1" name="cc1" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');">无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel2" name="cc1" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">低于每五次中有一次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc1" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">低于每两次中有一次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc1" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">大约每两次中有一次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel5" name="cc1" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');">高于每两次中有一次 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel6" name="cc1" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel6');">总是 (5 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">过去的一个月里，您是否需要在2个小时内多次去卫生间？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel7" name="cc2" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel7');">无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel8" name="cc2" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel8');">低于每五次中有一次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel9" name="cc2" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');">低于每两次中有一次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel10" name="cc2" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');">大约每两次中有一次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel11" name="cc2" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel11');">高于每两次中有一次 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel12" name="cc2" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel12');">总是 (5 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">过去的一个月里，您是否会有排尿中断？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel13" name="cc3" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel13');">无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel14" name="cc3" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel14');">低于每五次中有一次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel15" name="cc3" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel15');">低于每两次中有一次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel16" name="cc3" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel16');">大约每两次中有一次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel17" name="cc3" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel17');">高于每两次中有一次 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel18" name="cc3" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel18');">总是 (5 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">过去的一个月里，您是否有控尿困难？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel19" name="cc4" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel19');">无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel20" name="cc4" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel20');">低于每五次中有一次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel21" name="cc4" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel21');">低于每两次中有一次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel22" name="cc4" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel22');">大约每两次中有一次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel23" name="cc4" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel23');">高于每两次中有一次 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel24" name="cc4" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel24');">总是 (5 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">过去的一个月里，您是否有排尿无力的情况？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel25" name="cc5" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel25');">无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel26" name="cc5" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel26');">低于每五次中有一次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel27" name="cc5" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel27');">低于每两次中有一次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel28" name="cc5" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel28');">大约每两次中有一次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel29" name="cc5" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel29');">高于每两次中有一次 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel30" name="cc5" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel30');">总是 (5 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">过去的一个月里，您是否需要用力来促使排尿？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel31" name="cc6" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel31');">无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel32" name="cc6" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel32');">低于每五次中有一次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel33" name="cc6" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel33');">低于每两次中有一次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel34" name="cc6" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel34');">大约每两次中有一次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel35" name="cc6" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel35');">高于每两次中有一次 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel36" name="cc6" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel36');">总是 (5 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">过去的一个月里，睡觉后您平均起床排尿的次数是多少？ </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel37" name="cc7" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel37');">无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel38" name="cc7" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel38');">一次 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel39" name="cc7" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel39');">两次 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel40" name="cc7" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel40');">三次 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel41" name="cc7" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel41');">四次 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel42" name="cc7" onclick="ProstatismSymptomScore_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel42');">五次或以上 (5 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+IPSS 评分
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 7 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">轻微症状</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">8 - 19 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">中度症状</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">20 - 35 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">严重症状</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Barry MJ, Fowler FJ Jr, O'Leary MP, et al. The American Urological Association symptom index for benign  prostatic hyperplasia. The Measurement Committee of the American Urological  Association. <i>J Urol</i>. 1992 Nov;148(5):1549-57; discussion 1564. PubMed ID: 1279218 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/1279218"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471514 //-->

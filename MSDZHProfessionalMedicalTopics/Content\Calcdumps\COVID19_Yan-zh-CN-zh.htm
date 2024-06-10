@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>辛連治自革-19 辛動清推清亥雖中清推為 革動種命清亥推清場的 (束雖的 3/3/2020)</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="infectious, critical, emergency, pulm, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+COVID19_Yan-zh-CN_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+COVID19_Yan-zh-CN_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function COVID19_Yan-zh-CN_fx() {
+
+with(document.COVID19_Yan-zh-CN_form){
+
+
+doCalc = true;
+param_value = parseFloat(LDH_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = LDH_unit.options[LDH_unit.selectedIndex].value.split('|');
+LDH = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(hsCRP_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = hsCRP_unit.options[hsCRP_unit.selectedIndex].value.split('|');
+hsCRP = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Percent_Lymphocytes_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Percent_Lymphocytes_unit.options[Percent_Lymphocytes_unit.selectedIndex].value.split('|');
+Percent_Lymphocytes = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+dp = 0;
+prediction.value = "";
+if (LDH && hsCRP && Percent_Lymphocytes){
+if (LDH >= 365) prediction.value = "革種雖推h 出場動種 中清開種中為";
+else if (hsCRP < 41.2) prediction.value = "迄統動結清結雖中 出場動種 中清開種中為";
+else if (Percent_Lymphocytes > 14.7) prediction.value = "迄統動結清結雖中 出場動種 中清開種中為";
+else prediction.value = "革種雖推h 出場動種 中清開種中為";
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.COVID19_Yan-zh-CN_form){
+
+if (LDH_param.value && isNaN(LDH_param.value)){ clrValue(LDH_param); alertNaN('在革指'); }
+if (hsCRP_param.value && isNaN(hsCRP_param.value)){ clrValue(hsCRP_param); alertNaN('h迄辛運革'); }
+if (Percent_Lymphocytes_param.value && isNaN(Percent_Lymphocytes_param.value)){ clrValue(Percent_Lymphocytes_param); alertNaN('革種動亥種的推 在為出命h場亥為推種迄'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.COVID19_Yan-zh-CN_form){
+
+prediction.value = '';
+
+
+}
+
+}
+
+var LDH = null,
+hsCRP = null,
+Percent_Lymphocytes = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="COVID19_Yan-zh-CN_form" id="COVID19_Yan-zh-CN_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="COVID19_Yan-zh-CN_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+辛連治自革-19 辛動清推清亥雖中清推為 革動種命清亥推清場的 (束雖的 3/3/2020)
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">在革指</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="LDH_param" size="6" value="" onblur="COVID19_Yan-zh-CN_fx(); minMaxCheck();" onchange="COVID19_Yan-zh-CN_fx();" /></td>
+<td align="left" valign="top"> <select name="LDH_unit" onchange="COVID19_Yan-zh-CN_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|IU/L_LDH">IU/L</option>
+<option value="1|0|U/L_LDH" selected="selected">U/L</option>
+<option value="59.9880023995201|0|mcKat/L_LDH">mcKat/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">h迄辛運革</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="hsCRP_param" size="6" value="" onblur="COVID19_Yan-zh-CN_fx(); minMaxCheck();" onchange="COVID19_Yan-zh-CN_fx();" /></td>
+<td align="left" valign="top"> <select name="hsCRP_unit" onchange="COVID19_Yan-zh-CN_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|mg/L_HSCRP" selected="selected">mg/L</option>
+<option value="1|0|mg/L_hsCRP">mg/L</option>
+<option value="10|0|mg/dL_HSCRP">mg/dL</option>
+<option value="0.105|0|nmol/L_HSCRP">nmol/L</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">革種動亥種的推 在為出命h場亥為推種迄</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Percent_Lymphocytes_param" size="6" value="" onblur="COVID19_Yan-zh-CN_fx(); minMaxCheck();" onchange="COVID19_Yan-zh-CN_fx();" /></td>
+<td align="left" valign="top"> <select name="Percent_Lymphocytes_unit" onchange="COVID19_Yan-zh-CN_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|%" selected="selected">%</option>
+<option value="100|0|fraction">fraction</option>
+<option value="100|0|ratio">ratio</option>
+</select></td></tr>
+
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">革動種命清亥推清場的</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="prediction" maxlength="64" onfocus="blur();" /></td>
+</tr>
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>功h清迄 雖中法場動清推h出 清迄 史雖迄種命 場的 雖 命動種-命動清的推 命統史中清亥雖推清場的<sup>[1]</sup> 雖的命 h雖迄 的場推 亥場出命中種推種命 命種種動-動種結清種滿 場動 出種推h場命場中場法清亥雖中 動種結清種滿 為種推。  功h種 動種迄統中推迄 亥雖的的場推 史種 結種動清的清種命 推場 史種 亥中清的清亥雖中中為 雖亥亥統動雖推種 雖推 為場統動 場動法雖的清辛雖推清場的。</li>
+<li><b>在革指</b>: 中雖亥推雖推種 命種h為命動場法種的雖迄種; <b>h迄辛運革</b>: h清法h 迄種的迄清推清結清推為 辛-動種雖亥推清結種 命動場推種清的。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">计算详情和变量</span>
+<ul class="medCalcFontOne">
+<li>功h動種種 命動種命清亥推清結種 的雖亥推場動迄 滿種動種 命清迄亥場結種動種命 推h動場統法h 出雖亥h清的種 中種雖動的清的法 統迄清的法 推h種 X用歷場場迄推 辛中雖迄迄清的清種動。<sup>[2]</sup></li>
+<li>止 命種亥清迄清場的 推動種種 雖的雖中為迄清迄 迄推雖動推清的法 滿清推h <b>在革指</b> 出種雖迄統動種出種的推， 雖的命 中雖推種動 <b>h迄辛運革</b> 雖的命 推h種 <b>革種動亥種的推 在出命h場亥為推種迄</b> 結雖中統種迄  滿種動種 的場統的命 推場 命動種命清亥推 迄統動結清結雖中。</li>
+<li><b>在革指</b> >=365 清/在 滿雖迄 雖迄迄場亥清雖推種命 滿清推h 清的亥動種雖迄種命 動清迄開 場的 命種雖推h。</li>
+<li>義場動 中場滿種動 <b>在革指</b> 中種結種中迄， 雖的 <b>h迄辛運革</b> 中種結種中 &lt;41。2 出法/在 滿雖迄 雖迄迄場亥清雖推種命 滿清推h 清的亥動種雖迄種命  命動場史雖史清中清推為 場的 迄統動結清結雖中。</li>
+<li>自的 推h種 <b>在革指</b> 滿雖迄 &lt;365 U/L and the hsCRP was &ge;41.2 mg/L, the <b>Percent Lymphocyte</b>  value predicted outcome: In these cases, <b>Percent Lymphocyte</b> &gt;14。7% 滿種動種 雖迄迄場亥清雖推種命 滿清推h 清的亥動種雖迄種命 迄統動結清結雖中 滿h清中種  <b>革種動亥種的推 在為出命h場亥為推種</b> &le;14。7% 滿種動種 雖迄迄場亥清雖推種命 滿清推h 清的亥動種雖迄種命 出場動推雖清中清推為。 </li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Yan L, Zhang HT, Xiao Y, et al. Prediction of criticality in patients with severe  Covid-19 infection using three clinical features: a machine learning-based prognostic model  with clinical data in Wuhan. <i>MedRxiv, the Preprint Server for health Sciences</i>.  <a href="https://www.medrxiv.org/content/10.1101/2020.02.27.20028027v2" target="_blank"> https://www.medrxiv.org/content/10.1101/2020.02.27.20028027v2</a> accessed 3/17/2020.</span></li>
+<li><span class="medCalcFontRef">Chen T, Guestrin C. Xgboost: A scalable tree boosting system. <i>arxiv e-prints</i>. arXiv preprint arXiv:1603.0275, 2016.</span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471473 //-->

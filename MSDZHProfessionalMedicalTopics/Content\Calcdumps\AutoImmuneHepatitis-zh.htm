@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>自身免疫性肝炎诊断标准</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Gastroenterology, Rheumatology, diagnosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+AutoImmuneHepatitis_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+AutoImmuneHepatitis_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function AutoImmuneHepatitis_fx() {
+with(document.AutoImmuneHepatitis_form){
+
+Score = 0.0;
+doCalc = true;
+
+rbchk = false;
+if (cc1[0].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc1[1].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc2[0].checked){
+rbchk = true; Score = Score + -2; 
+}
+if (cc2[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc3[0].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc3[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc3[2].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc3[3].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc4[0].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc4[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc4[2].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc4[3].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc4[4].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc4[5].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc4[6].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc4[7].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc4[8].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (!rbchk) doCalc = false;
+if (cc5.checked){
+Score = Score + -2;
+}
+rbchk = false;
+if (cc6[0].checked){
+rbchk = true; Score = Score + -3; 
+}
+if (cc6[1].checked){
+rbchk = true; Score = Score + -2; 
+}
+if (cc6[2].checked){
+rbchk = true; Score = Score + -3; 
+}
+if (cc6[3].checked){
+rbchk = true; Score = Score + -3; 
+}
+if (cc6[4].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc7[0].checked){
+rbchk = true; Score = Score + -2; 
+}
+if (cc7[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc8[0].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc8[1].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc8[2].checked){
+rbchk = true; Score = Score + -2; 
+}
+if (cc8[3].checked){
+rbchk = true; Score = Score + -1; 
+}
+if (!rbchk) doCalc = false;
+if (cc9.checked){
+Score = Score + 1;
+}
+if (cc10.checked){
+Score = Score + 1;
+}
+rbchk = false;
+if (cc11[0].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc11[1].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc11[2].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc11[3].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc11[4].checked){
+rbchk = true; Score = Score + -1; 
+}
+if (cc11[5].checked){
+rbchk = true; Score = Score + -3; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc12[0].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc12[1].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc12[2].checked){
+rbchk = true; Score = Score + -2; 
+}
+if (cc12[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (!rbchk) doCalc = false;
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.AutoImmuneHepatitis_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 16) && (Score <= 25)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 10) && (Score <= 15)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 0) && (Score <= 9)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 18) && (Score <= 25)){ document.getElementById('rr2_4').bgColor = '#8ab2be';
+}
+if ((Score >= 12) && (Score <= 17)){ document.getElementById('rr2_5').bgColor = '#8ab2be';
+}
+if ((Score >= 0) && (Score <= 11)){ document.getElementById('rr2_6').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr2_4').bgColor = '';
+document.getElementById('rr2_5').bgColor = '';
+document.getElementById('rr2_6').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="AutoImmuneHepatitis_form" id="AutoImmuneHepatitis_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+自身免疫性肝炎诊断标准
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">性别 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel1" name="cc1" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');">女 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel2" name="cc1" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">男 (0 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">碱性磷酸酶/氨酸转氨酶比率 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc2" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">&gt;3.0 (-2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc2" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">&lt;3.0 (2 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">血清球蛋白、γ球蛋白或免疫球蛋白/相应正常值比率 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel5" name="cc3" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');">&gt;2.0 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel6" name="cc3" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel6');">1.5 - 2.0 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel7" name="cc3" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel7');">1.0 - 1.5 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel8" name="cc3" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel8');">&lt;1.0 (0 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">自身抗体（啮齿动物组织免疫荧光检测滴度） </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel9" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');">抗核抗体或抗肝肾微粒体抗体 &gt;1:80 （儿童&gt;1:20 ） (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel10" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');">抗核抗体或抗肝肾微粒体抗体 1:80 （儿童1:10-1:20 ） (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel11" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel11');">抗核抗体或抗肝肾微粒体抗体 1:40  (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel12" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel12');">抗核抗体或抗肝肾微粒体抗体 &lt;1:40 （儿童&lt;1:10 ） (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel13" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel13');">抗平滑肌抗体&gt;1:80 （儿童&gt;1:20 ） (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel14" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel14');">抗平滑肌抗体1:80 （儿童1:20 ） (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel15" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel15');">抗平滑肌抗体1:40  (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel16" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel16');">抗平滑肌抗体&lt;1:40 （儿童&lt;1:20 ） (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel17" name="cc4" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel17');">SLA、ASGP-R、LSP、LC1、LP、HHPM 或硫苷脂阳性 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel18" name="cc5" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel18');" >抗线粒体抗体阳性 (-2 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">病毒标记物 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel19" name="cc6" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel19');">IgM (免疫球蛋白 M)抗-HAV(甲型肝炎病毒)、 HBsAg(乙型肝炎病毒表面抗原)或IgM 抗HBc (-3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel20" name="cc6" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel20');">通过ELISA (酶联免疫吸附测定)或 RIBA(重组免疫印迹试验)检测抗 HCV(丙型肝炎病毒) 抗体 (-2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel21" name="cc6" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel21');">通过PCR(多元聚合酶链反应)／RNA(核糖核酸)检测抗 HCV (丙型肝炎病毒)抗体 (-3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel22" name="cc6" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel22');">其他检测或活动性病毒感染 (-3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel23" name="cc6" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel23');">病毒血清阴性 (3 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">近期肝毒性药物接触史或血液制品非肠道接触史 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel24" name="cc7" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel24');">是 (-2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel25" name="cc7" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel25');">否 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">饮酒量 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel26" name="cc8" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel26');">男&lt;35 gm/天; 女&lt;25 gm/天 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel27" name="cc8" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel27');">男 35-35 gm/天; 女 25-40 gm/天 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel28" name="cc8" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel28');">男 50-80 gm/天; 女 40-60 gm/天 (-2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel29" name="cc8" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel29');">男 &gt;80 gm/天; 女 &gt;60 gm/天 (-1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">基因因素</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel30" name="cc9" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel30');" >患者或其直系亲属中存在其他自身免疫性疾病 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel31" name="cc10" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel31');" >HLA(人类白细胞抗原) B8-DR3 单体型或 DR4 同种异型 (1 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">组织学表现 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel32" name="cc11" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel32');"> 慢性活动性肝炎 / 碎片性坏死/ 小叶侵犯 / 桥接坏死 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel33" name="cc11" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel33');">同样无小叶侵犯或桥接坏死 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel34" name="cc11" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel34');">花环状 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel35" name="cc11" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel35');">血浆细胞显著浸润 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel36" name="cc11" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel36');">胆汁变化 (-1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel37" name="cc11" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel37');">肉芽肿/铁尘肺/铜/其他改变提示不同病原学 (-3 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">治疗效果 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel38" name="cc12" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel38');">完全有效 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel39" name="cc12" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel39');">部分有效或无效 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel40" name="cc12" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel40');">根据疾病活动度，无效 (-2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel41" name="cc12" onclick="AutoImmuneHepatitis_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel41');">首次完全有效后停止治疗期间或之后复发 (3 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+治疗前 AIH 预测
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">16 - 25 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">确诊自身免疫性肝炎</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">10 - 15 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">疑似 AIH</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 9 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">AIH 几率较小</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+<br />&nbsp;<br />
+<div id="rr2_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+治疗后 AIH 预测
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr2_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">18 - 25 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">确诊自身免疫性肝炎</span></td></tr>
+<tr id="rr2_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">12 - 17 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">疑似 AIH</span></td></tr>
+<tr id="rr2_6"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 11 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">AIH 几率较小</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Johnson PJ, MacFarland IG. Meeting report: International autoimmune hepatitis group. <i>Hepatology</i>. 1993;18:998-1005. PubMed ID: 8406375 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8406375"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471465 //-->

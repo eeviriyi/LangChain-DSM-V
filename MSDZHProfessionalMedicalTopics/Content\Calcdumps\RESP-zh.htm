@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>用于 ECMO 生存预测的 RESP 评分</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="pulm, critical, emergency, covid, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+RESP_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+RESP_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function RESP_fx() {
+
+with(document.RESP_form){
+
+
+doCalc = true;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(PaCO2_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = PaCO2_unit.options[PaCO2_unit.selectedIndex].value.split('|');
+PaCO2 = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Peak_Inspiratory_Pressure_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Peak_Inspiratory_Pressure_unit.options[Peak_Inspiratory_Pressure_unit.selectedIndex].value.split('|');
+Peak_Inspiratory_Pressure = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+if (Immunocomp_checkbox.checked){ Immunocomp = -2;
+} else { Immunocomp = 0; }
+if (CNS_checkbox.checked){ CNS = -7;
+} else { CNS = 0; }
+if (Non_Pulm_Infection_checkbox.checked){ Non_Pulm_Infection = -3;
+} else { Non_Pulm_Infection = 0; }
+if (Neuromusc_Block_checkbox.checked){ Neuromusc_Block = 1;
+} else { Neuromusc_Block = 0; }
+if (Nitric_Oxide_checkbox.checked){ Nitric_Oxide = -1;
+} else { Nitric_Oxide = 0; }
+if (Bicarb_Use_checkbox.checked){ Bicarb_Use = -2;
+} else { Bicarb_Use = 0; }
+if (Cardiac_Arrest_checkbox.checked){ Cardiac_Arrest = -2;
+} else { Cardiac_Arrest = 0; }
+rbchk = false;
+if (On_Ventilator_Prior_To_ECMO_radio[0].checked){ rbchk = true; On_Ventilator_Prior_To_ECMO = 3;  }
+if (On_Ventilator_Prior_To_ECMO_radio[1].checked){ rbchk = true; On_Ventilator_Prior_To_ECMO = 1;  }
+if (On_Ventilator_Prior_To_ECMO_radio[2].checked){ rbchk = true; On_Ventilator_Prior_To_ECMO = 0;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Acute_Pulmonary_Disease_radio[0].checked){ rbchk = true; Acute_Pulmonary_Disease = 3;  }
+if (Acute_Pulmonary_Disease_radio[1].checked){ rbchk = true; Acute_Pulmonary_Disease = 11;  }
+if (Acute_Pulmonary_Disease_radio[2].checked){ rbchk = true; Acute_Pulmonary_Disease = 3;  }
+if (Acute_Pulmonary_Disease_radio[3].checked){ rbchk = true; Acute_Pulmonary_Disease = 5;  }
+if (Acute_Pulmonary_Disease_radio[4].checked){ rbchk = true; Acute_Pulmonary_Disease = 1;  }
+if (Acute_Pulmonary_Disease_radio[5].checked){ rbchk = true; Acute_Pulmonary_Disease = 0;  }
+if (!rbchk) doCalc = false;
+dp = 0;
+
+if (Age>=60){
+Age_Factor = -3;
+}
+else 
+if (Age>=50){
+Age_Factor = -2;
+}
+else{ Age_Factor = 0;
+}
+if (PaCO2>=75){
+PaCO2_Factor = -1;
+}
+else{ PaCO2_Factor = 0;
+}
+if (Peak_Inspiratory_Pressure>=42){
+Peak_Inspiratory_Pressure_Factor = -1;
+}
+else{ Peak_Inspiratory_Pressure_Factor = 0;
+}RESP_Score =  Age_Factor + PaCO2_Factor + Peak_Inspiratory_Pressure_Factor + Immunocomp + On_Ventilator_Prior_To_ECMO +  Acute_Pulmonary_Disease + CNS + Non_Pulm_Infection + Neuromusc_Block + Nitric_Oxide + Bicarb_Use + Cardiac_Arrest;
+
+unit_parts = RESP_Score_unit.options[RESP_Score_unit.selectedIndex].value.split('|');
+if (doCalc) RESP_Score_param.value = fixDP((RESP_Score - parseFloat(unit_parts[1])) / parseFloat(unit_parts[0]), dp);
+
+
+
+
+if (doCalc){
+rrclr();
+if ((RESP_Score >= 6) && (RESP_Score <= 15)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((RESP_Score >= 3) && (RESP_Score <= 5)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((RESP_Score >= -1) && (RESP_Score <= 2)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((RESP_Score >= -5) && (RESP_Score <= -2)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+if ((RESP_Score >= -22) && (RESP_Score <= -6)){ document.getElementById('rr1_5').bgColor = '#8ab2be';
+}
+
+
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.RESP_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('年龄'); }
+if (Age_param.value && (Age < (18 - 0.00001))) {
+Age = 0;
+clrValue(Age_param);
+clrResults();
+doCalc = false;
+ alert("最小值 年龄 是 18 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Age_param.value && Age > 110) {
+clrValue(Age_param);
+clrResults();
+Age = 0;
+doCalc = false;
+ alert("最大值 年龄 是 110 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (PaCO2_param.value && isNaN(PaCO2_param.value)){ clrValue(PaCO2_param); alertNaN('PaCO<sub>2</sub>'); }
+if (Peak_Inspiratory_Pressure_param.value && isNaN(Peak_Inspiratory_Pressure_param.value)){ clrValue(Peak_Inspiratory_Pressure_param); alertNaN('峰值吸气压'); }
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.RESP_form){
+
+RESP_Score_param.value = '';
+
+rrclr();
+
+}
+
+}
+
+var Age = null,
+PaCO2 = null,
+Peak_Inspiratory_Pressure = null,
+Immunocomp = null,
+CNS = null,
+Non_Pulm_Infection = null,
+Neuromusc_Block = null,
+Nitric_Oxide = null,
+Bicarb_Use = null,
+Cardiac_Arrest = null,
+On_Ventilator_Prior_To_ECMO = null,
+Acute_Pulmonary_Disease = null,
+RESP_Score = null,
+param_value = null;
+
+
+
+
+
+
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+document.getElementById('rr1_5').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="RESP_form" id="RESP_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="RESP_fx();" onreset="rrclr();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+用于 ECMO 生存预测的 RESP 评分
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">年龄</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="RESP_fx(); minMaxCheck();" onchange="RESP_fx();" /></td>
+<td align="left" valign="top"> <select name="Age_unit" onchange="RESP_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">PaCO<sub>2</sub></span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="PaCO2_param" size="6" value="" onblur="RESP_fx(); minMaxCheck();" onchange="RESP_fx();" /></td>
+<td align="left" valign="top"> <select name="PaCO2_unit" onchange="RESP_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.00750063755419211|0|Pascal">Pascal</option>
+<option value="760.002100178515|0|atm">atm</option>
+<option value="750.063755419211|0|bar">bar</option>
+<option value="0.735561538478802|0|cmH2O">cmH2O</option>
+<option value="10|0|cmHg">cmHg</option>
+<option value="22.4199156928339|0|ftH2O">ftH2O</option>
+<option value="0.735561538478802|0|gm/sqcm">gm/sqcm</option>
+<option value="1.86832630773616|0|inH2O">inH2O</option>
+<option value="25.4000840071406|0|inHg">inHg</option>
+<option value="7.50063755419211|0|kPa">kPa</option>
+<option value="0.750063755419211|0|mbar">mbar</option>
+<option value="1|0|mmHg" selected="selected">mmHg</option>
+<option value="51.7150957831416|0|psi">psi</option>
+<option value="1|0|torr">torr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">峰值吸气压</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Peak_Inspiratory_Pressure_param" size="6" value="" onblur="RESP_fx(); minMaxCheck();" onchange="RESP_fx();" /></td>
+<td align="left" valign="top"> <select name="Peak_Inspiratory_Pressure_unit" onchange="RESP_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0101971584453749|0|Pascal">Pascal</option>
+<option value="1033.22707947762|0|atm">atm</option>
+<option value="1019.71584453749|0|bar">bar</option>
+<option value="1|0|cmH2O" selected="selected">cmH2O</option>
+<option value="13.5950555825428|0|cmHg">cmHg</option>
+<option value="30.48|0|ftH2O">ftH2O</option>
+<option value="1|0|gm/sqcm">gm/sqcm</option>
+<option value="2.54|0|inH2O">inH2O</option>
+<option value="34.5315553878333|0|inHg">inHg</option>
+<option value="10.1971584453749|0|kPa">kPa</option>
+<option value="1.01971584453749|0|mbar">mbar</option>
+<option value="1.35950555825428|0|mmHg">mmHg</option>
+<option value="70.3069601628334|0|psi">psi</option>
+<option value="1.35950555825428|0|torr">torr</option>
+</select></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Immunocomp_checkbox" id="togel1" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel1');">免疫受损 (-2)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="CNS_checkbox" id="togel2" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel2');">CNS 功能障碍 (-7)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Non_Pulm_Infection_checkbox" id="togel3" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel3');">急性非肺部感染 (-3)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Neuromusc_Block_checkbox" id="togel4" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel4');">ECMO 前使用神经肌肉阻滞治疗 (1)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Nitric_Oxide_checkbox" id="togel5" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel5');">ECMO 前使用一氧化氮 (-1)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Bicarb_Use_checkbox" id="togel6" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel6');">ECMO 前输注碳酸氢盐 (-2)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="left" colspan="2"><input type="checkbox" name="Cardiac_Arrest_checkbox" id="togel7" onclick="RESP_fx();" />
+<span class="medCalcFontOneClick" onclick="togCB('togel7');">ECMO 前心跳骤停 (-2)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">ECMO 前接受呼吸机治疗</span></td>
+<td colspan="2" align="left"><input type="radio" name="On_Ventilator_Prior_To_ECMO_radio" id="togel8" value="&lt;48 小时|3" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel8');"> &lt;48 小时 (3)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="On_Ventilator_Prior_To_ECMO_radio" id="togel9" value="48 小时到 7 天|1" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel9');"> 48 小时到 7 天 (1)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="On_Ventilator_Prior_To_ECMO_radio" id="togel10" value="&gt;7 天|0" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel10');"> &gt;7 天 (0)</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">急性肺部疾病</span></td>
+<td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel11" value="病毒或细菌性肺炎|3" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel11');"> 病毒或细菌性肺炎 (3)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel12" value="哮喘|11" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel12');"> 哮喘 (11)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel13" value="创伤/烧伤|3" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel13');"> 创伤/烧伤 (3)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel14" value="吸入性肺炎|5" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel14');"> 吸入性肺炎 (5)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel15" value="其他急性肺部疾病|1" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel15');"> 其他急性肺部疾病 (1)</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Acute_Pulmonary_Disease_radio" id="togel16" value="慢性肺部或非肺部疾病|0" onclick="RESP_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel16');"> 慢性肺部或非肺部疾病 (0)</span></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">RESP 评分</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="RESP_Score_param" size="6" onfocus="blur();" /></td>
+<td valign="top" align="left"><span class="medCalcFontResultParam">
+<select name="RESP_Score_unit" onchange="RESP_fx();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|#">#</option>
+<option value="1|0|index">index</option>
+<option value="1|0|none">none</option>
+<option value="1|0|number">number</option>
+<option value="1|0|points" selected="selected">points</option>
+<option value="1|0|score">score</option>
+</select>
+</span></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+RESP 评分解释
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">6 - 15 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">I 级风险，生存率 92%</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">3 - 5 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">II 级风险，生存率 76%</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">-1 - 2 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> III 级风险，生存率 57%</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">-5 - -2 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">IV 级风险，生存率 33%</span></td></tr>
+<tr id="rr1_5"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">-22 - -6 分值:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">V 级风险，生存率 18%</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><b>RESP</b>：呼吸 ECMO 生存预测；<b>ECMO</b>：体外膜肺氧合；<b>CNS</b>：中枢神经系统。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">RESP评分 = 年龄系数 + PaCO<sub>2</sub>系数 + 峰值吸气压系数 + 免疫受损 + ECMO前接受呼吸机治疗 +  急性肺部疾病 + CNS + 非肺部感染 + 神经肌肉阻滞 + 一氧化氮 + 使用碳酸氢盐 + 心跳骤停</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+<br />&nbsp;<br />
+<div id="calc_details_and_variables">
+<span class="medCalcFontOneBold">计算详情和变量</span>
+<ul class="medCalcFontOne">
+<li><b>年龄系数</b> 是通过此有序逻辑分配的数值: <ul><li><span style="white-space: nowrap;">如果 <b>年龄</b> &ge;60 yr <b>年龄系数</b> = -3</span></li><li><span style="white-space: nowrap;">否则，如果 <b>年龄</b> &ge;50 yr <b>年龄系数</b> = -2</span></li><li><span style="white-space: nowrap;">否则 <b>年龄系数</b> = 0.</span></li></ul></li><li><b>PaCO<sub>2</sub>系数</b> 是通过此有序逻辑分配的数值: <ul><li><span style="white-space: nowrap;">如果 <b>PaCO<sub>2</sub></b> &ge;75 mmHg <b>PaCO<sub>2</sub>系数</b> = -1</span></li><li><span style="white-space: nowrap;">否则 <b>PaCO<sub>2</sub>系数</b> = 0.</span></li></ul></li><li><b>峰值吸气压系数</b> 是通过此有序逻辑分配的数值: <ul><li><span style="white-space: nowrap;">如果 <b>峰值吸气压</b> &ge;42 cmH2O <b>峰值吸气压系数</b> = -1</span></li><li><span style="white-space: nowrap;">否则 <b>峰值吸气压系数</b> = 0.</span></li></ul></li><li>等式参数，例如 <b>ECMO 前接受呼吸机治疗</b>, 有两个或更多可能用于计算的离散值。括号中的数字，例如  (3), 代表将要使用的数值.</li>
+
+</ul>
+</div>
+
+
+<div id="calc_tables">
+
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Schmidt M, Bailey M, Sheldrake J, et al. Predicting survival after extracorporeal membrane  oxygenation for severe acute respiratory failure. The Respiratory Extracorporeal Membrane  Oxygenation Survival Prediction (RESP) score. <i>Am J Respir Crit Care Med</i>. 2014 Jun 1;189(11):1374-82. PubMed ID: 24693864 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/24693864"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+with(document.RESP_form){
+var Age_Factor = 0;
+var PaCO2_Factor = 0;
+var Peak_Inspiratory_Pressure_Factor = 0;
+
+}
+/* ]]> */
+</script>
+
+
+
+</div>
+</body>
+</html>
+
+<!-- 1662471517 //-->

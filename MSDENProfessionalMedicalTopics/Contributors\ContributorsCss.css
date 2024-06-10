@@ -1,0 +1,11 @@
+/*img {
+    max-height: 250px;
+    max-width: -webkit-fill-available;
+}
+ */
+
+img {
+    max-height: 152px;
+    max-width: 135px;   
+    margin-left: 97px;
+}

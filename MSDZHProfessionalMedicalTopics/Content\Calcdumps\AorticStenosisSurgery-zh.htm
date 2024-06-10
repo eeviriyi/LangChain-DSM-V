@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>主动脉瓣狭窄及瓣膜置换术预测 TreeCalc</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Cardiology, Geriatrics, diagnosis, prognosis, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+主动脉瓣狭窄及瓣膜置换术预测 TreeCalc<sup>&#174;</sup>
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<span id="txhtm" class="medCalcFontOne"> </span>
+<br />&nbsp;<br />
+<center>
+<form name="hereform" id="hereform" action="">
+<input type="button" name="backup" onclick="backUp();" value="返回" />
+&nbsp; 
+<input type="button" name="restart" onclick="mainTrunk();" value="重新开始" />  
+</form>
+</center>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Otto CM, Pearlman AS. Doppler echocardiography in adults with symptomatic aortic stenosis. Diagnostic utility and cost-effectiveness. <i>Arch Intern Med</i>. 1988 Dec;148(12):2553-60. PubMed ID: 3143323 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/3143323"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+
+
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+branch = new Array();
+bparts = new Array();
+var historytxt;
+var branchpointshead;
+var branchpointsfoot;
+var historyref = '<br />&nbsp;<br /><span class=\"medCalcFontRef\"><br />&nbsp;<br /><b>参考:<\/b><\/span><ol>' + "<li><span class=\"medCalcFontRef\">Otto CM, Pearlman AS. Doppler echocardiography in adults with symptomatic aortic stenosis. Diagnostic utility and cost-effectiveness. <i>Arch Intern Med<\/i>. 1988 Dec;148(12):2553-60. PubMed ID: 3143323 <a target=\"_blank\" href=\"https://www.ncbi.nlm.nih.gov/pubmed/3143323\"><img border=\"0\" src=\"pubmed.gif\" align=\"top\" alt=\"PubMed Logo\" /><\/a> <\/span><\/li> <\/ol>";
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+var hxidx;
+decpoints = new Array();
+decselected = new Array();
+decpoints[1] = 1;
+decselected[1] = '';
+htmtitle = '<span class="medCalcFontDT">Decision Tool: 主动脉瓣狭窄及瓣膜置换术预测 TreeCalc<\/span><br \/>&nbsp;<br \/>';
+
+function alertRestart(){
+alert('The decision tree must restart when this preference is changed.');
+mainTrunk();
+}
+
+branch[1] = "主动脉喷射最大速度|&ge;每秒 4 米|2|&le;每秒 3 米|3|每秒 3-4 米|4";
+branch[2] = "可能需要主动脉瓣置换术";
+branch[3] = "可能不需要主动脉瓣置换术";
+branch[4] = "多普勒主动脉瓣面积|&le;1 平方厘米|2|1.1-1.6 平方厘米|5|&ge;1.7 平方厘米|3";
+branch[5] = "主动脉瓣关闭不全|&gt;仅在主动脉瓣尖处缺失或形成湍流|3|二尖瓣尖附近湍流|2";
+
+function backUp(){
+
+if (hxidx > 1){
+hxidx--;
+
+branchpointshead = '<br />&nbsp;<br /><b>决定点数<\/b><br /><ul class="medCalcFontOneBold">';
+branchpointsfoot = '<\/ul>';
+
+historytxt = '';
+for (h = hxidx; h > 0; h--) historytxt = historytxt + decselected[h];
+loadBranch(decpoints[hxidx]);
+}
+
+else{
+branchpointshead = '';
+branchpointsfoot = '';
+}}
+
+function writeHxTxt(htxt){
+document.getElementById('txhtm').innerHTML = htxt + '<sc' + 'ript language="JavaScript1.1">window.scroll(0,0)<\/s' + 'cript>';
+}
+
+function makeChoice(b,i,c){
+bparts = branch[b].split('|');
+hxidx++;
+decselected[hxidx] = '<li>' +  bparts[0] + ':<b> &nbsp;' + bparts[i] + '<\/b><\/li>';
+decpoints[hxidx] = c;
+historytxt = '';
+for (h = hxidx; h > 0; h--) historytxt = historytxt + decselected[h];
+branchpointshead = '<br />&nbsp;<br /><b>决定点数<\/b><br /><ul class="medCalcFontOneBold">';
+branchpointsfoot = '<\/ul>';
+loadBranch(c);
+}
+
+function mainTrunk(){
+branchpointshead = '';
+branchpointsfoot = '';
+historytxt = '';
+hxidx = 1;
+loadBranch(1);
+}
+
+function loadBranch(b){
+bparts = branch[b].split('|');
+
+if (!bparts[1]) {
+historytxt = '<b>终点<\/b><br />&nbsp;<br /><ul class="medCalcFontOneBold"><li>' + bparts[0] + '<\/li><\/ul>' + branchpointshead + historytxt + branchpointsfoot;
+writeHxTxt(historytxt);
+return;
+}
+
+i = 1;
+htxtoptions = '<ul class="medCalcFontOneBold">';
+
+while (bparts[i]){
+htxtoptions = htxtoptions + '\n<li><a href="" onclick="makeChoice(' + b + ',' + i + ','  + bparts[i+1] + '); return false;">' + bparts[i] + '<\/a><\/li>';
+i=i+2;
+}
+
+htxtoptions = htxtoptions + '<\/ul>';
+
+writeHxTxt('<b>' + bparts[0] + '<\/b>' + htxtoptions + branchpointshead + historytxt + branchpointsfoot);
+}
+mainTrunk();
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+<div id="calc_disclaimer">  <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u> 法律条款及免责声明 </u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo"> EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+ <b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b> <a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span> <br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+ </div>
+</div>
+</body>
+</html>
+
+
+<!-- 1662471463 //-->

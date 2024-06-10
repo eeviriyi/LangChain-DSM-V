@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>终末期肝脏疾病 PELD 评分（患者小于 12 周岁）</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="patientuse, critical care, Gastroenterology, Pediatrics, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+PELD_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+PELD_fx();
+}
+
+
+var calctxt = ''; 
+var xmltxt = ''; 
+var xmlresult = '';
+var htmtxt = ''; 
+var postNow = false;
+var printing = false;
+var interptxt = '';
+var interphtm = '';
+var interpxml = '';
+var rbchk = false;
+
+function PELD_fx() {
+
+with(document.PELD_form){
+
+
+doCalc = true;
+rbchk = false;
+if (Sex_radio[0].checked){ rbchk = true; Sex = 1;  }
+if (Sex_radio[1].checked){ rbchk = true; Sex = 2;  }
+if (!rbchk) doCalc = false;
+param_value = parseFloat(Age_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Age_unit.options[Age_unit.selectedIndex].value.split('|');
+Age = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Weight_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Weight_unit.options[Weight_unit.selectedIndex].value.split('|');
+Weight = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Height_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Height_unit.options[Height_unit.selectedIndex].value.split('|');
+Height = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(Albumin_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+Albumin = param_value;
+param_value = parseFloat(Bilirubin_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+unit_parts = Bilirubin_unit.options[Bilirubin_unit.selectedIndex].value.split('|');
+Bilirubin = param_value * parseFloat(unit_parts[0]) + parseFloat(unit_parts[1]);
+param_value = parseFloat(INR_param.value);
+if (isNaN(param_value)){param_value = ""; doCalc = false;}
+INR = param_value;
+rbchk = false;
+if (Listing_radio[0].checked){ rbchk = true; Listing = 0;  }
+if (Listing_radio[1].checked){ rbchk = true; Listing = 1;  }
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (Exception_diagnoses_radio[0].checked){ rbchk = true; Exception_diagnoses = 0;  }
+if (Exception_diagnoses_radio[1].checked){ rbchk = true; Exception_diagnoses = 1;  }
+if (Exception_diagnoses_radio[2].checked){ rbchk = true; Exception_diagnoses = 1;  }
+if (Exception_diagnoses_radio[3].checked){ rbchk = true; Exception_diagnoses = 1;  }
+if (!rbchk) doCalc = false;
+dp = 0;
+Age_Months =  Age * 12;
+
+Hgt_M =  rangeN1(n2_Height, Age_Months);
+
+Wgt_M =  rangeN1(n2_Weight, Age_Months);
+
+Hgt_F =  rangeN1(n1_Height, Age_Months);
+
+Wgt_F =  rangeN1(n1_Weight, Age_Months);
+
+Listing_age_factor = 0;
+if (Age_Months < 12) Listing_age_factor = 0.436;
+if ((Age_Months < 24) && (Listing == 1)) Listing_age_factor = 0.436;
+Growth = 0;
+if ((Sex == 1) && doCalc){
+if ((Height >= Hgt_F) && (Weight >= Wgt_F)) growth_failure.value = "无";
+if ((Height >= Hgt_F) && (Weight < Wgt_F)){ growth_failure.value = "仅体重"; Growth = 0.6672; }
+if ((Height < Hgt_F) && (Weight >= Wgt_F)){ growth_failure.value = "仅身高"; Growth = 0.6672; }
+if ((Height < Hgt_F) && (Weight < Wgt_F)){ growth_failure.value = "身高和体重"; Growth = 0.6672; }
+}
+if ((Sex == 2) && doCalc){
+if ((Height >= Hgt_M) && (Weight >= Wgt_M)) growth_failure.value = "无";
+if ((Height >= Hgt_M) && (Weight < Wgt_M)){ growth_failure.value = "仅体重"; Growth = 0.6672; }
+if ((Height < Hgt_M) && (Weight >= Wgt_M)){ growth_failure.value = "仅身高"; Growth = 0.6672; }
+if ((Height < Hgt_M) && (Weight < Wgt_M)){ growth_failure.value = "身高和体重"; Growth = 0.6672; }
+}
+PELD_score =  10 * ((0.480 * ln(Bilirubin)) + (1.857 * ln(INR)) - (0.687 * ln(Albumin)) + Listing_age_factor + Growth);
+
+if (doCalc) PELD_score_param.value = fixDP(PELD_score, dp);
+
+
+
+if (Exception_diagnoses){
+alert('由于此项特定病症，PELD 评分设置为 30');
+PELD_score_param.value = '30';
+}
+
+
+}
+
+
+
+
+}
+
+function minMaxCheck(){
+if (printing) return;
+
+
+
+with(document.PELD_form){
+
+if (Age_param.value && isNaN(Age_param.value)){ clrValue(Age_param); alertNaN('年龄'); }
+if (Age_param.value && (Age < (0 - 0.00001))) {
+Age = 0;
+clrValue(Age_param);
+clrResults();
+doCalc = false;
+ alert("最小值 年龄 是 0 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Age_param.value && Age > 11.99) {
+clrValue(Age_param);
+clrResults();
+Age = 0;
+doCalc = false;
+ alert("最大值 年龄 是 11.99 yr.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Weight_param.value && isNaN(Weight_param.value)){ clrValue(Weight_param); alertNaN('体重'); }
+if (Height_param.value && isNaN(Height_param.value)){ clrValue(Height_param); alertNaN('身高'); }
+if (Albumin_param.value && isNaN(Albumin_param.value)){ clrValue(Albumin_param); alertNaN('白蛋白'); }
+if (Albumin_param.value && (Albumin < (1 - 0.00001))) {
+Albumin = 0;
+clrValue(Albumin_param);
+clrResults();
+doCalc = false;
+ alert("最小值 白蛋白 是 1 g/dL.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Albumin_param.value && Albumin > 1000) {
+clrValue(Albumin_param);
+clrResults();
+Albumin = 0;
+doCalc = false;
+ alert("最大值 白蛋白 是 1000 g/dL.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Bilirubin_param.value && isNaN(Bilirubin_param.value)){ clrValue(Bilirubin_param); alertNaN('胆红素'); }
+if (Bilirubin_param.value && (Bilirubin < (1 - 0.00001))) {
+Bilirubin = 0;
+clrValue(Bilirubin_param);
+clrResults();
+doCalc = false;
+ alert("最小值 胆红素 是 1 mg/dL.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (Bilirubin_param.value && Bilirubin > 1000) {
+clrValue(Bilirubin_param);
+clrResults();
+Bilirubin = 0;
+doCalc = false;
+ alert("最大值 胆红素 是 1000 mg/dL.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (INR_param.value && isNaN(INR_param.value)){ clrValue(INR_param); alertNaN('国际标准化比率'); }
+if (INR_param.value && (INR < (1 - 0.00001))) {
+INR = 0;
+clrValue(INR_param);
+clrResults();
+doCalc = false;
+ alert("最小值 国际标准化比率 是 1.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+if (INR_param.value && INR > 1000) {
+clrValue(INR_param);
+clrResults();
+INR = 0;
+doCalc = false;
+ alert("最大值 国际标准化比率 是 1000.\n如果你是用另一个单位指定某个值, 请先更改单位选择器.");
+}
+
+
+}
+
+}
+
+function clrResults(){
+
+
+with(document.PELD_form){
+
+growth_failure.value = '';
+PELD_score_param.value = '';
+
+
+}
+
+}
+
+var Sex = null,
+Age = null,
+Weight = null,
+Height = null,
+Albumin = null,
+Bilirubin = null,
+INR = null,
+Listing = null,
+Exception_diagnoses = null,
+Age_Months = null,
+Hgt_M = null,
+Wgt_M = null,
+Hgt_F = null,
+Wgt_F = null,
+PELD_score = null,
+param_value = null;
+
+
+n1_Height = new Array();
+n1_Weight = new Array();
+
+n1_Height[0] = 45.5600; n1_Weight[0] = 2.2000; 
+n1_Height[1] = 54.5200; n1_Weight[1] = 3.9200; 
+n1_Height[2] = 60.6200; n1_Weight[2] = 5.4600; 
+n1_Height[3] = 64.9400; n1_Weight[3] = 6.6600; 
+n1_Height[4] = 68.6200; n1_Weight[4] = 7.4000; 
+n1_Height[5] = 71.9000; n1_Weight[5] = 7.9600; 
+n1_Height[6] = 74.7600; n1_Weight[6] = 8.4600; 
+n1_Height[7] = 77.4400; n1_Weight[7] = 8.9800; 
+n1_Height[8] = 78.0000; n1_Weight[8] = 9.4600; 
+n1_Height[9] = 80.2800; n1_Weight[9] = 9.8800; 
+n1_Height[10] = 82.4200; n1_Weight[10] = 10.3200; 
+n1_Height[11] = 84.5200; n1_Weight[11] = 10.7800; 
+n1_Height[12] = 86.4800; n1_Weight[12] = 11.1400; 
+n1_Height[13] = 88.3200; n1_Weight[13] = 11.5200; 
+n1_Height[14] = 90.1200; n1_Weight[14] = 11.9200; 
+n1_Height[15] = 91.9000; n1_Weight[15] = 12.2000; 
+n1_Height[16] = 93.5600; n1_Weight[16] = 12.6000; 
+n1_Height[17] = 95.1000; n1_Weight[17] = 12.8800; 
+n1_Height[18] = 96.6000; n1_Weight[18] = 13.1800; 
+n1_Height[19] = 98.1000; n1_Weight[19] = 13.4600; 
+n1_Height[20] = 99.5800; n1_Weight[20] = 13.8400; 
+n1_Height[21] = 100.9400; n1_Weight[21] = 14.1000; 
+n1_Height[22] = 102.2800; n1_Weight[22] = 14.4400; 
+n1_Height[23] = 103.5200; n1_Weight[23] = 14.6800; 
+n1_Height[24] = 104.7600; n1_Weight[24] = 14.9800; 
+n1_Height[25] = 106.0800; n1_Weight[25] = 15.2800; 
+n1_Height[26] = 107.2000; n1_Weight[26] = 15.6400; 
+n1_Height[27] = 108.4000; n1_Weight[27] = 15.9800; 
+n1_Height[28] = 109.6200; n1_Weight[28] = 16.3000; 
+n1_Height[29] = 110.8400; n1_Weight[29] = 16.6800; 
+n1_Height[30] = 111.9600; n1_Weight[30] = 17.1200; 
+n1_Height[31] = 113.0800; n1_Weight[31] = 17.4400; 
+n1_Height[32] = 114.3200; n1_Weight[32] = 17.8400; 
+n1_Height[33] = 115.4600; n1_Weight[33] = 18.3200; 
+n1_Height[34] = 116.7200; n1_Weight[34] = 18.7800; 
+n1_Height[35] = 118.0000; n1_Weight[35] = 19.2400; 
+n1_Height[36] = 119.1800; n1_Weight[36] = 19.7600; 
+n1_Height[37] = 120.4800; n1_Weight[37] = 20.2000; 
+n1_Height[38] = 121.8200; n1_Weight[38] = 20.8200; 
+n1_Height[39] = 123.2600; n1_Weight[39] = 21.3400; 
+n1_Height[40] = 124.6400; n1_Weight[40] = 21.8600; 
+n1_Height[41] = 126.1400; n1_Weight[41] = 22.4800; 
+n1_Height[42] = 127.6600; n1_Weight[42] = 23.1200; 
+n1_Height[43] = 129.2200; n1_Weight[43] = 23.7600; 
+n1_Height[44] = 130.9200; n1_Weight[44] = 24.5000; 
+n1_Height[45] = 132.6400; n1_Weight[45] = 25.1800; 
+n1_Height[46] = 134.4000; n1_Weight[46] = 25.8600; 
+n1_Height[47] = 136.1800; n1_Weight[47] = 26.6600; 
+n1_Height[48] = 137.8600; n1_Weight[48] = 27.4000; 
+
+function rangeN1(thisp, thisx){
+var xconv = (thisx - 0) / 3;
+x1 = Math.floor(xconv + .001);  
+return thisp[x1];
+}
+
+n2_Height = new Array();
+n2_Weight = new Array();
+
+n2_Height[0] = 46.0200; n2_Weight[0] = 2.4800; 
+n2_Height[1] = 55.8000; n2_Weight[1] = 4.1000; 
+n2_Height[2] = 62.4000; n2_Weight[2] = 5.8400; 
+n2_Height[3] = 67.0200; n2_Weight[3] = 7.2600; 
+n2_Height[4] = 70.7000; n2_Weight[4] = 8.1600; 
+n2_Height[5] = 73.7000; n2_Weight[5] = 8.7200; 
+n2_Height[6] = 76.3200; n2_Weight[6] = 9.1400; 
+n2_Height[7] = 78.6400; n2_Weight[7] = 9.4800; 
+n2_Height[8] = 79.2400; n2_Weight[8] = 9.6400; 
+n2_Height[9] = 81.3800; n2_Weight[9] = 10.1000; 
+n2_Height[10] = 83.3600; n2_Weight[10] = 10.5800; 
+n2_Height[11] = 85.3600; n2_Weight[11] = 11.0800; 
+n2_Height[12] = 87.2800; n2_Weight[12] = 11.4000; 
+n2_Height[13] = 89.1400; n2_Weight[13] = 11.8200; 
+n2_Height[14] = 91.0000; n2_Weight[14] = 12.1600; 
+n2_Height[15] = 92.6800; n2_Weight[15] = 12.5200; 
+n2_Height[16] = 94.3800; n2_Weight[16] = 12.9000; 
+n2_Height[17] = 96.0800; n2_Weight[17] = 13.2800; 
+n2_Height[18] = 97.7200; n2_Weight[18] = 13.6800; 
+n2_Height[19] = 99.2600; n2_Weight[19] = 14.0600; 
+n2_Height[20] = 100.7000; n2_Weight[20] = 14.4600; 
+n2_Height[21] = 102.1600; n2_Weight[21] = 14.8600; 
+n2_Height[22] = 103.6200; n2_Weight[22] = 15.2600; 
+n2_Height[23] = 105.0000; n2_Weight[23] = 15.6600; 
+n2_Height[24] = 106.3800; n2_Weight[24] = 16.0400; 
+n2_Height[25] = 107.6600; n2_Weight[25] = 16.4000; 
+n2_Height[26] = 109.0400; n2_Weight[26] = 16.7600; 
+n2_Height[27] = 110.2200; n2_Weight[27] = 17.2200; 
+n2_Height[28] = 111.5000; n2_Weight[28] = 17.6400; 
+n2_Height[29] = 112.6800; n2_Weight[29] = 17.9400; 
+n2_Height[30] = 113.9600; n2_Weight[30] = 18.3200; 
+n2_Height[31] = 115.1400; n2_Weight[31] = 18.7800; 
+n2_Height[32] = 116.3000; n2_Weight[32] = 19.1000; 
+n2_Height[33] = 117.4600; n2_Weight[33] = 19.5000; 
+n2_Height[34] = 118.6000; n2_Weight[34] = 19.8600; 
+n2_Height[35] = 119.7200; n2_Weight[35] = 20.2000; 
+n2_Height[36] = 120.8400; n2_Weight[36] = 20.5200; 
+n2_Height[37] = 121.9600; n2_Weight[37] = 20.9000; 
+n2_Height[38] = 123.0400; n2_Weight[38] = 21.2800; 
+n2_Height[39] = 124.1200; n2_Weight[39] = 21.7400; 
+n2_Height[40] = 125.2800; n2_Weight[40] = 22.1000; 
+n2_Height[41] = 126.4000; n2_Weight[41] = 22.6400; 
+n2_Height[42] = 127.5200; n2_Weight[42] = 23.0800; 
+n2_Height[43] = 128.7200; n2_Weight[43] = 23.6000; 
+n2_Height[44] = 129.8800; n2_Weight[44] = 24.1400; 
+n2_Height[45] = 131.0200; n2_Weight[45] = 24.7800; 
+n2_Height[46] = 132.2400; n2_Weight[46] = 25.4000; 
+n2_Height[47] = 133.4200; n2_Weight[47] = 26.0600; 
+n2_Height[48] = 134.6800; n2_Weight[48] = 26.8200; 
+
+function rangeN2(thisp, thisx){
+var xconv = (thisx - 0) / 3;
+x1 = Math.floor(xconv + .001);  
+return thisp[x1];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+
+<form name="PELD_form" id="PELD_form" action="" onsubmit="return false;" onkeydown="clrResults(); resetInTime();" onkeyup="PELD_fx();">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+终末期肝脏疾病 PELD 评分（患者小于 12 周岁）
+</span></td></tr></table><br />&nbsp;<br />
+
+<div id="calc_main">
+
+<div id="calc_input">
+<center>
+<span class="medCalcFontIO">
+输入
+</span>
+<br />&nbsp;<br />
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">性别</span></td>
+<td colspan="2" align="left"><input type="radio" name="Sex_radio" id="togel1" value="女|1" onclick="PELD_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel1');"> 女</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Sex_radio" id="togel2" value="男|2" onclick="PELD_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel2');"> 男</span></td></tr>
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">年龄</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Age_param" size="6" value="" onblur="PELD_fx(); minMaxCheck();" onchange="PELD_fx();" /></td>
+<td align="left" valign="top"> <select name="Age_unit" onchange="PELD_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="0.0833333333333333|0|mo">mo</option>
+<option value="1|0|yr" selected="selected">yr</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">体重</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Weight_param" size="6" value="" onblur="PELD_fx(); minMaxCheck();" onchange="PELD_fx();" /></td>
+<td align="left" valign="top"> <select name="Weight_unit" onchange="PELD_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|kg" selected="selected">kg</option>
+<option value="0.45359237|0|lb">lb</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">身高</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Height_param" size="6" value="" onblur="PELD_fx(); minMaxCheck();" onchange="PELD_fx();" /></td>
+<td align="left" valign="top"> <select name="Height_unit" onchange="PELD_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="1|0|cm" selected="selected">cm</option>
+<option value="2.54|0|in">in</option>
+<option value="100|0|m">m</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">白蛋白</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Albumin_param" size="6" value="" onblur="PELD_fx(); minMaxCheck();" onchange="PELD_fx();" /></td>
+<td align="left" valign="top"> <span style="white-space: nowrap;"><span class="medCalcFontOneBold">g/dL</span>
+</span></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">胆红素</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="Bilirubin_param" size="6" value="" onblur="PELD_fx(); minMaxCheck();" onchange="PELD_fx();" /></td>
+<td align="left" valign="top"> <select name="Bilirubin_unit" onchange="PELD_fx(); minMaxCheck();" style="width:115px;" class="medCalcFontSelect">
+<option value="100|0|gm/L">gm/L</option>
+<option value="1000|0|gm/dL">gm/dL</option>
+<option value="1|0|mg%">mg%</option>
+<option value="1|0|mg/dL" selected="selected">mg/dL</option>
+<option value="100|0|mg/mL">mg/mL</option>
+</select></td></tr>
+
+<tr><td align="right" width="42%"><span class="medCalcFontOneBold">国际标准化比率</span> </td>
+<td align="left" valign="top" nowrap="nowrap" width="5%">&nbsp; <input type="text" name="INR_param" size="6" value="" onblur="PELD_fx(); minMaxCheck();" onchange="PELD_fx();" /></td>
+<td align="left">&nbsp;</td></tr>
+
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">登记</span></td>
+<td colspan="2" align="left"><input type="radio" name="Listing_radio" id="togel3" value="登记时一周岁或大于一周岁|0" onclick="PELD_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel3');"> 登记时一周岁或大于一周岁</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Listing_radio" id="togel4" value="登记时小于一周岁|1" onclick="PELD_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel4');"> 登记时小于一周岁</span></td></tr>
+<tr><td align="right" valign="top"><span class="medCalcFontOneBold">排除诊断</span></td>
+<td colspan="2" align="left"><input type="radio" name="Exception_diagnoses_radio" id="togel5" value="未知|0" onclick="PELD_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel5');"> 未知</span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Exception_diagnoses_radio" id="togel6" value="尿素循环障碍 |1" onclick="PELD_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel6');"> 尿素循环障碍 </span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Exception_diagnoses_radio" id="togel7" value="有机酸血症 |1" onclick="PELD_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel7');"> 有机酸血症 </span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2" align="left"><input type="radio" name="Exception_diagnoses_radio" id="togel8" value="肝胚细胞瘤|1" onclick="PELD_fx();" /><span class="medCalcFontOneClick" onclick="setRB('togel8');"> 肝胚细胞瘤</span></td></tr>
+
+</table>
+
+</center>
+
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center><span class="medCalcFontIO">结果</span>
+
+<br />&nbsp;<br />
+<table summary="EBMcalc Table" class="medCalcResultBox" cellpadding="4">
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">生长障碍</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="growth_failure" maxlength="12" onfocus="blur();" /></td>
+</tr>
+<tr>
+<td align="right"><span class="medCalcFontResultParam">PELD 评分</span></td>
+<td valign="top" nowrap="nowrap">&nbsp; <input type="text" name="PELD_score_param" size="6" onfocus="blur();" /></td>
+</tr>
+
+
+<tr><td colspan="3">&nbsp;<br /></td></tr>
+
+</table>
+</center>
+
+
+</div>
+</div><div id="pretextrefs">
+&nbsp;
+</div>
+
+<div id="calc_tables_above_notes">
+
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>儿童终末期肝脏病（<b>PELD</b>）评分可用来评估  相对疾病严重程度以及等待肝脏移植患者的可能生存率。</li>
+<li>受试者身高或体重比同龄中位值低2个标准方差时，方程中的<b>生长</b>术语  应设为 0.667。因此，生长障碍在<b>PELD</b> 评分中占近 7 分。</li>
+<li>若受试者小于一周岁，或受试者小于两周岁且在一周岁前登记，<b>登记年龄</b>术语  设置为 0.436。</li>
+<li><b>INR</b>：国际标准化比率。</li>
+<li><b>排除诊断：</b>美国器官共享网络（UNOS）规定尿素循环障碍、 有机酸血症 和肝胚细胞瘤  不计入<b>PELD</b>评分（以及12～17 周岁患者<b>的 MELD</b>评分）。 患有这些疾病的患者，<b>PELD</b> 评分设为 30。可直接向 UNOS(美国器官共享网络)申请，考虑将其他代谢疾病排除在外。</li>
+<li>UNOS(美国器官共享网络)会追踪此类患者，如需获得更多有关<b>PELD</b> 评分的信息， 请访问 http://optn.transplant.hrsa.gov/resources/<wbr/>professionalResources.asp?index=8. </li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+<span class="medCalcFontRef"><b>使用的方程式</b></span>
+
+<br />&nbsp;<br />
+<center>
+<div id="calc_equation">
+<table cellspacing="0" cellpadding="10" summary="EBMcalc Table"><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">年龄Months = 年龄 * 12</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">HgtM = rangeN1(n2身高, 年龄Months)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">WgtM = rangeN1(n2体重, 年龄Months)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">HgtF = rangeN1(n1身高, 年龄Months)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">WgtF = rangeN1(n1体重, 年龄Months)</span></td></tr><tr><td class="medCalcFormuliBox"><span class="medCalcFontFormuli">PELD评分 = 10 * ((0.480 * ln(胆红素)) + (1.857 * ln(国际标准化比率)) - (0.687 * ln(白蛋白)) + 登记年龄因素 + 增长)</span></td></tr></table><br />&nbsp;<br />
+</div> </center>
+
+<div id="calc_tables">
+
+</div>
+
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div>
+</div>
+</body>
+</html>
+
+<!-- 1662471510 //-->

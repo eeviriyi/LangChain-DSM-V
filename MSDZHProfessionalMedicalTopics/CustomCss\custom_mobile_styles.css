@@ -1,0 +1,298 @@
+﻿button.btn.show-tab{
+display: none;
+}
+span.equation img.eq-img{
+	max-width:100%;
+}
+div.l-group--header
+{
+	padding-bottom: 0px;
+}
+div.l-layer--underskirt
+{
+	height: 0px;
+}
+div.modaldialog__action.modaldialog__action--print,.modaldialog__action.modaldialog__action--share.a2a_kit,div.breadcrumb__wrapper,div.topicswitch.topic__patient-education--top,
+div.topicswitch.topic__patient-education--bottom
+{
+	display: none;
+}
+
+div.l-layer.l-layer--actiontoolbar
+{
+	display: none;
+}
+
+div.l-layer--breadcrumb
+{
+	display: -webkit-box;
+    background: transparent;
+    border: none;
+}
+/*div.multimedia__video--wrapper {
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}*/
+
+.multimedia__iframe iframe, .multimedia__image iframe, .multimedia__video iframe,.multimedia__audio iframe {
+    height: 100%;
+	width: 100%;
+	transform: scale(1, 1);
+overflow: hidden;
+}
+
+@media screen and (min-width: 1280px)
+{
+	.l-layer__content
+	{
+		flex: 0 1 99%;
+		max-width: 100%;
+	}
+	div.topic__resources--title
+	{
+		display: none;
+	}
+	div#topicResources
+	{
+		display: none;
+	}
+}
+
+@media print 
+{
+		.inlinemedia--right .inlinemedia__wrapper
+		{
+			height: auto;
+		}
+}
+
+
+
+/*Release-1.8 */
+
+/*.footer__bottom.hide-on-print {
+    display: none;
+}*/
+div#l-group--header-letterpine
+{
+	display: none;
+}
+.box.othertopics.hide-on-print
+{
+	display: none;
+}
+.footer__bottom.hide-on-print
+{
+	display: none;
+}
+
+.smartbanner.smartbanner--ios.js_smartbanner
+{
+	display: none;
+}
+a.skip-link.screen-reader-text {
+    display: none;
+}
+.l-layer--footer {
+    display: none;
+}
+
+.l-group.l-group--header{
+   display: none;
+}
+
+.no-fixed-copy{
+   display: none;
+}
+
+.multimedia__audio, .multimedia__iframe, .multimedia__image, .multimedia__table, .multimedia__video {
+   margin-top: 67px;
+}
+
+.modaltable table.fixed-header {
+      margin-top: -78px;
+}
+
+.topic__section.GHead>h3{
+font:-apple-system-title0 !important;
+}
+
+.topic__section.HHead>h3{
+font:-apple-system-title0 !important;
+}
+
+.topic__header__headermodify--title{
+font:-apple-system-title0 !important;
+}
+
+
+
+.topic__wrapper .marketing-block{
+    display: none;
+}
+
+.autoload-placeholder{
+    display: none !important;
+}
+
+section.bottomnav__wrapper.hide-on-print {
+    display: block !important;
+}
+
+
+.topic__section.GHead>h2, .topic__section.GHead>h3 {
+	font-size: 1.25rem!important;
+}
+
+.topic__section.FHead>h2, .topic__section.FHead>h3 {
+	font-size: 1.25rem!important;
+}
+
+.sticky-footer {
+    display: none;
+}
+
+.topic__header__headermodify--title{
+	font-size: 1.5rem!important;
+}
+
+.button {
+	background-color: transparent;
+}
+
+.topic__accordion h2.topic__header--section {
+    font-size: 1.25rem!important;   
+}
+
+/* CSS specific to iOS devices */ 
+
+* .topic__section FHead{
+    font:-apple-system-body !important;
+}
+* .topic__section GHead{
+    font:-apple-system-body !important;
+}
+
+/*.topic__accordion h2.topic__header--section {
+    font:-apple-system-body !important;
+}*/
+
+.field-node--field-subcontent .field-paragraph--field-label {
+    font:-apple-system-body !important;
+}
+
+ body {font:-apple-system-body;}
+
+ footer {font:-apple-system-footnote;}
+
+ a {font:-apple-system-body;}
+
+ .footer__footnav--link{font:-apple-system-body;}
+
+ .box__headertext{ font:-apple-system-body;}
+
+ .featured__author{font:-apple-system-body;}
+
+ .quicklinks__title{font:-apple-system-body;}
+
+ .pearlOfTheDay .box-wrapper p{font:-apple-system-body;}
+
+ .#mc3k .medCalcFontRef{font:-apple-system-body;}
+
+ .l-layer--main{font:-apple-system-body;}
+
+ .l-viewport{font:-apple-system-body;}
+
+ p {​​​​​​​font:-apple-system-body;}​​​​​​​
+
+ h1,h2,h3,h4,h5,h6 {​​​​​​​font:-apple-system-body !important;}
+ 
+ /* CSS for Text Highlight feature */ 
+<style>
+ body{        
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    .fixed-header, .fixed-footer{
+        width: 100%;
+        position: fixed;             
+        color: #fff;		
+		padding: 0px 0;
+    }
+    .fixed-header{
+        top: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }
+    .container{
+        width: 80%;
+        margin: 0 auto; /* Center the DIV horizontally */
+    }
+	 .search{
+        width: 100%;
+        height: 40px; 
+		border:1px solid;
+		font-size:20px;
+		font-color:black;
+		padding-left:15px;
+    }
+	.button{
+		font-size:30px;
+		color:black;
+	}
+	.tdsearch{
+		width:95%;
+		height:30px;
+      /* float: left; */
+	}
+	.tdbtn{
+		width:5%;
+	}
+	.fixed-width{
+		width:95%;
+	}
+    nav a{
+        color: #fff;
+        text-decoration: none;
+        padding: 7px 25px;
+        display: inline-block;
+		/* padding-left: 15px; */
+    }
+	
+.icon-customcontrol:before {
+content: '';
+    display: block;
+    
+    padding: 5px;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+	border-radius: 100%;
+}
+
+.fa-close:before {
+    background: url(./../media/close.png) !important ;
+	height: 30px;
+    width: 30px;
+	background-size: contain !important;
+}
+
+.fa-magnifysearch:before {
+    background: url(./../media/search.png);
+	height: 42px;
+    width: 42px;
+}
+
+.fa-magnifydarksearch:before {
+    background: url(./../media/searchdark.png);
+	height: 42px;
+    width: 42px;
+}
+
+.fa-darkclose:before {
+    background: url(./../media/closedark.png) !important;
+	height: 30px;
+    width: 30px;
+}
+</style>

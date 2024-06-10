@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>心内膜炎临床诊断</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="cardiology, infectious disease, rheumatology, critical care, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+Endocarditis_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+Endocarditis_fx();
+}
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+
+function Endocarditis_fx() {
+
+with(document.Endocarditis_form){
+
+mcResult = "不充分";
+
+setScore0 = 0;
+setScore1 = 0;
+
+if (cc1.checked){ setScore0 = setScore0 + 1;
+}
+if (cc2.checked){ setScore0 = setScore0 + 1;
+}
+if (cc3.checked){ setScore0 = setScore0 + 1;
+}
+if (cc4.checked){ setScore1 = setScore1 + 1;
+}
+if (cc5.checked){ setScore1 = setScore1 + 1;
+}
+if (cc6.checked){ setScore1 = setScore1 + 1;
+}
+if (cc7.checked){ setScore1 = setScore1 + 1;
+}
+if (cc8.checked){ setScore1 = setScore1 + 1;
+}
+if (setScore0 >= 2 && setScore1 >= 0) mcResult = "诊断";
+if (setScore0 >= 1 && setScore1 >= 3) mcResult = "诊断";
+if (setScore0 >= 0 && setScore1 >= 5) mcResult = "诊断";
+mccriteria.value = mcResult + ' 以:\r\n' + setScore0 + " 主要标准 \r\n" + setScore1 + " 次要标准 \r\n";
+
+
+}
+
+}
+/* ]]> */
+</script>
+
+
+
+<form name="Endocarditis_form" id="Endocarditis_form" action="" onsubmit="return false;">
+
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+心内膜炎临床诊断<sup>*</sup>
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="left"><br /></td><td colspan="2"><span class="medCalcFontOneBold">诊断:</span>
+<span class="medCalcFontCCTab">
+2 主要标准 以及 0 次要标准 </span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2"><span class="medCalcFontOneBold">诊断:</span>
+<span class="medCalcFontCCTab">
+1 主要标准 以及 3 次要标准 </span></td></tr>
+<tr><td align="left"><br /></td><td colspan="2"><span class="medCalcFontOneBold">诊断:</span>
+<span class="medCalcFontCCTab">
+0 主要标准 以及 5 次要标准 </span></td></tr>
+
+<tr><td colspan="3">&nbsp;</td></tr>
+<tr><td colspan="3" align="left"><br />&nbsp;<br /><span class="medCalcFontOneBold">主要诊断标准</span></td></tr>
+
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc1" id="togel1" onclick="Endocarditis_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel1');" >典型传染性心内膜炎微生物血液培养阳性（S. viridans 或 S. bovis、 HACEK微生物、 S. aureus无其他基本位点, Enterococcus），可为2次单独血液培养显阳性或 两次阳性培养标本采集时间相隔&gt;12个小时，或4次单独培养中3次或大多数为阳性 （首次和最后一次样本采集时间相隔1小时）</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc2" id="togel2" onclick="Endocarditis_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel2');" >超声心动图显示瓣膜或支撑结构、反流束路径或无其他替代解剖学解释的移植物上有震荡性肿块， 或脓肿，或 新的部分人造瓣膜裂或新的瓣膜回流</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc3" id="togel3" onclick="Endocarditis_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel3');" >伯纳特氏立克次氏体血液培养单次阳性或反相1 IgG抗体滴度&gt;1:800</td></tr>
+<tr><td colspan="3" align="left"><br />&nbsp;<br /><span class="medCalcFontOneBold">次要诊断标准</span></td></tr>
+
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc4" id="togel4" onclick="Endocarditis_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel4');" >诱发心脏病或静脉用药</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc5" id="togel5" onclick="Endocarditis_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel5');" >体温&gt;38.0&#176;C (100.4&#176;F)</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc6" id="togel6" onclick="Endocarditis_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel6');" >血管表现：动脉栓塞、肺梗死、细菌性动脉瘤、颅内出血、粘膜出血、Janeway 病变</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc7" id="togel7" onclick="Endocarditis_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel7');" >免疫学表现：肾小球性肾炎、Osler结、Roth点、类风湿性因素</td></tr>
+<tr><td align="left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td align="right" valign="top"><input type="checkbox" name="cc8" id="togel8" onclick="Endocarditis_fx();" /></td>
+<td align="left" class="medCalcFontOneClick" onclick="togCB('togel8');" >微生物学表现：血液培养阳性但不符合以上大部分标准 或心内膜炎微生物感染的血清学表现（不包括凝血酶阴性葡萄球菌及其他常见污染物） </td></tr>
+
+</table>
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<center>
+<div id="mccriteriadiv">
+<textarea cols="35" rows="5" name="mccriteria" id="mccriteria" onfocus="blur();" class="medCalcFontTextArea"></textarea>
+</div>
+</center>
+<br />&nbsp;<br />
+<center>
+<input type="reset" name="reset" value="重设表格" />    
+</center>
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li>* 感染性心内膜炎也可通过独立的病理学标准进行诊断，而这并不包含在临床标准之中。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Durack DT, Lukes AS, Bright DK. New criteria for diagnosis of infective endocarditis: utilization of specific echocardiographic findings. Duke Endocarditis Service. <i>American Journal of Medicine</i>. 96(3):200-9, 1994. PubMed ID: 8154507 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8154507"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Lukes AS, Bright DK, Durack DT. Diagnosis of infective endocarditis. <i>Infect Dis Clin North Am</i>. 1993 Mar;7(1):1-8. Review. PubMed ID: 8463647 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/8463647"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Fournier PE, Casalta JP, Habib G, et al. Modification of the diagnostic criteria proposed by the Duke Endocarditis Service to permit improved diagnosis of Q fever endocarditis. <i>Am J Med</i>. 1996; 100:629.</span></li>
+<li><span class="medCalcFontRef">Li JS, Sexton DJ, Mick N, et al. Proposed modifications to the Duke criteria for the diagnosis of infective endocarditis. <i>Clin Infect Dis</i>. 2000; 30:633.</span></li>
+
+</ol>
+</div>
+
+
+
+</form>
+<div id="calc_disclaimer">  <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u> 法律条款及免责声明 </u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo"> EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+ <b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b> <a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span> <br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+ </div>
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471486 //-->

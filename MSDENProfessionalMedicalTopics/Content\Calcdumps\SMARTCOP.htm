@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>SMART COP Score for Pneumonia Severity</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="covid, pulm, critical care, emergency, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script type="text/javascript">
+/* <![CDATA[ */
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+SMARTCOP_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+SMARTCOP_fx();
+}
+
+
+/* ]]> */
+</script>
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+
+
+function SMARTCOP_fx() {
+with(document.SMARTCOP_form){
+
+Score = 0.0;
+doCalc = true;
+
+if (cc1.checked){
+Score = Score + 2;
+}
+if (cc2.checked){
+Score = Score + 1;
+}
+if (cc3.checked){
+Score = Score + 1;
+}
+if (cc4[0].checked){
+Score = Score + 0; 
+}
+if (cc4[1].checked){
+Score = Score + 1; 
+}
+if (cc4[2].checked){
+Score = Score + 1; 
+}
+if (cc5.checked){
+Score = Score + 1;
+}
+if (cc6.checked){
+Score = Score + 1;
+}
+if (cc7[0].checked){
+Score = Score + 0; 
+}
+if (cc7[1].checked){
+Score = Score + 2; 
+}
+if (cc7[2].checked){
+Score = Score + 2; 
+}
+if (cc8.checked){
+Score = Score + 2;
+}
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.SMARTCOP_form.cctotal.value = '';
+}
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 2)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 3) && (Score <= 4)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 5) && (Score <= 6)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 7) && (Score <= 11)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="SMARTCOP_form" id="SMARTCOP_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+SMART COP Score for Pneumonia Severity
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Blood pressure, CXR and nutrition factors</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel1" name="cc1" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel1');" >Systolic BP &lt;90 mmHg (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel2" name="cc2" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel2');" >Multiple lobes involved on chest x-ray (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel3" name="cc3" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel3');" >Albumin level less than 3.5 g/dL (1 point)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Respiration/Age factor </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc4" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">Any age: respiratory rate less than 25 breaths/minute (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel5" name="cc4" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');"> 50 years old or younger: respiratory rate 25 breaths/minute or more (1 point)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel6" name="cc4" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel6');"> Over 50 years old: respiratory rate 30 breaths/minute or more (1 point)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Cardiovascular factor</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel7" name="cc5" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel7');" >Tachycardia of 125 beats/minute or more (1 point)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Mental status factor</span></td></tr>
+
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel8" name="cc6" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel8');" >Confusion (acute) (1 point)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">Oxygenation/Age and acid-base factors </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel9" name="cc7" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');">Any age: PaO2 &ge;70 mmHg or O2 Saturation &ge;94% or PaO2/FiO2 &ge;333 if receiving O2 (0 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel10" name="cc7" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');"> 50 years old or younger: PaO2 &lt;70 mmHg or O2 Saturation &le;93% or PaO2/FiO2 &lt;333 if receiving O2 (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel11" name="cc7" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel11');"> Over 50 years old: PaO2 &lt;60 mmHg or O2 Saturation &le;90% or PaO2/FiO2 &lt;250 if receiving O2 (2 points)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right" valign="top"><input type="checkbox" id="togel12" name="cc8" onclick="SMARTCOP_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="togCB('togel12');" >pH (arterial) &lt;7.35 (2 points)</span></td></tr>
+
+</table>
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+Total Criteria Point Count:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="Reset Form" />    </center>
+<br />&nbsp;<br />
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ SMART COP Score and Risk for Ventilation or Vasopressor Support
+</span></td></tr></table><br />&nbsp;<br />
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 to 2 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Low risk</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">3 to 4 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Moderate risk (approximately 12.5%)</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">5 to 6 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne"> High risk (approximately 33%)</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">7 to 11 points:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">Very high risk (approximately 67%)</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>References</b></span>
+<ol>
+<li><span class="medCalcFontRef">Charles PG, Wolfe R, Whitby M, Fine MJ, Australian Community-Acquired  Pneumonia Study Collaboration, et al. SMART-COP: a tool for predicting the  need for intensive respiratory or vasopressor support in community-acquired  pneumonia. <i>Clin Infect Dis</i>. 2008 Aug 1;47(3):375-84. doi: 10.1086/589754. PubMed ID: 18558884 <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed/18558884"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"><br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><b><u>Legal Notices and Disclaimer</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">All information contained in and produced by the EBMcalc system is provided
+for educational purposes only. This information should not be used for the 
+diagnosis or treatment of any health problem or disease.
+<b>THIS INFORMATION IS NOT INTENDED TO REPLACE CLINICAL JUDGMENT OR
+GUIDE INDIVIDUAL PATIENT CARE IN ANY MANNER.
+</b><a href="disclaimer-en.htm" target="_blank">Click here for full notice and disclaimer.</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2020 Foundation Internet Services &nbsp;&nbsp; [Build 260908 v20.2]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+SMARTCOP_fx();
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1591128207 //-->

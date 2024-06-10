@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>CIWA-Ar 临床机构酒精戒断状态评定量表</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Neurology, Nurse, metabolism, critical care, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+CIWA_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+CIWA_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function CIWA_fx() {
+with(document.CIWA_form){
+
+Score = 0.0;
+doCalc = true;
+
+rbchk = false;
+if (cc1[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc1[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc1[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc1[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc1[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc1[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc1[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc1[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc2[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc2[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc2[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc2[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc2[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc2[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc2[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc2[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc3[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc3[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc3[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc3[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc3[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc3[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc3[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc3[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc4[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc4[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc4[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc4[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc4[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc4[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc4[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc4[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc5[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc5[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc5[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc5[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc5[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc5[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc5[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc5[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc6[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc6[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc6[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc6[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc6[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc6[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc6[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc6[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc7[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc7[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc7[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc7[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc7[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc7[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc7[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc7[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc8[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc8[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc8[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc8[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc8[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc8[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc8[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc8[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc9[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc9[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc9[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc9[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc9[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (cc9[5].checked){
+rbchk = true; Score = Score + 5; 
+}
+if (cc9[6].checked){
+rbchk = true; Score = Score + 6; 
+}
+if (cc9[7].checked){
+rbchk = true; Score = Score + 7; 
+}
+if (!rbchk) doCalc = false;
+rbchk = false;
+if (cc10[0].checked){
+rbchk = true; Score = Score + 0; 
+}
+if (cc10[1].checked){
+rbchk = true; Score = Score + 1; 
+}
+if (cc10[2].checked){
+rbchk = true; Score = Score + 2; 
+}
+if (cc10[3].checked){
+rbchk = true; Score = Score + 3; 
+}
+if (cc10[4].checked){
+rbchk = true; Score = Score + 4; 
+}
+if (!rbchk) doCalc = false;
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.CIWA_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rrclr();
+if ((Score >= 0) && (Score <= 9)){ document.getElementById('rr1_1').bgColor = '#8ab2be';
+}
+if ((Score >= 10) && (Score <= 15)){ document.getElementById('rr1_2').bgColor = '#8ab2be';
+}
+if ((Score >= 16) && (Score <= 20)){ document.getElementById('rr1_3').bgColor = '#8ab2be';
+}
+if ((Score >= 21) && (Score <= 67)){ document.getElementById('rr1_4').bgColor = '#8ab2be';
+}
+
+
+}
+}
+}
+
+
+
+
+function rrclr(){
+document.getElementById('rr1_1').bgColor = '';
+document.getElementById('rr1_2').bgColor = '';
+document.getElementById('rr1_3').bgColor = '';
+document.getElementById('rr1_4').bgColor = '';
+}
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="CIWA_form" id="CIWA_form" action="" onsubmit="return false;" onreset="rrclr(); ">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+CIWA-Ar 临床机构酒精戒断状态评定量表
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">恶心和呕吐 问“是否感到胃部不适？ 是否有呕吐？” 观察。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel1" name="cc1" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel1');"> 无恶心及呕吐 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel2" name="cc1" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel2');">轻度恶心但无呕吐 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel3" name="cc1" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel3');">&nbsp; (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel4" name="cc1" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel4');">&nbsp; (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel5" name="cc1" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel5');"> 阵发性恶心伴干呕 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel6" name="cc1" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel6');">&nbsp; (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel7" name="cc1" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel7');">&nbsp; (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel8" name="cc1" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel8');">持续性恶心、频繁干呕及呕吐 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">震颤：伸臂、手指展开。观察。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel9" name="cc2" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel9');"> 无震颤 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel10" name="cc2" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel10');">不明显，但指尖可感受到 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel11" name="cc2" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel11');">&nbsp; (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel12" name="cc2" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel12');">&nbsp; (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel13" name="cc2" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel13');"> 中度，患者手臂展开时震颤 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel14" name="cc2" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel14');">&nbsp; (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel15" name="cc2" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel15');">&nbsp; (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel16" name="cc2" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel16');">重度，手臂不展开时也有震颤 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">阵发性盗汗：观察。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel17" name="cc3" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel17');"> 无盗汗 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel18" name="cc3" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel18');">盗汗不明显、手掌湿 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel19" name="cc3" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel19');">&nbsp; (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel20" name="cc3" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel20');">&nbsp; (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel21" name="cc3" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel21');"> 额头明显汗珠 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel22" name="cc3" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel22');">&nbsp; (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel23" name="cc3" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel23');">&nbsp; (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel24" name="cc3" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel24');">大汗淋漓 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">焦虑：问“你感到焦虑吗？” 观察。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel25" name="cc4" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel25');"> 不焦虑、轻松自在 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel26" name="cc4" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel26');">轻度焦虑 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel27" name="cc4" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel27');">&nbsp; (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel28" name="cc4" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel28');">&nbsp; (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel29" name="cc4" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel29');"> 中度焦虑、或防备心理，因此推断焦虑 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel30" name="cc4" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel30');">&nbsp; (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel31" name="cc4" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel31');">&nbsp; (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel32" name="cc4" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel32');"> 相当于严重谵妄中所见的急性恐慌状态，或急性精神分裂症反应 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">激动：观察。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel33" name="cc5" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel33');"> 正常活动 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel34" name="cc5" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel34');">比正常活动稍微亢奋 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel35" name="cc5" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel35');">&nbsp; (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel36" name="cc5" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel36');">&nbsp; (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel37" name="cc5" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel37');"> 中度烦躁和坐立不安 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel38" name="cc5" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel38');">&nbsp; (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel39" name="cc5" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel39');">&nbsp; (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel40" name="cc5" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel40');">访谈大部分时间踱来踱去或烦躁不安的走来走去 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">触觉障碍：问“您有任何瘙痒、针刺感、灼热感、麻木吗？或您是否感到皮肤表面或里面有虫在爬？” 观察。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel41" name="cc6" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel41');"> 无 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel42" name="cc6" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel42');">非常轻微瘙痒、针刺感、灼热或麻木 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel43" name="cc6" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel43');"> 轻微瘙痒、针刺感、灼热或麻木 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel44" name="cc6" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel44');">中度瘙痒、针刺感、灼热或麻木 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel45" name="cc6" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel45');"> 中度严重幻觉 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel46" name="cc6" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel46');">严重幻觉 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel47" name="cc6" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel47');"> 非常严重的幻觉 (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel48" name="cc6" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel48');">持续性幻觉 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">听觉障碍：问“你是否对周围声音变得更加敏感？ 声音很刺耳吗？ 吓到你了吗？ 你是否听到令你不安的声音？ 你是否听到了你明知不存在的声音？ 观察。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel49" name="cc7" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel49');"> 不存在 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel50" name="cc7" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel50');">非常轻微的刺耳声或受惊吓 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel51" name="cc7" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel51');"> 轻微的刺耳声或受惊吓 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel52" name="cc7" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel52');">中度的刺耳声或受惊吓 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel53" name="cc7" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel53');"> 中度严重幻觉 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel54" name="cc7" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel54');">严重幻觉 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel55" name="cc7" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel55');"> 非常严重的幻觉 (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel56" name="cc7" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel56');">持续性幻觉 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">视力障碍：问“光线是否显得过于明亮？ 颜色是否有所不同？ 是否使你感到眼痛？ 是否看到任何令你不安的东西？ 是否看到任何你明知不存在的东西？” 观察。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel57" name="cc8" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel57');"> 不存在 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel58" name="cc8" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel58');">非常轻微的敏感度 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel59" name="cc8" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel59');"> 轻微的敏感度 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel60" name="cc8" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel60');">中度的敏感度 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel61" name="cc8" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel61');"> 中度严重幻觉 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel62" name="cc8" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel62');">严重幻觉 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel63" name="cc8" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel63');"> 非常严重的幻觉 (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel64" name="cc8" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel64');">持续性幻觉 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">头痛、头胀：问“你是否感到头部异常？ 是否感到好像有橡圈箍着头部？” 不评级头昏或头晕。否则，评级为严重。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel65" name="cc9" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel65');"> 不存在 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel66" name="cc9" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel66');">非常轻微 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel67" name="cc9" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel67');">轻微 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel68" name="cc9" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel68');">中度 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel69" name="cc9" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel69');">中度严重 (4 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel70" name="cc9" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel70');">严重 (5 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel71" name="cc9" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel71');">很严重 (6 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel72" name="cc9" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel72');">非常严重 (7 分)</span></td></tr>
+<tr><td colspan="3" align="left"><span class="medCalcFontCCTabBold">定位力和感觉模糊：问“今天几号了？ 你在哪里？ 我是谁？” 从一数到三。 </span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel73" name="cc10" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel73');"> 定位力好且可做系列加法 (0 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel74" name="cc10" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel74');">不能进行系列加法或不确定日期 (1 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel75" name="cc10" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel75');"> 日期定位出入不超过两个公历日 (2 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel76" name="cc10" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel76');">日期定位出入超过两个公历日 (3 分)</span></td></tr>
+<tr><td width="20"><br /></td>
+<td align="right"><input type="radio" id="togel77" name="cc10" onclick="CIWA_fx();" /></td>
+<td align="left"><span class="medCalcFontOneClick" onclick="setRB('togel77');"> 地点和/或人定位错误 (4 分)</span></td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<div id="rr1_tag">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+
+CIWA 评分解释
+</span></td></tr></table><br />&nbsp;<br />
+</div>
+<center>
+<table border="1" cellpadding="4" cellspacing="0" summary="RRTable">
+<tr id="rr1_1"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">0 - 9 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">非常轻微戒断</span></td></tr>
+<tr id="rr1_2"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">10 - 15 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">轻微戒断</span></td></tr>
+<tr id="rr1_3"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">16 - 20 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">中度戒断</span></td></tr>
+<tr id="rr1_4"><td align="right" style="border-right: 0px;" nowrap="nowrap"><span class="medCalcFontOneBold">21 - 67 分数:</span></td>
+<td align="left" style="border-left: 0px;"><span class="medCalcFontOne">重度戒断</span></td></tr>
+
+</table>
+</center>
+<br />&nbsp;<br />
+
+</div>
+</div>
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Stuppaeck CH, Barnas C, et al. Assessment of the alcohol withdrawal syndrome - validity and reliability of the translated and modified Clinical Institute Withdrawal Assessment for Alcohol scale (CIWA-A). <i> Addiction</i>. 1994; 89:1287-1292. PubMed ID: 7804089 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/7804089"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+<li><span class="medCalcFontRef">Sullivan JT, Sykora K, et al. Assessment of alcohol withdrawal: The revised clinical institute withdrawal assessment for alcohol scale (CIWA-Ar). <i>Br J Addiction</i>. 1989; 89:1353-1357. PubMed ID: 2597811 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/2597811"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471473 //-->

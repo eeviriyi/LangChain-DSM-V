@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>通过总胆固醇进行弗雷明汉 10 年冠状动脉风险预测 [1998: 已废弃]</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Cardiovascular, Geriatrics, women, fac_all, fac_med, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+var curelement;
+
+function togCB(thisid){
+thischeckbox = document.getElementById(thisid);
+if (thischeckbox.checked){ thischeckbox.checked = false; }
+else { thischeckbox.checked = true; }
+Framingham_fx();
+}
+
+function setRB(thisid){
+document.getElementById(thisid).checked = true;
+Framingham_fx();
+}
+
+
+/* ]]> */
+</script>
+
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+var calctxt = '';
+var xmltxt = '';
+var xmlresult = '';
+var htmtxt = '';
+var postNow = false;
+var printing = false;
+var rbchk = false;
+
+
+function Framingham_fx() {
+with(document.Framingham_form){
+
+Score = 0.0;
+doCalc = true;
+
+Score = Score + parseFloat(age.options[age.selectedIndex].value);
+Score = Score + parseFloat(chol.options[chol.selectedIndex].value);
+Score = Score + parseFloat(hdl.options[hdl.selectedIndex].value);
+Score = Score + parseFloat(bp.options[bp.selectedIndex].value);
+Score = Score + parseFloat(diabetes.options[diabetes.selectedIndex].value);
+Score = Score + parseFloat(cc1.options[cc1.selectedIndex].value);
+if (doCalc){
+cctotal.value = Score;
+if (cctotal.value == 'NaN') cctotal.value = '';
+}
+else{
+Score = null;
+cctotal.value = '';
+if (typeof rrclr == 'function') { rrclr(); };
+document.Framingham_form.cctotal.value = '';
+}
+
+
+
+
+if (doCalc){
+rr1.selectedIndex = -1;
+for (i = 0; i < rr1.options.length; i++){
+
+if (rr1.options[i].value.indexOf(':') > 0) range = rr1.options[i].value.split(':');
+else range = rr1.options[i].value.split('-');
+if ((Score >= range[0]) && (Score <= range[1])){ rr1.selectedIndex = i;
+}}}
+}
+}
+
+
+
+function varload1(){
+with(document.Framingham_form){
+age.options.length = 0;
+age.options[age.options.length] = new Option('30-34 (-9 分)', '-9');
+age.options[age.options.length] = new Option('35-39 (-4 分)', '-4');
+age.options[age.options.length] = new Option('40-44 (0 分)', '0', true, true);
+age.options[age.options.length] = new Option('45-49 (3 分)', '3');
+age.options[age.options.length] = new Option('50-54 (6 分)', '6');
+age.options[age.options.length] = new Option('55-59 (7 分)', '7');
+age.options[age.options.length] = new Option('60-74 (8 分)', '8');
+}
+with(document.Framingham_form){
+chol.options.length = 0;
+chol.options[chol.options.length] = new Option('< 160 mg/dL (-2 分)', '-2');
+chol.options[chol.options.length] = new Option('160-199 mg/dL (0 分)', '0', true, true);
+chol.options[chol.options.length] = new Option('200-279 mg/dL (1 分)', '1');
+chol.options[chol.options.length] = new Option('>= 280 mg/dL (3 分)', '3');
+}
+with(document.Framingham_form){
+hdl.options.length = 0;
+hdl.options[hdl.options.length] = new Option('< 35 mg/dL (5 分)', '5');
+hdl.options[hdl.options.length] = new Option('35-44 mg/dL (2 分)', '2');
+hdl.options[hdl.options.length] = new Option('45-49 mg/dL (1 分)', '1');
+hdl.options[hdl.options.length] = new Option('50-59 mg/dL (0 分)', '0', true, true);
+hdl.options[hdl.options.length] = new Option('>= 60 mg/dL (-3 分)', '-3');
+}
+with(document.Framingham_form){
+bp.options.length = 0;
+bp.options[bp.options.length] = new Option('心缩期 < 120 和心舒期 < 80 (-3 分)', '-3');
+bp.options[bp.options.length] = new Option(' 心缩期 < 120 和心舒期 80-89 (0 分)', '0');
+bp.options[bp.options.length] = new Option('心缩期 120-139 和心舒期 < 90 (0 分)', '0', true, true);
+bp.options[bp.options.length] = new Option(' 心缩期 < 120 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option('心缩期 120-139 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option(' 心缩期 140-159 和心舒期 < 100 (2 分)', '2');
+bp.options[bp.options.length] = new Option('心缩期 > 159 或心舒期 > 99 (3 分)', '3');
+}
+with(document.Framingham_form){
+diabetes.options.length = 0;
+diabetes.options[diabetes.options.length] = new Option('否 (0 分)', '0');
+diabetes.options[diabetes.options.length] = new Option('是 (4 分)', '4');
+}
+with(document.Framingham_form){
+rr1.options.length = 0;
+rr1.options[rr1.options.length] = new Option('2 % (0 - 1 分)', '0-1');
+rr1.options[rr1.options.length] = new Option('3 % (2 - 3 分)', '2-3');
+rr1.options[rr1.options.length] = new Option('4 % (4 - 5 分)', '4-5');
+rr1.options[rr1.options.length] = new Option('5 % (6 分)', '6-6');
+rr1.options[rr1.options.length] = new Option('6 % (7 分)', '7-7');
+rr1.options[rr1.options.length] = new Option('7 % (8 分)', '8-8');
+rr1.options[rr1.options.length] = new Option('\8 % (9 分)', '9-9');
+rr1.options[rr1.options.length] = new Option('10 % (10 分)', '10-10');
+rr1.options[rr1.options.length] = new Option('11 % (11 分)', '11-11');
+rr1.options[rr1.options.length] = new Option('13 % (12 分)', '12-12');
+rr1.options[rr1.options.length] = new Option('15 % (13 分)', '13-13');
+rr1.options[rr1.options.length] = new Option('18 % (14 分)', '14-14');
+rr1.options[rr1.options.length] = new Option('20 % (15 分)', '15-15');
+rr1.options[rr1.options.length] = new Option('24 % (16 分)', '16-16');
+rr1.options[rr1.options.length] = new Option('>eq 27 % (17 - 25 分)', '17-25');
+}
+
+}
+
+function varload2(){
+with(document.Framingham_form){
+age.options.length = 0;
+age.options[age.options.length] = new Option('30-34 (-9 分)', '-9');
+age.options[age.options.length] = new Option('35-39 (-4 分)', '-4');
+age.options[age.options.length] = new Option('40-44 (0 分)', '0', true, true);
+age.options[age.options.length] = new Option('45-49 (3 分)', '3');
+age.options[age.options.length] = new Option('50-54 (6 分)', '6');
+age.options[age.options.length] = new Option('55-59 (7 分)', '7');
+age.options[age.options.length] = new Option('60-74 (8 分)', '8');
+}
+with(document.Framingham_form){
+chol.options.length = 0;
+chol.options[chol.options.length] = new Option('<= 4.14 mmol/L (-2 分)', '-2');
+chol.options[chol.options.length] = new Option('4.15-5.17 mmol/L (0 分)', '0', true, true);
+chol.options[chol.options.length] = new Option('5.18-7.24 mmol/L (1 分)', '1');
+chol.options[chol.options.length] = new Option('>= 7.25 mmol/L (3 分)', '3');
+}
+with(document.Framingham_form){
+hdl.options.length = 0;
+hdl.options[hdl.options.length] = new Option('<= 0.90 mmol/L (5 分)', '5');
+hdl.options[hdl.options.length] = new Option('0.91-1.16 mmol/L (2 分)', '2');
+hdl.options[hdl.options.length] = new Option('1.17-1.29 mmol/L (1 分)', '1');
+hdl.options[hdl.options.length] = new Option('1.30-1.55 mmol/L (0 分)', '0', true, true);
+hdl.options[hdl.options.length] = new Option('>= 1.56 mmol/L (-3 分)', '-3');
+}
+with(document.Framingham_form){
+bp.options.length = 0;
+bp.options[bp.options.length] = new Option('心缩期 < 120 和心舒期 < 80 (-3 分)', '-3');
+bp.options[bp.options.length] = new Option('心缩期 < 120 和心舒期 80-89 (0 分)', '0', true, true);
+bp.options[bp.options.length] = new Option(' 心缩期 120-139 和心舒期 < 90 (0 分)', '0');
+bp.options[bp.options.length] = new Option('心缩期 < 120 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option(' 心缩期 120-139 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option('心缩期 140-159 和心舒期 < 100 (2 分)', '2');
+bp.options[bp.options.length] = new Option('心缩期 > 159 或心舒期 > 99 (3 分)', '3');
+}
+with(document.Framingham_form){
+diabetes.options.length = 0;
+diabetes.options[diabetes.options.length] = new Option('否 (0 分)', '0');
+diabetes.options[diabetes.options.length] = new Option('是 (4 分)', '4');
+}
+with(document.Framingham_form){
+rr1.options.length = 0;
+rr1.options[rr1.options.length] = new Option('2 % (0 - 1 分)', '0-1');
+rr1.options[rr1.options.length] = new Option('3 % (2 - 3 分)', '2-3');
+rr1.options[rr1.options.length] = new Option('4 % (4 - 5 分)', '4-5');
+rr1.options[rr1.options.length] = new Option('5 % (6 分)', '6-6');
+rr1.options[rr1.options.length] = new Option('6 % (7 分)', '7-7');
+rr1.options[rr1.options.length] = new Option('7 % (8 分)', '8-8');
+rr1.options[rr1.options.length] = new Option('\8 % (9 分)', '9-9');
+rr1.options[rr1.options.length] = new Option('10 % (10 分)', '10-10');
+rr1.options[rr1.options.length] = new Option('11 % (11 分)', '11-11');
+rr1.options[rr1.options.length] = new Option('13 % (12 分)', '12-12');
+rr1.options[rr1.options.length] = new Option('15 % (13 分)', '13-13');
+rr1.options[rr1.options.length] = new Option('18 % (14 分)', '14-14');
+rr1.options[rr1.options.length] = new Option('20 % (15 分)', '15-15');
+rr1.options[rr1.options.length] = new Option('24 % (16 分)', '16-16');
+rr1.options[rr1.options.length] = new Option('>eq 27 % (17 - 25 分)', '17-25');
+}
+
+}
+
+function varload3(){
+with(document.Framingham_form){
+age.options.length = 0;
+age.options[age.options.length] = new Option('30-34 (-1 分)', '-1');
+age.options[age.options.length] = new Option('35-39 (0 分)', '0', true, true);
+age.options[age.options.length] = new Option('40-44 (1 分)', '1');
+age.options[age.options.length] = new Option('45-49 (2 分)', '2');
+age.options[age.options.length] = new Option('50-54 (3 分)', '3');
+age.options[age.options.length] = new Option('55-59 (4 分)', '4');
+age.options[age.options.length] = new Option('60-64 (5 分)', '5');
+age.options[age.options.length] = new Option('65-69 (6 分)', '6');
+age.options[age.options.length] = new Option('70-74 (7 分)', '7');
+}
+with(document.Framingham_form){
+chol.options.length = 0;
+chol.options[chol.options.length] = new Option('< 160 mg/dL (-3 分)', '-3');
+chol.options[chol.options.length] = new Option('160-199 mg/dL (0 分)', '0', true, true);
+chol.options[chol.options.length] = new Option('200-239 mg/dL (1 分)', '1');
+chol.options[chol.options.length] = new Option('240-279 mg/dL (2 分)', '2');
+chol.options[chol.options.length] = new Option('>= 280 mg/dL (3 分)', '3');
+}
+with(document.Framingham_form){
+hdl.options.length = 0;
+hdl.options[hdl.options.length] = new Option('< 35 mg/dL (2 分)', '2');
+hdl.options[hdl.options.length] = new Option('35-44 mg/dL (1 分)', '1');
+hdl.options[hdl.options.length] = new Option('45-59 mg/dL (0 分)', '0', true, true);
+hdl.options[hdl.options.length] = new Option('>= 60 mg/dL (-2 分)', '-2');
+}
+with(document.Framingham_form){
+bp.options.length = 0;
+bp.options[bp.options.length] = new Option('心缩期 < 130 和心舒期 < 85 (0 分)', '0', true, true);
+bp.options[bp.options.length] = new Option(' 心缩期 < 120 和心舒期 85-89 (1 分)', '1');
+bp.options[bp.options.length] = new Option('心缩期 120-129 和心舒期 85-89 (1 分)', '1');
+bp.options[bp.options.length] = new Option(' 心缩期 130-139 和心舒期 < 90 (1 分)', '1');
+bp.options[bp.options.length] = new Option('心缩期 < 120 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option(' 心缩期 120-129 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option('心缩期 130-139 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option(' 心缩期 140-159 和心舒期 < 100 (2 分)', '2');
+bp.options[bp.options.length] = new Option('心缩期 > 159 或心舒期 > 99 (3 分)', '3');
+}
+with(document.Framingham_form){
+diabetes.options.length = 0;
+diabetes.options[diabetes.options.length] = new Option('否 (0 分)', '0');
+diabetes.options[diabetes.options.length] = new Option('是 (2 分)', '2');
+}
+with(document.Framingham_form){
+rr1.options.length = 0;
+rr1.options[rr1.options.length] = new Option('3 % (0 - 1 分)', '0-1');
+rr1.options[rr1.options.length] = new Option('4 % (2 分)', '2-2');
+rr1.options[rr1.options.length] = new Option('5 % (3 分)', '3-3');
+rr1.options[rr1.options.length] = new Option('7 % (4 分)', '4-4');
+rr1.options[rr1.options.length] = new Option('8 % (5 分)', '5-5');
+rr1.options[rr1.options.length] = new Option('10 % (6 分)', '6-6');
+rr1.options[rr1.options.length] = new Option('13 % (7 分)', '7-7');
+rr1.options[rr1.options.length] = new Option('16 % (8 分)', '8-8');
+rr1.options[rr1.options.length] = new Option('20 % (9 分)', '9-9');
+rr1.options[rr1.options.length] = new Option('25 % (10 分)', '10-10');
+rr1.options[rr1.options.length] = new Option('31 % (11 分)', '11-11');
+rr1.options[rr1.options.length] = new Option('37 % (12 分)', '12-12');
+rr1.options[rr1.options.length] = new Option('45 % (13 分)', '13-13');
+rr1.options[rr1.options.length] = new Option('>eq 53 % (14 - 29 分)', '14-29');
+}
+
+}
+
+function varload4(){
+with(document.Framingham_form){
+age.options.length = 0;
+age.options[age.options.length] = new Option('30-34 (-1 分)', '-1');
+age.options[age.options.length] = new Option('35-39 (0 分)', '0', true, true);
+age.options[age.options.length] = new Option('40-44 (1 分)', '1');
+age.options[age.options.length] = new Option('45-49 (2 分)', '2');
+age.options[age.options.length] = new Option('50-54 (3 分)', '3');
+age.options[age.options.length] = new Option('55-59 (4 分)', '4');
+age.options[age.options.length] = new Option('60-64 (5 分)', '5');
+age.options[age.options.length] = new Option('65-69 (6 分)', '6');
+age.options[age.options.length] = new Option('70-74 (7 分)', '7');
+}
+with(document.Framingham_form){
+chol.options.length = 0;
+chol.options[chol.options.length] = new Option('<= 4.14 mmol/L (-3 分)', '-3');
+chol.options[chol.options.length] = new Option('4.15-5.17 mmol/L (0 分)', '0', true, true);
+chol.options[chol.options.length] = new Option('5.18-6.21 mmol/L (1 分)', '1');
+chol.options[chol.options.length] = new Option('6.22-7.24 mmol/L (2 分)', '2');
+chol.options[chol.options.length] = new Option('>= 7.25 mmol/L (3 分)', '3');
+}
+with(document.Framingham_form){
+hdl.options.length = 0;
+hdl.options[hdl.options.length] = new Option('<= 0.90 mmol/L (2 分)', '2');
+hdl.options[hdl.options.length] = new Option('0.91-1.16 mmol/L (1 分)', '1');
+hdl.options[hdl.options.length] = new Option('1.17-1.55 mmol/L (0 分)', '0', true, true);
+hdl.options[hdl.options.length] = new Option('>= 1.56 mmol/L (-2 分)', '-2');
+}
+with(document.Framingham_form){
+bp.options.length = 0;
+bp.options[bp.options.length] = new Option('心缩期 < 130 和心舒期 < 85 (0 分)', '0', true, true);
+bp.options[bp.options.length] = new Option(' 心缩期 < 120 和心舒期 85-89 (1 分)', '1');
+bp.options[bp.options.length] = new Option('心缩期 120-129 和心舒期 85-89 (1 分)', '1');
+bp.options[bp.options.length] = new Option(' 心缩期 130-139 和心舒期 < 90 (1 分)', '1');
+bp.options[bp.options.length] = new Option('心缩期 < 120 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option(' 心缩期 120-129 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option('心缩期 130-139 和心舒期 90-99 (2 分)', '2');
+bp.options[bp.options.length] = new Option(' 心缩期 140-159 和心舒期 < 100 (2 分)', '2');
+bp.options[bp.options.length] = new Option('心缩期 > 159 或心舒期 > 99 (3 分)', '3');
+}
+with(document.Framingham_form){
+diabetes.options.length = 0;
+diabetes.options[diabetes.options.length] = new Option('否 (0 分)', '0');
+diabetes.options[diabetes.options.length] = new Option('是 (2 分)', '2');
+}
+with(document.Framingham_form){
+rr1.options.length = 0;
+rr1.options[rr1.options.length] = new Option('3 % (0 - 1 分)', '0-1');
+rr1.options[rr1.options.length] = new Option('4 % (2 分)', '2-2');
+rr1.options[rr1.options.length] = new Option('5 % (3 分)', '3-3');
+rr1.options[rr1.options.length] = new Option('7 % (4 分)', '4-4');
+rr1.options[rr1.options.length] = new Option('8 % (5 分)', '5-5');
+rr1.options[rr1.options.length] = new Option('10 % (6 分)', '6-6');
+rr1.options[rr1.options.length] = new Option('13 % (7 分)', '7-7');
+rr1.options[rr1.options.length] = new Option('16 % (8 分)', '8-8');
+rr1.options[rr1.options.length] = new Option('20 % (9 分)', '9-9');
+rr1.options[rr1.options.length] = new Option('25 % (10 分)', '10-10');
+rr1.options[rr1.options.length] = new Option('31 % (11 分)', '11-11');
+rr1.options[rr1.options.length] = new Option('37 % (12 分)', '12-12');
+rr1.options[rr1.options.length] = new Option('45 % (13 分)', '13-13');
+rr1.options[rr1.options.length] = new Option('>eq 53 % (14 - 29 分)', '14-29');
+}
+
+}
+
+
+
+
+
+
+/* ]]> */
+</script>
+
+
+
+<form name="Framingham_form" id="Framingham_form" action="" onsubmit="return false;">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+通过总胆固醇进行弗雷明汉 10 年冠状动脉风险预测 [1998: 已废弃]
+</span></td></tr></table><br />&nbsp;<br />
+<div id="calc_main">
+<div id="calc_input">
+<center>
+<table cellpadding="3" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right" valign="top"><span class="medCalcFontCCTabBold">类别</span></td>
+<td colspan="2" nowrap="nowrap"><span class="medCalcFontCCTab">
+&nbsp;&nbsp;&nbsp;&nbsp;女 <input type="radio" name="varradio" onclick="varload1(); Framingham_fx();" checked="checked" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+女(SI) <input type="radio" name="varradio" onclick="varload2(); Framingham_fx();" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+男 <input type="radio" name="varradio" onclick="varload3(); Framingham_fx();" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+男(SI) <input type="radio" name="varradio" onclick="varload4(); Framingham_fx();" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<br />&nbsp;</span></td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">年龄</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="age" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">总胆固醇</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="chol" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">高密度脂蛋白胆固醇</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="hdl" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">血压（毫米汞柱）</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="bp" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">糖尿病？</span></td></tr>
+<tr><td width="20"><br /></td>
+<td colspan="2">
+<select name="diabetes" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+<option>&nbsp;</option>
+</select>
+ &nbsp; </td></tr>
+<tr><td colspan="3"><span class="medCalcFontCCTabBold">吸烟者？</span></td></tr>
+<tr><td width="20"><br /></td><td colspan="2"> <select name="cc1" onchange="Framingham_fx();" class="medCalcFontSelect" style="width:250px;">
+<option value="0">否 (0 分)</option>
+<option value="2">是 (2 分)</option>
+</select> &nbsp; </td></tr>
+
+</table>
+
+</center>
+</div>
+<br />&nbsp;<br />
+<div id="calc_result">
+<span class="medCalcFontCCTabBold">
+标准分数总和:
+</span>
+<input type="text" size="6" name="cctotal" onfocus="blur();" /><br />&nbsp;<br />
+<center><input type="reset" name="reset" value="重设表格" />    </center>
+<br />&nbsp;<br />
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+10 年冠状动脉心脏疾病风险
+</span></td></tr></table><br />&nbsp;<br />
+<center>
+<select name="rr1" size="3" onchange="Framingham_fx();" class="medCalcFontRR" style="width:250px; height:200px;">
+<option value="1">1- Points : _&nbsp;&nbsp;</option>
+<option value="1">1- Points : _</option>
+<option value="1">1- Points : _</option>
+
+</select>
+</center>
+</div>
+</div>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><font color="#990000">此计算器因其历史价值包括在 EBMcalc中。 此计算器的内容被视为已废弃。</font></li>
+<li>此风险评估分数表仅适用于未知心脏疾病的人士合用。</li>
+<li>弗雷明汉心脏研究风险算法仅涵盖冠状动脉心脏疾病，不包括其他心脏和血管疾病。</li>
+<li>弗雷明汉心脏研究的对象人群几乎全是白种人。弗雷明汉风险算法可能不会同样适合其他人群。</li>
+<li>对于弗雷明汉研究的一些性别-年龄组，事件数量比较少。因此，对这些组的风险评估可能会缺乏精确性。</li>
+<li>其他机构正在考虑弗雷明汉风险算法以及其他风险评估的信息可能最好纳入临床实践。随着新的信息和指南推出，这些信息将会被添加。</li>
+<li>弗雷明汉风险评分评估的是 10 年期间出现充血性心力衰竭 (CHD) 的风险。此风险评分可能未能充分体现年轻成年人的长期或终身 CHD，即：男性的风险为1/2，女性的风险为1/3。</li>
+<li>出现任何 CHD 风险因素时都必须给予适度的关注，因为单一的风险因素长远来看可能会成为 CHD 的高风险因素，即使在 10 年风险不高。</li>
+<li>由于年龄是 CHD 风险评分的重要决定性因素，平均来说，老年人中的10 年 CHD 的危害较高。这可能会过度识别积极干预的患者。在老年人中，相对风险评估（与低风险个体对比的风险）可能会比绝对风险评估有用。</li>
+<li>由此算法得出的评分不应用于取代体检。</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">Wilson PW, D'Agostino RB, Levy D, Belanger AM, Silbershatz H, Kannel WB. Prediction of coronary heart disease using risk factor categories. <i>Circulation</i>. 1998;97:1837-1847. PubMed ID: 9603539 <a target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/9603539"><img border="0" src="pubmed.gif" align="top" alt="PubMed Logo" /></a> </span></li>
+
+</ol>
+</div>
+
+ 
+</form>
+<div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div><script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+varload1()
+
+
+
+
+
+function loadQueryParams(thisqs){
+if (thisqs) alert('Data panel values cannot be transferred to this calculator.');
+return;
+}
+
+
+/* ]]> */
+</script>
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+<!-- 1662471490 //-->

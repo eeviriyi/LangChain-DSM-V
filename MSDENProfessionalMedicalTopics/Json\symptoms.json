@@ -1,0 +1,1088 @@
+{
+  "SymptomsGroup": [
+    {
+      "Title": "Bleeding",
+      "SymptomGroupId": "{8A68140B-8CA1-487A-A5B8-755E46190373}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205148Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-nasal-and-pharyngeal-symptoms/epistaxis",
+          "Text": "Epistaxis",
+          "SymptomId": "{48106FD2-8317-40A4-B190-CEE5ABCD85A4}",
+          "TopicId": "{EC6AF337-D656-4585-8AE3-928D9A2652C2}",
+          "ChapterId": "{0E014268-9E99-4D72-95DB-0F707CA976FC}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205256Z"
+        },
+        {
+          "Uri": "/professional/gastrointestinal-disorders/gastrointestinal-bleeding/overview-of-gastrointestinal-bleeding",
+          "Text": "Gastrointestinal Bleeding",
+          "SymptomId": "{7750C051-5387-467D-97DC-56E39B5D2EEF}",
+          "TopicId": "{8076A237-C2CC-47F9-821B-E1628309D900}",
+          "ChapterId": "{F079B5E1-942A-47A0-B73E-48E02A0BBBA9}",
+          "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+          "LastUpdateDate": "20220113T205148Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/hematospermia",
+          "Text": "Hematospermia",
+          "SymptomId": "{F96C9491-F424-46D2-8D64-703FCF7323A3}",
+          "TopicId": "{B7E985C4-1191-4562-91BE-405A1BA42D47}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205417Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/isolated-hematuria",
+          "Text": "Hematuria",
+          "SymptomId": "{784802BB-62F9-411B-8703-FF1A1D26378B}",
+          "TopicId": "{59A368C6-6408-420F-9CB3-29FD1C2DC222}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205422Z"
+        },
+        {
+          "Uri": "/professional/pulmonary-disorders/symptoms-of-pulmonary-disorders/hemoptysis",
+          "Text": "Hemoptysis",
+          "SymptomId": "{1226A825-F609-42DB-B910-A486E3059807}",
+          "TopicId": "{6596FDC8-E2A1-429F-9770-8254BA5CF4F7}",
+          "ChapterId": "{83CAA87F-2ACC-4CE2-B360-C17F4ED7E8DA}",
+          "SectionId": "{7E7F2D93-AF3C-436C-895E-66A03E20F65B}",
+          "LastUpdateDate": "20220113T205212Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-of-gynecologic-disorders/vaginal-bleeding",
+          "Text": "Vaginal Bleeding",
+          "SymptomId": "{10A3393F-39E5-479C-9C0C-CB7526FC779A}",
+          "TopicId": "{625067E6-34CD-4CB5-8017-ACA6E53005C8}",
+          "ChapterId": "{C85D6EDF-205A-4442-9A40-D13E5501DCF4}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205443Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/vaginal-bleeding-during-early-pregnancy",
+          "Text": "Vaginal Bleeding During Early Pregnancy",
+          "SymptomId": "{062B3B12-2C48-4975-9B23-49BF5E3547FE}",
+          "TopicId": "{0F785CCC-080E-4BE1-A9B2-E948401D5414}",
+          "ChapterId": "{12053052-0368-4576-BF1F-A41DDEBD4767}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205504Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/vaginal-bleeding-during-late-pregnancy",
+          "Text": "Vaginal Bleeding During Late Pregnancy",
+          "SymptomId": "{1261870C-BD4A-4710-BA15-CA4B270353A5}",
+          "TopicId": "{13B11502-6350-4B8A-B94F-9408502CAE2A}",
+          "ChapterId": "{12053052-0368-4576-BF1F-A41DDEBD4767}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205513Z"
+        }
+      ]
+    },
+    {
+      "Title": "Ear, Nose, and Throat",
+      "SymptomGroupId": "{844E911C-5701-43A3-A092-E65E275EE9D4}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205245Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-nasal-and-pharyngeal-symptoms/anosmia",
+          "Text": "Anosmia",
+          "SymptomId": "{2CA7A872-E17D-4A9B-90F0-64E3A123CA12}",
+          "TopicId": "{FC0E3F35-4E4B-4B27-8ACB-DCF7ECDF723D}",
+          "ChapterId": "{0E014268-9E99-4D72-95DB-0F707CA976FC}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205310Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-ear-problems/dizziness-and-vertigo",
+          "Text": "Dizziness",
+          "SymptomId": "{E1665FEA-D96F-4504-8D6B-8CE41B37D0D1}",
+          "TopicId": "{5BDF4DEF-26D9-44F9-A30B-520400ECCED2}",
+          "ChapterId": "{FF91ED44-BC32-44C8-BADE-753DAE83213C}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205252Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-ear-problems/earache",
+          "Text": "Earache",
+          "SymptomId": "{05C4994B-4466-40E7-9589-61E8D6025A57}",
+          "TopicId": "{F0ED92EE-39D0-4152-BB25-AFF7CABBCF25}",
+          "ChapterId": "{FF91ED44-BC32-44C8-BADE-753DAE83213C}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205245Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-nasal-and-pharyngeal-symptoms/epistaxis",
+          "Text": "Epistaxis",
+          "SymptomId": "{015D3FE3-636A-4B22-8FEB-709A942FBF7C}",
+          "TopicId": "{EC6AF337-D656-4585-8AE3-928D9A2652C2}",
+          "ChapterId": "{0E014268-9E99-4D72-95DB-0F707CA976FC}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205259Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/hearing-loss/hearing-loss",
+          "Text": "Hearing Loss",
+          "SymptomId": "{73921408-EEBF-4346-89C8-52F27359F2EE}",
+          "TopicId": "{8A3ED813-7D56-4C72-A699-EDF1856878D1}",
+          "ChapterId": "{981BCE28-BDBC-4975-96E9-E5703CA9BC24}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205312Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/hearing-loss/sudden-hearing-loss",
+          "Text": "Hearing Loss: Sudden Deafness",
+          "SymptomId": "{67564B61-9E39-47E0-B003-DD851E84DD9A}",
+          "TopicId": "{34E4515D-43EB-496F-AF69-4379BF1FEAA7}",
+          "ChapterId": "{981BCE28-BDBC-4975-96E9-E5703CA9BC24}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205314Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-nasal-and-pharyngeal-symptoms/nasal-congestion-and-rhinorrhea",
+          "Text": "Nasal Congestion and Rhinorrhea",
+          "SymptomId": "{1C37DC66-0096-410C-B0B7-DA56ADB1A186}",
+          "TopicId": "{938AC36F-86FE-46FF-8F2F-CA46E71FD13B}",
+          "ChapterId": "{0E014268-9E99-4D72-95DB-0F707CA976FC}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205301Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-nasal-and-pharyngeal-symptoms/neck-mass",
+          "Text": "Neck Mass",
+          "SymptomId": "{B18BA78A-001A-44C1-9631-112329F8D7EB}",
+          "TopicId": "{B78AF810-EDFC-4E13-B4E8-66BB21D84ABE}",
+          "ChapterId": "{0E014268-9E99-4D72-95DB-0F707CA976FC}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205303Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-nasal-and-pharyngeal-symptoms/sore-throat",
+          "Text": "Sore Throat",
+          "SymptomId": "{E23415EA-0129-4678-8965-3AFFB86F35AA}",
+          "TopicId": "{D5DB30A3-E29A-47CA-9335-27CE44DC8EE5}",
+          "ChapterId": "{0E014268-9E99-4D72-95DB-0F707CA976FC}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205305Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-ear-problems/tinnitus",
+          "Text": "Tinnitus",
+          "SymptomId": "{ED43B01E-33D5-470B-904A-2799BAF64DAD}",
+          "TopicId": "{E5317FF7-8228-447E-990D-163BB9FC5F32}",
+          "ChapterId": "{FF91ED44-BC32-44C8-BADE-753DAE83213C}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205248Z"
+        }
+      ]
+    },
+    {
+      "Title": "Eye",
+      "SymptomGroupId": "{002B4B40-2FFD-4995-BC65-36242DFA9F5E}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205328Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/diplopia",
+          "Text": "Diplopia",
+          "SymptomId": "{BFDAC01F-13AC-411A-9DF1-141DD8F1E48C}",
+          "TopicId": "{49D82A94-2910-4E21-8FEB-46B7CC7F9E73}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205333Z"
+        },
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/eye-pain",
+          "Text": "Eye Pain",
+          "SymptomId": "{175E3BD8-8F66-409D-A652-00F06B3ECFDA}",
+          "TopicId": "{90FDF522-7567-42C0-87A2-20948284B9F6}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205337Z"
+        },
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/eyelid-swelling",
+          "Text": "Eyelid Swelling",
+          "SymptomId": "{0B99BAEE-DAC1-4E94-97EA-865E64A50C9E}",
+          "TopicId": "{29634C2E-B627-4033-9E86-FD30012D9786}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205335Z"
+        },
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/floaters",
+          "Text": "Floaters",
+          "SymptomId": "{94E85D0C-8649-4553-99A8-FDC3D116A2B8}",
+          "TopicId": "{F8CD4235-DEF9-4837-A36E-43591F1E63E3}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205342Z"
+        },
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/red-eye",
+          "Text": "Red Eye",
+          "SymptomId": "{18B38640-0A91-45EF-A964-AF1E47698915}",
+          "TopicId": "{9B920DA6-AB56-40B7-8581-14F7F5E6B451}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205344Z"
+        },
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/tearing",
+          "Text": "Tearing",
+          "SymptomId": "{3EA4BA04-9F9C-4A5F-B324-E6CB90FF6837}",
+          "TopicId": "{E9FB9976-6D0B-4735-A78F-1D5F9CD8FC6B}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205346Z"
+        },
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/acute-vision-loss",
+          "Text": "Vision Loss, Acute",
+          "SymptomId": "{AEE69C67-69AB-41D8-BEA0-78A9C67260D0}",
+          "TopicId": "{4B7A5DAE-F24A-4CA8-A794-6C3859A7855A}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205328Z"
+        },
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/blurred-vision",
+          "Text": "Vision, Blurred",
+          "SymptomId": "{50C4F1C4-08FC-486B-B97B-7238CB2B94E2}",
+          "TopicId": "{26A99580-8C33-4D80-9805-05CF57553BFA}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205331Z"
+        }
+      ]
+    },
+    {
+      "Title": "Gastrointestinal",
+      "SymptomGroupId": "{A76EE879-2995-464E-BA88-4F71F7EF592E}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205139Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/acute-abdominal-pain",
+          "Text": "Abdominal Pain",
+          "SymptomId": "{E94C6859-BB3F-4DF5-ABC7-E717A31627A1}",
+          "TopicId": "{87B58F52-8F3D-4A92-B6F7-2C675CDE1E30}",
+          "ChapterId": "{2B5359B1-4358-45FB-B9CE-13706F3AD231}",
+          "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+          "LastUpdateDate": "20220216T194333Z"
+        },
+        {
+          "Uri": "/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/acute-abdominal-pain",
+          "Text": "Abdominal Pain, Acute",
+          "SymptomId": "{8E3716A6-D696-494E-96B4-7C1450212006}",
+          "TopicId": "{87B58F52-8F3D-4A92-B6F7-2C675CDE1E30}",
+          "ChapterId": "{2B5359B1-4358-45FB-B9CE-13706F3AD231}",
+          "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+          "LastUpdateDate": "20220113T205139Z"
+        },
+        {
+          "Uri": "/professional/pediatrics/symptoms-in-infants-and-children/constipation-in-children",
+          "Text": "Constipation in Children",
+          "SymptomId": "{83877FC4-0B44-454D-A87B-27602D4B6D9D}",
+          "TopicId": "{D6B91729-DEFB-4656-A4F7-13C1F7CFD5FE}",
+          "ChapterId": "{C2E57788-6A1B-441F-B947-757BCAE0BB20}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205518Z"
+        },
+        {
+          "Uri": "/professional/pediatrics/symptoms-in-infants-and-children/diarrhea-in-children",
+          "Text": "Diarrhea in Children",
+          "SymptomId": "{5B10EA33-4637-4195-811A-8B2A4C440C96}",
+          "TopicId": "{5CCCF014-089F-4888-838B-CFE7666AFFA7}",
+          "ChapterId": "{C2E57788-6A1B-441F-B947-757BCAE0BB20}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205528Z"
+        },
+        {
+          "Uri": "/professional/gastrointestinal-disorders/esophageal-and-swallowing-disorders/dysphagia",
+          "Text": "Dysphagia",
+          "SymptomId": "{469EB345-274B-4BD3-B2FF-ACAA620A9E8B}",
+          "TopicId": "{9B72AE77-EC13-4B29-90A5-1FBA5EC21FFE}",
+          "ChapterId": "{DF959A93-E45C-4245-9615-D996BD74F263}",
+          "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+          "LastUpdateDate": "20220113T205146Z"
+        },
+        {
+          "Uri": "/professional/gastrointestinal-disorders/gastrointestinal-bleeding/overview-of-gastrointestinal-bleeding",
+          "Text": "Gastrointestinal Bleeding",
+          "SymptomId": "{AB055F1B-83B4-4777-BC50-1FD21FCAF78A}",
+          "TopicId": "{8076A237-C2CC-47F9-821B-E1628309D900}",
+          "ChapterId": "{F079B5E1-942A-47A0-B73E-48E02A0BBBA9}",
+          "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+          "LastUpdateDate": "20220113T205150Z"
+        },
+        {
+          "Uri": "/professional/gastrointestinal-disorders/anorectal-disorders/pruritus-ani-anal-itching",
+          "Text": "Itching, Anal",
+          "SymptomId": "{A3DA9921-7EDE-48D8-9BFF-05AFCFF4F3CC}",
+          "TopicId": "{EDDB71EC-21EF-4060-B345-A4E7064A65BC}",
+          "ChapterId": "{9BE7DE40-A98E-412B-B09F-45D9DADCE5D9}",
+          "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+          "LastUpdateDate": "20220113T205144Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/nausea-and-vomiting-during-early-pregnancy",
+          "Text": "Nausea and Vomiting During Early Pregnancy",
+          "SymptomId": "{1DE0ACA8-5FA2-468C-817B-3338AF863FF9}",
+          "TopicId": "{138E52A9-D3E2-42F6-82CD-BECDE20B5374}",
+          "ChapterId": "{12053052-0368-4576-BF1F-A41DDEBD4767}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205508Z"
+        },
+        {
+          "Uri": "/professional/pediatrics/symptoms-in-infants-and-children/nausea-and-vomiting-in-infants-and-children",
+          "Text": "Nausea and Vomiting in Infants and Children",
+          "SymptomId": "{B086A396-EA08-4C99-8FFA-D95D63DDCC27}",
+          "TopicId": "{6ED94044-B25F-4958-AF8F-6A402E897A6E}",
+          "ChapterId": "{C2E57788-6A1B-441F-B947-757BCAE0BB20}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205535Z"
+        }
+      ]
+    },
+    {
+      "Title": "General",
+      "SymptomGroupId": "{F1FFD600-4871-4B65-9FA4-79C0AE0EB161}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205153Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-ear-problems/dizziness-and-vertigo",
+          "Text": "Dizziness",
+          "SymptomId": "{23DFC50D-2456-4927-84F1-BA96E454F3E9}",
+          "TopicId": "{5BDF4DEF-26D9-44F9-A30B-520400ECCED2}",
+          "ChapterId": "{FF91ED44-BC32-44C8-BADE-753DAE83213C}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205250Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/edema",
+          "Text": "Edema",
+          "SymptomId": "{16AEC887-D4D2-4AF7-B7C8-AD35308CADA1}",
+          "TopicId": "{D9416028-457F-4830-90E3-AE0376985EF8}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205226Z"
+        },
+        {
+          "Uri": "/professional/special-subjects/nonspecific-symptoms/fatigue",
+          "Text": "Fatigue",
+          "SymptomId": "{D3E39273-E146-4145-A994-0FB7A6279A85}",
+          "TopicId": "{EA55EAA6-EC17-45D3-8DB3-BC082874842D}",
+          "ChapterId": "{E0A3500F-E7AD-48C5-9FB2-9032FD11A73C}",
+          "SectionId": "{D1C904E2-63D7-4648-A1A0-EE61B31FC551}",
+          "LastUpdateDate": "20220113T205540Z"
+        },
+        {
+          "Uri": "/professional/pediatrics/symptoms-in-infants-and-children/fever-in-infants-and-children",
+          "Text": "Fever in Infants and Children",
+          "SymptomId": "{171AE0B9-6614-4639-A894-5B31A37B2E9F}",
+          "TopicId": "{FD6D4F8B-5B14-45F1-9EEE-924A81D58005}",
+          "ChapterId": "{C2E57788-6A1B-441F-B947-757BCAE0BB20}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205530Z"
+        },
+        {
+          "Uri": "/professional/infectious-diseases/biology-of-infectious-disease/fever",
+          "Text": "Fever, Acute, in Adults",
+          "SymptomId": "{D290343A-7B35-4BE0-BE97-63880561A951}",
+          "TopicId": "{A4F2935B-7135-4EDD-BBC4-A89B8FB0BA8A}",
+          "ChapterId": "{503F3990-DF04-4E78-8F64-E3576BDA47F8}",
+          "SectionId": "{31B9CCA6-B744-4D01-A4C5-6642DD6C8F29}",
+          "LastUpdateDate": "20220113T205354Z"
+        },
+        {
+          "Uri": "/professional/infectious-diseases/biology-of-infectious-disease/fever-of-unknown-origin-fuo",
+          "Text": "Fever, Chronic (FUO)",
+          "SymptomId": "{24F1169E-A721-4EE8-93F7-13EB5BC5ED3E}",
+          "TopicId": "{C093DE9D-ABB5-442B-8B4D-405ABC560EE5}",
+          "ChapterId": "{503F3990-DF04-4E78-8F64-E3576BDA47F8}",
+          "SectionId": "{31B9CCA6-B744-4D01-A4C5-6642DD6C8F29}",
+          "LastUpdateDate": "20220113T205356Z"
+        },
+        {
+          "Uri": "/professional/neurologic-disorders/headache/approach-to-the-patient-with-headache",
+          "Text": "Headache",
+          "SymptomId": "{AAF9894D-B925-45BD-9F59-9EAF3F388D25}",
+          "TopicId": "{E05985CB-72F8-4B92-A5EE-C8B55ED123E6}",
+          "ChapterId": "{4865232D-C77A-46D6-B052-CE21EB9BD3EC}",
+          "SectionId": "{693C35DA-1ADF-4D55-B641-2C501365F83B}",
+          "LastUpdateDate": "20220113T205408Z"
+        },
+        {
+          "Uri": "/professional/hepatic-and-biliary-disorders/approach-to-the-patient-with-liver-disease/jaundice",
+          "Text": "Jaundice in Adults",
+          "SymptomId": "{386C0A1F-4A98-4528-8780-29B110C7605A}",
+          "TopicId": "{D8676796-AFB1-46C4-9941-32BCD70953B0}",
+          "ChapterId": "{336F6EAD-43B2-45AC-9C1D-6DB1ABA484C6}",
+          "SectionId": "{D9751974-F5AB-484C-88EC-208006B403F8}",
+          "LastUpdateDate": "20220113T205153Z"
+        },
+        {
+          "Uri": "/professional/neurologic-disorders/symptoms-of-neurologic-disorders/memory-loss",
+          "Text": "Memory Loss (Amnesia)",
+          "SymptomId": "{8E4E4861-C0BF-4A94-9806-64CB16F9153B}",
+          "TopicId": "{1CDC086D-837D-4C10-8812-F56971F9C1CC}",
+          "ChapterId": "{A66A7853-6D55-499C-9505-B6F89A05602A}",
+          "SectionId": "{693C35DA-1ADF-4D55-B641-2C501365F83B}",
+          "LastUpdateDate": "20220113T205359Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/orthostatic-hypotension",
+          "Text": "Orthostatic Hypotension",
+          "SymptomId": "{3A106BD0-2909-4E4A-839A-1960AE23E213}",
+          "TopicId": "{E13E2DEC-3994-4ABB-A0BE-891827685991}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205230Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/syncope",
+          "Text": "Syncope",
+          "SymptomId": "{7C79EE22-0D89-422A-85E2-50E32938D2D1}",
+          "TopicId": "{E7127D32-3B9C-495D-8010-0C186BC59945}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205239Z"
+        },
+        {
+          "Uri": "/professional/neurologic-disorders/symptoms-of-neurologic-disorders/weakness",
+          "Text": "Weakness, Generalized",
+          "SymptomId": "{4F2449B6-531F-4DF1-859A-DCA41D07FD9A}",
+          "TopicId": "{133163AF-A97D-4E32-93E2-B2B4BBB3BF34}",
+          "ChapterId": "{A66A7853-6D55-499C-9505-B6F89A05602A}",
+          "SectionId": "{693C35DA-1ADF-4D55-B641-2C501365F83B}",
+          "LastUpdateDate": "20220113T205403Z"
+        }
+      ]
+    },
+    {
+      "Title": "Genitourinary",
+      "SymptomGroupId": "{5D67CFE2-9941-4057-8F24-B643388B720F}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205415Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/dysuria",
+          "Text": "Dysuria",
+          "SymptomId": "{86828570-3229-47C4-8B3F-D2735BC4D68C}",
+          "TopicId": "{4DAA8116-5CC8-4523-9EE8-5FEBCBF696EE}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205415Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/hematospermia",
+          "Text": "Hematospermia",
+          "SymptomId": "{462FDF0D-B4E4-4D60-BAF3-898CA574879E}",
+          "TopicId": "{B7E985C4-1191-4562-91BE-405A1BA42D47}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205420Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/isolated-hematuria",
+          "Text": "Hematuria",
+          "SymptomId": "{5B1F2AC1-66B1-4971-8776-DB3ED51BDD48}",
+          "TopicId": "{59A368C6-6408-420F-9CB3-29FD1C2DC222}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205424Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/polyuria",
+          "Text": "Polyuria",
+          "SymptomId": "{B975B60D-D6A7-4D8E-83F9-B13AD40A2C1A}",
+          "TopicId": "{D6F2D4EB-EF85-431F-8383-8A393B4E1A22}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205427Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/priapism",
+          "Text": "Priapism",
+          "SymptomId": "{822F1B89-A556-4248-8A81-97D2D028E3B2}",
+          "TopicId": "{DD62B9D2-DC2D-48EB-B01D-E1C6E66B6EF6}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205429Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/scrotal-pain",
+          "Text": "Scrotal Pain",
+          "SymptomId": "{D259E661-9055-4F44-8AFA-DB431BDAAB77}",
+          "TopicId": "{F282651F-C15F-46B4-A291-05D41487A96A}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205431Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/urinary-frequency",
+          "Text": "Urinary Frequency",
+          "SymptomId": "{4850ECC7-1ABA-4738-8329-E4FC2F3487C7}",
+          "TopicId": "{15E3333E-6CCD-420A-B4D8-0B67C85EABBB}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205436Z"
+        }
+      ]
+    },
+    {
+      "Title": "Gynecologic & Obstetric",
+      "SymptomGroupId": "{CDF1CDDE-B1AA-4412-A673-367CC4DD8E35}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205438Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/menstrual-abnormalities/amenorrhea",
+          "Text": "Amenorrhea",
+          "SymptomId": "{3CFBF53D-85A9-4CE0-8BEA-EE6826513619}",
+          "TopicId": "{16B397D2-4CAB-4480-ACB2-39DE2BA2AA56}",
+          "ChapterId": "{85CA1731-46D4-49A4-9C83-0A6EC3F6BE27}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205452Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/breast-disorders/breast-masses-breast-lumps",
+          "Text": "Breast Lumps",
+          "SymptomId": "{E04A292E-69EA-47C6-87C1-9DDBD3E125E4}",
+          "TopicId": "{32303F51-4003-44F1-926F-0BC6D8923C13}",
+          "ChapterId": "{0E5AB974-04D7-46D4-B6C2-7B69B5459A52}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205448Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/menstrual-abnormalities/dysmenorrhea",
+          "Text": "Dysmenorrhea",
+          "SymptomId": "{876EDBD5-BD15-452A-A0E0-62FCD54600B4}",
+          "TopicId": "{BE512D72-7D2B-4030-A61D-4407023652B5}",
+          "ChapterId": "{85CA1731-46D4-49A4-9C83-0A6EC3F6BE27}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205455Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/nausea-and-vomiting-during-early-pregnancy",
+          "Text": "Nausea and Vomiting During Early Pregnancy",
+          "SymptomId": "{7C194DB7-F065-4AFE-8BC5-801C8528C432}",
+          "TopicId": "{138E52A9-D3E2-42F6-82CD-BECDE20B5374}",
+          "ChapterId": "{12053052-0368-4576-BF1F-A41DDEBD4767}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205511Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/breast-disorders/nipple-discharge",
+          "Text": "Nipple Discharge",
+          "SymptomId": "{DBE683DF-717C-4D25-8E06-23E85F031E02}",
+          "TopicId": "{140D275E-5A19-44BA-94A1-5BCFD92FB26A}",
+          "ChapterId": "{0E5AB974-04D7-46D4-B6C2-7B69B5459A52}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205450Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-of-gynecologic-disorders/pelvic-pain",
+          "Text": "Pelvic Pain",
+          "SymptomId": "{75AC0B04-4AED-4C70-B6EE-7AE72062DEF8}",
+          "TopicId": "{725F1D38-CFF8-4665-9836-A90178BDECEC}",
+          "ChapterId": "{C85D6EDF-205A-4442-9A40-D13E5501DCF4}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205438Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/pelvic-pain-during-early-pregnancy",
+          "Text": "Pelvic Pain During Early Pregnancy",
+          "SymptomId": "{ABEAD2AB-4D93-4019-88E1-7ABD1359F02C}",
+          "TopicId": "{11EE15B3-15B6-4C53-BE74-14F552ACDE60}",
+          "ChapterId": "{12053052-0368-4576-BF1F-A41DDEBD4767}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205459Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-of-gynecologic-disorders/vaginal-bleeding",
+          "Text": "Vaginal Bleeding",
+          "SymptomId": "{B95579DB-C987-4463-99FD-ACCE04E06A18}",
+          "TopicId": "{625067E6-34CD-4CB5-8017-ACA6E53005C8}",
+          "ChapterId": "{C85D6EDF-205A-4442-9A40-D13E5501DCF4}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205445Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/vaginal-bleeding-during-early-pregnancy",
+          "Text": "Vaginal Bleeding During Early Pregnancy",
+          "SymptomId": "{5A241045-609B-48E9-8C6B-C0B2FC4509D5}",
+          "TopicId": "{0F785CCC-080E-4BE1-A9B2-E948401D5414}",
+          "ChapterId": "{12053052-0368-4576-BF1F-A41DDEBD4767}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205506Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/vaginal-bleeding-during-late-pregnancy",
+          "Text": "Vaginal Bleeding During Late Pregnancy",
+          "SymptomId": "{00F6D710-8AD2-46B8-8B75-FAE307E73C4D}",
+          "TopicId": "{13B11502-6350-4B8A-B94F-9408502CAE2A}",
+          "ChapterId": "{12053052-0368-4576-BF1F-A41DDEBD4767}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205516Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/vaginitis,-cervicitis,-and-pelvic-inflammatory-disease-pid/overview-of-vaginitis",
+          "Text": "Vaginal Itching and Discharge",
+          "SymptomId": "{3DAAE57E-4D0E-44C8-B6D6-D8F5C16B1EB7}",
+          "TopicId": "{80FD190F-4757-4BED-8490-8B9A00BE6FBD}",
+          "ChapterId": "{1F66470C-9D39-40D6-91A8-23919D94AE64}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205457Z"
+        }
+      ]
+    },
+    {
+      "Title": "Musculoskeletal",
+      "SymptomGroupId": "{1D7439E1-3F22-4A64-983B-74DF573AAF63}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205155Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/musculoskeletal-and-connective-tissue-disorders/pain-in-and-around-joints/pain-in-and-around-a-single-joint",
+          "Text": "Joint Pain, Monoarticular",
+          "SymptomId": "{98A80232-783E-405A-A9AE-46D47142C24B}",
+          "TopicId": "{FB379B83-56D2-47A3-900D-96FDE1F26C9A}",
+          "ChapterId": "{B936CD33-D226-4530-A6CD-6BD87F94761A}",
+          "SectionId": "{47E70A29-213F-41BF-BE95-ACDBE09995DB}",
+          "LastUpdateDate": "20220113T205159Z"
+        },
+        {
+          "Uri": "/professional/musculoskeletal-and-connective-tissue-disorders/pain-in-and-around-joints/pain-in-multiple-joints",
+          "Text": "Joint Pain, Polyarticular",
+          "SymptomId": "{E7F03A71-94EE-411F-B77A-F4AB6659141A}",
+          "TopicId": "{9DD94245-5161-4BEC-9E58-BA28430386DA}",
+          "ChapterId": "{B936CD33-D226-4530-A6CD-6BD87F94761A}",
+          "SectionId": "{47E70A29-213F-41BF-BE95-ACDBE09995DB}",
+          "LastUpdateDate": "20220113T205204Z"
+        },
+        {
+          "Uri": "/professional/musculoskeletal-and-connective-tissue-disorders/neck-and-back-pain/evaluation-of-neck-and-back-pain",
+          "Text": "Neck and Back Pain",
+          "SymptomId": "{530B345A-F17C-4977-B89A-96A4FD3154B5}",
+          "TopicId": "{F4C6936F-6E72-450A-AA65-35C77CC5381A}",
+          "ChapterId": "{1FB9DE26-9832-42B8-9C83-C40F3E2D2448}",
+          "SectionId": "{47E70A29-213F-41BF-BE95-ACDBE09995DB}",
+          "LastUpdateDate": "20220113T205155Z"
+        }
+      ]
+    },
+    {
+      "Title": "Neurology",
+      "SymptomGroupId": "{5D5C4E86-1B23-4C95-8C45-BCDCA91EBDBB}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205232Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-ear-problems/dizziness-and-vertigo",
+          "Text": "Dizziness",
+          "SymptomId": "{4B9649F1-EC8C-46DA-A0D8-0EAC68DAA193}",
+          "TopicId": "{5BDF4DEF-26D9-44F9-A30B-520400ECCED2}",
+          "ChapterId": "{FF91ED44-BC32-44C8-BADE-753DAE83213C}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205254Z"
+        },
+        {
+          "Uri": "/professional/neurologic-disorders/headache/approach-to-the-patient-with-headache",
+          "Text": "Headache",
+          "SymptomId": "{6C06D9CE-3C6E-4E87-BF29-2C02E567D4FA}",
+          "TopicId": "{E05985CB-72F8-4B92-A5EE-C8B55ED123E6}",
+          "ChapterId": "{4865232D-C77A-46D6-B052-CE21EB9BD3EC}",
+          "SectionId": "{693C35DA-1ADF-4D55-B641-2C501365F83B}",
+          "LastUpdateDate": "20220113T205410Z"
+        },
+        {
+          "Uri": "/professional/neurologic-disorders/symptoms-of-neurologic-disorders/memory-loss",
+          "Text": "Memory Loss (Amnesia)",
+          "SymptomId": "{8E3350FE-4055-45F7-BB0F-1F4E0B0B577A}",
+          "TopicId": "{1CDC086D-837D-4C10-8812-F56971F9C1CC}",
+          "ChapterId": "{A66A7853-6D55-499C-9505-B6F89A05602A}",
+          "SectionId": "{693C35DA-1ADF-4D55-B641-2C501365F83B}",
+          "LastUpdateDate": "20220113T205401Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/orthostatic-hypotension",
+          "Text": "Orthostatic Hypotension",
+          "SymptomId": "{1114F2E0-F2E7-48E9-983B-79E71E9659D3}",
+          "TopicId": "{E13E2DEC-3994-4ABB-A0BE-891827685991}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205232Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/syncope",
+          "Text": "Syncope",
+          "SymptomId": "{6DBB83A3-26E7-4A80-9C02-68B29D01DE30}",
+          "TopicId": "{E7127D32-3B9C-495D-8010-0C186BC59945}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205241Z"
+        },
+        {
+          "Uri": "/professional/neurologic-disorders/movement-and-cerebellar-disorders/tremor",
+          "Text": "Tremor",
+          "SymptomId": "{4650A870-BED0-4805-AE78-B867DA30DD2E}",
+          "TopicId": "{53F32C1B-440B-41BC-9602-6D88D5A06CB3}",
+          "ChapterId": "{E54FF2B0-8866-47FC-BF86-6D5CF565343A}",
+          "SectionId": "{693C35DA-1ADF-4D55-B641-2C501365F83B}",
+          "LastUpdateDate": "20220113T205412Z"
+        },
+        {
+          "Uri": "/professional/neurologic-disorders/symptoms-of-neurologic-disorders/weakness",
+          "Text": "Weakness, Generalized",
+          "SymptomId": "{D36B1423-87D3-4D8D-93AE-FAF0987F001C}",
+          "TopicId": "{133163AF-A97D-4E32-93E2-B2B4BBB3BF34}",
+          "ChapterId": "{A66A7853-6D55-499C-9505-B6F89A05602A}",
+          "SectionId": "{693C35DA-1ADF-4D55-B641-2C501365F83B}",
+          "LastUpdateDate": "20220113T205406Z"
+        }
+      ]
+    },
+    {
+      "Title": "Oral and Dental",
+      "SymptomGroupId": "{04DA2195-FE80-49B2-8C12-E97B41C68682}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205317Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/dental-disorders/symptoms-of-dental-and-oral-disorders/xerostomia",
+          "Text": "Dry Mouth",
+          "SymptomId": "{3E00C418-A2E5-45C2-8481-ED6AB21E3E8D}",
+          "TopicId": "{CFF81A4B-0EEE-409E-8814-DD66D5F112C5}",
+          "ChapterId": "{B0048E91-C40D-48A6-8822-1CD7033D2D4F}",
+          "SectionId": "{789525C0-2D15-462B-BB30-F48978F7091C}",
+          "LastUpdateDate": "20220113T205326Z"
+        },
+        {
+          "Uri": "/professional/dental-disorders/symptoms-of-dental-and-oral-disorders/halitosis",
+          "Text": "Halitosis",
+          "SymptomId": "{998282EE-3737-425A-939E-36D929538CCD}",
+          "TopicId": "{7E584F56-62CC-4566-A34A-59B79085421C}",
+          "ChapterId": "{B0048E91-C40D-48A6-8822-1CD7033D2D4F}",
+          "SectionId": "{789525C0-2D15-462B-BB30-F48978F7091C}",
+          "LastUpdateDate": "20220113T205317Z"
+        },
+        {
+          "Uri": "/professional/dental-disorders/symptoms-of-dental-and-oral-disorders/stomatitis",
+          "Text": "Stomatitis",
+          "SymptomId": "{B71B5062-9AD1-4CF0-8ED7-630159E27169}",
+          "TopicId": "{D824E225-0653-4F15-8CCB-E3B8B47BEFFE}",
+          "ChapterId": "{B0048E91-C40D-48A6-8822-1CD7033D2D4F}",
+          "SectionId": "{789525C0-2D15-462B-BB30-F48978F7091C}",
+          "LastUpdateDate": "20220113T205319Z"
+        },
+        {
+          "Uri": "/professional/dental-disorders/symptoms-of-dental-and-oral-disorders/toothache-and-infection",
+          "Text": "Toothache",
+          "SymptomId": "{A88BFC88-BE63-4F1B-840F-7E7022AB1161}",
+          "TopicId": "{796DAC04-CF59-4A67-B9D9-AACA760BB47E}",
+          "ChapterId": "{B0048E91-C40D-48A6-8822-1CD7033D2D4F}",
+          "SectionId": "{789525C0-2D15-462B-BB30-F48978F7091C}",
+          "LastUpdateDate": "20220113T205321Z"
+        }
+      ]
+    },
+    {
+      "Title": "Pain",
+      "SymptomGroupId": "{E7A9598B-103E-45C8-9BDF-6757DFA256AF}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205141Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/acute-abdominal-pain",
+          "Text": "Abdominal Pain",
+          "SymptomId": "{2F60643A-0C25-42B7-A31C-C8C9B83B2FE8}",
+          "TopicId": "{87B58F52-8F3D-4A92-B6F7-2C675CDE1E30}",
+          "ChapterId": "{2B5359B1-4358-45FB-B9CE-13706F3AD231}",
+          "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+          "LastUpdateDate": "20220216T194336Z"
+        },
+        {
+          "Uri": "/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/acute-abdominal-pain",
+          "Text": "Abdominal Pain, Acute",
+          "SymptomId": "{F50519D7-6F8A-413C-AE06-EE26CD7454EE}",
+          "TopicId": "{87B58F52-8F3D-4A92-B6F7-2C675CDE1E30}",
+          "ChapterId": "{2B5359B1-4358-45FB-B9CE-13706F3AD231}",
+          "SectionId": "{C5DBB600-AA83-426F-985B-3A660764472B}",
+          "LastUpdateDate": "20220113T205141Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/chest-pain",
+          "Text": "Chest Pain",
+          "SymptomId": "{5FC55886-6256-41B3-B916-D2811AAD1801}",
+          "TopicId": "{6E62C870-06CB-4ABD-BA63-466123930C4B}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205221Z"
+        },
+        {
+          "Uri": "/professional/eye-disorders/symptoms-of-ophthalmologic-disorders/eye-pain",
+          "Text": "Eye Pain",
+          "SymptomId": "{2CC533D0-5CBE-428F-91E0-F69F6569924E}",
+          "TopicId": "{90FDF522-7567-42C0-87A2-20948284B9F6}",
+          "ChapterId": "{DC5677A4-66F8-4906-8FB6-AE9647D65CF7}",
+          "SectionId": "{7120ADA2-F7F9-4461-BE85-EED987B36B5A}",
+          "LastUpdateDate": "20220113T205340Z"
+        },
+        {
+          "Uri": "/professional/musculoskeletal-and-connective-tissue-disorders/pain-in-and-around-joints/pain-in-and-around-a-single-joint",
+          "Text": "Joint Pain, Monoarticular",
+          "SymptomId": "{54F2AEB0-5EB1-4883-B494-C7568809F484}",
+          "TopicId": "{FB379B83-56D2-47A3-900D-96FDE1F26C9A}",
+          "ChapterId": "{B936CD33-D226-4530-A6CD-6BD87F94761A}",
+          "SectionId": "{47E70A29-213F-41BF-BE95-ACDBE09995DB}",
+          "LastUpdateDate": "20220113T205202Z"
+        },
+        {
+          "Uri": "/professional/musculoskeletal-and-connective-tissue-disorders/pain-in-and-around-joints/pain-in-multiple-joints",
+          "Text": "Joint Pain, Polyarticular",
+          "SymptomId": "{21464130-5D6B-43EA-9F65-B1B658EC4744}",
+          "TopicId": "{9DD94245-5161-4BEC-9E58-BA28430386DA}",
+          "ChapterId": "{B936CD33-D226-4530-A6CD-6BD87F94761A}",
+          "SectionId": "{47E70A29-213F-41BF-BE95-ACDBE09995DB}",
+          "LastUpdateDate": "20220113T205206Z"
+        },
+        {
+          "Uri": "/professional/musculoskeletal-and-connective-tissue-disorders/neck-and-back-pain/evaluation-of-neck-and-back-pain",
+          "Text": "Neck and Back Pain",
+          "SymptomId": "{C243F879-722A-4239-B596-0E0D74168FFB}",
+          "TopicId": "{F4C6936F-6E72-450A-AA65-35C77CC5381A}",
+          "ChapterId": "{1FB9DE26-9832-42B8-9C83-C40F3E2D2448}",
+          "SectionId": "{47E70A29-213F-41BF-BE95-ACDBE09995DB}",
+          "LastUpdateDate": "20220113T205157Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-of-gynecologic-disorders/pelvic-pain",
+          "Text": "Pelvic Pain",
+          "SymptomId": "{7201EE65-ECB7-40EC-8ACA-E029026A5E66}",
+          "TopicId": "{725F1D38-CFF8-4665-9836-A90178BDECEC}",
+          "ChapterId": "{C85D6EDF-205A-4442-9A40-D13E5501DCF4}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205441Z"
+        },
+        {
+          "Uri": "/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/pelvic-pain-during-early-pregnancy",
+          "Text": "Pelvic Pain During Early Pregnancy",
+          "SymptomId": "{796A63B4-7C93-421F-B559-C34B5FEE0888}",
+          "TopicId": "{11EE15B3-15B6-4C53-BE74-14F552ACDE60}",
+          "ChapterId": "{12053052-0368-4576-BF1F-A41DDEBD4767}",
+          "SectionId": "{B0D75E20-E4C1-4752-BCA2-5E83C01332E5}",
+          "LastUpdateDate": "20220113T205501Z"
+        },
+        {
+          "Uri": "/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/scrotal-pain",
+          "Text": "Scrotal Pain",
+          "SymptomId": "{5E2D827A-D4F9-4652-8658-932E1009CE43}",
+          "TopicId": "{F282651F-C15F-46B4-A291-05D41487A96A}",
+          "ChapterId": "{951CBE24-DA3C-4B2D-A45E-157AEFEE455F}",
+          "SectionId": "{0BCDF978-FF04-423A-B5EA-497BE0487AE7}",
+          "LastUpdateDate": "20220113T205433Z"
+        },
+        {
+          "Uri": "/professional/ear,-nose,-and-throat-disorders/approach-to-the-patient-with-nasal-and-pharyngeal-symptoms/sore-throat",
+          "Text": "Sore Throat",
+          "SymptomId": "{78E41063-2DB0-4A29-B9FC-D192F7E6CCFB}",
+          "TopicId": "{D5DB30A3-E29A-47CA-9335-27CE44DC8EE5}",
+          "ChapterId": "{0E014268-9E99-4D72-95DB-0F707CA976FC}",
+          "SectionId": "{35E77897-4AC1-42D6-94B2-F53C8CEAFE97}",
+          "LastUpdateDate": "20220113T205308Z"
+        },
+        {
+          "Uri": "/professional/dental-disorders/symptoms-of-dental-and-oral-disorders/toothache-and-infection",
+          "Text": "Toothache",
+          "SymptomId": "{39695A89-DE67-402A-978B-42A94A5D6CEE}",
+          "TopicId": "{796DAC04-CF59-4A67-B9D9-AACA760BB47E}",
+          "ChapterId": "{B0048E91-C40D-48A6-8822-1CD7033D2D4F}",
+          "SectionId": "{789525C0-2D15-462B-BB30-F48978F7091C}",
+          "LastUpdateDate": "20220113T205324Z"
+        }
+      ]
+    },
+    {
+      "Title": "Pediatric",
+      "SymptomGroupId": "{A42C6D81-A1D9-4A41-BCD9-7526C79EF113}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205521Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/pediatrics/symptoms-in-infants-and-children/cough-in-children",
+          "Text": "Cough in Children",
+          "SymptomId": "{C1FF7ED4-4A49-4910-994D-7BBB782F0008}",
+          "TopicId": "{A7899E5C-4D6B-46D0-9353-99BF640BC0E1}",
+          "ChapterId": "{C2E57788-6A1B-441F-B947-757BCAE0BB20}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205521Z"
+        },
+        {
+          "Uri": "/professional/pediatrics/symptoms-in-infants-and-children/crying",
+          "Text": "Crying",
+          "SymptomId": "{369FA206-CD6F-4B6D-B346-B994A23B3A45}",
+          "TopicId": "{19AB9209-E6AB-4D87-B328-AEE8FB270197}",
+          "ChapterId": "{C2E57788-6A1B-441F-B947-757BCAE0BB20}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205525Z"
+        },
+        {
+          "Uri": "/professional/pediatrics/symptoms-in-infants-and-children/fever-in-infants-and-children",
+          "Text": "Fever in Infants and Children",
+          "SymptomId": "{378E2DDC-C96C-465E-A29C-3395E5E73B2E}",
+          "TopicId": "{FD6D4F8B-5B14-45F1-9EEE-924A81D58005}",
+          "ChapterId": "{C2E57788-6A1B-441F-B947-757BCAE0BB20}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205532Z"
+        },
+        {
+          "Uri": "/professional/pediatrics/metabolic,-electrolyte,-and-toxic-disorders-in-neonates/neonatal-hyperbilirubinemia",
+          "Text": "Jaundice in Neonates",
+          "SymptomId": "{DB15E437-1A6A-4193-9734-A8F166C839E6}",
+          "TopicId": "{4A7A9B57-A242-4706-9C3B-A483703E1818}",
+          "ChapterId": "{E1D40F51-0020-4C19-A697-F2270D4FE5F4}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205537Z"
+        }
+      ]
+    },
+    {
+      "Title": "Pulmonary and Cardiovascular",
+      "SymptomGroupId": "{1C6C6A7C-3326-4D8F-AE04-457525B63667}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205208Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/chest-pain",
+          "Text": "Chest Pain",
+          "SymptomId": "{DDC6D9B5-6C57-493B-8424-EC623F546F54}",
+          "TopicId": "{6E62C870-06CB-4ABD-BA63-466123930C4B}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205223Z"
+        },
+        {
+          "Uri": "/professional/pulmonary-disorders/symptoms-of-pulmonary-disorders/cough-in-adults",
+          "Text": "Cough in Adults",
+          "SymptomId": "{1FB0D9B6-15F8-4C86-B399-3CEFA444E3F0}",
+          "TopicId": "{64CD8186-BD2F-4FD8-A3B5-12823D641495}",
+          "ChapterId": "{83CAA87F-2ACC-4CE2-B360-C17F4ED7E8DA}",
+          "SectionId": "{7E7F2D93-AF3C-436C-895E-66A03E20F65B}",
+          "LastUpdateDate": "20220113T205208Z"
+        },
+        {
+          "Uri": "/professional/pediatrics/symptoms-in-infants-and-children/cough-in-children",
+          "Text": "Cough in Children",
+          "SymptomId": "{276C9549-3B93-4F58-BEDF-24FE013B4344}",
+          "TopicId": "{A7899E5C-4D6B-46D0-9353-99BF640BC0E1}",
+          "ChapterId": "{C2E57788-6A1B-441F-B947-757BCAE0BB20}",
+          "SectionId": "{B3DE9005-316E-4C7C-A6F6-52A8BF0EA231}",
+          "LastUpdateDate": "20220113T205523Z"
+        },
+        {
+          "Uri": "/professional/pulmonary-disorders/symptoms-of-pulmonary-disorders/dyspnea",
+          "Text": "Dyspnea",
+          "SymptomId": "{B330BF9C-2A48-44D2-B037-B3643FD8D15D}",
+          "TopicId": "{422D9DFA-7BD4-43E8-9360-98721B39FDE4}",
+          "ChapterId": "{83CAA87F-2ACC-4CE2-B360-C17F4ED7E8DA}",
+          "SectionId": "{7E7F2D93-AF3C-436C-895E-66A03E20F65B}",
+          "LastUpdateDate": "20220113T205210Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/edema",
+          "Text": "Edema",
+          "SymptomId": "{4868766C-6CE4-4D81-9485-02438C615541}",
+          "TopicId": "{D9416028-457F-4830-90E3-AE0376985EF8}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205228Z"
+        },
+        {
+          "Uri": "/professional/pulmonary-disorders/symptoms-of-pulmonary-disorders/hemoptysis",
+          "Text": "Hemoptysis",
+          "SymptomId": "{85BA1222-F6BC-4FC3-840C-86C3DA122EA5}",
+          "TopicId": "{6596FDC8-E2A1-429F-9770-8254BA5CF4F7}",
+          "ChapterId": "{83CAA87F-2ACC-4CE2-B360-C17F4ED7E8DA}",
+          "SectionId": "{7E7F2D93-AF3C-436C-895E-66A03E20F65B}",
+          "LastUpdateDate": "20220113T205215Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/orthostatic-hypotension",
+          "Text": "Orthostatic Hypotension",
+          "SymptomId": "{6722EED9-0E43-4212-944A-ADD01767CE2C}",
+          "TopicId": "{E13E2DEC-3994-4ABB-A0BE-891827685991}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205234Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/palpitations",
+          "Text": "Palpitations",
+          "SymptomId": "{85B11C3D-CD8F-4A70-AB2D-5C64DEA0FFAB}",
+          "TopicId": "{D093EBAD-FC65-4C60-8F49-36063EDD88FB}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205236Z"
+        },
+        {
+          "Uri": "/professional/pulmonary-disorders/symptoms-of-pulmonary-disorders/stridor",
+          "Text": "Stridor",
+          "SymptomId": "{E70DA697-9C87-43E6-AA69-ED1611B8C9A2}",
+          "TopicId": "{D9DE6E65-4383-4432-9B49-EE68EC4F9EDA}",
+          "ChapterId": "{83CAA87F-2ACC-4CE2-B360-C17F4ED7E8DA}",
+          "SectionId": "{7E7F2D93-AF3C-436C-895E-66A03E20F65B}",
+          "LastUpdateDate": "20220113T205217Z"
+        },
+        {
+          "Uri": "/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/syncope",
+          "Text": "Syncope",
+          "SymptomId": "{6352403E-2ACF-4F08-950E-8C19CAD0BD5B}",
+          "TopicId": "{E7127D32-3B9C-495D-8010-0C186BC59945}",
+          "ChapterId": "{83919670-EDEA-4753-B630-CFAE311EDEF6}",
+          "SectionId": "{EE8AB93F-6FDB-4525-B9C2-55A87A4F1A0C}",
+          "LastUpdateDate": "20220113T205243Z"
+        },
+        {
+          "Uri": "/professional/pulmonary-disorders/symptoms-of-pulmonary-disorders/wheezing",
+          "Text": "Wheezing",
+          "SymptomId": "{E287E8E0-EAB8-4F8F-92F7-F8142EDA57BD}",
+          "TopicId": "{D362C8DE-F2E4-4552-9345-FAB26D679C0F}",
+          "ChapterId": "{83CAA87F-2ACC-4CE2-B360-C17F4ED7E8DA}",
+          "SectionId": "{7E7F2D93-AF3C-436C-895E-66A03E20F65B}",
+          "LastUpdateDate": "20220113T205219Z"
+        }
+      ]
+    },
+    {
+      "Title": "Skin",
+      "SymptomGroupId": "{9C8EE111-E686-4D7D-B352-85004692BB97}",
+      "DisplayInMenu": false,
+      "LastUpdateDate": "20220113T205349Z",
+      "Symptoms": [
+        {
+          "Uri": "/professional/dermatologic-disorders/hair-disorders/alopecia",
+          "Text": "Alopecia",
+          "SymptomId": "{3BE54EE0-A311-43B6-A645-79892BBF1137}",
+          "TopicId": "{C1F9536C-E643-4A18-80C3-1C8A1D89FF4F}",
+          "ChapterId": "{BEA38B89-1DEF-4D70-B175-3E50D866A25A}",
+          "SectionId": "{7C8E81CB-2570-4ED9-A0C1-40149E171EC3}",
+          "LastUpdateDate": "20220113T205349Z"
+        },
+        {
+          "Uri": "/professional/dermatologic-disorders/hair-disorders/hirsutism-and-hypertrichosis",
+          "Text": "Hirsutism",
+          "SymptomId": "{647FFA40-A65B-42DF-B2BA-70ABBC08D166}",
+          "TopicId": "{8A4A58D3-4D14-43EB-B78C-430B67BC9E21}",
+          "ChapterId": "{BEA38B89-1DEF-4D70-B175-3E50D866A25A}",
+          "SectionId": "{7C8E81CB-2570-4ED9-A0C1-40149E171EC3}",
+          "LastUpdateDate": "20220113T205351Z"
+        }
+      ]
+    }
+  ]
+}

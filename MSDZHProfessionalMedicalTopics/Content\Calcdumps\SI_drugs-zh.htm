@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh">
+<head>
+<title>国际单位换算： 药物浓度</title>
+<link href="medcalcstyles.css" type="text/css" rel="stylesheet" />
+<meta name="description" content="Medical Calculators, Criteria Sets and Decision Trees" />
+<meta name="keywords" content="Nurse, SIfriendly, Pharmacology, fac_all, fac_uc, fac_lab, internat, medcalc3000, medical, education, criteria, treecalc, decision, tree, medicine, clinical, medcalc, 3000, mdcalc, medicalc, medmath, clinicalc, clincalc, online, clinical" /> 
+<meta name="author" content="Foundation Internet Services, LLC" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body class="medCalcBody">
+<div id="mc3k">
+
+<script language="JavaScript1.1" type="text/javascript">
+/* <![CDATA[ */
+
+
+
+
+
+
+
+function log(i){
+return Math.log(i) * Math.LOG10E;   
+}
+
+function ln(i){
+return Math.log(i);
+}
+
+function sq(i){
+return i * i;
+}
+
+function sqr(i){
+return Math.sqrt(i);
+}
+
+
+function power(x,y){
+return Math.pow(x,y);
+}
+
+function eTo(x){
+return Math.exp(x);
+}
+
+
+function fixDP(r, dps) {
+if (isNaN(r)) return "NaN";
+var msign = '';
+var mfin = '';
+if (r < 0) msign = '-';
+x = Math.abs(r);
+if (x > Math.pow(10, 21)) return msign + x.toString();
+var m = Math.round(x * Math.pow(10, dps)).toString();
+if (dps == 0) return msign + m;
+while (m.length <= dps) m = "0" + m;
+mfin = msign + m.substring(0, m.length - dps) + "." + m.substring(m.length - dps);
+if (dps == 1) return mfin.replace('.0', '');
+if (dps == 2) return mfin.replace('.00', '');
+if (dps == 3) return mfin.replace('.000', '');
+if (dps == 4) return mfin.replace('.0000', '');
+return mfin;
+}
+
+function fixNearest(x,y){
+return Math.round(x/y) * y;
+}
+
+function alertNaN(thisparam){
+ alert(thisparam + ' 填写格式不正确. 您仅可输入数字 0-9 和小数点.');
+doCalc = false;
+clrResults();
+}
+
+function clrValue(field) {
+field.value = '';
+}
+
+var currenttimeout;
+
+function resetInTime(){
+if (currenttimeout) clearTimeout(currenttimeout);
+currenttimeout = setTimeout('minMaxCheck();', 3000);
+}
+
+
+
+
+codes = new Array();
+codeparts = new Array();
+var dp = 1;
+var tovalue;
+var to_selected = 0;
+
+function showToValue(){
+with (document.SI_drugs_form){
+to_param.value = fixDP(tovalue, dp);
+}}
+
+function setDecPts(){
+with (document.SI_drugs_form){
+dp = decpts.options[decpts.selectedIndex].text;
+unitConvert();
+}}
+
+function unitLoad(){
+with (document.SI_drugs_form){
+
+to_selected = 0;
+
+for (i = 0; i < from_unit.options.length; i++) { codes[i] = from_unit.options[i].value; }
+
+codeparts = from_unit.options[from_unit.selectedIndex].value.split('|');
+findunit = codeparts[0];
+findtype = codeparts[1];
+to_unit.options.length = 0;
+
+for (i = 0; i < codes.length; i++){
+codeparts = codes[i].split('|');
+if (codeparts[1]  == findtype) {
+	to_unit.options[to_unit.options.length] = new Option(codeparts[0],codes[i]);
+	if ((to_selected == 0) && (codeparts[0] != findunit)) { to_unit.options[to_unit.options.length - 1].selected = true; to_selected = 1; }
+	}
+}
+to_param.value = "";
+unitConvert();
+}}
+
+function unitConvert(){
+with (document.SI_drugs_form){
+
+if (to_unit.selectedIndex + from_unit.selectedIndex == 0) return;
+
+if (from_param.value > ''){
+unitcode = from_unit.options[from_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+fromtype = codeparts[1];
+frommult = parseFloat(codeparts[2]);
+fromadd = parseFloat(codeparts[3]);
+
+unitcode = to_unit.options[to_unit.selectedIndex].value;
+codeparts = unitcode.split('|');
+totype = codeparts[1];
+tomult = parseFloat(codeparts[2]);
+toadd = parseFloat(codeparts[3]);
+
+fromvalue = parseFloat(from_param.value);
+tovalue = ((fromvalue * frommult + fromadd) - toadd) / tomult;
+showToValue();
+}}}
+
+function clrResults(){
+with (document.SI_drugs_form){
+from_param.value = '';
+fromvalue = 0;
+to_param.value = '';
+tovalue = 0;
+}}
+
+/* ]]> */
+</script>
+
+
+
+<form name="SI_drugs_form" id="SI_drugs_form" action="" onsubmit="return false;" onkeydown="to_param.value='';" onkeyup="unitConvert();">
+<table width="100%" cellpadding="4" cellspacing="0" summary="EBMcalc Table">
+<tr><td class="medCalcTitleBox" width="1%"><br /></td>
+<td class="medCalcTitleBox">
+<span class="medCalcFontTitleBox">
+
+ 
+国际单位换算： 药物浓度
+</span></td></tr></table><br />&nbsp;<br />
+<br />&nbsp;<br />
+<center>
+<div id="calc_main">
+<div id="calc_input">
+<table border="0" cellpadding="6" cellspacing="0" summary="EBMcalc Table">
+<tr><td align="right"><span class="medCalcFontOneBold">从</span></td>
+<td align="left"><input type="text" name="from_param" style="width:50px;" onchange="unitConvert();" /></td>
+<td>
+<select name="from_unit" onchange="unitLoad();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="acetaminophen [Tylenol] mcg/mL|1|6.62|0|">acetaminophen [Tylenol] mcg/mL</option>
+<option value="acetaminophen [Tylenol] mcmol/L|1|1|0|">acetaminophen [Tylenol] mcmol/L</option>
+<option value="amikacin  mcg/mL|2|1.71|0|">amikacin  mcg/mL</option>
+<option value="amikacin  mcmol/L|2|1|0|">amikacin  mcmol/L</option>
+<option value="amitriptyline  ng/mL|3|3.61|0|">amitriptyline  ng/mL</option>
+<option value="amitriptyline  nmol/L|3|1|0|">amitriptyline  nmol/L</option>
+<option value="amobarbital  mcg/mL|4|4.42|0|">amobarbital  mcg/mL</option>
+<option value="amobarbital  mcmol/L|4|1|0|">amobarbital  mcmol/L</option>
+<option value="amphetamine  mcg/mL|5|7.4|0|">amphetamine  mcg/mL</option>
+<option value="amphetamine  mcmol/L|5|1|0|">amphetamine  mcmol/L</option>
+<option value="bromide  mcg/mL|6|0.0125|0|">bromide  mcg/mL</option>
+<option value="bromide  mmol/L|6|1|0|">bromide  mmol/L</option>
+<option value="caffeine  mcg/mL|7|5.15|0|">caffeine  mcg/mL</option>
+<option value="caffeine  mcmol/L|7|1|0|">caffeine  mcmol/L</option>
+<option value="carbamazepine [Tegretol] mcg/mL|8|4.23|0|">carbamazepine [Tegretol] mcg/mL</option>
+<option value="carbamazepine [Tegretol] mcmol/L|8|1|0|">carbamazepine [Tegretol] mcmol/L</option>
+<option value="carbenicillin  mcg/mL|9|2.64|0|">carbenicillin  mcg/mL</option>
+<option value="carbenicillin  mcmol/L|9|1|0|">carbenicillin  mcmol/L</option>
+<option value="chloral hydrate  mcg/mL|10|6.69|0|">chloral hydrate  mcg/mL</option>
+<option value="chloral hydrate  mcmol/L|10|1|0|">chloral hydrate  mcmol/L</option>
+<option value="chloramphenicol  mcg/mL|11|3.09|0|">chloramphenicol  mcg/mL</option>
+<option value="chloramphenicol  mcmol/L|11|1|0|">chloramphenicol  mcmol/L</option>
+<option value="chlordiazepoxide [Librium] mcmol/L|12|1|0|">chlordiazepoxide [Librium] mcmol/L</option>
+<option value="chlordiazepoxide [Librium] ng/mL|12|0.00334|0|">chlordiazepoxide [Librium] ng/mL</option>
+<option value="chlorpromazine [Thorazine] ng/mL|13|3.14|0|">chlorpromazine [Thorazine] ng/mL</option>
+<option value="chlorpromazine [Thorazine] nmol/L|13|1|0|">chlorpromazine [Thorazine] nmol/L</option>
+<option value="chlorpropamide [Diabinese] mcg/mL|14|3.61|0|">chlorpropamide [Diabinese] mcg/mL</option>
+<option value="chlorpropamide [Diabinese] mcmol/L|14|1|0|">chlorpropamide [Diabinese] mcmol/L</option>
+<option value="cimetidine [Tagamet] mcg/mL|15|3.96|0|">cimetidine [Tagamet] mcg/mL</option>
+<option value="cimetidine [Tagamet] mcmol/L|15|1|0|">cimetidine [Tagamet] mcmol/L</option>
+<option value="clonazepam [Clonopin] ng/mL|16|3.17|0|">clonazepam [Clonopin] ng/mL</option>
+<option value="clonazepam [Clonopin] nmol/L|16|1|0|">clonazepam [Clonopin] nmol/L</option>
+<option value="clonidine [Catapres] ng/mL|17|4.35|0|">clonidine [Catapres] ng/mL</option>
+<option value="clonidine [Catapres] nmol/L|17|1|0|">clonidine [Catapres] nmol/L</option>
+<option value="cocaine  ng/mL|18|3.3|0|">cocaine  ng/mL</option>
+<option value="cocaine  nmol/L|18|1|0|">cocaine  nmol/L</option>
+<option value="codeine  ng/mL|19|3.34|0|">codeine  ng/mL</option>
+<option value="codeine  nmol/L|19|1|0|">codeine  nmol/L</option>
+<option value="desipramine [Norpramin] ng/mL|20|3.75|0|">desipramine [Norpramin] ng/mL</option>
+<option value="desipramine [Norpramin] nmol/L|20|1|0|">desipramine [Norpramin] nmol/L</option>
+<option value="diazepam [Valium] ng/mL|21|0.0035|0|">diazepam [Valium] ng/mL</option>
+<option value="diazepam [Valium] nmol/L|21|1|0|">diazepam [Valium] nmol/L</option>
+<option value="digitoxin  ng/mL|22|1.31|0|">digitoxin  ng/mL</option>
+<option value="digitoxin  nmol/L|22|1|0|">digitoxin  nmol/L</option>
+<option value="digoxin  ng/mL|23|1.28|0|">digoxin  ng/mL</option>
+<option value="digoxin  nmol/L|23|1|0|">digoxin  nmol/L</option>
+<option value="disulfiram  mcg/mL|24|3.37|0|">disulfiram  mcg/mL</option>
+<option value="disulfiram  mcmol/L|24|1|0|">disulfiram  mcmol/L</option>
+<option value="doxepin [Sinequan] ng/mL|25|3.58|0|">doxepin [Sinequan] ng/mL</option>
+<option value="doxepin [Sinequan] nmol/L|25|1|0|">doxepin [Sinequan] nmol/L</option>
+<option value="ethanol  mg/dL|26|0.217|0|">ethanol  mg/dL</option>
+<option value="ethanol  mmol/L|26|1|0|">ethanol  mmol/L</option>
+<option value="ethchlorvynol [Placidyl] mcg/mL|27|6.92|0|">ethchlorvynol [Placidyl] mcg/mL</option>
+<option value="ethchlorvynol [Placidyl] mcmol/L|27|1|0|">ethchlorvynol [Placidyl] mcmol/L</option>
+<option value="ethosuximide [Zarontin] mcg/mL|28|7.08|0|">ethosuximide [Zarontin] mcg/mL</option>
+<option value="ethosuximide [Zarontin] mcmol/L|28|1|0|">ethosuximide [Zarontin] mcmol/L</option>
+<option value="gentamicin  mcg/mL|29|2.09|0|">gentamicin  mcg/mL</option>
+<option value="gentamicin  mcmol/L|29|1|0|">gentamicin  mcmol/L</option>
+<option value="glutethimide [Doriden] mcg/mL|30|4.6|0|">glutethimide [Doriden] mcg/mL</option>
+<option value="glutethimide [Doriden] mcmol/L|30|1|0|">glutethimide [Doriden] mcmol/L</option>
+<option value="haloperidol [Haldol] ng/mL|31|2.66|0|">haloperidol [Haldol] ng/mL</option>
+<option value="haloperidol [Haldol] nmol/L|31|1|0|">haloperidol [Haldol] nmol/L</option>
+<option value="hydromorphone [Dilaudid] ng/mL|32|4.85|0|">hydromorphone [Dilaudid] ng/mL</option>
+<option value="hydromorphone [Dilaudid] nmol/L|32|1|0|">hydromorphone [Dilaudid] nmol/L</option>
+<option value="ibuprofen  mcg/mL|33|4.85|0|">ibuprofen  mcg/mL</option>
+<option value="ibuprofen  mcmol/L|33|1|0|">ibuprofen  mcmol/L</option>
+<option value="imipramine [Tofranil] ng/mL|34|3.57|0|">imipramine [Tofranil] ng/mL</option>
+<option value="imipramine [Tofranil] nmol/L|34|1|0|">imipramine [Tofranil] nmol/L</option>
+<option value="isoniazid  mcg/mL|35|7.29|0|">isoniazid  mcg/mL</option>
+<option value="isoniazid  mcmol/L|35|1|0|">isoniazid  mcmol/L</option>
+<option value="kanamycin [Kantrex] mcg/mL|36|2.06|0|">kanamycin [Kantrex] mcg/mL</option>
+<option value="kanamycin [Kantrex] mcmol/L|36|1|0|">kanamycin [Kantrex] mcmol/L</option>
+<option value="lidocaine [Xylocaine] mcg/mL|37|4.27|0|">lidocaine [Xylocaine] mcg/mL</option>
+<option value="lidocaine [Xylocaine] mcmol/L|37|1|0|">lidocaine [Xylocaine] mcmol/L</option>
+<option value="lithium  mEq/L|38|1|0|">lithium  mEq/L</option>
+<option value="lithium  mmol/L|38|1|0|">lithium  mmol/L</option>
+<option value="lorazepam  ng/mL|39|3.11|0|">lorazepam  ng/mL</option>
+<option value="lorazepam  nmol/L|39|1|0|">lorazepam  nmol/L</option>
+<option value="LSD  mcg/mL|40|3.09|0|">LSD  mcg/mL</option>
+<option value="LSD  mcmol/L|40|1|0|">LSD  mcmol/L</option>
+<option value="meperidine [Demerol] ng/mL|41|4.04|0|">meperidine [Demerol] ng/mL</option>
+<option value="meperidine [Demerol] nmol/L|41|1|0|">meperidine [Demerol] nmol/L</option>
+<option value="meprobamate  mcmol/L|42|1|0|">meprobamate  mcmol/L</option>
+<option value="meprobamate  mg/L|42|4.58|0|">meprobamate  mg/L</option>
+<option value="methadone  mcmol/L|43|1|0|">methadone  mcmol/L</option>
+<option value="methadone  ng/mL|43|0.00323|0|">methadone  ng/mL</option>
+<option value="methaqualone [Quaalude] mcg/mL|44|4|0|">methaqualone [Quaalude] mcg/mL</option>
+<option value="methaqualone [Quaalude] mcmol/L|44|1|0|">methaqualone [Quaalude] mcmol/L</option>
+<option value="methotrexate  ng/mL|45|2.2|0|">methotrexate  ng/mL</option>
+<option value="methotrexate  nmol/L|45|1|0|">methotrexate  nmol/L</option>
+<option value="methsuximide  mcg/mL|46|5.29|0|">methsuximide  mcg/mL</option>
+<option value="methsuximide  mcmol/L|46|1|0|">methsuximide  mcmol/L</option>
+<option value="methyldopa [Aldomet] mcg/mL|47|4.73|0|">methyldopa [Aldomet] mcg/mL</option>
+<option value="methyldopa [Aldomet] mcmol/L|47|1|0|">methyldopa [Aldomet] mcmol/L</option>
+<option value="morphine  mcmol/L|48|1|0|">morphine  mcmol/L</option>
+<option value="morphine  ng/mL|48|0.0035|0|">morphine  ng/mL</option>
+<option value="nortriptyline  ng/mL|49|3.8|0|">nortriptyline  ng/mL</option>
+<option value="nortriptyline  nmol/L|49|1|0|">nortriptyline  nmol/L</option>
+<option value="oxazepam  mcg/mL|50|3.49|0|">oxazepam  mcg/mL</option>
+<option value="oxazepam  mcmol/L|50|1|0|">oxazepam  mcmol/L</option>
+<option value="oxycodone [Percodan] ng/mL|51|3.17|0|">oxycodone [Percodan] ng/mL</option>
+<option value="oxycodone [Percodan] nmol/L|51|1|0|">oxycodone [Percodan] nmol/L</option>
+<option value="paraldehyde  mcg/mL|52|7.57|0|">paraldehyde  mcg/mL</option>
+<option value="paraldehyde  mcmol/L|52|1|0|">paraldehyde  mcmol/L</option>
+<option value="pentobarbital [Nembutal] mcg/mL|53|4.42|0|">pentobarbital [Nembutal] mcg/mL</option>
+<option value="pentobarbital [Nembutal] mcmol/L|53|1|0|">pentobarbital [Nembutal] mcmol/L</option>
+<option value="phenacetin  mcg/mL|54|5.58|0|">phenacetin  mcg/mL</option>
+<option value="phenacetin  mcmol/L|54|1|0|">phenacetin  mcmol/L</option>
+<option value="phenobarbital [Luminal] mcg/mL|55|4.31|0|">phenobarbital [Luminal] mcg/mL</option>
+<option value="phenobarbital [Luminal] mcmol/L|55|1|0|">phenobarbital [Luminal] mcmol/L</option>
+<option value="phenylbutazone [Butazolidin] mcg/mL|56|3.08|0|">phenylbutazone [Butazolidin] mcg/mL</option>
+<option value="phenylbutazone [Butazolidin] mcmol/L|56|1|0|">phenylbutazone [Butazolidin] mcmol/L</option>
+<option value="phenytoin [Dilantin] mcg/mL|57|3.96|0|">phenytoin [Dilantin] mcg/mL</option>
+<option value="phenytoin [Dilantin] mcmol/L|57|1|0|">phenytoin [Dilantin] mcmol/L</option>
+<option value="primidone  mcg/mL|58|4.58|0|">primidone  mcg/mL</option>
+<option value="primidone  mcmol/L|58|1|0|">primidone  mcmol/L</option>
+<option value="procainamide [Pronestyl] mcg/mL|59|4.23|0|">procainamide [Pronestyl] mcg/mL</option>
+<option value="procainamide [Pronestyl] mcmol/L|59|1|0|">procainamide [Pronestyl] mcmol/L</option>
+<option value="procaine [Novocaine] mcg/mL|60|4.23|0|">procaine [Novocaine] mcg/mL</option>
+<option value="procaine [Novocaine] mcmol/L|60|1|0|">procaine [Novocaine] mcmol/L</option>
+<option value="propoxyphene [Darvon] mcg/mL|61|3.07|0|">propoxyphene [Darvon] mcg/mL</option>
+<option value="propoxyphene [Darvon] mcmol/L|61|1|0|">propoxyphene [Darvon] mcmol/L</option>
+<option value="propranolol  ng/mL|62|3.86|0|">propranolol  ng/mL</option>
+<option value="propranolol  nmol/L|62|1|0|">propranolol  nmol/L</option>
+<option value="quinidine  mcg/mL|63|3.08|0|">quinidine  mcg/mL</option>
+<option value="quinidine  mcmol/L|63|1|0|">quinidine  mcmol/L</option>
+<option value="quinine  mcg/mL|64|3.08|0|">quinine  mcg/mL</option>
+<option value="quinine  mcmol/L|64|1|0|">quinine  mcmol/L</option>
+<option value="salicylic acid  mcg/mL|65|7.24|0|">salicylic acid  mcg/mL</option>
+<option value="salicylic acid  mcmol/L|65|1|0|">salicylic acid  mcmol/L</option>
+<option value="secobarbital [Seconal] mcg/mL|66|4.2|0|">secobarbital [Seconal] mcg/mL</option>
+<option value="secobarbital [Seconal] mcmol/L|66|1|0|">secobarbital [Seconal] mcmol/L</option>
+<option value="theophylline  mcg/mL|67|5.55|0|">theophylline  mcg/mL</option>
+<option value="theophylline  mcmol/L|67|1|0|">theophylline  mcmol/L</option>
+<option value="tobramycin  mcg/mL|68|2.14|0|">tobramycin  mcg/mL</option>
+<option value="tobramycin  mcmol/L|68|1|0|">tobramycin  mcmol/L</option>
+<option value="valproic acid  mcg/mL|69|6.93|0|">valproic acid  mcg/mL</option>
+<option value="valproic acid  mcmol/L|69|1|0|">valproic acid  mcmol/L</option>
+<option value="vancomycin  mcg/mL|70|1|0|">vancomycin  mcg/mL</option>
+<option value="vancomycin  mg/L|70|1|0|">vancomycin  mg/L</option>
+<option value="0|0|1|0"></option>
+</select></td></tr>
+<tr><td align="right"><span class="medCalcFontOneBold">至</span></td>
+<td align="left"><input type="text" name="to_param" style="width:50px;" onfocus="blur();" /></td>
+<td align="left">
+<select name="to_unit" onchange="unitConvert();">
+<option value="下拉功能表|0|1|0" selected="selected">下拉功能表</option>
+<option value="acetaminophen [Tylenol] mcg/mL|1|6.62|0|">acetaminophen [Tylenol] mcg/mL</option>
+<option value="acetaminophen [Tylenol] mcmol/L|1|1|0|">acetaminophen [Tylenol] mcmol/L</option>
+<option value="amikacin  mcg/mL|2|1.71|0|">amikacin  mcg/mL</option>
+<option value="amikacin  mcmol/L|2|1|0|">amikacin  mcmol/L</option>
+<option value="amitriptyline  ng/mL|3|3.61|0|">amitriptyline  ng/mL</option>
+<option value="amitriptyline  nmol/L|3|1|0|">amitriptyline  nmol/L</option>
+<option value="amobarbital  mcg/mL|4|4.42|0|">amobarbital  mcg/mL</option>
+<option value="amobarbital  mcmol/L|4|1|0|">amobarbital  mcmol/L</option>
+<option value="amphetamine  mcg/mL|5|7.4|0|">amphetamine  mcg/mL</option>
+<option value="amphetamine  mcmol/L|5|1|0|">amphetamine  mcmol/L</option>
+<option value="bromide  mcg/mL|6|0.0125|0|">bromide  mcg/mL</option>
+<option value="bromide  mmol/L|6|1|0|">bromide  mmol/L</option>
+<option value="caffeine  mcg/mL|7|5.15|0|">caffeine  mcg/mL</option>
+<option value="caffeine  mcmol/L|7|1|0|">caffeine  mcmol/L</option>
+<option value="carbamazepine [Tegretol] mcg/mL|8|4.23|0|">carbamazepine [Tegretol] mcg/mL</option>
+<option value="carbamazepine [Tegretol] mcmol/L|8|1|0|">carbamazepine [Tegretol] mcmol/L</option>
+<option value="carbenicillin  mcg/mL|9|2.64|0|">carbenicillin  mcg/mL</option>
+<option value="carbenicillin  mcmol/L|9|1|0|">carbenicillin  mcmol/L</option>
+<option value="chloral hydrate  mcg/mL|10|6.69|0|">chloral hydrate  mcg/mL</option>
+<option value="chloral hydrate  mcmol/L|10|1|0|">chloral hydrate  mcmol/L</option>
+<option value="chloramphenicol  mcg/mL|11|3.09|0|">chloramphenicol  mcg/mL</option>
+<option value="chloramphenicol  mcmol/L|11|1|0|">chloramphenicol  mcmol/L</option>
+<option value="chlordiazepoxide [Librium] mcmol/L|12|1|0|">chlordiazepoxide [Librium] mcmol/L</option>
+<option value="chlordiazepoxide [Librium] ng/mL|12|0.00334|0|">chlordiazepoxide [Librium] ng/mL</option>
+<option value="chlorpromazine [Thorazine] ng/mL|13|3.14|0|">chlorpromazine [Thorazine] ng/mL</option>
+<option value="chlorpromazine [Thorazine] nmol/L|13|1|0|">chlorpromazine [Thorazine] nmol/L</option>
+<option value="chlorpropamide [Diabinese] mcg/mL|14|3.61|0|">chlorpropamide [Diabinese] mcg/mL</option>
+<option value="chlorpropamide [Diabinese] mcmol/L|14|1|0|">chlorpropamide [Diabinese] mcmol/L</option>
+<option value="cimetidine [Tagamet] mcg/mL|15|3.96|0|">cimetidine [Tagamet] mcg/mL</option>
+<option value="cimetidine [Tagamet] mcmol/L|15|1|0|">cimetidine [Tagamet] mcmol/L</option>
+<option value="clonazepam [Clonopin] ng/mL|16|3.17|0|">clonazepam [Clonopin] ng/mL</option>
+<option value="clonazepam [Clonopin] nmol/L|16|1|0|">clonazepam [Clonopin] nmol/L</option>
+<option value="clonidine [Catapres] ng/mL|17|4.35|0|">clonidine [Catapres] ng/mL</option>
+<option value="clonidine [Catapres] nmol/L|17|1|0|">clonidine [Catapres] nmol/L</option>
+<option value="cocaine  ng/mL|18|3.3|0|">cocaine  ng/mL</option>
+<option value="cocaine  nmol/L|18|1|0|">cocaine  nmol/L</option>
+<option value="codeine  ng/mL|19|3.34|0|">codeine  ng/mL</option>
+<option value="codeine  nmol/L|19|1|0|">codeine  nmol/L</option>
+<option value="desipramine [Norpramin] ng/mL|20|3.75|0|">desipramine [Norpramin] ng/mL</option>
+<option value="desipramine [Norpramin] nmol/L|20|1|0|">desipramine [Norpramin] nmol/L</option>
+<option value="diazepam [Valium] ng/mL|21|0.0035|0|">diazepam [Valium] ng/mL</option>
+<option value="diazepam [Valium] nmol/L|21|1|0|">diazepam [Valium] nmol/L</option>
+<option value="digitoxin  ng/mL|22|1.31|0|">digitoxin  ng/mL</option>
+<option value="digitoxin  nmol/L|22|1|0|">digitoxin  nmol/L</option>
+<option value="digoxin  ng/mL|23|1.28|0|">digoxin  ng/mL</option>
+<option value="digoxin  nmol/L|23|1|0|">digoxin  nmol/L</option>
+<option value="disulfiram  mcg/mL|24|3.37|0|">disulfiram  mcg/mL</option>
+<option value="disulfiram  mcmol/L|24|1|0|">disulfiram  mcmol/L</option>
+<option value="doxepin [Sinequan] ng/mL|25|3.58|0|">doxepin [Sinequan] ng/mL</option>
+<option value="doxepin [Sinequan] nmol/L|25|1|0|">doxepin [Sinequan] nmol/L</option>
+<option value="ethanol  mg/dL|26|0.217|0|">ethanol  mg/dL</option>
+<option value="ethanol  mmol/L|26|1|0|">ethanol  mmol/L</option>
+<option value="ethchlorvynol [Placidyl] mcg/mL|27|6.92|0|">ethchlorvynol [Placidyl] mcg/mL</option>
+<option value="ethchlorvynol [Placidyl] mcmol/L|27|1|0|">ethchlorvynol [Placidyl] mcmol/L</option>
+<option value="ethosuximide [Zarontin] mcg/mL|28|7.08|0|">ethosuximide [Zarontin] mcg/mL</option>
+<option value="ethosuximide [Zarontin] mcmol/L|28|1|0|">ethosuximide [Zarontin] mcmol/L</option>
+<option value="gentamicin  mcg/mL|29|2.09|0|">gentamicin  mcg/mL</option>
+<option value="gentamicin  mcmol/L|29|1|0|">gentamicin  mcmol/L</option>
+<option value="glutethimide [Doriden] mcg/mL|30|4.6|0|">glutethimide [Doriden] mcg/mL</option>
+<option value="glutethimide [Doriden] mcmol/L|30|1|0|">glutethimide [Doriden] mcmol/L</option>
+<option value="haloperidol [Haldol] ng/mL|31|2.66|0|">haloperidol [Haldol] ng/mL</option>
+<option value="haloperidol [Haldol] nmol/L|31|1|0|">haloperidol [Haldol] nmol/L</option>
+<option value="hydromorphone [Dilaudid] ng/mL|32|4.85|0|">hydromorphone [Dilaudid] ng/mL</option>
+<option value="hydromorphone [Dilaudid] nmol/L|32|1|0|">hydromorphone [Dilaudid] nmol/L</option>
+<option value="ibuprofen  mcg/mL|33|4.85|0|">ibuprofen  mcg/mL</option>
+<option value="ibuprofen  mcmol/L|33|1|0|">ibuprofen  mcmol/L</option>
+<option value="imipramine [Tofranil] ng/mL|34|3.57|0|">imipramine [Tofranil] ng/mL</option>
+<option value="imipramine [Tofranil] nmol/L|34|1|0|">imipramine [Tofranil] nmol/L</option>
+<option value="isoniazid  mcg/mL|35|7.29|0|">isoniazid  mcg/mL</option>
+<option value="isoniazid  mcmol/L|35|1|0|">isoniazid  mcmol/L</option>
+<option value="kanamycin [Kantrex] mcg/mL|36|2.06|0|">kanamycin [Kantrex] mcg/mL</option>
+<option value="kanamycin [Kantrex] mcmol/L|36|1|0|">kanamycin [Kantrex] mcmol/L</option>
+<option value="lidocaine [Xylocaine] mcg/mL|37|4.27|0|">lidocaine [Xylocaine] mcg/mL</option>
+<option value="lidocaine [Xylocaine] mcmol/L|37|1|0|">lidocaine [Xylocaine] mcmol/L</option>
+<option value="lithium  mEq/L|38|1|0|">lithium  mEq/L</option>
+<option value="lithium  mmol/L|38|1|0|">lithium  mmol/L</option>
+<option value="lorazepam  ng/mL|39|3.11|0|">lorazepam  ng/mL</option>
+<option value="lorazepam  nmol/L|39|1|0|">lorazepam  nmol/L</option>
+<option value="LSD  mcg/mL|40|3.09|0|">LSD  mcg/mL</option>
+<option value="LSD  mcmol/L|40|1|0|">LSD  mcmol/L</option>
+<option value="meperidine [Demerol] ng/mL|41|4.04|0|">meperidine [Demerol] ng/mL</option>
+<option value="meperidine [Demerol] nmol/L|41|1|0|">meperidine [Demerol] nmol/L</option>
+<option value="meprobamate  mcmol/L|42|1|0|">meprobamate  mcmol/L</option>
+<option value="meprobamate  mg/L|42|4.58|0|">meprobamate  mg/L</option>
+<option value="methadone  mcmol/L|43|1|0|">methadone  mcmol/L</option>
+<option value="methadone  ng/mL|43|0.00323|0|">methadone  ng/mL</option>
+<option value="methaqualone [Quaalude] mcg/mL|44|4|0|">methaqualone [Quaalude] mcg/mL</option>
+<option value="methaqualone [Quaalude] mcmol/L|44|1|0|">methaqualone [Quaalude] mcmol/L</option>
+<option value="methotrexate  ng/mL|45|2.2|0|">methotrexate  ng/mL</option>
+<option value="methotrexate  nmol/L|45|1|0|">methotrexate  nmol/L</option>
+<option value="methsuximide  mcg/mL|46|5.29|0|">methsuximide  mcg/mL</option>
+<option value="methsuximide  mcmol/L|46|1|0|">methsuximide  mcmol/L</option>
+<option value="methyldopa [Aldomet] mcg/mL|47|4.73|0|">methyldopa [Aldomet] mcg/mL</option>
+<option value="methyldopa [Aldomet] mcmol/L|47|1|0|">methyldopa [Aldomet] mcmol/L</option>
+<option value="morphine  mcmol/L|48|1|0|">morphine  mcmol/L</option>
+<option value="morphine  ng/mL|48|0.0035|0|">morphine  ng/mL</option>
+<option value="nortriptyline  ng/mL|49|3.8|0|">nortriptyline  ng/mL</option>
+<option value="nortriptyline  nmol/L|49|1|0|">nortriptyline  nmol/L</option>
+<option value="oxazepam  mcg/mL|50|3.49|0|">oxazepam  mcg/mL</option>
+<option value="oxazepam  mcmol/L|50|1|0|">oxazepam  mcmol/L</option>
+<option value="oxycodone [Percodan] ng/mL|51|3.17|0|">oxycodone [Percodan] ng/mL</option>
+<option value="oxycodone [Percodan] nmol/L|51|1|0|">oxycodone [Percodan] nmol/L</option>
+<option value="paraldehyde  mcg/mL|52|7.57|0|">paraldehyde  mcg/mL</option>
+<option value="paraldehyde  mcmol/L|52|1|0|">paraldehyde  mcmol/L</option>
+<option value="pentobarbital [Nembutal] mcg/mL|53|4.42|0|">pentobarbital [Nembutal] mcg/mL</option>
+<option value="pentobarbital [Nembutal] mcmol/L|53|1|0|">pentobarbital [Nembutal] mcmol/L</option>
+<option value="phenacetin  mcg/mL|54|5.58|0|">phenacetin  mcg/mL</option>
+<option value="phenacetin  mcmol/L|54|1|0|">phenacetin  mcmol/L</option>
+<option value="phenobarbital [Luminal] mcg/mL|55|4.31|0|">phenobarbital [Luminal] mcg/mL</option>
+<option value="phenobarbital [Luminal] mcmol/L|55|1|0|">phenobarbital [Luminal] mcmol/L</option>
+<option value="phenylbutazone [Butazolidin] mcg/mL|56|3.08|0|">phenylbutazone [Butazolidin] mcg/mL</option>
+<option value="phenylbutazone [Butazolidin] mcmol/L|56|1|0|">phenylbutazone [Butazolidin] mcmol/L</option>
+<option value="phenytoin [Dilantin] mcg/mL|57|3.96|0|">phenytoin [Dilantin] mcg/mL</option>
+<option value="phenytoin [Dilantin] mcmol/L|57|1|0|">phenytoin [Dilantin] mcmol/L</option>
+<option value="primidone  mcg/mL|58|4.58|0|">primidone  mcg/mL</option>
+<option value="primidone  mcmol/L|58|1|0|">primidone  mcmol/L</option>
+<option value="procainamide [Pronestyl] mcg/mL|59|4.23|0|">procainamide [Pronestyl] mcg/mL</option>
+<option value="procainamide [Pronestyl] mcmol/L|59|1|0|">procainamide [Pronestyl] mcmol/L</option>
+<option value="procaine [Novocaine] mcg/mL|60|4.23|0|">procaine [Novocaine] mcg/mL</option>
+<option value="procaine [Novocaine] mcmol/L|60|1|0|">procaine [Novocaine] mcmol/L</option>
+<option value="propoxyphene [Darvon] mcg/mL|61|3.07|0|">propoxyphene [Darvon] mcg/mL</option>
+<option value="propoxyphene [Darvon] mcmol/L|61|1|0|">propoxyphene [Darvon] mcmol/L</option>
+<option value="propranolol  ng/mL|62|3.86|0|">propranolol  ng/mL</option>
+<option value="propranolol  nmol/L|62|1|0|">propranolol  nmol/L</option>
+<option value="quinidine  mcg/mL|63|3.08|0|">quinidine  mcg/mL</option>
+<option value="quinidine  mcmol/L|63|1|0|">quinidine  mcmol/L</option>
+<option value="quinine  mcg/mL|64|3.08|0|">quinine  mcg/mL</option>
+<option value="quinine  mcmol/L|64|1|0|">quinine  mcmol/L</option>
+<option value="salicylic acid  mcg/mL|65|7.24|0|">salicylic acid  mcg/mL</option>
+<option value="salicylic acid  mcmol/L|65|1|0|">salicylic acid  mcmol/L</option>
+<option value="secobarbital [Seconal] mcg/mL|66|4.2|0|">secobarbital [Seconal] mcg/mL</option>
+<option value="secobarbital [Seconal] mcmol/L|66|1|0|">secobarbital [Seconal] mcmol/L</option>
+<option value="theophylline  mcg/mL|67|5.55|0|">theophylline  mcg/mL</option>
+<option value="theophylline  mcmol/L|67|1|0|">theophylline  mcmol/L</option>
+<option value="tobramycin  mcg/mL|68|2.14|0|">tobramycin  mcg/mL</option>
+<option value="tobramycin  mcmol/L|68|1|0|">tobramycin  mcmol/L</option>
+<option value="valproic acid  mcg/mL|69|6.93|0|">valproic acid  mcg/mL</option>
+<option value="valproic acid  mcmol/L|69|1|0|">valproic acid  mcmol/L</option>
+<option value="vancomycin  mcg/mL|70|1|0|">vancomycin  mcg/mL</option>
+<option value="vancomycin  mg/L|70|1|0|">vancomycin  mg/L</option>
+<option value="0|0|1|0"></option>
+</select></td></tr></table>
+
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">
+设定小数点的最大显示精确度:
+</span>
+<select name="decpts" onchange="setDecPts();" class="medCalcFontSelect">
+<option>0</option>
+<option selected="selected">1</option>
+<option>2</option>
+<option>3</option>
+</select>
+</div>
+</div>
+</center>
+</form>
+
+<div id="calc_notes">
+<span class="medCalcFontOneBold">注意</span>
+<ul class="medCalcFontOne">
+<li><font color="#aa0000">在该计算器中, <b>mcg</b>是<b>微克</b>的缩写.</font></li>
+<li>要进行简单的单位换算，在右侧的下拉选择器中输入起始单位。然后在顶部的<b>从</b>输入方格中输入起始值。要得到换算值，在右下方的选择器中选择新单位。 换算值应即刻出现<b>至</b>方格中。
+</li>
+
+
+</ul>
+</div>
+
+<br />&nbsp;<br />
+
+<div id="calc_refs">
+<span class="medCalcFontRef"><b>参考</b></span>
+<ol>
+<li><span class="medCalcFontRef">使用下列转换系数，
+通过简单的系数相乘进行数据转换。
+</span></li>
+
+</ol>
+</div>
+
+<div class="calc_tables_supp">
+<br />&nbsp;<br />
+<span class="medCalcFontOneBold">转换系数</span>
+<br />&nbsp;<br />
+<table border="1" cellpadding="4" cellspacing="0" summary="EBMcalc Table" class="medCalcFontOne">
+
+<tr><td align="left">acetaminophen [Tylenol] mcg/mL</td><td>X</td><td align="center">6.62</td><td>=</td><td align="left">acetaminophen [Tylenol] mcmol/L</td></tr>
+<tr><td align="left">amikacin  mcg/mL</td><td>X</td><td align="center">1.71</td><td>=</td><td align="left">amikacin  mcmol/L</td></tr>
+<tr><td align="left">amitriptyline  ng/mL</td><td>X</td><td align="center">3.61</td><td>=</td><td align="left">amitriptyline  nmol/L</td></tr>
+<tr><td align="left">amobarbital  mcg/mL</td><td>X</td><td align="center">4.42</td><td>=</td><td align="left">amobarbital  mcmol/L</td></tr>
+<tr><td align="left">amphetamine  mcg/mL</td><td>X</td><td align="center">7.4</td><td>=</td><td align="left">amphetamine  mcmol/L</td></tr>
+<tr><td align="left">bromide  mcg/mL</td><td>X</td><td align="center">0.0125</td><td>=</td><td align="left">bromide  mmol/L</td></tr>
+<tr><td align="left">caffeine  mcg/mL</td><td>X</td><td align="center">5.15</td><td>=</td><td align="left">caffeine  mcmol/L</td></tr>
+<tr><td align="left">carbamazepine [Tegretol] mcg/mL</td><td>X</td><td align="center">4.23</td><td>=</td><td align="left">carbamazepine [Tegretol] mcmol/L</td></tr>
+<tr><td align="left">carbenicillin  mcg/mL</td><td>X</td><td align="center">2.64</td><td>=</td><td align="left">carbenicillin  mcmol/L</td></tr>
+<tr><td align="left">chloral hydrate  mcg/mL</td><td>X</td><td align="center">6.69</td><td>=</td><td align="left">chloral hydrate  mcmol/L</td></tr>
+<tr><td align="left">chloramphenicol  mcg/mL</td><td>X</td><td align="center">3.09</td><td>=</td><td align="left">chloramphenicol  mcmol/L</td></tr>
+<tr><td align="left">chlordiazepoxide [Librium] ng/mL</td><td>X</td><td align="center">0.00334</td><td>=</td><td align="left">chlordiazepoxide [Librium] mcmol/L</td></tr>
+<tr><td align="left">chlorpromazine [Thorazine] ng/mL</td><td>X</td><td align="center">3.14</td><td>=</td><td align="left">chlorpromazine [Thorazine] nmol/L</td></tr>
+<tr><td align="left">chlorpropamide [Diabinese] mcg/mL</td><td>X</td><td align="center">3.61</td><td>=</td><td align="left">chlorpropamide [Diabinese] mcmol/L</td></tr>
+<tr><td align="left">cimetidine [Tagamet] mcg/mL</td><td>X</td><td align="center">3.96</td><td>=</td><td align="left">cimetidine [Tagamet] mcmol/L</td></tr>
+<tr><td align="left">clonazepam [Clonopin] ng/mL</td><td>X</td><td align="center">3.17</td><td>=</td><td align="left">clonazepam [Clonopin] nmol/L</td></tr>
+<tr><td align="left">clonidine [Catapres] ng/mL</td><td>X</td><td align="center">4.35</td><td>=</td><td align="left">clonidine [Catapres] nmol/L</td></tr>
+<tr><td align="left">cocaine  ng/mL</td><td>X</td><td align="center">3.3</td><td>=</td><td align="left">cocaine  nmol/L</td></tr>
+<tr><td align="left">codeine  ng/mL</td><td>X</td><td align="center">3.34</td><td>=</td><td align="left">codeine  nmol/L</td></tr>
+<tr><td align="left">desipramine [Norpramin] ng/mL</td><td>X</td><td align="center">3.75</td><td>=</td><td align="left">desipramine [Norpramin] nmol/L</td></tr>
+<tr><td align="left">diazepam [Valium] ng/mL</td><td>X</td><td align="center">0.0035</td><td>=</td><td align="left">diazepam [Valium] nmol/L</td></tr>
+<tr><td align="left">digitoxin  ng/mL</td><td>X</td><td align="center">1.31</td><td>=</td><td align="left">digitoxin  nmol/L</td></tr>
+<tr><td align="left">digoxin  ng/mL</td><td>X</td><td align="center">1.28</td><td>=</td><td align="left">digoxin  nmol/L</td></tr>
+<tr><td align="left">disulfiram  mcg/mL</td><td>X</td><td align="center">3.37</td><td>=</td><td align="left">disulfiram  mcmol/L</td></tr>
+<tr><td align="left">doxepin [Sinequan] ng/mL</td><td>X</td><td align="center">3.58</td><td>=</td><td align="left">doxepin [Sinequan] nmol/L</td></tr>
+<tr><td align="left">ethanol  mg/dL</td><td>X</td><td align="center">0.217</td><td>=</td><td align="left">ethanol  mmol/L</td></tr>
+<tr><td align="left">ethchlorvynol [Placidyl] mcg/mL</td><td>X</td><td align="center">6.92</td><td>=</td><td align="left">ethchlorvynol [Placidyl] mcmol/L</td></tr>
+<tr><td align="left">ethosuximide [Zarontin] mcg/mL</td><td>X</td><td align="center">7.08</td><td>=</td><td align="left">ethosuximide [Zarontin] mcmol/L</td></tr>
+<tr><td align="left">gentamicin  mcg/mL</td><td>X</td><td align="center">2.09</td><td>=</td><td align="left">gentamicin  mcmol/L</td></tr>
+<tr><td align="left">glutethimide [Doriden] mcg/mL</td><td>X</td><td align="center">4.6</td><td>=</td><td align="left">glutethimide [Doriden] mcmol/L</td></tr>
+<tr><td align="left">haloperidol [Haldol] ng/mL</td><td>X</td><td align="center">2.66</td><td>=</td><td align="left">haloperidol [Haldol] nmol/L</td></tr>
+<tr><td align="left">hydromorphone [Dilaudid] ng/mL</td><td>X</td><td align="center">4.85</td><td>=</td><td align="left">hydromorphone [Dilaudid] nmol/L</td></tr>
+<tr><td align="left">ibuprofen  mcg/mL</td><td>X</td><td align="center">4.85</td><td>=</td><td align="left">ibuprofen  mcmol/L</td></tr>
+<tr><td align="left">imipramine [Tofranil] ng/mL</td><td>X</td><td align="center">3.57</td><td>=</td><td align="left">imipramine [Tofranil] nmol/L</td></tr>
+<tr><td align="left">isoniazid  mcg/mL</td><td>X</td><td align="center">7.29</td><td>=</td><td align="left">isoniazid  mcmol/L</td></tr>
+<tr><td align="left">kanamycin [Kantrex] mcg/mL</td><td>X</td><td align="center">2.06</td><td>=</td><td align="left">kanamycin [Kantrex] mcmol/L</td></tr>
+<tr><td align="left">lidocaine [Xylocaine] mcg/mL</td><td>X</td><td align="center">4.27</td><td>=</td><td align="left">lidocaine [Xylocaine] mcmol/L</td></tr>
+<tr><td align="left">lithium  mmol/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">lithium  mEq/L</td></tr>
+<tr><td align="left">lorazepam  ng/mL</td><td>X</td><td align="center">3.11</td><td>=</td><td align="left">lorazepam  nmol/L</td></tr>
+<tr><td align="left">LSD  mcg/mL</td><td>X</td><td align="center">3.09</td><td>=</td><td align="left">LSD  mcmol/L</td></tr>
+<tr><td align="left">meperidine [Demerol] ng/mL</td><td>X</td><td align="center">4.04</td><td>=</td><td align="left">meperidine [Demerol] nmol/L</td></tr>
+<tr><td align="left">meprobamate  mg/L</td><td>X</td><td align="center">4.58</td><td>=</td><td align="left">meprobamate  mcmol/L</td></tr>
+<tr><td align="left">methadone  ng/mL</td><td>X</td><td align="center">0.00323</td><td>=</td><td align="left">methadone  mcmol/L</td></tr>
+<tr><td align="left">methaqualone [Quaalude] mcg/mL</td><td>X</td><td align="center">4</td><td>=</td><td align="left">methaqualone [Quaalude] mcmol/L</td></tr>
+<tr><td align="left">methotrexate  ng/mL</td><td>X</td><td align="center">2.2</td><td>=</td><td align="left">methotrexate  nmol/L</td></tr>
+<tr><td align="left">methsuximide  mcg/mL</td><td>X</td><td align="center">5.29</td><td>=</td><td align="left">methsuximide  mcmol/L</td></tr>
+<tr><td align="left">methyldopa [Aldomet] mcg/mL</td><td>X</td><td align="center">4.73</td><td>=</td><td align="left">methyldopa [Aldomet] mcmol/L</td></tr>
+<tr><td align="left">morphine  ng/mL</td><td>X</td><td align="center">0.0035</td><td>=</td><td align="left">morphine  mcmol/L</td></tr>
+<tr><td align="left">nortriptyline  ng/mL</td><td>X</td><td align="center">3.8</td><td>=</td><td align="left">nortriptyline  nmol/L</td></tr>
+<tr><td align="left">oxazepam  mcg/mL</td><td>X</td><td align="center">3.49</td><td>=</td><td align="left">oxazepam  mcmol/L</td></tr>
+<tr><td align="left">oxycodone [Percodan] ng/mL</td><td>X</td><td align="center">3.17</td><td>=</td><td align="left">oxycodone [Percodan] nmol/L</td></tr>
+<tr><td align="left">paraldehyde  mcg/mL</td><td>X</td><td align="center">7.57</td><td>=</td><td align="left">paraldehyde  mcmol/L</td></tr>
+<tr><td align="left">pentobarbital [Nembutal] mcg/mL</td><td>X</td><td align="center">4.42</td><td>=</td><td align="left">pentobarbital [Nembutal] mcmol/L</td></tr>
+<tr><td align="left">phenacetin  mcg/mL</td><td>X</td><td align="center">5.58</td><td>=</td><td align="left">phenacetin  mcmol/L</td></tr>
+<tr><td align="left">phenobarbital [Luminal] mcg/mL</td><td>X</td><td align="center">4.31</td><td>=</td><td align="left">phenobarbital [Luminal] mcmol/L</td></tr>
+<tr><td align="left">phenylbutazone [Butazolidin] mcg/mL</td><td>X</td><td align="center">3.08</td><td>=</td><td align="left">phenylbutazone [Butazolidin] mcmol/L</td></tr>
+<tr><td align="left">phenytoin [Dilantin] mcg/mL</td><td>X</td><td align="center">3.96</td><td>=</td><td align="left">phenytoin [Dilantin] mcmol/L</td></tr>
+<tr><td align="left">primidone  mcg/mL</td><td>X</td><td align="center">4.58</td><td>=</td><td align="left">primidone  mcmol/L</td></tr>
+<tr><td align="left">procainamide [Pronestyl] mcg/mL</td><td>X</td><td align="center">4.23</td><td>=</td><td align="left">procainamide [Pronestyl] mcmol/L</td></tr>
+<tr><td align="left">procaine [Novocaine] mcg/mL</td><td>X</td><td align="center">4.23</td><td>=</td><td align="left">procaine [Novocaine] mcmol/L</td></tr>
+<tr><td align="left">propoxyphene [Darvon] mcg/mL</td><td>X</td><td align="center">3.07</td><td>=</td><td align="left">propoxyphene [Darvon] mcmol/L</td></tr>
+<tr><td align="left">propranolol  ng/mL</td><td>X</td><td align="center">3.86</td><td>=</td><td align="left">propranolol  nmol/L</td></tr>
+<tr><td align="left">quinidine  mcg/mL</td><td>X</td><td align="center">3.08</td><td>=</td><td align="left">quinidine  mcmol/L</td></tr>
+<tr><td align="left">quinine  mcg/mL</td><td>X</td><td align="center">3.08</td><td>=</td><td align="left">quinine  mcmol/L</td></tr>
+<tr><td align="left">salicylic acid  mcg/mL</td><td>X</td><td align="center">7.24</td><td>=</td><td align="left">salicylic acid  mcmol/L</td></tr>
+<tr><td align="left">secobarbital [Seconal] mcg/mL</td><td>X</td><td align="center">4.2</td><td>=</td><td align="left">secobarbital [Seconal] mcmol/L</td></tr>
+<tr><td align="left">theophylline  mcg/mL</td><td>X</td><td align="center">5.55</td><td>=</td><td align="left">theophylline  mcmol/L</td></tr>
+<tr><td align="left">tobramycin  mcg/mL</td><td>X</td><td align="center">2.14</td><td>=</td><td align="left">tobramycin  mcmol/L</td></tr>
+<tr><td align="left">valproic acid  mcg/mL</td><td>X</td><td align="center">6.93</td><td>=</td><td align="left">valproic acid  mcmol/L</td></tr>
+<tr><td align="left">vancomycin  mg/L</td><td>X</td><td align="center">1</td><td>=</td><td align="left">vancomycin  mcg/mL</td></tr>
+
+</table>
+</div>
+<br />&nbsp;<br /><div id="calc_disclaimer"> <br />&nbsp;<br /><center><br />&nbsp;<br />&nbsp;<br /><table bgcolor="#cccccc" cellpadding="16" summary="EBMcalc Table"><tr><td><center><span class="medCalcFontTwo"><br />&nbsp;<br /><b><u>法律条款及免责声明</u></b></span></center><br />&nbsp;<br /><span class="medCalcFontTwo">EBMcalc 系统所包含和生成的所有信息仅用于教育目的。这些信息不应被用于任何健康问题或疾病的诊断或治疗。
+<b>这些信息不能以任何方式取代临床判断或指导个体患者的治疗。
+</b><a href="disclaimer-zh.htm" target="_blank">按一下此处了解完整条款和免责声明。</a></span><br />&nbsp;<br /><center><span class="medCalcFontTwo">EBMcalc is Copyright &#169; 1998-2022 Foundation Internet Services &nbsp;&nbsp; [Build 267312 v22.3]</span></center></td></tr></table></center>
+</div></div>
+</body>
+</html>
+
+<!-- 1662471520 //-->
