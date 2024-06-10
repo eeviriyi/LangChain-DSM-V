@@ -25,8 +25,6 @@ llm = ChatOpenAI(model="gpt-4o")
 loader = TextLoader("./dsm-5.txt", autodetect_encoding=True)
 docs = loader.load()
 
-print(len(docs))
-
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 splits = text_splitter.split_documents(docs)
 vectorstore = Chroma.from_documents(documents=splits, embedding=OpenAIEmbeddings())
