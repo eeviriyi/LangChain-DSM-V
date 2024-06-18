@@ -1,19 +1,12 @@
-import bs4
 import gradio as gr
 from dotenv import load_dotenv
 from langchain.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_chroma import Chroma
 from langchain_community.chat_message_histories import ChatMessageHistory
-from langchain_community.document_loaders import (
-    BSHTMLLoader,
-    DirectoryLoader,
-    TextLoader,
-    WebBaseLoader,
-)
+from langchain_community.document_loaders import TextLoader
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.runnables import RunnablePassthrough
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -97,8 +90,10 @@ def rag(message, history, session_id):
 app = gr.ChatInterface(
     fn=rag,
     additional_inputs=[
-        gr.Textbox("1"),
+        gr.Textbox(value="1", label="Session"),
     ],
+    title="LangChain-DSM-V",
+    description="An ChatBot that knows DSM-V",
 )
 
 if __name__ == "__main__":
